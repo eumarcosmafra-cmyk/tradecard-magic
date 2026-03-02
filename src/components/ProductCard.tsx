@@ -40,8 +40,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <Link to={`/produto/${node.handle}`} className="group block">
-      <div className="bg-card rounded-xl overflow-hidden border border-border shadow-sm hover:shadow-lg transition-all duration-300 group-hover:-translate-y-1">
-        <div className="aspect-square overflow-hidden bg-muted">
+      <div className="bg-card rounded-xl overflow-hidden border border-border card-hover relative">
+        <div className="aspect-square overflow-hidden bg-muted relative">
           {image ? (
             <img
               src={image.url}
@@ -55,19 +55,18 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             </div>
           )}
           {!available && (
-            <div className="absolute top-3 left-3 bg-destructive text-destructive-foreground text-xs font-semibold px-2 py-1 rounded-md">
+            <div className="absolute top-3 left-3 bg-destructive text-destructive-foreground text-xs font-semibold px-3 py-1 rounded-md font-display tracking-wider uppercase">
               Esgotado
             </div>
           )}
         </div>
-        <div className="p-4 space-y-2">
-          <h3 className="font-semibold text-foreground line-clamp-2 text-sm leading-snug">{node.title}</h3>
-          <p className="text-lg font-bold text-primary">{formatPrice(price)}</p>
+        <div className="p-5 space-y-3">
+          <h3 className="font-display text-xl tracking-wider uppercase text-foreground line-clamp-2">{node.title}</h3>
+          <p className="text-2xl font-bold text-gradient-yellow font-display tracking-wide">{formatPrice(price)}</p>
           <Button
             onClick={handleAddToCart}
             disabled={isLoading || !available}
-            size="sm"
-            className="w-full"
+            className="w-full bg-gradient-yellow text-primary-foreground font-display text-base tracking-wider uppercase shadow-yellow hover:opacity-90 transition-opacity"
           >
             {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ShoppingCart className="w-4 h-4 mr-2" />{available ? 'Adicionar' : 'Esgotado'}</>}
           </Button>
