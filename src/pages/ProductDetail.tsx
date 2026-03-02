@@ -30,9 +30,9 @@ const ProductDetail = () => {
     return (
       <div className="min-h-screen bg-background">
         <Header />
-        <div className="container mx-auto px-4 py-20 text-center">
-          <p className="text-muted-foreground">Produto não encontrado.</p>
-          <Link to="/" className="text-primary hover:underline mt-4 inline-block">Voltar à loja</Link>
+        <div className="container mx-auto px-4 py-32 text-center">
+          <p className="text-muted-foreground font-body">Produto não encontrado.</p>
+          <Link to="/" className="text-secondary hover:underline mt-4 inline-block font-display text-lg tracking-wider uppercase">Voltar à loja</Link>
         </div>
       </div>
     );
@@ -67,20 +67,20 @@ const ProductDetail = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <div className="container mx-auto px-4 py-8">
-        <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
+      <div className="container mx-auto px-4 pt-28 pb-16">
+        <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-secondary transition-colors mb-8 font-body">
           <ArrowLeft className="w-4 h-4" />
           Voltar à loja
         </Link>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Images */}
           <div className="space-y-4">
-            <div className="aspect-square rounded-xl overflow-hidden bg-muted border border-border">
+            <div className="aspect-square rounded-xl overflow-hidden bg-card border border-border">
               {selectedImage ? (
                 <img src={selectedImage.url} alt={selectedImage.altText || node.title} className="w-full h-full object-cover" />
               ) : (
-                <div className="w-full h-full flex items-center justify-center text-muted-foreground">Sem imagem</div>
+                <div className="w-full h-full flex items-center justify-center text-muted-foreground font-body">Sem imagem</div>
               )}
             </div>
             {images.length > 1 && (
@@ -89,7 +89,7 @@ const ProductDetail = () => {
                   <button
                     key={i}
                     onClick={() => setSelectedImageIndex(i)}
-                    className={`w-16 h-16 rounded-lg overflow-hidden border-2 flex-shrink-0 transition-colors ${i === selectedImageIndex ? 'border-primary' : 'border-border'}`}
+                    className={`w-16 h-16 rounded-lg overflow-hidden border-2 flex-shrink-0 transition-colors ${i === selectedImageIndex ? 'border-primary shadow-yellow' : 'border-border'}`}
                   >
                     <img src={img.node.url} alt={img.node.altText || ''} className="w-full h-full object-cover" />
                   </button>
@@ -101,29 +101,29 @@ const ProductDetail = () => {
           {/* Info */}
           <div className="space-y-6">
             <div>
-              <h1 className="text-3xl font-bold text-foreground">{node.title}</h1>
-              <p className="text-2xl font-bold text-primary mt-3">
+              <h1 className="font-display text-4xl md:text-5xl tracking-wider uppercase text-foreground">{node.title}</h1>
+              <p className="text-3xl font-bold text-gradient-yellow font-display tracking-wide mt-4">
                 {selectedVariant ? formatPrice(selectedVariant.price.amount) : ''}
               </p>
             </div>
 
             {node.description && (
-              <p className="text-muted-foreground leading-relaxed">{node.description}</p>
+              <p className="text-muted-foreground leading-relaxed font-body">{node.description}</p>
             )}
 
             {/* Variants */}
             {variants.length > 1 && (
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Variante</label>
+              <div className="space-y-3">
+                <label className="font-display text-lg tracking-wider uppercase text-secondary">Variante</label>
                 <div className="flex flex-wrap gap-2">
                   {variants.map((v, i) => (
                     <button
                       key={v.node.id}
                       onClick={() => setSelectedVariantIndex(i)}
                       disabled={!v.node.availableForSale}
-                      className={`px-4 py-2 rounded-lg border text-sm font-medium transition-colors ${
+                      className={`px-5 py-2.5 rounded-lg border text-sm font-display tracking-wider uppercase transition-all ${
                         i === selectedVariantIndex
-                          ? 'bg-primary text-primary-foreground border-primary'
+                          ? 'bg-gradient-yellow text-primary-foreground border-primary shadow-yellow'
                           : v.node.availableForSale
                           ? 'border-border hover:border-primary/50'
                           : 'border-border opacity-50 cursor-not-allowed line-through'
@@ -140,7 +140,7 @@ const ProductDetail = () => {
               onClick={handleAddToCart}
               disabled={cartLoading || !selectedVariant?.availableForSale}
               size="lg"
-              className="w-full text-base"
+              className="w-full bg-gradient-yellow text-primary-foreground font-display text-xl tracking-wider uppercase shadow-yellow-lg hover:opacity-90 transition-opacity py-6 animate-pulse-glow"
             >
               {cartLoading ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
