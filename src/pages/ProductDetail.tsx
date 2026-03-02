@@ -6,6 +6,8 @@ import { useProductByHandle } from "@/hooks/useProducts";
 import { useCartStore } from "@/stores/cartStore";
 import { Loader2, ShoppingCart, ArrowLeft, Zap, Star, Shield, Truck, RefreshCw, CreditCard } from "lucide-react";
 import { toast } from "sonner";
+import { EnvelopeContent } from "@/components/EnvelopeContent";
+import { CardCategories } from "@/components/CardCategories";
 
 /* ─── Sub-components ─── */
 
@@ -250,32 +252,30 @@ const ProductDetail = () => {
 
             <RatingBadge />
 
-            {/* Variant selector */}
-            {variants.length > 1 && (
+            {/* Variant selector - always show */}
+            <div className="space-y-3">
+              <p className="font-display text-base tracking-wider uppercase text-foreground">Selecione a quantidade</p>
               <div className="space-y-3">
-                <p className="font-display text-base tracking-wider uppercase text-foreground">Selecione a quantidade</p>
-                <div className="space-y-3">
-                  {variants.map((v, i) => (
-                    <VariantCard
-                      key={v.node.id}
-                      title={v.node.title}
-                      description={getVariantDescription(v.node)}
-                      price={v.node.price.amount}
-                      formatPrice={formatPrice}
-                      isSelected={i === selectedVariantIndex}
-                      isAvailable={v.node.availableForSale}
-                      badges={getVariantBadges(v.node.title, i)}
-                      onSelect={() => setSelectedVariantIndex(i)}
-                    />
-                  ))}
-                </div>
+                {variants.map((v, i) => (
+                  <VariantCard
+                    key={v.node.id}
+                    title={v.node.title}
+                    description={getVariantDescription(v.node)}
+                    price={v.node.price.amount}
+                    formatPrice={formatPrice}
+                    isSelected={i === selectedVariantIndex}
+                    isAvailable={v.node.availableForSale}
+                    badges={getVariantBadges(v.node.title, i)}
+                    onSelect={() => setSelectedVariantIndex(i)}
+                  />
+                ))}
               </div>
-            )}
+            </div>
 
-            {/* Single variant price */}
-            {variants.length === 1 && (
+            {/* Price display for single variant */}
+            {variants.length === 1 && selectedVariant && (
               <p className="text-3xl font-bold text-gradient-yellow font-display tracking-wide">
-                {selectedVariant ? formatPrice(selectedVariant.price.amount) : ""}
+                {formatPrice(selectedVariant.price.amount)}
               </p>
             )}
 
@@ -331,6 +331,12 @@ const ProductDetail = () => {
             </div>
           ))}
         </div>
+
+        {/* ─── Envelope content section ─── */}
+        <EnvelopeContent />
+
+        {/* ─── Card categories section ─── */}
+        <CardCategories />
       </div>
     </div>
   );
