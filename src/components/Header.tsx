@@ -16,6 +16,7 @@ export const Header = () => {
 
   const links = [
     { label: "Produtos", href: "/#produtos", isRoute: true },
+    { label: "Quem Somos", href: "/quem-somos", isRoute: true },
     { label: "Nossas Lojas", href: "/lojas", isRoute: true },
     { label: "Contato", href: "/contato", isRoute: true },
   ];
