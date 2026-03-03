@@ -133,7 +133,19 @@ export const useCartStore = create<CartStore>()(
       },
 
       clearCart: () => set({ items: [], cartId: null, checkoutUrl: null }),
-      getCheckoutUrl: () => get().checkoutUrl,
+      getCheckoutUrl: () => {
+        const url = get().checkoutUrl;
+        if (!url) return null;
+        // Always rewrite to Shopify permanent domain (custom domain points to Lovable, not Shopify)
+        try {
+          const parsed = new URL(url);
+          parsed.hostname = '30q0dh-rj.myshopify.com';
+          parsed.searchParams.set('channel', 'online_store');
+          return parsed.toString();
+        } catch {
+          return url;
+        }
+      },
 
       syncCart: async () => {
         const { cartId, isSyncing, clearCart } = get();
