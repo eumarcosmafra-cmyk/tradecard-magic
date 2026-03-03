@@ -153,6 +153,8 @@ const ProductDetail = () => {
 
   const handleBuyNow = async () => {
     if (!selectedVariant) return;
+    // Open window immediately in click context to avoid popup blocker
+    const win = window.open("about:blank", "_blank");
     await addItem({
       product,
       variantId: selectedVariant.id,
@@ -161,10 +163,13 @@ const ProductDetail = () => {
       quantity: 1,
       selectedOptions: selectedVariant.selectedOptions || [],
     });
-    setTimeout(() => {
-      const checkoutUrl = useCartStore.getState().getCheckoutUrl();
-      if (checkoutUrl) window.open(checkoutUrl, "_blank");
-    }, 300);
+    const checkoutUrl = useCartStore.getState().getCheckoutUrl();
+    if (checkoutUrl && win) {
+      win.location.href = checkoutUrl;
+    } else if (win) {
+      win.close();
+      toast.error("Erro ao gerar link de checkout. Tente novamente.");
+    }
   };
 
   /* Badge logic: detect keywords in variant titles for enrichment */
