@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useCartSync } from "@/hooks/useCartSync";
 import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
+import Quiosques from "./pages/Quiosques";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -16,6 +17,7 @@ const AppContent = () => {
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/produto/:handle" element={<ProductDetail />} />
+      <Route path="/quiosques" element={<Quiosques />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

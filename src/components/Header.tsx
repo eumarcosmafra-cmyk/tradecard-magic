@@ -16,6 +16,7 @@ export const Header = () => {
 
   const links = [
     { label: "Produtos", href: "#produtos" },
+    { label: "Quiosques", href: "/quiosques", isRoute: true },
     { label: "Contato", href: "#contato" },
   ];
 
@@ -32,15 +33,25 @@ export const Header = () => {
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="font-display text-lg tracking-wider uppercase text-foreground/70 hover:text-secondary transition-colors"
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) =>
+            (l as any).isRoute ? (
+              <Link
+                key={l.href}
+                to={l.href}
+                className="font-display text-lg tracking-wider uppercase text-foreground/70 hover:text-secondary transition-colors"
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                className="font-display text-lg tracking-wider uppercase text-foreground/70 hover:text-secondary transition-colors"
+              >
+                {l.label}
+              </a>
+            )
+          )}
           <CartDrawer />
         </div>
 
@@ -55,16 +66,27 @@ export const Header = () => {
 
       {mobileOpen && (
         <div className="md:hidden bg-card/98 backdrop-blur-md border-b border-border px-4 pb-6 animate-fade-in">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setMobileOpen(false)}
-              className="block py-3 font-display text-lg tracking-wider uppercase text-foreground/70 hover:text-secondary transition-colors"
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) =>
+            (l as any).isRoute ? (
+              <Link
+                key={l.href}
+                to={l.href}
+                onClick={() => setMobileOpen(false)}
+                className="block py-3 font-display text-lg tracking-wider uppercase text-foreground/70 hover:text-secondary transition-colors"
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setMobileOpen(false)}
+                className="block py-3 font-display text-lg tracking-wider uppercase text-foreground/70 hover:text-secondary transition-colors"
+              >
+                {l.label}
+              </a>
+            )
+          )}
         </div>
       )}
     </nav>
