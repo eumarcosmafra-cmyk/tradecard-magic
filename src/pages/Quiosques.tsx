@@ -53,10 +53,10 @@ const Quiosques = () => {
       {/* Hero */}
       <section className="pt-28 pb-16 px-4 text-center">
         <h1 className="font-display text-5xl md:text-7xl tracking-wider uppercase text-foreground">
-          Pontos Oficiais de Troca
+          Lojas Bella Figurinha
         </h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-          Encontre o quiosque mais perto de você nos principais shoppings do Sul e Sudeste do Brasil.
+          Encontre a loja mais perto de você nos principais shoppings do Sul e Sudeste do Brasil.
         </p>
       </section>
 

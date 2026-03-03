@@ -17,7 +17,7 @@ const AppContent = () => {
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/produto/:handle" element={<ProductDetail />} />
-      <Route path="/quiosques" element={<Quiosques />} />
+      <Route path="/lojas" element={<Quiosques />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
