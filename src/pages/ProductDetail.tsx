@@ -8,6 +8,12 @@ import { Loader2, ShoppingCart, ArrowLeft, Zap, Star, Shield, Truck, RefreshCw, 
 import { toast } from "sonner";
 import { EnvelopeContent } from "@/components/EnvelopeContent";
 import { CardCategories } from "@/components/CardCategories";
+import { GoldenBallers } from "@/components/GoldenBallers";
+import { Eternos22 } from "@/components/Eternos22";
+import { Mascotes } from "@/components/Mascotes";
+import { Selecoes } from "@/components/Selecoes";
+import { ProductFAQ } from "@/components/ProductFAQ";
+import { FinalCTA } from "@/components/FinalCTA";
 
 /* ─── Sub-components ─── */
 
@@ -339,8 +345,26 @@ const ProductDetail = () => {
           variantTitle={selectedVariant?.title}
         />
 
+        {/* ─── 42 Seleções ─── */}
+        <Selecoes />
+
         {/* ─── Card categories section ─── */}
         <CardCategories />
+
+        {/* ─── Golden Ballers ─── */}
+        <GoldenBallers />
+
+        {/* ─── Eternos 22 ─── */}
+        <Eternos22 />
+
+        {/* ─── Mascotes ─── */}
+        <Mascotes />
+
+        {/* ─── FAQ ─── */}
+        <ProductFAQ />
+
+        {/* ─── Final CTA ─── */}
+        <FinalCTA />
       </div>
     </div>
   );
