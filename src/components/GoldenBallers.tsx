@@ -11,7 +11,7 @@ const goldenBallers = [
 ];
 
 export const GoldenBallers = () => (
-  <section className="mt-20">
+  <section className="mt-20 bg-primary/5 border border-primary/10 rounded-3xl p-8 md:p-12">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
       {/* Left: card image */}
       <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 flex items-center justify-center">
