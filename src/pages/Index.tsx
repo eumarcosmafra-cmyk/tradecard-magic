@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Header } from "@/components/Header";
+import { SEOHead } from "@/components/SEOHead";
 import { ProductCard } from "@/components/ProductCard";
 import { useProducts } from "@/hooks/useProducts";
 import { Loader2, Package, Truck, Shield, Award, ArrowDown } from "lucide-react";
@@ -22,6 +23,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Bella Figurinha | Comprar Figurinhas e Cards FIFA World Cup 2026 Panini"
+        description="Distribuidor oficial Panini. Compre figurinhas e cards Adrenalyn XL FIFA World Cup 2026™ com envio para todo Brasil. Produto original, frete grátis nos kits."
+        canonical="https://bellafigurinha.com.br/"
+      />
       <Header />
 
       {/* Hero */}
