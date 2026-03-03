@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { SEOHead } from "@/components/SEOHead";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useProductByHandle } from "@/hooks/useProducts";
 import { useCartStore } from "@/stores/cartStore";
@@ -351,6 +352,7 @@ const ProductDetail = () => {
         {/* ─── Final CTA ─── */}
         <FinalCTA />
       </div>
+      <Footer />
     </div>
   );
 };
