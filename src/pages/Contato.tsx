@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { MessageCircle, Phone, Mail, MapPin, Send } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -233,15 +234,7 @@ const Contato = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-card border-t border-border py-8">
-        <div className="container mx-auto px-4 text-center">
-          <img src={logo} alt="Bella Figurinha" className="h-12 mx-auto mb-3" />
-          <p className="text-xs text-muted-foreground font-body">
-            © {new Date().getFullYear()} Bella Figurinha — Distribuidor oficial Panini. Todos os direitos reservados.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
