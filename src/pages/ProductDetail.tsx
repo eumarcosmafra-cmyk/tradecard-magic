@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { SEOHead } from "@/components/SEOHead";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { useProductByHandle } from "@/hooks/useProducts";
@@ -196,6 +197,12 @@ const ProductDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title={`${node.title} | Bella Figurinha — Cards Panini FIFA 2026`}
+        description={node.description || `Compre ${node.title} na Bella Figurinha, distribuidor oficial Panini. Produto original com envio para todo Brasil.`}
+        canonical={`https://bellafigurinha.com.br/produto/${handle}`}
+        ogImage={images[0]?.node.url}
+      />
       <Header />
       <div className="container mx-auto px-4 pt-24 pb-16">
         <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-secondary transition-colors mb-6 font-body">

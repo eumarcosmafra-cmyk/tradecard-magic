@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { SEOHead } from "@/components/SEOHead";
 import { MapPin } from "lucide-react";
 
 const regions = [
@@ -48,6 +49,11 @@ const kioskImages = [
 const Quiosques = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Nossas Lojas | Bella Figurinha — Quiosques e Pontos de Venda"
+        description="Encontre os quiosques e lojas físicas da Bella Figurinha em shoppings de São Paulo, Paraná e Santa Catarina. Distribuidor oficial Panini de figurinhas e cards."
+        canonical="https://bellafigurinha.com.br/lojas"
+      />
       <Header />
 
       {/* Hero */}

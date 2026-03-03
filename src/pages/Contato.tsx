@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Header } from "@/components/Header";
+import { SEOHead } from "@/components/SEOHead";
 import { MessageCircle, Phone, Mail, MapPin, Send } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -40,6 +41,11 @@ const Contato = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Contato | Bella Figurinha — Fale Conosco"
+        description="Entre em contato com a Bella Figurinha, distribuidor oficial Panini. Atendimento via WhatsApp, telefone e e-mail. Tire suas dúvidas sobre figurinhas e cards FIFA World Cup 2026."
+        canonical="https://bellafigurinha.com.br/contato"
+      />
       <Header />
 
       {/* Hero */}
