@@ -9,6 +9,10 @@ import ProductDetail from "./pages/ProductDetail";
 import Quiosques from "./pages/Quiosques";
 import QuemSomos from "./pages/QuemSomos";
 import Contato from "./pages/Contato";
+import PoliticaPrivacidade from "./pages/PoliticaPrivacidade";
+import TermosDeUso from "./pages/TermosDeUso";
+import FAQ from "./pages/FAQ";
+import PoliticaTrocas from "./pages/PoliticaTrocas";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +26,10 @@ const AppContent = () => {
       <Route path="/lojas" element={<Quiosques />} />
       <Route path="/quem-somos" element={<QuemSomos />} />
       <Route path="/contato" element={<Contato />} />
+      <Route path="/politica-de-privacidade" element={<PoliticaPrivacidade />} />
+      <Route path="/termos-de-uso" element={<TermosDeUso />} />
+      <Route path="/perguntas-frequentes" element={<FAQ />} />
+      <Route path="/politica-de-trocas-e-devolucoes" element={<PoliticaTrocas />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
