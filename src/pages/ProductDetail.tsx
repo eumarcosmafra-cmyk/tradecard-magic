@@ -258,33 +258,6 @@ const ProductDetail = () => {
 
             <RatingBadge />
 
-            {/* Variant selector - always show */}
-            <div className="space-y-3">
-              <p className="font-display text-base tracking-wider uppercase text-foreground">Selecione a quantidade</p>
-              <div className="space-y-3">
-                {variants.map((v, i) => (
-                  <VariantCard
-                    key={v.node.id}
-                    title={v.node.title}
-                    description={getVariantDescription(v.node)}
-                    price={v.node.price.amount}
-                    formatPrice={formatPrice}
-                    isSelected={i === selectedVariantIndex}
-                    isAvailable={v.node.availableForSale}
-                    badges={getVariantBadges(v.node.title, i)}
-                    onSelect={() => setSelectedVariantIndex(i)}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Price display for single variant */}
-            {variants.length === 1 && selectedVariant && (
-              <p className="text-3xl font-bold text-gradient-yellow font-display tracking-wide">
-                {formatPrice(selectedVariant.price.amount)}
-              </p>
-            )}
-
             {/* Action buttons */}
             <div className="space-y-3 pt-2">
               <Button
