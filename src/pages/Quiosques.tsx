@@ -56,7 +56,7 @@ const Quiosques = () => {
           Lojas Bella Figurinha
         </h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-          Encontre a loja mais perto de você nos principais shoppings do Sul e Sudeste do Brasil.
+          Nossas pop-up stores estarão em funcionamento de <strong className="text-foreground">01/04/2026</strong> até <strong className="text-foreground">30/07/2026</strong> nos principais shoppings do Sul e Sudeste do Brasil. Encontre a loja mais perto de você!
         </p>
       </section>
 
