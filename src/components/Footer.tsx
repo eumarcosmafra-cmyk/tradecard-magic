@@ -39,6 +39,9 @@ export const Footer = () => (
       </div>
       <div className="border-t border-border pt-6 text-center">
         <p className="text-xs text-muted-foreground font-body">
+          Bella Figurinha 2 LTDA — CNPJ: 65.289.034/0001-93
+        </p>
+        <p className="text-xs text-muted-foreground font-body mt-1">
           © {new Date().getFullYear()} Bella Figurinha — Distribuidor oficial Panini. Todos os direitos reservados.
         </p>
       </div>
