@@ -11,14 +11,24 @@ const items = [
   { bold: "Produto licenciado oficialmente pela FIFA", text: "— dados atualizados em novembro de 2025" },
 ];
 
-export const EnvelopeContent = () => (
+interface EnvelopeContentProps {
+  imageUrl?: string;
+  imageAlt?: string;
+  variantTitle?: string;
+}
+
+export const EnvelopeContent = ({ imageUrl, imageAlt, variantTitle }: EnvelopeContentProps) => (
   <section className="mt-20">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-      {/* Left: envelope image placeholder */}
+      {/* Left: envelope image */}
       <div className="bg-card border-2 border-primary/20 rounded-2xl p-8 flex flex-col items-center justify-center min-h-[400px]">
-        <p className="font-display text-6xl md:text-7xl tracking-wider uppercase text-foreground/10 text-center leading-tight">
-          1 ENVELOPE
-        </p>
+        {imageUrl ? (
+          <img src={imageUrl} alt={imageAlt || "Conteúdo do envelope"} className="w-full h-full object-contain max-h-[450px]" />
+        ) : (
+          <p className="font-display text-6xl md:text-7xl tracking-wider uppercase text-foreground/10 text-center leading-tight">
+            1 ENVELOPE
+          </p>
+        )}
       </div>
 
       {/* Right: content list */}

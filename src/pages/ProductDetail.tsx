@@ -333,7 +333,11 @@ const ProductDetail = () => {
         </div>
 
         {/* ─── Envelope content section ─── */}
-        <EnvelopeContent />
+        <EnvelopeContent
+          imageUrl={images[0]?.node.url}
+          imageAlt={node.title}
+          variantTitle={selectedVariant?.title}
+        />
 
         {/* ─── Card categories section ─── */}
         <CardCategories />
