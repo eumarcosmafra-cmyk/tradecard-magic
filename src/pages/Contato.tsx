@@ -34,7 +34,7 @@ const Contato = () => {
     setSending(true);
     // Build WhatsApp message as fallback
     const text = `Olá! Meu nome é ${form.name}.%0A📧 ${form.email}%0A📞 ${form.phone || "Não informado"}%0A📋 Assunto: ${form.subject || "Geral"}%0A%0A${form.message}`;
-    window.open(`https://wa.me/5511976609139?text=${text}`, "_blank");
+    window.open(`https://wa.me/5547992861752?text=${text}`, "_blank");
     setSending(false);
     toast({ title: "Redirecionado para o WhatsApp!" });
     setForm({ name: "", phone: "", email: "", subject: "", message: "" });
@@ -75,7 +75,7 @@ const Contato = () => {
           <div className="space-y-4">
             {/* WhatsApp */}
             <a
-              href="https://wa.me/5511976609139?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20Bella%20Figurinha%20%E2%9A%BD"
+              href="https://wa.me/5547992861752?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20Bella%20Figurinha%20%E2%9A%BD"
               target="_blank"
               rel="noopener noreferrer"
               className="block bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-colors group"
@@ -86,7 +86,7 @@ const Contato = () => {
                 </div>
                 <div>
                   <p className="text-xs font-display tracking-widest uppercase text-muted-foreground">WhatsApp</p>
-                  <p className="font-display text-lg text-foreground">(11) 97660-9139</p>
+                  <p className="font-display text-lg text-foreground">(47) 9 9286-1752</p>
                   <p className="text-sm text-muted-foreground font-body">Resposta rápida · Seg a Sex</p>
                   <span className="inline-flex items-center gap-1.5 mt-3 bg-green-500 text-white text-sm font-display tracking-wider px-4 py-1.5 rounded-full group-hover:bg-green-600 transition-colors">
                     <MessageCircle size={14} /> Iniciar conversa
@@ -97,7 +97,7 @@ const Contato = () => {
 
             {/* Telefone */}
             <a
-              href="tel:+5511976609139"
+              href="tel:+5547992861752"
               className="block bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-colors"
             >
               <div className="flex items-start gap-4">
@@ -106,7 +106,7 @@ const Contato = () => {
                 </div>
                 <div>
                   <p className="text-xs font-display tracking-widest uppercase text-muted-foreground">Telefone</p>
-                  <p className="font-display text-lg text-foreground">(11) 97660-9139</p>
+                  <p className="font-display text-lg text-foreground">(47) 9 9286-1752</p>
                   <p className="text-sm text-muted-foreground font-body">Ligações e mensagens</p>
                 </div>
               </div>

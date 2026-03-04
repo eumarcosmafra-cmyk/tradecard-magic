@@ -195,7 +195,7 @@ const QuemSomos = () => {
               ⚽ Ver Produtos
             </Link>
             <a
-              href="https://wa.me/5511976609139"
+              href="https://wa.me/5547992861752"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-accent text-accent-foreground font-display tracking-wider uppercase px-8 py-3 rounded-xl hover:opacity-90 transition-opacity"
