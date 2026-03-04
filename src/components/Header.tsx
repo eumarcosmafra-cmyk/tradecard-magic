@@ -30,7 +30,7 @@ export const Header = () => {
     >
       <div className="container mx-auto flex items-center justify-between py-2 px-4">
         <Link to="/" className="flex items-center">
-          <img src={logo} alt="Bella Figurinha" className="h-14 md:h-16 w-auto" />
+          <img src={logo} alt="Bella Figurinha" className="h-14 md:h-16 w-auto rounded-lg" />
         </Link>
 
         {/* Desktop */}
