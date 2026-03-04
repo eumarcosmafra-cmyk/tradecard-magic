@@ -7,6 +7,11 @@ import { useCollection } from "@/hooks/useCollection";
 import { Loader2, Package, Layers, Sparkles, Shield, MapPin, Zap, RefreshCw } from "lucide-react";
 
 /* ── collection metadata (expandable) ── */
+interface TrustPill {
+  icon: React.ReactNode;
+  label: string;
+}
+
 interface CollectionMeta {
   badge: string;
   headline: string;
@@ -15,25 +20,32 @@ interface CollectionMeta {
   stats: { value: string; label: string }[];
   heroImage: string;
   bgImage: string;
+  trustPills: TrustPill[];
 }
 
 const collectionsMeta: Record<string, CollectionMeta> = {
   "adrenalyn-xl": {
-    badge: "⚽ Coleção Oficial FIFA 2026",
-    headline: "ADRENALYN XL™",
-    headlineHighlight: "FIFA WORLD CUP 2026™",
+    badge: "Coleção Oficial Panini",
+    headline: "FIFA World Cup 2026™",
+    headlineHighlight: "Adrenalyn XL™",
     subtitle:
-      "A coleção oficial de cards colecionáveis da Copa do Mundo 2026. 630 cards, 15 categorias, Golden Ballers com 100 pontos — colecione, jogue e surpreenda-se.",
+      "Trading cards oficiais da Copa do Mundo 2026. Colecione, monte seu time e desafie seus amigos em duelos épicos. Cada envelope traz 8 cards.",
     stats: [
-      { value: "630+", label: "Cards" },
-      { value: "15", label: "Categorias" },
+      { value: "630", label: "Cards" },
       { value: "42", label: "Seleções" },
+      { value: "9", label: "Golden Ballers" },
       { value: "100%", label: "Original" },
     ],
     heroImage:
-      "https://cdn.shopify.com/s/files/1/0804/3990/2447/files/5-goldenballers_fifa-26-tcg.jpg?v=1772392604",
+      "https://cdn.shopify.com/s/files/1/0804/3990/2447/files/kit_2_starter_pack_copa_do_mundo_2026_1_20260130123457_1da24aeb1b04-removebg-preview.png?v=1772559072",
     bgImage:
       "https://cdn.shopify.com/s/files/1/0804/3990/2447/files/fundo_copa2026.png?v=1772553117",
+    trustPills: [
+      { icon: <Shield size={12} />, label: "100% originais Panini" },
+      { icon: <MapPin size={12} />, label: "Envio todo Brasil" },
+      { icon: <Zap size={12} />, label: "Pix instantâneo" },
+      { icon: <RefreshCw size={12} />, label: "Troca em 30 dias" },
+    ],
   },
 };
 
@@ -45,6 +57,7 @@ const defaultMeta: CollectionMeta = {
   stats: [],
   heroImage: "",
   bgImage: "",
+  trustPills: [],
 };
 
 const Collection = () => {
