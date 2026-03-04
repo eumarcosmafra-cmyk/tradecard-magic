@@ -154,8 +154,6 @@ const ProductDetail = () => {
 
   const handleBuyNow = async () => {
     if (!selectedVariant) return;
-    // Open window immediately in click context to avoid popup blocker
-    const win = window.open("about:blank", "_blank");
     await addItem({
       product,
       variantId: selectedVariant.id,
@@ -165,10 +163,9 @@ const ProductDetail = () => {
       selectedOptions: selectedVariant.selectedOptions || [],
     });
     const checkoutUrl = useCartStore.getState().getCheckoutUrl();
-    if (checkoutUrl && win) {
-      win.location.href = checkoutUrl;
-    } else if (win) {
-      win.close();
+    if (checkoutUrl) {
+      window.location.href = checkoutUrl;
+    } else {
       toast.error("Erro ao gerar link de checkout. Tente novamente.");
     }
   };
