@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { ProductCard } from "@/components/ProductCard";
 import { useCollection } from "@/hooks/useCollection";
-import { Loader2, Package, Layers, Sparkles, Trophy } from "lucide-react";
+import { Loader2, Package, Layers, Sparkles, Shield, MapPin, Zap, RefreshCw } from "lucide-react";
 
 /* ── collection metadata (expandable) ── */
 interface CollectionMeta {
