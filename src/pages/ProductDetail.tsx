@@ -355,6 +355,7 @@ const ProductDetail = () => {
           imageUrl={images[0]?.node.url}
           imageAlt={node.title}
           variantTitle={selectedVariant?.title}
+          productHandle={node.handle}
         />
 
         {/* ─── 42 Seleções ─── */}
