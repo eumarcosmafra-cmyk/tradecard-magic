@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -7,6 +8,7 @@ import { useCollection } from "@/hooks/useCollection";
 import { Loader2, Package, Layers, Sparkles, Shield, MapPin, Zap, RefreshCw } from "lucide-react";
 import AdrenalynContent from "@/components/AdrenalynContent";
 import AdrenalynFAQ from "@/components/AdrenalynFAQ";
+import { organizationSchema, injectJsonLd } from "@/lib/jsonld";
 
 /* ── collection metadata (expandable) ── */
 interface TrustPill {
@@ -70,6 +72,42 @@ const Collection = () => {
   const title = collection?.title || meta.headline || "Coleção";
   const description =
     collection?.description || meta.subtitle || "";
+
+  // Inject CollectionPage + ItemList + Organization JSON-LD
+  useEffect(() => {
+    const BASE_URL = "https://bellafigurinha.com.br";
+    const products = collection?.products || [];
+
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@graph": [
+        organizationSchema,
+        {
+          "@type": "CollectionPage",
+          "@id": `${BASE_URL}/colecao/${handle}/#collectionpage`,
+          "url": `${BASE_URL}/colecao/${handle}`,
+          "name": `${title} | Bella Figurinha`,
+          "description": description.slice(0, 160),
+          "isPartOf": { "@id": `${BASE_URL}/#website` },
+          "about": { "@id": `${BASE_URL}/#organization` },
+          "inLanguage": "pt-BR",
+          "mainEntity": {
+            "@type": "ItemList",
+            "numberOfItems": products.length,
+            "itemListElement": products.map((p: any, i: number) => ({
+              "@type": "ListItem",
+              "position": i + 1,
+              "url": `${BASE_URL}/produto/${p.node.handle}`,
+              "name": p.node.title,
+            })),
+          },
+        },
+      ],
+    };
+
+    const cleanup = injectJsonLd(`collection-${handle}`, jsonLd);
+    return cleanup;
+  }, [handle, collection, title, description]);
 
   return (
     <div className="min-h-screen bg-background">
