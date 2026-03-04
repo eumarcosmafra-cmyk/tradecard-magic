@@ -273,7 +273,7 @@ const ProductDetail = () => {
 
             {/* Price box */}
             {selectedVariant && (
-              <div className="bg-white border border-border rounded-xl p-5 shadow-[0_4px_0_0_hsl(var(--border)),0_8px_20px_-4px_rgba(0,0,0,0.15)]">
+              <div className="border border-border rounded-xl p-5">
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-muted-foreground font-body uppercase tracking-wide">Por</span>
                   <span className="font-display text-4xl md:text-5xl tracking-wide text-foreground">
