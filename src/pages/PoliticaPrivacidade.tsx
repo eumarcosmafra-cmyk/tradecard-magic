@@ -1,8 +1,20 @@
+import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
+import { organizationSchema, breadcrumbSchema, injectJsonLd } from "@/lib/jsonld";
 
-const PoliticaPrivacidade = () => (
+const PoliticaPrivacidade = () => {
+  useEffect(() => {
+    const cleanup1 = injectJsonLd("org-privacy", { "@context": "https://schema.org", ...organizationSchema });
+    const cleanup2 = injectJsonLd("breadcrumb-privacy", breadcrumbSchema([
+      { name: "Início", url: "https://bellafigurinha.com.br/" },
+      { name: "Política de Privacidade", url: "https://bellafigurinha.com.br/politica-de-privacidade" },
+    ]));
+    return () => { cleanup1(); cleanup2(); };
+  }, []);
+
+  return (
   <div className="min-h-screen bg-background">
     <SEOHead
       title="Política de Privacidade | Bella Figurinha"
