@@ -155,7 +155,7 @@ const ProductDetail = () => {
     };
   }, [product, handle]);
 
-
+  if (isLoading) {
     return (
       <div className="min-h-screen bg-background">
         <Header />
