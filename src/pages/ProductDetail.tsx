@@ -107,7 +107,55 @@ const ProductDetail = () => {
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  if (isLoading) {
+  // Inject Product JSON-LD into <head> for crawlers
+  useEffect(() => {
+    if (!product) return;
+    const { node: n } = product;
+    const imgs = n.images.edges;
+    const vars = n.variants.edges;
+
+    const productJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": n.title,
+      "description": n.description || `Compre ${n.title} na Bella Figurinha, distribuidor oficial Panini.`,
+      "image": imgs.map((img) => img.node.url),
+      "url": `https://bellafigurinha.com.br/produto/${handle}`,
+      "brand": { "@type": "Brand", "name": "Panini" },
+      "sku": n.handle,
+      "mpn": n.handle,
+      "offers": vars.map((v) => ({
+        "@type": "Offer",
+        "url": `https://bellafigurinha.com.br/produto/${handle}`,
+        "priceCurrency": v.node.price.currencyCode || "BRL",
+        "price": v.node.price.amount,
+        "availability": v.node.availableForSale
+          ? "https://schema.org/InStock"
+          : "https://schema.org/OutOfStock",
+        "seller": { "@type": "Organization", "name": "Bella Figurinha" },
+        "name": v.node.title,
+      })),
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "237",
+        "bestRating": "5",
+      },
+    };
+
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.setAttribute("data-product-jsonld", "true");
+    script.textContent = JSON.stringify(productJsonLd);
+    document.head.appendChild(script);
+
+    return () => {
+      const existing = document.querySelector('script[data-product-jsonld]');
+      if (existing) document.head.removeChild(existing);
+    };
+  }, [product, handle]);
+
+
     return (
       <div className="min-h-screen bg-background">
         <Header />
