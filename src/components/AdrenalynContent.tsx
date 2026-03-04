@@ -48,10 +48,10 @@ const AdrenalynContent = () => (
         Compre diretamente pelo site com entrega para todo o Brasil, ou consulte
         os pontos de venda físicos mais próximos de você pela nossa{" "}
         <Link
-          to="/quiosques"
+          to="/lojas"
           className="text-primary underline underline-offset-2 hover:text-primary/80 transition-colors"
         >
-          página de lojas parceiras
+          página de pontos de venda
         </Link>
         .
       </p>
