@@ -17,6 +17,7 @@ import PoliticaTrocas from "./pages/PoliticaTrocas";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Collection from "./pages/Collection";
+import Collections from "./pages/Collections";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ const AppContent = () => {
       <Route path="/politica-de-trocas-e-devolucoes" element={<PoliticaTrocas />} />
       <Route path="/blog" element={<Blog />} />
       <Route path="/blog/:slug" element={<BlogPost />} />
+      <Route path="/colecao" element={<Collections />} />
       <Route path="/colecao/:handle" element={<Collection />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
