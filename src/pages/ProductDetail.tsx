@@ -271,6 +271,30 @@ const ProductDetail = () => {
 
             <RatingBadge />
 
+            {/* Price box */}
+            {selectedVariant && (
+              <div className="border border-border rounded-xl p-5 space-y-3">
+                <div className="flex items-baseline gap-3">
+                  <span className="text-sm text-muted-foreground font-body uppercase">Por</span>
+                  <span className="font-display text-3xl md:text-4xl tracking-wide text-foreground">
+                    {formatPrice(selectedVariant.price.amount)}
+                  </span>
+                </div>
+                {/* Shipping info */}
+                {parseFloat(selectedVariant.price.amount) >= 299 ? (
+                  <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-lg px-4 py-2.5">
+                    <Truck className="w-4 h-4 text-green-600 flex-shrink-0" />
+                    <span className="text-sm font-body text-green-700 font-medium">Frete grátis para este produto!</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground font-body">
+                    <Truck className="w-4 h-4 text-primary flex-shrink-0" />
+                    <span>Frete grátis em pedidos acima de <strong className="text-foreground">R$ 299,00</strong> · Frete calculado no checkout</span>
+                  </div>
+                )}
+              </div>
+            )}
+
             {/* Action buttons */}
             <div className="space-y-3 pt-2">
               <Button
