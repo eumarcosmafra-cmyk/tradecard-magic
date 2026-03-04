@@ -273,7 +273,7 @@ const ProductDetail = () => {
               <div className="border border-border rounded-xl p-5">
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-muted-foreground font-body uppercase tracking-wide">Por</span>
-                  <span className="font-display text-4xl md:text-5xl tracking-wide text-foreground">
+                  <span className="font-display text-2xl md:text-3xl tracking-wide text-foreground">
                     {formatPrice(selectedVariant.price.amount)}
                   </span>
                 </div>
