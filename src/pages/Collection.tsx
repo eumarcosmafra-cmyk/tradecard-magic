@@ -211,6 +211,9 @@ const Collection = () => {
         )}
       </section>
 
+      {/* ── Supporting content ── */}
+      {handle === "adrenalyn-xl" && <AdrenalynContent />}
+
       <Footer />
     </div>
   );
