@@ -46,12 +46,29 @@ const faqItems = [
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map((item) => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a,
+    },
+  })),
+};
+
 const FAQ = () => (
   <div className="min-h-screen bg-background">
     <SEOHead
       title="Perguntas Frequentes (FAQ) | Bella Figurinha"
       description="Perguntas frequentes sobre figurinhas e cards Panini FIFA World Cup 2026. Tire suas dúvidas sobre envio, pagamento, produtos e mais."
       canonical="https://bellafigurinha.com.br/perguntas-frequentes"
+    />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
     />
     <Header />
 
