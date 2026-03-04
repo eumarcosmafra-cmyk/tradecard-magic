@@ -74,6 +74,7 @@ const PoliticaTrocas = () => {
 
     <Footer />
   </div>
-);
+  );
+};
 
 export default PoliticaTrocas;

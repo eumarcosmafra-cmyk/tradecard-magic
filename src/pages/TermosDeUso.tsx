@@ -69,6 +69,7 @@ const TermosDeUso = () => {
 
     <Footer />
   </div>
-);
+  );
+};
 
 export default TermosDeUso;

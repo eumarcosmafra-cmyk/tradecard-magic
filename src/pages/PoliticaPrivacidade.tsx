@@ -83,6 +83,7 @@ const PoliticaPrivacidade = () => {
 
     <Footer />
   </div>
-);
+  );
+};
 
 export default PoliticaPrivacidade;
