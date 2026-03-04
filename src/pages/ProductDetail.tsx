@@ -321,6 +321,14 @@ const ProductDetail = () => {
               <span className="text-sm font-body text-green-700 font-medium">Frete grátis em pedidos acima de R$ 299,90</span>
             </div>
 
+            {/* Installment info */}
+            <div className="flex items-center gap-2 bg-primary/5 border border-primary/20 rounded-lg px-4 py-2.5">
+              <CreditCard className="w-4 h-4 text-primary flex-shrink-0" />
+              <span className="text-sm font-body text-foreground/80 font-medium">
+                Parcele em até 6x sem juros (parcela mínima de R$ 100,00)
+              </span>
+            </div>
+
             {/* Trust strip */}
             <TrustStrip />
           </div>
