@@ -96,23 +96,23 @@ const categories = [
 ];
 
 export const CardCategories = () => (
-  <section className="mt-20 -mx-4 md:-mx-8 lg:-mx-16 px-4 md:px-8 lg:px-16 py-16 bg-secondary rounded-3xl">
+  <section className="mt-20">
     <div className="inline-block bg-primary text-primary-foreground text-xs font-display tracking-widest uppercase px-4 py-1.5 rounded-full shadow-yellow mb-6">
       15 Categorias Oficiais
     </div>
 
-    <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-secondary-foreground leading-tight mb-3">
+    <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-foreground leading-tight mb-3">
       630 cards, cada um com sua raridade
     </h2>
 
-    <p className="text-secondary-foreground/70 font-body text-sm leading-relaxed mb-10 max-w-2xl">
+    <p className="text-muted-foreground font-body text-sm leading-relaxed mb-10 max-w-2xl">
       Heroes, Golden Ballers, Mascotes, Eternos 22 e muito mais — 15 categorias para colecionar, jogar e se surpreender.
     </p>
 
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
       {categories.map((cat) => (
-        <div key={cat.name} className="bg-secondary-foreground/10 border border-secondary-foreground/20 rounded-2xl overflow-hidden hover:border-primary/60 transition-colors group">
-          <div className="aspect-[3/4] relative overflow-hidden bg-secondary-foreground/5">
+        <div key={cat.name} className="bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/40 transition-colors group">
+          <div className="aspect-[3/4] relative overflow-hidden bg-muted/30">
             <img
               src={cat.image}
               alt={cat.name}
@@ -126,11 +126,11 @@ export const CardCategories = () => (
             )}
           </div>
           <div className="p-4 space-y-1.5">
-            <span className="inline-block text-[10px] font-display tracking-wider uppercase text-primary bg-primary/15 border border-primary/30 px-2 py-0.5 rounded-full">
+            <span className="inline-block text-[10px] font-display tracking-wider uppercase text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full">
               {cat.count}
             </span>
-            <h3 className="font-display text-sm tracking-wider uppercase text-secondary-foreground">{cat.name}</h3>
-            <p className="text-[11px] text-secondary-foreground/60 font-body leading-relaxed line-clamp-3">{cat.description}</p>
+            <h3 className="font-display text-sm tracking-wider uppercase text-foreground">{cat.name}</h3>
+            <p className="text-[11px] text-muted-foreground font-body leading-relaxed line-clamp-3">{cat.description}</p>
           </div>
         </div>
       ))}
