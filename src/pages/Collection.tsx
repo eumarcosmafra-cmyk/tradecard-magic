@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -7,6 +8,7 @@ import { useCollection } from "@/hooks/useCollection";
 import { Loader2, Package, Layers, Sparkles, Shield, MapPin, Zap, RefreshCw } from "lucide-react";
 import AdrenalynContent from "@/components/AdrenalynContent";
 import AdrenalynFAQ from "@/components/AdrenalynFAQ";
+import { organizationSchema, injectJsonLd } from "@/lib/jsonld";
 
 /* ── collection metadata (expandable) ── */
 interface TrustPill {
