@@ -109,14 +109,14 @@ export const CardCategories = () => (
       Heroes, Golden Ballers, Mascotes, Eternos 22 e muito mais — 15 categorias para colecionar, jogar e se surpreender.
     </p>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5">
       {categories.map((cat) => (
         <div key={cat.name} className="bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/40 transition-colors group">
-          <div className="h-64 relative overflow-hidden bg-muted/30">
+          <div className="aspect-[3/4] relative overflow-hidden bg-muted/30">
             <img
               src={cat.image}
               alt={cat.name}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500"
               loading="lazy"
             />
             {cat.badge && (
@@ -125,12 +125,12 @@ export const CardCategories = () => (
               </span>
             )}
           </div>
-          <div className="p-5 space-y-2">
-            <span className="inline-block text-[11px] font-display tracking-wider uppercase text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full">
+          <div className="p-4 space-y-1.5">
+            <span className="inline-block text-[10px] font-display tracking-wider uppercase text-primary bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-full">
               {cat.count}
             </span>
-            <h3 className="font-display text-lg tracking-wider uppercase text-foreground">{cat.name}</h3>
-            <p className="text-xs text-muted-foreground font-body leading-relaxed">{cat.description}</p>
+            <h3 className="font-display text-sm tracking-wider uppercase text-foreground">{cat.name}</h3>
+            <p className="text-[11px] text-muted-foreground font-body leading-relaxed line-clamp-3">{cat.description}</p>
           </div>
         </div>
       ))}
