@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { contactPageJsonLd, breadcrumbSchema, injectJsonLd } from "@/lib/jsonld";
 import logo from "@/assets/logo-bella.png";
 
 const Contato = () => {
@@ -21,6 +22,15 @@ const Contato = () => {
   });
   const [sending, setSending] = useState(false);
 
+  useEffect(() => {
+    const cleanup1 = injectJsonLd("contact", contactPageJsonLd());
+    const cleanup2 = injectJsonLd("breadcrumb-contact", breadcrumbSchema([
+      { name: "Início", url: "https://bellafigurinha.com.br/" },
+      { name: "Contato", url: "https://bellafigurinha.com.br/contato" },
+    ]));
+    return () => { cleanup1(); cleanup2(); };
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -32,7 +42,6 @@ const Contato = () => {
       return;
     }
     setSending(true);
-    // Build WhatsApp message as fallback
     const text = `Olá! Meu nome é ${form.name}.%0A📧 ${form.email}%0A📞 ${form.phone || "Não informado"}%0A📋 Assunto: ${form.subject || "Geral"}%0A%0A${form.message}`;
     window.open(`https://wa.me/5547992861752?text=${text}`, "_blank");
     setSending(false);
@@ -73,7 +82,6 @@ const Contato = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left: Contact cards */}
           <div className="space-y-4">
-            {/* WhatsApp */}
             <a
               href="https://wa.me/5547992861752?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20Bella%20Figurinha%20%E2%9A%BD"
               target="_blank"
@@ -95,11 +103,7 @@ const Contato = () => {
               </div>
             </a>
 
-            {/* Telefone */}
-            <a
-              href="tel:+5547992861752"
-              className="block bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-colors"
-            >
+            <a href="tel:+5547992861752" className="block bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-colors">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                   <Phone size={22} className="text-primary" />
@@ -112,11 +116,7 @@ const Contato = () => {
               </div>
             </a>
 
-            {/* E-mail */}
-            <a
-              href="mailto:contato@bellafigurinha.com.br"
-              className="block bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-colors"
-            >
+            <a href="mailto:contato@bellafigurinha.com.br" className="block bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-colors">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center shrink-0">
                   <Mail size={22} className="text-secondary" />
@@ -129,7 +129,6 @@ const Contato = () => {
               </div>
             </a>
 
-            {/* Endereço */}
             <div className="bg-card border border-border rounded-2xl p-6">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-destructive/10 flex items-center justify-center shrink-0">
@@ -164,62 +163,27 @@ const Contato = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label className="font-display text-xs tracking-widest uppercase">Nome</Label>
-                  <Input
-                    name="name"
-                    placeholder="Seu nome"
-                    value={form.name}
-                    onChange={handleChange}
-                    maxLength={100}
-                    required
-                  />
+                  <Input name="name" placeholder="Seu nome" value={form.name} onChange={handleChange} maxLength={100} required />
                 </div>
                 <div className="space-y-2">
                   <Label className="font-display text-xs tracking-widest uppercase">Telefone</Label>
-                  <Input
-                    name="phone"
-                    placeholder="(00) 00000-0000"
-                    value={form.phone}
-                    onChange={handleChange}
-                    maxLength={20}
-                  />
+                  <Input name="phone" placeholder="(00) 00000-0000" value={form.phone} onChange={handleChange} maxLength={20} />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <Label className="font-display text-xs tracking-widest uppercase">E-mail</Label>
-                <Input
-                  name="email"
-                  type="email"
-                  placeholder="seu@email.com"
-                  value={form.email}
-                  onChange={handleChange}
-                  maxLength={255}
-                  required
-                />
+                <Input name="email" type="email" placeholder="seu@email.com" value={form.email} onChange={handleChange} maxLength={255} required />
               </div>
 
               <div className="space-y-2">
                 <Label className="font-display text-xs tracking-widest uppercase">Assunto</Label>
-                <Input
-                  name="subject"
-                  placeholder="Ex: Dúvida sobre meu pedido"
-                  value={form.subject}
-                  onChange={handleChange}
-                  maxLength={200}
-                />
+                <Input name="subject" placeholder="Ex: Dúvida sobre meu pedido" value={form.subject} onChange={handleChange} maxLength={200} />
               </div>
 
               <div className="space-y-2">
                 <Label className="font-display text-xs tracking-widest uppercase">Mensagem</Label>
-                <Textarea
-                  name="message"
-                  placeholder="Escreva sua mensagem aqui..."
-                  value={form.message}
-                  onChange={handleChange}
-                  maxLength={1000}
-                  rows={5}
-                  required
-                />
+                <Textarea name="message" placeholder="Escreva sua mensagem aqui..." value={form.message} onChange={handleChange} maxLength={1000} rows={5} required />
               </div>
 
               <Button
