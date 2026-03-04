@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { Target, Eye, Heart, CheckCircle, MapPin, MessageCircle } from "lucide-react";
-import { breadcrumbSchema, injectJsonLd } from "@/lib/jsonld";
+import { breadcrumbSchema, organizationSchema, injectJsonLd } from "@/lib/jsonld";
 import heroBg from "@/assets/hero-bg.jpg";
 import quemSomosBg from "@/assets/quem-somos-bg.jpg";
 import logo from "@/assets/logo-bella.png";
@@ -29,10 +29,12 @@ const kiosks = [
 
 const QuemSomos = () => {
   useEffect(() => {
-    return injectJsonLd("breadcrumb-about", breadcrumbSchema([
+    const cleanup1 = injectJsonLd("breadcrumb-about", breadcrumbSchema([
       { name: "Início", url: "https://bellafigurinha.com.br/" },
       { name: "Quem Somos", url: "https://bellafigurinha.com.br/quem-somos" },
     ]));
+    const cleanup2 = injectJsonLd("org-about", { "@context": "https://schema.org", ...organizationSchema });
+    return () => { cleanup1(); cleanup2(); };
   }, []);
 
   return (

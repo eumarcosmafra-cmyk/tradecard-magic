@@ -3,7 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { faqPageJsonLd, breadcrumbSchema, injectJsonLd } from "@/lib/jsonld";
+import { faqPageJsonLd, breadcrumbSchema, organizationSchema, injectJsonLd } from "@/lib/jsonld";
 
 const faqItems = [
   {
@@ -55,7 +55,8 @@ const FAQ = () => {
       { name: "Início", url: "https://bellafigurinha.com.br/" },
       { name: "Perguntas Frequentes", url: "https://bellafigurinha.com.br/perguntas-frequentes" },
     ]));
-    return () => { cleanup1(); cleanup2(); };
+    const cleanup3 = injectJsonLd("org-faq", { "@context": "https://schema.org", ...organizationSchema });
+    return () => { cleanup1(); cleanup2(); cleanup3(); };
   }, []);
 
   return (

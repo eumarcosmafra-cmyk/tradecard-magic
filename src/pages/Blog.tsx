@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
-import { blogListJsonLd, breadcrumbSchema, injectJsonLd } from "@/lib/jsonld";
+import { blogListJsonLd, breadcrumbSchema, organizationSchema, injectJsonLd } from "@/lib/jsonld";
 
 const blogPosts = [
   {
@@ -46,7 +46,8 @@ const Blog = () => {
       { name: "Início", url: "https://bellafigurinha.com.br/" },
       { name: "Blog", url: "https://bellafigurinha.com.br/blog" },
     ]));
-    return () => { cleanup1(); cleanup2(); };
+    const cleanup3 = injectJsonLd("org-blog", { "@context": "https://schema.org", ...organizationSchema });
+    return () => { cleanup1(); cleanup2(); cleanup3(); };
   }, []);
 
   return (
