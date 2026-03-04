@@ -86,7 +86,7 @@ const Contato = () => {
                 </div>
                 <div>
                   <p className="text-xs font-display tracking-widest uppercase text-muted-foreground">WhatsApp</p>
-                  <p className="font-display text-lg text-foreground">(47) 9 9286-1752</p>
+                  <p className="font-display text-lg text-foreground">(47) 99286-1752</p>
                   <p className="text-sm text-muted-foreground font-body">Resposta rápida · Seg a Sex</p>
                   <span className="inline-flex items-center gap-1.5 mt-3 bg-green-500 text-white text-sm font-display tracking-wider px-4 py-1.5 rounded-full group-hover:bg-green-600 transition-colors">
                     <MessageCircle size={14} /> Iniciar conversa
@@ -106,7 +106,7 @@ const Contato = () => {
                 </div>
                 <div>
                   <p className="text-xs font-display tracking-widest uppercase text-muted-foreground">Telefone</p>
-                  <p className="font-display text-lg text-foreground">(47) 9 9286-1752</p>
+                  <p className="font-display text-lg text-foreground">(47) 99286-1752</p>
                   <p className="text-sm text-muted-foreground font-body">Ligações e mensagens</p>
                 </div>
               </div>

@@ -37,7 +37,7 @@ const PoliticaTrocas = () => (
         <h2 className="font-display text-xl tracking-wider uppercase text-foreground !mt-10">4. Como Solicitar</h2>
         <p>Para solicitar uma troca ou devolução:</p>
         <ol className="list-decimal pl-6 space-y-1">
-          <li>Entre em contato pelo WhatsApp (47) 9 9286-1752 ou e-mail contato@bellafigurinha.com.br</li>
+          <li>Entre em contato pelo WhatsApp (47) 99286-1752 ou e-mail contato@bellafigurinha.com.br</li>
           <li>Informe o número do pedido e o motivo da solicitação</li>
           <li>Envie fotos do produto (em caso de defeito)</li>
           <li>Aguarde as instruções de envio da nossa equipe</li>
@@ -56,7 +56,7 @@ const PoliticaTrocas = () => (
         <h2 className="font-display text-xl tracking-wider uppercase text-foreground !mt-10">7. Contato</h2>
         <p>Dúvidas sobre trocas e devoluções:<br />
         <strong className="text-foreground">E-mail:</strong> contato@bellafigurinha.com.br<br />
-        <strong className="text-foreground">WhatsApp:</strong> (47) 9 9286-1752</p>
+        <strong className="text-foreground">WhatsApp:</strong> (47) 99286-1752</p>
       </div>
     </main>
 
