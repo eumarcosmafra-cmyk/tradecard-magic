@@ -16,6 +16,7 @@ import FAQ from "./pages/FAQ";
 import PoliticaTrocas from "./pages/PoliticaTrocas";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Collection from "./pages/Collection";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
