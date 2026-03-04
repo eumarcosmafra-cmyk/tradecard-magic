@@ -92,6 +92,11 @@ export const CartDrawer = () => {
                   <span className="font-display text-xl tracking-wider uppercase">Total</span>
                   <span className="text-2xl font-bold text-gradient-yellow font-display">{formatPrice(totalPrice)}</span>
                 </div>
+                {totalPrice >= 100 && (
+                  <p className="text-xs text-muted-foreground font-body text-center">
+                    ou até {Math.min(6, Math.floor(totalPrice / 100))}x de {formatPrice(totalPrice / Math.min(6, Math.floor(totalPrice / 100)))} sem juros
+                  </p>
+                )}
                 <Button
                   onClick={handleCheckout}
                   className="w-full bg-gradient-yellow text-primary-foreground font-display text-lg tracking-wider uppercase shadow-yellow-lg hover:opacity-90 transition-opacity py-6"
