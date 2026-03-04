@@ -51,7 +51,7 @@ const TermosDeUso = () => (
         <h2 className="font-display text-xl tracking-wider uppercase text-foreground !mt-10">9. Contato</h2>
         <p>Para dúvidas sobre estes termos:<br />
         <strong className="text-foreground">E-mail:</strong> contato@bellafigurinha.com.br<br />
-        <strong className="text-foreground">WhatsApp:</strong> (47) 9 9286-1752</p>
+        <strong className="text-foreground">WhatsApp:</strong> (47) 99286-1752</p>
       </div>
     </main>
 

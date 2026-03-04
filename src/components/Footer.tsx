@@ -32,7 +32,7 @@ export const Footer = () => (
         <div>
           <h5 className="font-display text-lg tracking-wider uppercase mb-4 text-secondary">Contato</h5>
           <p className="text-sm text-muted-foreground font-body">contato@bellafigurinha.com.br</p>
-          <p className="text-sm text-muted-foreground font-body">(47) 9 9286-1752</p>
+          <p className="text-sm text-muted-foreground font-body">(47) 99286-1752</p>
           <p className="text-sm text-muted-foreground font-body mt-3">Rua Brigadeiro Franco, 80420-200</p>
           <p className="text-sm text-muted-foreground font-body">Curitiba, PR - Brasil</p>
         </div>
