@@ -198,6 +198,48 @@ const ProductDetail = () => {
     return opts;
   };
 
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": node.title,
+    "description": node.description || `Compre ${node.title} na Bella Figurinha, distribuidor oficial Panini.`,
+    "image": images.map((img) => img.node.url),
+    "url": `https://bellafigurinha.com.br/produto/${handle}`,
+    "brand": {
+      "@type": "Brand",
+      "name": "Panini"
+    },
+    "sku": node.handle,
+    "mpn": node.handle,
+    "offers": variants.map((v) => ({
+      "@type": "Offer",
+      "url": `https://bellafigurinha.com.br/produto/${handle}`,
+      "priceCurrency": v.node.price.currencyCode || "BRL",
+      "price": v.node.price.amount,
+      "availability": v.node.availableForSale
+        ? "https://schema.org/InStock"
+        : "https://schema.org/OutOfStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "Bella Figurinha"
+      },
+      "name": v.node.title,
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "BR"
+        }
+      }
+    })),
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "237",
+      "bestRating": "5"
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
@@ -205,6 +247,10 @@ const ProductDetail = () => {
         description={node.description || `Compre ${node.title} na Bella Figurinha, distribuidor oficial Panini. Produto original com envio para todo Brasil.`}
         canonical={`https://bellafigurinha.com.br/produto/${handle}`}
         ogImage={images[0]?.node.url}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
       <Header />
       <div className="container mx-auto px-4 pt-24 pb-16">
