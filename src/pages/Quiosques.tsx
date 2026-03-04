@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { MapPin } from "lucide-react";
+import { storesPageJsonLd, breadcrumbSchema, injectJsonLd } from "@/lib/jsonld";
 
 const regions = [
   {
@@ -48,6 +50,15 @@ const kioskImages = [
 ];
 
 const Quiosques = () => {
+  useEffect(() => {
+    const cleanup1 = injectJsonLd("stores", storesPageJsonLd());
+    const cleanup2 = injectJsonLd("breadcrumb-stores", breadcrumbSchema([
+      { name: "Início", url: "https://bellafigurinha.com.br/" },
+      { name: "Nossas Lojas", url: "https://bellafigurinha.com.br/lojas" },
+    ]));
+    return () => { cleanup1(); cleanup2(); };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead

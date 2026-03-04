@@ -107,52 +107,33 @@ const ProductDetail = () => {
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  // Inject Product JSON-LD into <head> for crawlers
+  // Inject Product + Breadcrumb JSON-LD into <head> for crawlers
   useEffect(() => {
     if (!product) return;
     const { node: n } = product;
     const imgs = n.images.edges;
     const vars = n.variants.edges;
 
-    const productJsonLd = {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": n.title,
-      "description": n.description || `Compre ${n.title} na Bella Figurinha, distribuidor oficial Panini.`,
-      "image": imgs.map((img) => img.node.url),
-      "url": `https://bellafigurinha.com.br/produto/${handle}`,
-      "brand": { "@type": "Brand", "name": "Panini" },
-      "sku": n.handle,
-      "mpn": n.handle,
-      "offers": vars.map((v) => ({
-        "@type": "Offer",
-        "url": `https://bellafigurinha.com.br/produto/${handle}`,
-        "priceCurrency": v.node.price.currencyCode || "BRL",
-        "price": v.node.price.amount,
-        "availability": v.node.availableForSale
-          ? "https://schema.org/InStock"
-          : "https://schema.org/OutOfStock",
-        "seller": { "@type": "Organization", "name": "Bella Figurinha" },
-        "name": v.node.title,
+    const cleanup1 = injectJsonLd("product", productJsonLd({
+      name: n.title,
+      description: n.description || `Compre ${n.title} na Bella Figurinha, distribuidor oficial Panini.`,
+      handle: handle || n.handle,
+      images: imgs.map((img) => img.node.url),
+      variants: vars.map((v) => ({
+        title: v.node.title,
+        price: v.node.price.amount,
+        currencyCode: v.node.price.currencyCode || "BRL",
+        available: v.node.availableForSale,
       })),
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "237",
-        "bestRating": "5",
-      },
-    };
+    }));
 
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.setAttribute("data-product-jsonld", "true");
-    script.textContent = JSON.stringify(productJsonLd);
-    document.head.appendChild(script);
+    const cleanup2 = injectJsonLd("breadcrumb-product", breadcrumbSchema([
+      { name: "Início", url: "https://bellafigurinha.com.br/" },
+      { name: "Produtos", url: "https://bellafigurinha.com.br/#produtos" },
+      { name: n.title, url: `https://bellafigurinha.com.br/produto/${handle}` },
+    ]));
 
-    return () => {
-      const existing = document.querySelector('script[data-product-jsonld]');
-      if (existing) document.head.removeChild(existing);
-    };
+    return () => { cleanup1(); cleanup2(); };
   }, [product, handle]);
 
   if (isLoading) {

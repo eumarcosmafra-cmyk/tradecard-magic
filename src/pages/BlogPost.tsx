@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { ArrowLeft } from "lucide-react";
+import { blogPostJsonLd, breadcrumbSchema, injectJsonLd } from "@/lib/jsonld";
 
 interface BlogPostData {
   slug: string;
@@ -199,6 +201,23 @@ const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? posts[slug] : null;
 
+  useEffect(() => {
+    if (!post) return;
+    const cleanup1 = injectJsonLd("blogpost", blogPostJsonLd({
+      title: post.title,
+      description: post.description,
+      image: post.image,
+      datePublished: post.date,
+      slug: post.slug,
+    }));
+    const cleanup2 = injectJsonLd("breadcrumb-blog", breadcrumbSchema([
+      { name: "Início", url: "https://bellafigurinha.com.br/" },
+      { name: "Blog", url: "https://bellafigurinha.com.br/blog" },
+      { name: post.title, url: `https://bellafigurinha.com.br/blog/${post.slug}` },
+    ]));
+    return () => { cleanup1(); cleanup2(); };
+  }, [post]);
+
   if (!post) {
     return (
       <>
@@ -216,25 +235,6 @@ const BlogPost = () => {
     );
   }
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.description,
-    image: post.image,
-    datePublished: post.date,
-    author: {
-      "@type": "Organization",
-      name: "Bella Figurinha",
-      url: "https://bellafigurinha.com.br",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Bella Figurinha",
-      url: "https://bellafigurinha.com.br",
-    },
-  };
-
   return (
     <>
       <SEOHead
@@ -242,10 +242,6 @@ const BlogPost = () => {
         description={post.description}
         canonical={`https://bellafigurinha.com.br/blog/${post.slug}`}
         ogImage={post.image}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
 

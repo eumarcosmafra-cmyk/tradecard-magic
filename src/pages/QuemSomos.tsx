@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
 import { Target, Eye, Heart, CheckCircle, MapPin, MessageCircle } from "lucide-react";
+import { breadcrumbSchema, injectJsonLd } from "@/lib/jsonld";
 import heroBg from "@/assets/hero-bg.jpg";
 import quemSomosBg from "@/assets/quem-somos-bg.jpg";
 import logo from "@/assets/logo-bella.png";
@@ -26,6 +28,13 @@ const kiosks = [
 ];
 
 const QuemSomos = () => {
+  useEffect(() => {
+    return injectJsonLd("breadcrumb-about", breadcrumbSchema([
+      { name: "Início", url: "https://bellafigurinha.com.br/" },
+      { name: "Quem Somos", url: "https://bellafigurinha.com.br/quem-somos" },
+    ]));
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
@@ -104,7 +113,6 @@ const QuemSomos = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {/* Missão */}
             <div className="bg-card rounded-2xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-destructive/10 rounded-xl flex items-center justify-center mb-5">
                 <Target className="text-destructive" size={24} />
@@ -115,7 +123,6 @@ const QuemSomos = () => {
               </p>
             </div>
 
-            {/* Visão */}
             <div className="bg-card rounded-2xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-5">
                 <Eye className="text-blue-500" size={24} />
@@ -126,7 +133,6 @@ const QuemSomos = () => {
               </p>
             </div>
 
-            {/* Valores */}
             <div className="bg-card rounded-2xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center mb-5">
                 <Heart className="text-accent" size={24} />

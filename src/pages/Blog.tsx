@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { blogListJsonLd, breadcrumbSchema, injectJsonLd } from "@/lib/jsonld";
 
 const blogPosts = [
   {
@@ -38,6 +40,15 @@ const blogPosts = [
 ];
 
 const Blog = () => {
+  useEffect(() => {
+    const cleanup1 = injectJsonLd("blog-list", blogListJsonLd(blogPosts));
+    const cleanup2 = injectJsonLd("breadcrumb-blog-list", breadcrumbSchema([
+      { name: "Início", url: "https://bellafigurinha.com.br/" },
+      { name: "Blog", url: "https://bellafigurinha.com.br/blog" },
+    ]));
+    return () => { cleanup1(); cleanup2(); };
+  }, []);
+
   return (
     <>
       <SEOHead

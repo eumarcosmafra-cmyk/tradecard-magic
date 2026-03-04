@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { faqPageJsonLd, breadcrumbSchema, injectJsonLd } from "@/lib/jsonld";
 
 const faqItems = [
   {
@@ -46,59 +48,53 @@ const faqItems = [
   },
 ];
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqItems.map((item) => ({
-    "@type": "Question",
-    "name": item.q,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": item.a,
-    },
-  })),
+const FAQ = () => {
+  useEffect(() => {
+    const cleanup1 = injectJsonLd("faq", faqPageJsonLd(faqItems));
+    const cleanup2 = injectJsonLd("breadcrumb-faq", breadcrumbSchema([
+      { name: "Início", url: "https://bellafigurinha.com.br/" },
+      { name: "Perguntas Frequentes", url: "https://bellafigurinha.com.br/perguntas-frequentes" },
+    ]));
+    return () => { cleanup1(); cleanup2(); };
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Perguntas Frequentes (FAQ) | Bella Figurinha"
+        description="Perguntas frequentes sobre figurinhas e cards Panini FIFA World Cup 2026. Tire suas dúvidas sobre envio, pagamento, produtos e mais."
+        canonical="https://bellafigurinha.com.br/perguntas-frequentes"
+      />
+      <Header />
+
+      <main className="container mx-auto px-4 pt-28 pb-20 max-w-3xl">
+        <div className="text-center mb-12">
+          <span className="inline-block bg-secondary/10 text-secondary font-display text-sm tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">
+            FAQ
+          </span>
+          <h1 className="font-display text-4xl md:text-5xl tracking-wider uppercase text-foreground">
+            Perguntas <span className="text-gradient-yellow">Frequentes</span>
+          </h1>
+          <p className="text-muted-foreground mt-3 font-body">Tire suas dúvidas sobre nossos produtos e serviços</p>
+        </div>
+
+        <Accordion type="single" collapsible className="space-y-3">
+          {faqItems.map((item, i) => (
+            <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-xl px-5 data-[state=open]:border-primary/40">
+              <AccordionTrigger className="font-display text-base tracking-wider uppercase text-foreground hover:no-underline py-5">
+                {item.q}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground font-body leading-relaxed pb-5">
+                {item.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </main>
+
+      <Footer />
+    </div>
+  );
 };
-
-const FAQ = () => (
-  <div className="min-h-screen bg-background">
-    <SEOHead
-      title="Perguntas Frequentes (FAQ) | Bella Figurinha"
-      description="Perguntas frequentes sobre figurinhas e cards Panini FIFA World Cup 2026. Tire suas dúvidas sobre envio, pagamento, produtos e mais."
-      canonical="https://bellafigurinha.com.br/perguntas-frequentes"
-    />
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-    />
-    <Header />
-
-    <main className="container mx-auto px-4 pt-28 pb-20 max-w-3xl">
-      <div className="text-center mb-12">
-        <span className="inline-block bg-secondary/10 text-secondary font-display text-sm tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">
-          FAQ
-        </span>
-        <h1 className="font-display text-4xl md:text-5xl tracking-wider uppercase text-foreground">
-          Perguntas <span className="text-gradient-yellow">Frequentes</span>
-        </h1>
-        <p className="text-muted-foreground mt-3 font-body">Tire suas dúvidas sobre nossos produtos e serviços</p>
-      </div>
-
-      <Accordion type="single" collapsible className="space-y-3">
-        {faqItems.map((item, i) => (
-          <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-xl px-5 data-[state=open]:border-primary/40">
-            <AccordionTrigger className="font-display text-base tracking-wider uppercase text-foreground hover:no-underline py-5">
-              {item.q}
-            </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground font-body leading-relaxed pb-5">
-              {item.a}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    </main>
-
-    <Footer />
-  </div>
-);
 
 export default FAQ;

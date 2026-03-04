@@ -6,6 +6,7 @@ import { SEOHead } from "@/components/SEOHead";
 import { ProductCard } from "@/components/ProductCard";
 import { useProducts } from "@/hooks/useProducts";
 import { Loader2, Package, Truck, Shield, Award, ArrowDown } from "lucide-react";
+import { homePageJsonLd, injectJsonLd } from "@/lib/jsonld";
 import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/logo-bella.png";
 
@@ -21,6 +22,11 @@ const Index = () => {
       }
     }
   }, [location.hash]);
+
+  // Inject Home page JSON-LD
+  useEffect(() => {
+    return injectJsonLd("home", homePageJsonLd());
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
