@@ -6,6 +6,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { useCollection } from "@/hooks/useCollection";
 import { Loader2, Package, Layers, Sparkles, Shield, MapPin, Zap, RefreshCw } from "lucide-react";
 import AdrenalynContent from "@/components/AdrenalynContent";
+import AdrenalynFAQ from "@/components/AdrenalynFAQ";
 
 /* ── collection metadata (expandable) ── */
 interface TrustPill {
@@ -213,7 +214,12 @@ const Collection = () => {
       </section>
 
       {/* ── Supporting content ── */}
-      {handle === "adrenalyn-xl" && <AdrenalynContent />}
+      {handle === "adrenalyn-xl" && (
+        <>
+          <AdrenalynContent />
+          <AdrenalynFAQ />
+        </>
+      )}
 
       <Footer />
     </div>
