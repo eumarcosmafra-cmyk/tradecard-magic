@@ -18,7 +18,7 @@ export const Footer = () => (
             <li><Link to="/quem-somos" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Quem Somos</Link></li>
             <li><Link to="/lojas" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Nossas Lojas</Link></li>
             <li><Link to="/contato" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Contato</Link></li>
-            <li><Link to="/perguntas-frequentes" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">FAQ</Link></li>
+            
             <li><Link to="/blog" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Blog</Link></li>
           </ul>
         </div>
