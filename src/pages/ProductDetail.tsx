@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { productJsonLd, breadcrumbSchema, injectJsonLd } from "@/lib/jsonld";
+import { productJsonLd, breadcrumbSchema, organizationSchema, injectJsonLd } from "@/lib/jsonld";
 import { useParams, Link } from "react-router-dom";
 import { SEOHead } from "@/components/SEOHead";
 import { Header } from "@/components/Header";
@@ -133,8 +133,9 @@ const ProductDetail = () => {
       { name: "Produtos", url: "https://bellafigurinha.com.br/#produtos" },
       { name: n.title, url: `https://bellafigurinha.com.br/produto/${handle}` },
     ]));
+    const cleanup3 = injectJsonLd("org-product", { "@context": "https://schema.org", ...organizationSchema });
 
-    return () => { cleanup1(); cleanup2(); };
+    return () => { cleanup1(); cleanup2(); cleanup3(); };
   }, [product, handle]);
 
   if (isLoading) {

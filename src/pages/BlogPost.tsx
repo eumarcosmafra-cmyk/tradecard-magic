@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { ArrowLeft } from "lucide-react";
-import { blogPostJsonLd, breadcrumbSchema, injectJsonLd } from "@/lib/jsonld";
+import { blogPostJsonLd, breadcrumbSchema, organizationSchema, injectJsonLd } from "@/lib/jsonld";
 
 interface BlogPostData {
   slug: string;
@@ -215,7 +215,8 @@ const BlogPost = () => {
       { name: "Blog", url: "https://bellafigurinha.com.br/blog" },
       { name: post.title, url: `https://bellafigurinha.com.br/blog/${post.slug}` },
     ]));
-    return () => { cleanup1(); cleanup2(); };
+    const cleanup3 = injectJsonLd("org-blogpost", { "@context": "https://schema.org", ...organizationSchema });
+    return () => { cleanup1(); cleanup2(); cleanup3(); };
   }, [post]);
 
   if (!post) {

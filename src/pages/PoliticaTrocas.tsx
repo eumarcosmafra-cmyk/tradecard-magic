@@ -1,8 +1,20 @@
+import { useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
+import { organizationSchema, breadcrumbSchema, injectJsonLd } from "@/lib/jsonld";
 
-const PoliticaTrocas = () => (
+const PoliticaTrocas = () => {
+  useEffect(() => {
+    const cleanup1 = injectJsonLd("org-returns", { "@context": "https://schema.org", ...organizationSchema });
+    const cleanup2 = injectJsonLd("breadcrumb-returns", breadcrumbSchema([
+      { name: "Início", url: "https://bellafigurinha.com.br/" },
+      { name: "Política de Trocas e Devoluções", url: "https://bellafigurinha.com.br/politica-de-trocas-e-devolucoes" },
+    ]));
+    return () => { cleanup1(); cleanup2(); };
+  }, []);
+
+  return (
   <div className="min-h-screen bg-background">
     <SEOHead
       title="Política de Trocas e Devoluções | Bella Figurinha"
@@ -62,6 +74,7 @@ const PoliticaTrocas = () => (
 
     <Footer />
   </div>
-);
+  );
+};
 
 export default PoliticaTrocas;

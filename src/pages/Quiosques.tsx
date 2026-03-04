@@ -3,7 +3,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { MapPin } from "lucide-react";
-import { storesPageJsonLd, breadcrumbSchema, injectJsonLd } from "@/lib/jsonld";
+import { storesPageJsonLd, breadcrumbSchema, organizationSchema, injectJsonLd } from "@/lib/jsonld";
 
 const regions = [
   {
@@ -56,7 +56,8 @@ const Quiosques = () => {
       { name: "Início", url: "https://bellafigurinha.com.br/" },
       { name: "Nossas Lojas", url: "https://bellafigurinha.com.br/lojas" },
     ]));
-    return () => { cleanup1(); cleanup2(); };
+    const cleanup3 = injectJsonLd("org-stores", { "@context": "https://schema.org", ...organizationSchema });
+    return () => { cleanup1(); cleanup2(); cleanup3(); };
   }, []);
 
   return (
