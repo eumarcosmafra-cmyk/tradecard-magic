@@ -83,6 +83,13 @@ const Collection = () => {
       "@graph": [
         organizationSchema,
         {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Início", "item": BASE_URL },
+            { "@type": "ListItem", "position": 2, "name": title, "item": `${BASE_URL}/colecao/${handle}` },
+          ],
+        },
+        {
           "@type": "CollectionPage",
           "@id": `${BASE_URL}/colecao/${handle}/#collectionpage`,
           "url": `${BASE_URL}/colecao/${handle}`,
