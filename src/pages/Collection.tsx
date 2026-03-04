@@ -153,7 +153,22 @@ const Collection = () => {
         </div>
       </section>
 
-      {/* ── Products grid ── */}
+      {/* ── Trust bar ── */}
+      {meta.trustPills.length > 0 && (
+        <section className="bg-[hsl(220,70%,10%)] border-t border-white/[.07]">
+          <div className="container mx-auto px-6 py-4 flex justify-center gap-2.5 flex-wrap">
+            {meta.trustPills.map((pill) => (
+              <span
+                key={pill.label}
+                className="inline-flex items-center gap-1.5 bg-white/[.07] border border-white/[.12] rounded-full px-3.5 py-1.5 text-xs font-semibold text-white/70 whitespace-nowrap"
+              >
+                <span className="text-primary">{pill.icon}</span>
+                {pill.label}
+              </span>
+            ))}
+          </div>
+        </section>
+      )
       <section className="container mx-auto px-4 py-16">
         <div className="flex items-center gap-3 mb-10">
           <Layers size={20} className="text-primary" />
