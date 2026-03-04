@@ -168,7 +168,9 @@ const Collection = () => {
             ))}
           </div>
         </section>
-      )
+      )}
+
+      {/* ── Products grid ── */}
       <section className="container mx-auto px-4 py-16">
         <div className="flex items-center gap-3 mb-10">
           <Layers size={20} className="text-primary" />
