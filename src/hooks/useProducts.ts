@@ -6,7 +6,10 @@ export function useProducts(first = 20) {
     queryKey: ['shopify-products', first],
     queryFn: async () => {
       const data = await storefrontApiRequest(STOREFRONT_QUERY, { first });
-      return (data?.data?.products?.edges || []) as ShopifyProduct[];
+      const products = (data?.data?.products?.edges || []) as ShopifyProduct[];
+      return products.sort((a, b) => 
+        parseFloat(b.node.priceRange.minVariantPrice.amount) - parseFloat(a.node.priceRange.minVariantPrice.amount)
+      );
     },
   });
 }
