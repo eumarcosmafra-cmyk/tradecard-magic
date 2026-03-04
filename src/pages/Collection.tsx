@@ -5,6 +5,7 @@ import { SEOHead } from "@/components/SEOHead";
 import { ProductCard } from "@/components/ProductCard";
 import { useCollection } from "@/hooks/useCollection";
 import { Loader2, Package, Layers, Sparkles, Shield, MapPin, Zap, RefreshCw } from "lucide-react";
+import AdrenalynContent from "@/components/AdrenalynContent";
 
 /* ── collection metadata (expandable) ── */
 interface TrustPill {
