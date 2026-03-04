@@ -73,7 +73,16 @@ const Collection = () => {
   const description =
     collection?.description || meta.subtitle || "";
 
-  // Inject CollectionPage + ItemList + Organization JSON-LD
+  // Inject Organization JSON-LD (separate block)
+  useEffect(() => {
+    const cleanup = injectJsonLd(`org-collection-${handle}`, {
+      "@context": "https://schema.org",
+      ...organizationSchema,
+    });
+    return cleanup;
+  }, [handle]);
+
+  // Inject CollectionPage + ItemList + BreadcrumbList JSON-LD
   useEffect(() => {
     const BASE_URL = "https://bellafigurinha.com.br";
     const products = collection?.products || [];
@@ -81,7 +90,6 @@ const Collection = () => {
     const jsonLd = {
       "@context": "https://schema.org",
       "@graph": [
-        organizationSchema,
         {
           "@type": "BreadcrumbList",
           "itemListElement": [
