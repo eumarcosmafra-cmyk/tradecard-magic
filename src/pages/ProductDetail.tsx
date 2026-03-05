@@ -17,6 +17,7 @@ import { Mascotes } from "@/components/Mascotes";
 import { Selecoes } from "@/components/Selecoes";
 import { ProductFAQ } from "@/components/ProductFAQ";
 import { FinalCTA } from "@/components/FinalCTA";
+import AdrenalynDescription from "@/components/AdrenalynDescription";
 
 /* ─── Sub-components ─── */
 
