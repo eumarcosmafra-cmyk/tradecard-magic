@@ -18,6 +18,13 @@ const starterPackItems = [
   { bold: "Produto licenciado oficialmente pela FIFA", text: "— ideal para começar sua coleção" },
 ];
 
+const classicTinItems = [
+  { bold: "8 envelopes", text: "com 8 cards cada — 64 cards no total para turbinar sua coleção" },
+  { bold: "1 card Limited Edition", text: "exclusivo da lata, não encontrado nos envelopes avulsos" },
+  { bold: "Lata colecionável em cores sortidas", text: "— Prata, Bronze, Azul ou Verde" },
+  { bold: "Produto licenciado oficialmente pela FIFA", text: "— ideal para presentear e colecionar" },
+];
+
 interface EnvelopeContentProps {
   imageUrl?: string;
   imageAlt?: string;
