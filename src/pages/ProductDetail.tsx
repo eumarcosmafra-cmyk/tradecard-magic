@@ -388,6 +388,9 @@ const ProductDetail = () => {
           productHandle={node.handle}
         />
 
+        {/* ─── Descrição da coleção (dobra 2) ─── */}
+        <AdrenalynDescription />
+
         {/* ─── 42 Seleções ─── */}
         <Selecoes />
 
