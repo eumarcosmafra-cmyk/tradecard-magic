@@ -1,14 +1,9 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
-const faqItems = [
-  {
-    q: "Quantos cards vêm em cada envelope?",
-    a: "Cada envelope contém 8 cards oficiais da coleção FIFA World Cup 2026™ Adrenalyn XL™, além de 1 cupom exclusivo para resgate de benefícios em paniniAdrenalyn.com.",
-  },
-  {
-    q: "O que vem na caixa de 100 envelopes?",
-    a: "A caixa contém 100 envelopes lacrados com 8 cards cada, totalizando 800 cards + 100 cupons digitais. Todos são originais e lacrados de fábrica.",
-  },
+type FaqItem = { q: string; a: string };
+
+/** FAQs genéricos da coleção Adrenalyn XL (compartilhados entre todos os produtos) */
+const sharedFaqItems: FaqItem[] = [
   {
     q: "Quais são os 9 Golden Ballers?",
     a: "Os 9 Golden Ballers oficiais são: Messi (ARG), Vinícius Júnior (BRA), Salah (EGY), Kane (ENG), Mbappé (FRA), Son (KOR), Haaland (NOR), Ronaldo (POR) e Yamal (ESP). São os cards mais cobiçados da coleção.",
@@ -21,32 +16,90 @@ const faqItems = [
     q: "Como funcionam os cards bônus Team Logo e Official Emblem?",
     a: "Os Team Logos (42 cards, um por seleção) adicionam +5 pontos em todos os valores quando usados junto com um TEAM MATE da mesma seleção. O Official Emblem (1 card) dá +10 pontos em todos os valores quando combinado com qualquer TEAM MATE!",
   },
+];
+
+/** FAQs específicos por tipo de produto */
+const envelopeFaqItems: FaqItem[] = [
   {
-    q: "Quando o produto estará disponível para envio?",
-    a: "Este produto está em pré-venda. O despacho ocorrerá assim que os itens chegarem ao estoque. Você receberá um e-mail com rastreamento assim que seu pedido for enviado.",
+    q: "Quantos cards vêm em cada envelope?",
+    a: "Cada envelope contém 8 cards oficiais da coleção FIFA World Cup 2026™ Adrenalyn XL™, além de 1 cupom exclusivo para resgate de benefícios em paniniAdrenalyn.com.",
+  },
+  {
+    q: "O que vem na caixa de 100 envelopes?",
+    a: "A caixa contém 100 envelopes lacrados com 8 cards cada, totalizando 800 cards + 100 cupons digitais. Todos são originais e lacrados de fábrica.",
   },
 ];
 
-export const ProductFAQ = () => (
-  <section className="mt-20">
-    <div className="text-center mb-8">
-      <p className="text-sm font-display tracking-widest uppercase text-primary mb-2">Dúvidas Frequentes</p>
-      <h2 className="font-display text-4xl md:text-5xl tracking-wider uppercase text-foreground">Perguntas e respostas</h2>
-    </div>
+const classicTinFaqItems: FaqItem[] = [
+  {
+    q: "O que vem na Lata Classic Tin?",
+    a: "A Lata Classic Tin contém 8 envelopes com 8 cards cada (64 cards no total), 1 card de Edição Limitada (Limited Edition) exclusivo, e a lata colecionável em cores sortidas: Prata, Bronze, Azul ou Verde.",
+  },
+  {
+    q: "Posso escolher a cor da Lata Classic Tin?",
+    a: "Não, a cor da lata é sortida (Prata, Bronze, Azul ou Verde). O envio é aleatório conforme disponibilidade em estoque.",
+  },
+];
 
-    <div className="max-w-3xl mx-auto">
-      <Accordion type="single" collapsible className="space-y-3">
-        {faqItems.map((item, i) => (
-          <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-xl px-5 data-[state=open]:border-primary/40">
-            <AccordionTrigger className="font-display text-base tracking-wider uppercase text-foreground hover:no-underline py-5">
-              {item.q}
-            </AccordionTrigger>
-            <AccordionContent className="text-muted-foreground font-body leading-relaxed pb-5">
-              {item.a}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    </div>
-  </section>
-);
+const starterPackFaqItems: FaqItem[] = [
+  {
+    q: "O que vem no Starter Pack?",
+    a: "O Starter Pack é o kit inicial ideal e geralmente inclui: o Binder oficial (pasta com plásticos para guardar os cards), envelopes com cards base, cards de Edição Limitada exclusivos, o tabuleiro para jogar partidas físicas e o guia de regras.",
+  },
+  {
+    q: "Preciso do Starter Pack para começar a colecionar?",
+    a: "Não é obrigatório, mas é a maneira mais completa de iniciar. O Binder mantém seus cards organizados e protegidos, e o tabuleiro permite disputar partidas físicas com amigos.",
+  },
+];
+
+const preOrderFaq: FaqItem = {
+  q: "Quando o produto estará disponível para envio?",
+  a: "Este produto está em pré-venda. O despacho ocorrerá assim que os itens chegarem ao estoque. Você receberá um e-mail com rastreamento assim que seu pedido for enviado.",
+};
+
+export function getFaqItemsForHandle(handle?: string): FaqItem[] {
+  const h = handle?.toLowerCase() || "";
+  let specific: FaqItem[];
+
+  if (h.includes("lata-classic-tin") || h.includes("classic-tin")) {
+    specific = classicTinFaqItems;
+  } else if (h.includes("starter-pack")) {
+    specific = starterPackFaqItems;
+  } else {
+    specific = envelopeFaqItems;
+  }
+
+  return [...specific, ...sharedFaqItems, preOrderFaq];
+}
+
+interface ProductFAQProps {
+  productHandle?: string;
+}
+
+export const ProductFAQ = ({ productHandle }: ProductFAQProps) => {
+  const faqItems = getFaqItemsForHandle(productHandle);
+
+  return (
+    <section className="mt-20">
+      <div className="text-center mb-8">
+        <p className="text-sm font-display tracking-widest uppercase text-primary mb-2">Dúvidas Frequentes</p>
+        <h2 className="font-display text-4xl md:text-5xl tracking-wider uppercase text-foreground">Perguntas e respostas</h2>
+      </div>
+
+      <div className="max-w-3xl mx-auto">
+        <Accordion type="single" collapsible className="space-y-3">
+          {faqItems.map((item, i) => (
+            <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-xl px-5 data-[state=open]:border-primary/40">
+              <AccordionTrigger className="font-display text-base tracking-wider uppercase text-foreground hover:no-underline py-5">
+                {item.q}
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground font-body leading-relaxed pb-5">
+                {item.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
+  );
+};
