@@ -17,6 +17,7 @@ import { Mascotes } from "@/components/Mascotes";
 import { Selecoes } from "@/components/Selecoes";
 import { ProductFAQ } from "@/components/ProductFAQ";
 import { FinalCTA } from "@/components/FinalCTA";
+import AdrenalynDescription from "@/components/AdrenalynDescription";
 
 /* ─── Sub-components ─── */
 
@@ -386,6 +387,9 @@ const ProductDetail = () => {
           variantTitle={selectedVariant?.title}
           productHandle={node.handle}
         />
+
+        {/* ─── Descrição da coleção (dobra 2) ─── */}
+        <AdrenalynDescription />
 
         {/* ─── 42 Seleções ─── */}
         <Selecoes />

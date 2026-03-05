@@ -18,6 +18,13 @@ const starterPackItems = [
   { bold: "Produto licenciado oficialmente pela FIFA", text: "— ideal para começar sua coleção" },
 ];
 
+const classicTinItems = [
+  { bold: "8 envelopes", text: "com 8 cards cada — 64 cards no total para turbinar sua coleção" },
+  { bold: "1 card Limited Edition", text: "exclusivo da lata, não encontrado nos envelopes avulsos" },
+  { bold: "Lata colecionável em cores sortidas", text: "— Prata, Bronze, Azul ou Verde" },
+  { bold: "Produto licenciado oficialmente pela FIFA", text: "— ideal para presentear e colecionar" },
+];
+
 interface EnvelopeContentProps {
   imageUrl?: string;
   imageAlt?: string;
@@ -27,9 +34,12 @@ interface EnvelopeContentProps {
 
 export const EnvelopeContent = ({ imageUrl, imageAlt, variantTitle, productHandle }: EnvelopeContentProps) => {
   const isStarterPack = productHandle?.toLowerCase().includes("starter-pack");
-  const items = isStarterPack ? starterPackItems : envelopeItems;
-  const sectionLabel = isStarterPack ? "Conteúdo do Starter Pack" : "Conteúdo do Envelope";
-  const sectionDescription = isStarterPack
+  const isClassicTin = productHandle?.toLowerCase().includes("lata-classic-tin") || productHandle?.toLowerCase().includes("classic-tin");
+  const items = isClassicTin ? classicTinItems : isStarterPack ? starterPackItems : envelopeItems;
+  const sectionLabel = isClassicTin ? "Conteúdo da Lata Classic Tin" : isStarterPack ? "Conteúdo do Starter Pack" : "Conteúdo do Envelope";
+  const sectionDescription = isClassicTin
+    ? "A Lata Classic Tin é perfeita para quem quer acelerar a coleção com cards exclusivos e uma lata colecionável."
+    : isStarterPack
     ? "O Starter Pack é o kit ideal para começar sua coleção de cards Adrenalyn XL™ FIFA World Cup 2026™."
     : "Cada envelope é uma surpresa com cards premium dos maiores jogadores da Copa do Mundo 2026.";
 
