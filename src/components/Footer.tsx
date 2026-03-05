@@ -20,7 +20,7 @@ export const Footer = () => (
             <li><Link to="/contato" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Contato</Link></li>
             <li><Link to="/perguntas-frequentes" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Perguntas Frequentes</Link></li>
             <li><Link to="/blog" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Blog</Link></li>
-            <li><Link to="/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Guia Adrenalyn XL</Link></li>
+            <li><Link to="/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Como Jogar Adrenalyn XL Copa</Link></li>
           </ul>
         </div>
         <div>
