@@ -26,19 +26,14 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bellafigurinha.com.br/politica-de-privacidade</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://bellafigurinha.com.br/colecoes</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://bellafigurinha.com.br/termos-de-uso</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://bellafigurinha.com.br/politica-de-trocas-e-devolucoes</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://bellafigurinha.com.br/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bellafigurinha.com.br/blog</loc>
@@ -59,5 +54,20 @@
     <loc>https://bellafigurinha.com.br/blog/cards-colecionaveis-investimento-hobby</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bellafigurinha.com.br/politica-de-privacidade</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://bellafigurinha.com.br/termos-de-uso</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://bellafigurinha.com.br/politica-de-trocas-e-devolucoes</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
