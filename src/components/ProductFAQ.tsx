@@ -79,7 +79,7 @@ export function getFaqItemsForHandle(handle?: string): FaqItem[] {
   } else if (h.includes("starter-pack")) {
     specific = starterPackFaqItems;
   } else {
-    specific = envelopeFaqItems;
+    specific = getEnvelopeFaqItems(h);
   }
 
   return [...specific, ...sharedFaqItems, preOrderFaq];
