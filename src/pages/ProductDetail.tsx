@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { productJsonLd, breadcrumbSchema, organizationSchema, injectJsonLd } from "@/lib/jsonld";
+import { productJsonLd, breadcrumbSchema, organizationSchema, faqPageJsonLd, injectJsonLd } from "@/lib/jsonld";
 import { useParams, Link } from "react-router-dom";
 import { SEOHead } from "@/components/SEOHead";
 import { Header } from "@/components/Header";
