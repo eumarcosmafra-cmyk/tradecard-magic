@@ -136,7 +136,7 @@ const Contato = () => {
                 </div>
                 <div>
                   <p className="text-xs font-display tracking-widest uppercase text-muted-foreground">Correspondência</p>
-                  <p className="font-display text-lg text-foreground">Bella Figurinha 2 LTDA</p>
+                  <p className="font-display text-lg text-foreground">Bella Figurinha LTDA</p>
                   <p className="text-sm text-muted-foreground font-body">Rua Brigadeiro Franco, 1466</p>
                   <p className="text-sm text-muted-foreground font-body">Andar 09 — Cond. Soul Batel Soho Ed.</p>
                   <p className="text-sm text-muted-foreground font-body">Centro — Curitiba / PR</p>
