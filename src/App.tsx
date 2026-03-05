@@ -41,7 +41,7 @@ const AppContent = () => {
       <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="/colecao" element={<Collections />} />
       <Route path="/colecao/:handle" element={<Collection />} />
-      <Route path="/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026" element={<GuiaAdrenalynXL />} />
+      <Route path="/pages/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026" element={<GuiaAdrenalynXL />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
