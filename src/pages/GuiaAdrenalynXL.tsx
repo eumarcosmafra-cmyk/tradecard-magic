@@ -34,17 +34,17 @@ const tocItems = [
 
 /* ── Reusable sub-components ── */
 const TipBox = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-yellow-50 border border-primary/40 rounded-lg p-5 my-5">
+  <div className="bg-primary/10 border border-primary/40 rounded-lg p-5 my-5">
     <span className="text-lg mr-1">💡</span>{children}
   </div>
 );
 const StrategyBox = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-green-50 border border-accent/60 rounded-lg p-5 my-5">
+  <div className="bg-accent/10 border border-accent/60 rounded-lg p-5 my-5">
     <span className="text-lg mr-1">🎯</span>{children}
   </div>
 );
 const WarningBox = ({ children }: { children: React.ReactNode }) => (
-  <div className="bg-red-50 border border-destructive/40 rounded-lg p-5 my-5">
+  <div className="bg-destructive/10 border border-destructive/40 rounded-lg p-5 my-5">
     <span className="text-lg mr-1">⚠️</span>{children}
   </div>
 );

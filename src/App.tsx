@@ -19,6 +19,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Collection from "./pages/Collection";
 import Collections from "./pages/Collections";
+import GuiaAdrenalynXL from "./pages/GuiaAdrenalynXL";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
