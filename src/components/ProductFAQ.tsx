@@ -18,17 +18,30 @@ const sharedFaqItems: FaqItem[] = [
   },
 ];
 
-/** FAQs específicos por tipo de produto */
-const envelopeFaqItems: FaqItem[] = [
-  {
-    q: "Quantos cards vêm em cada envelope?",
-    a: "Cada envelope contém 8 cards oficiais da coleção FIFA World Cup 2026™ Adrenalyn XL™, além de 1 cupom exclusivo para resgate de benefícios em paniniAdrenalyn.com.",
-  },
-  {
-    q: "O que vem na caixa de 100 envelopes?",
-    a: "A caixa contém 100 envelopes lacrados com 8 cards cada, totalizando 800 cards + 100 cupons digitais. Todos são originais e lacrados de fábrica.",
-  },
-];
+/** Gera FAQs específicos de envelope com base na quantidade do handle */
+function getEnvelopeFaqItems(handle: string): FaqItem[] {
+  const h = handle.toLowerCase();
+  // Detecta quantidade no handle (ex: kit-10, kit-20, kit-50, kit-100)
+  const match = h.match(/kit[- ]?(\d+)/);
+  const qty = match ? parseInt(match[1], 10) : null;
+  const totalCards = qty ? qty * 8 : null;
+
+  const items: FaqItem[] = [
+    {
+      q: "Quantos cards vêm em cada envelope?",
+      a: "Cada envelope contém 8 cards oficiais da coleção FIFA World Cup 2026™ Adrenalyn XL™, além de 1 cupom exclusivo para resgate de benefícios em paniniAdrenalyn.com.",
+    },
+  ];
+
+  if (qty) {
+    items.push({
+      q: `O que vem no Kit ${qty} Envelopes?`,
+      a: `O kit contém ${qty} envelopes lacrados com 8 cards cada, totalizando ${totalCards} cards + ${qty} cupons digitais. Todos são originais e lacrados de fábrica.`,
+    });
+  }
+
+  return items;
+}
 
 const classicTinFaqItems: FaqItem[] = [
   {
