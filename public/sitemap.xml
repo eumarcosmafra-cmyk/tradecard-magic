@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Página inicial -->
   <url>
     <loc>https://bellafigurinha.com.br/</loc>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- Páginas principais -->
   <url>
     <loc>https://bellafigurinha.com.br/quem-somos</loc>
     <changefreq>monthly</changefreq>
@@ -26,12 +30,15 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bellafigurinha.com.br/colecoes</loc>
+    <loc>https://bellafigurinha.com.br/colecao</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Guias -->
   <url>
     <loc>https://bellafigurinha.com.br/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026</loc>
+    <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
