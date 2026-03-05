@@ -19,6 +19,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Collection from "./pages/Collection";
 import Collections from "./pages/Collections";
+import GuiaAdrenalynXL from "./pages/GuiaAdrenalynXL";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const AppContent = () => {
       <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="/colecao" element={<Collections />} />
       <Route path="/colecao/:handle" element={<Collection />} />
+      <Route path="/guia-adrenalyn-xl" element={<GuiaAdrenalynXL />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
