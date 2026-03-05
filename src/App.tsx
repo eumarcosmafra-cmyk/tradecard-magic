@@ -41,6 +41,7 @@ const AppContent = () => {
       <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="/colecao" element={<Collections />} />
       <Route path="/colecao/:handle" element={<Collection />} />
+      <Route path="/guia-adrenalyn-xl" element={<GuiaAdrenalynXL />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
