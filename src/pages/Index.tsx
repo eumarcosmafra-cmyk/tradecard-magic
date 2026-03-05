@@ -36,6 +36,211 @@ const Index = () => {
         canonical="https://bellafigurinha.com.br/"
       />
       <Header />
+      {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Como Jogar Adrenalyn XL FIFA World Cup 2026",
+  "description": "Guia completo de como jogar o card game oficial da Copa do Mundo FIFA 2026. Aprenda as regras, monte seu time, dispute partidas e domine todos os modos de jogo do Adrenalyn XL da Panini.",
+  "url": "https://bellafigurinha.com.br/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://bellafigurinha.com.br/images/guias/adrenalyn-xl-como-jogar-cover.jpg",
+    "width": 1200,
+    "height": 630
+  },
+  "totalTime": "PT20M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "BRL",
+    "value": "0",
+    "description": "Gratuito — basta ter as cartas e o tabuleiro do Starter Pack"
+  },
+  "supply": [
+    {
+      "@type": "HowToSupply",
+      "name": "Starter Pack Adrenalyn XL FIFA World Cup 2026",
+      "description": "Inclui tabuleiro (gameboard), guia oficial de regras, cartas, moeda e Limited Editions"
+    },
+    {
+      "@type": "HowToSupply",
+      "name": "Cartas de jogadores (mínimo 14 por jogador)",
+      "description": "11 titulares + 3 reservas por time para o modo Clássico"
+    },
+    {
+      "@type": "HowToSupply",
+      "name": "Cartas Bônus (opcional)",
+      "description": "Cartas de Escudo do Time ou Emblema Oficial da FIFA World Cup 2026 para aumentar atributos em +5 ou +10 pontos"
+    },
+    {
+      "@type": "HowToSupply",
+      "name": "Moeda",
+      "description": "Para o sorteio do pontapé inicial (incluída no Starter Pack)"
+    }
+  ],
+  "tool": [
+    {
+      "@type": "HowToTool",
+      "name": "Tabuleiro de jogo (Gameboard)",
+      "description": "Superfície oficial para posicionar as cartas nas posições de goleiro, defesa, meio-campo e ataque"
+    }
+  ],
+  "step": [
+    {
+      "@type": "HowToSection",
+      "name": "Preparação da Partida",
+      "position": 1,
+      "itemListElement": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Selecione Seu Time",
+          "text": "Comece formando o melhor time a partir das suas cartas. Você deve ter 11 jogadores titulares e 5 reservas. Inclua obrigatoriamente 1 goleiro e no máximo 5 jogadores em cada setor (defesa, meio-campo e ataque).",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://bellafigurinha.com.br/images/guias/passo-1-selecione-seu-time.jpg"
+          },
+          "url": "https://bellafigurinha.com.br/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026#selecione-seu-time"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Defina Sua Escalação",
+          "text": "Escolha sua formação tática no tabuleiro: defesa de 3 ou 4? Dois ou três atacantes? Todas as formações possíveis são permitidas — a escolha é sua!",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://bellafigurinha.com.br/images/guias/passo-2-escalacao.jpg"
+          },
+          "url": "https://bellafigurinha.com.br/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026#escalacao"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Posicione as Cartas no Tabuleiro",
+          "text": "Coloque todas as suas cartas viradas para baixo no tabuleiro, cada uma na posição correspondente (goleiro, defesa, meio-campo, ataque). Durante o jogo você não pode espiar as cartas — um bom técnico conhece seu time de cor!",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://bellafigurinha.com.br/images/guias/passo-3-posicione-cartas.jpg"
+          },
+          "url": "https://bellafigurinha.com.br/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026#prepare-se-para-jogar"
+        }
+      ]
+    },
+    {
+      "@type": "HowToSection",
+      "name": "Jogando a Partida",
+      "position": 2,
+      "itemListElement": [
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Pontapé Inicial: Sorteie Quem Começa",
+          "text": "Lance a moeda para decidir quem dá o pontapé inicial. O vencedor do sorteio escolhe uma de suas cartas e decide se vai atacar, defender ou controlar o jogo — sem revelar a carta ainda.",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://bellafigurinha.com.br/images/guias/passo-4-kick-off.jpg"
+          },
+          "url": "https://bellafigurinha.com.br/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026#pontape-inicial"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Dispute o Duelo: Ataque, Defesa ou Controle",
+          "text": "O adversário responde escolhendo uma de suas cartas ao mesmo tempo. Se você atacou, ele defende (e vice-versa). Se escolheu Controle, ele também usa Controle. Ambos revelam as cartas: o maior valor vence, marca um gol e mantém a posse de bola. Em empate, compare os valores totais.",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://bellafigurinha.com.br/images/guias/passo-5-duelo.jpg"
+          },
+          "url": "https://bellafigurinha.com.br/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026#kick-off"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 6,
+          "name": "Use Pênaltis Como Coringa Defensivo",
+          "text": "Se você estiver defendendo, antes do adversário revelar sua jogada, você pode gritar 'Pênalti!'. Compare os ícones de shoot-out: se a direção do chute bater com a defesa do seu goleiro, você vence o desafio — mesmo que o valor numérico adversário seja maior.",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://bellafigurinha.com.br/images/guias/passo-6-penalti.jpg"
+          },
+          "url": "https://bellafigurinha.com.br/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026#penalti"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 7,
+          "name": "Faça Substituições Estratégicas",
+          "text": "Você pode usar até 5 reservas ao longo da partida. Para substituir, troque um reserva por uma carta que já está em campo antes do próximo duelo. Use com sabedoria: substituições podem virar o resultado!",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://bellafigurinha.com.br/images/guias/passo-7-substituicao.jpg"
+          },
+          "url": "https://bellafigurinha.com.br/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026#substituicao"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 8,
+          "name": "Ative as Cartas Bônus",
+          "text": "Jogue uma carta de Escudo do Time junto com jogadores do mesmo time para ganhar +5 pontos em todos os atributos. O Emblema Oficial da FIFA World Cup 2026 concede +10 pontos e pode ser usado com qualquer jogador. As cartas bônus são descartadas após o uso.",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://bellafigurinha.com.br/images/guias/passo-8-carta-bonus.jpg"
+          },
+          "url": "https://bellafigurinha.com.br/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026#carta-bonus"
+        }
+      ]
+    },
+    {
+      "@type": "HowToSection",
+      "name": "Fim da Partida",
+      "position": 3,
+      "itemListElement": [
+        {
+          "@type": "HowToStep",
+          "position": 9,
+          "name": "Apito Final: Conte os Gols e Vença",
+          "text": "Quando todas as cartas forem usadas, quem marcou mais gols vence a partida! Em empate no placar, use o modo Disputa de Pênaltis (1 goleiro + 5 cobradores) para definir o campeão.",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://bellafigurinha.com.br/images/guias/passo-9-apito-final.jpg"
+          },
+          "url": "https://bellafigurinha.com.br/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026#apito-final"
+        }
+      ]
+    }
+  ],
+  "about": {
+    "@type": "Thing",
+    "name": "Adrenalyn XL FIFA World Cup 2026",
+    "description": "Card game oficial da Copa do Mundo FIFA 2026, produzido pela Panini. Coleção com 633 cartas incluindo Heroes, Icons, Fan Favourites, Golden Ballers e Eternos 22."
+  },
+  "mentions": [
+    {
+      "@type": "Brand",
+      "name": "Panini",
+      "url": "https://fifaworldcup26.paniniadrenalyn.com"
+    },
+    {
+      "@type": "SportsEvent",
+      "name": "FIFA World Cup 2026",
+      "location": {
+        "@type": "Place",
+        "name": "Estados Unidos, Canadá e México"
+      },
+      "startDate": "2026-06-11",
+      "endDate": "2026-07-19"
+    }
+  ],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bella Figurinha",
+    "url": "https://bellafigurinha.com.br",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://bellafigurinha.com.br/images/logo-bella-figurinha.png"
+    }
+  },
+  "inLanguage": "pt-BR",
+  "datePublished": "2026-03-05",
+  "dateModified": "2026-03-05"
+}
 
       {/* Hero */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
