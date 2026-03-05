@@ -78,7 +78,7 @@ const GuiaAdrenalynXL = () => {
     const c1 = injectJsonLd("guia-faq", faqPageJsonLd(faqItems));
     const c2 = injectJsonLd("guia-bc", breadcrumbSchema([
       { name: "Início", url: "https://bellafigurinha.com.br/" },
-      { name: "Guia Adrenalyn XL", url: "https://bellafigurinha.com.br/pages/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026" },
+      { name: "Guia Adrenalyn XL", url: "https://bellafigurinha.com.br/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026" },
     ]));
     const c3 = injectJsonLd("guia-org", { "@context": "https://schema.org", ...organizationSchema });
     return () => { c1(); c2(); c3(); };
@@ -89,7 +89,7 @@ const GuiaAdrenalynXL = () => {
       <SEOHead
         title="Guia Completo: Como Jogar Adrenalyn XL FIFA World Cup 2026 | Bella Figurinha"
         description="O guia definitivo de como jogar Adrenalyn XL FIFA World Cup 2026. Regras, estratégias, tipos de cartas, modos de jogo e dicas para iniciantes e avançados."
-        canonical="https://bellafigurinha.com.br/pages/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026"
+        canonical="https://bellafigurinha.com.br/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026"
       />
       <Header />
 
