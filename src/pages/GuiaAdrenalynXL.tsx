@@ -62,6 +62,17 @@ const SectionTitle = ({ id, n, children }: { id: string; n: number; children: Re
   </h2>
 );
 
+const GuideImage = ({ src, alt, caption }: { src: string; alt: string; caption?: string }) => (
+  <figure className="my-8 rounded-xl overflow-hidden border border-border/50 shadow-lg">
+    <img src={src} alt={alt} className="w-full h-auto object-cover" loading="lazy" />
+    {caption && (
+      <figcaption className="bg-muted/80 text-muted-foreground text-sm text-center py-3 px-4 font-body italic">
+        {caption}
+      </figcaption>
+    )}
+  </figure>
+);
+
 const GuiaAdrenalynXL = () => {
   useEffect(() => {
     const c1 = injectJsonLd("guia-faq", faqPageJsonLd(faqItems));
@@ -82,14 +93,24 @@ const GuiaAdrenalynXL = () => {
       />
       <Header />
 
-      {/* ── Hero ── */}
-      <section className="bg-gradient-to-br from-foreground to-secondary pt-32 pb-16 text-center text-white px-4">
-        <h1 className="font-display text-3xl md:text-5xl tracking-wider uppercase mb-4">
-          Guia Completo: Como Jogar Adrenalyn XL<br />FIFA World Cup 2026™
-        </h1>
-        <p className="text-lg opacity-90 max-w-2xl mx-auto font-body">
-          Tudo o que você precisa saber para colecionar, montar seu time dos sonhos e dominar os duelos — do iniciante ao jogador avançado.
-        </p>
+      {/* ── Hero with background image ── */}
+      <section className="relative pt-32 pb-16 text-center text-white px-4 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/images/guia-hero-cards.jpg"
+            alt="Cartas Adrenalyn XL FIFA World Cup 2026"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-foreground/85 via-foreground/70 to-foreground/90" />
+        </div>
+        <div className="relative z-10">
+          <h1 className="font-display text-3xl md:text-5xl tracking-wider uppercase mb-4 drop-shadow-lg">
+            Guia Completo: Como Jogar Adrenalyn XL<br />FIFA World Cup 2026™
+          </h1>
+          <p className="text-lg opacity-90 max-w-2xl mx-auto font-body drop-shadow-md">
+            Tudo o que você precisa saber para colecionar, montar seu time dos sonhos e dominar os duelos — do iniciante ao jogador avançado.
+          </p>
+        </div>
       </section>
 
       {/* ── Content ── */}
@@ -111,6 +132,13 @@ const GuiaAdrenalynXL = () => {
         <SectionTitle id="secao-1" n={1}>O Que É o Adrenalyn XL FIFA World Cup 2026?</SectionTitle>
         <p className="font-body text-muted-foreground">O Adrenalyn XL FIFA World Cup 2026™ é o card game oficial da Copa do Mundo FIFA 2026, produzido pela Panini. Diferente de um álbum de figurinhas tradicional, o Adrenalyn XL é um Trading Card Game (TCG) — ou seja, além de colecionar, você pode jogar partidas de verdade usando as cartas, desafiando amigos em duelos estratégicos.</p>
         <p className="font-body text-muted-foreground">A Copa do Mundo de 2026 será histórica: pela primeira vez, o torneio será sediado por três países simultaneamente — Estados Unidos, Canadá e México — e contará com 48 seleções (42 já classificadas + 6 vagas definidas nos play-ins). Isso torna esta coleção a maior e mais ambiciosa da história do Adrenalyn XL em Copas do Mundo.</p>
+
+        <GuideImage
+          src="/images/guia-gameplay.jpg"
+          alt="Dois jogadores disputando uma partida de Adrenalyn XL no tabuleiro oficial"
+          caption="O Adrenalyn XL combina a emoção de colecionar com duelos estratégicos no tabuleiro"
+        />
+
         <p className="font-body text-muted-foreground">Cada carta traz a imagem de um jogador real com atributos numéricos de Ataque, Defesa e Controle de Jogo, que são usados nos duelos. O jogo combina a emoção de colecionar com a estratégia de montar o time perfeito e tomar decisões táticas durante cada partida.</p>
         <p className="font-body text-muted-foreground">Além do jogo físico no tabuleiro (gameboard), existe também a versão digital oficial, onde você pode desbloquear suas cartas e desafiar jogadores do mundo inteiro online.</p>
 
@@ -198,6 +226,13 @@ const GuiaAdrenalynXL = () => {
         {/* 4 */}
         <SectionTitle id="secao-4" n={4}>Entendendo os Atributos das Cartas</SectionTitle>
         <p className="font-body text-muted-foreground">Cada carta de jogador traz três atributos principais que determinam sua força nos duelos:</p>
+
+        {/* Card anatomy image from game rules */}
+        <GuideImage
+          src="/images/game-rules-page1.jpg"
+          alt="Regras oficiais do jogo Adrenalyn XL — anatomia da carta e como jogar"
+          caption="Regras oficiais: anatomia da carta com atributos, como montar o time e mecânicas de Ataque, Defesa e Controle"
+        />
 
         <h3 className="font-display text-xl tracking-wider uppercase text-foreground mt-8 mb-3">Ataque (ATK)</h3>
         <p className="font-body text-muted-foreground">Representa a capacidade ofensiva do jogador. Cartas de atacantes e pontas costumam ter os maiores valores, com destaque para as Goal Machines que podem chegar acima de 90.</p>
@@ -290,6 +325,14 @@ const GuiaAdrenalynXL = () => {
 
         <h3 className="font-display text-xl tracking-wider uppercase text-foreground mt-8 mb-3">Cobrança de Pênalti</h3>
         <p className="font-body text-muted-foreground">Quando você está defendendo, antes do oponente revelar sua jogada, você pode gritar "PÊNALTI!". Compare os ícones de shoot-out das cartas. Se o goleiro defende o chute, o defensor vence a rodada!</p>
+
+        {/* Page 2 of game rules — penalties, subs, bonus, other modes */}
+        <GuideImage
+          src="/images/game-rules-page2.jpg"
+          alt="Regras oficiais — Pênaltis, Substituições, Cartas Bônus e Modos Alternativos"
+          caption="Regras oficiais: Cobranças de pênalti, substituições, cartas bônus e modos alternativos de jogo"
+        />
+
         <WarningBox>Pedir pênalti é uma aposta. Se o chute não for na direção do goleiro, você perde automaticamente a rodada. Use com sabedoria!</WarningBox>
 
         <h3 className="font-display text-xl tracking-wider uppercase text-foreground mt-8 mb-3">Substituições</h3>
@@ -318,6 +361,12 @@ const GuiaAdrenalynXL = () => {
         {/* 8 */}
         <SectionTitle id="secao-8" n={8}>Estratégias e Dicas para Vencer</SectionTitle>
 
+        <GuideImage
+          src="/images/guia-estrategia.jpg"
+          alt="Estratégia no Adrenalyn XL — pensamento tático com cartas"
+          caption="No Adrenalyn XL, cada decisão conta — monte seu time com estratégia e surpreenda seus adversários"
+        />
+
         <h3 className="font-display text-xl tracking-wider uppercase text-foreground mt-8 mb-3">Estratégias de Construção do Time</h3>
         <div className="space-y-4 font-body text-muted-foreground">
           <div><strong className="text-foreground">Equilibre seu elenco</strong> — Não adianta ter 5 atacantes devastadores se sua defesa é fraca. Monte um time equilibrado com pelo menos 2-3 cartas fortes em cada setor.</div>
@@ -344,6 +393,13 @@ const GuiaAdrenalynXL = () => {
 
         {/* 9 */}
         <SectionTitle id="secao-9" n={9}>O Jogo Online e o App Oficial</SectionTitle>
+
+        <GuideImage
+          src="/images/guia-app-online.jpg"
+          alt="App oficial do Adrenalyn XL com cartas digitais no smartphone"
+          caption="Desbloqueie suas cartas no app oficial e desafie jogadores do mundo inteiro"
+        />
+
         <h3 className="font-display text-xl tracking-wider uppercase text-foreground mt-8 mb-3">Como Funciona</h3>
         <p className="font-body text-muted-foreground">Cada pacote de cartas físicas inclui um código de resgate que desbloqueia as mesmas cartas na versão digital. Cada carta que você compra vale em dobro — no mundo físico e no virtual.</p>
 
@@ -356,6 +412,13 @@ const GuiaAdrenalynXL = () => {
 
         {/* 10 */}
         <SectionTitle id="secao-10" n={10}>Dicas para Colecionadores</SectionTitle>
+
+        <GuideImage
+          src="/images/guia-colecao.jpg"
+          alt="Colecionador organizando cartas Adrenalyn XL em fichário com protetores"
+          caption="Organize sua coleção desde o primeiro dia — use o fichário e protetores para manter suas cartas em perfeito estado"
+        />
+
         <div className="space-y-4 font-body text-muted-foreground">
           <div><strong className="text-foreground">Organize desde o primeiro dia</strong> — Use o fichário do Starter Pack e a checklist oficial. Com 633+ cartas, organização é fundamental.</div>
           <div><strong className="text-foreground">Troque cartas repetidas</strong> — Encontre outros colecionadores em grupos de redes sociais ou eventos. Trocas são mais eficientes do que comprar mais pacotes.</div>
