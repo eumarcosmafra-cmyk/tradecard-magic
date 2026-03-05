@@ -35,6 +35,52 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Produtos -->
+  <url>
+    <loc>https://bellafigurinha.com.br/produto/fifa-world-cup-2026%E2%84%A2-adrenalyn-xl%E2%84%A2-envelope-8-cards-kit-com-6-envelopes</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bellafigurinha.com.br/produto/adrenalyn-xl-fifa-2026-kit-10-envelopes</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bellafigurinha.com.br/produto/adrenalyn-xl-fifa-2026-kit-25-envelopes</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bellafigurinha.com.br/produto/adrenalyn-xl-fifa-2026-kit-50-envelopes</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bellafigurinha.com.br/produto/adrenalyn-xl-fifa-2026-kit-100-envelopes</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bellafigurinha.com.br/produto/fifa-world-cup-2026-adrenalyn-xl-lata-classic-tin</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://bellafigurinha.com.br/produto/fifa-world-cup-2026-adrenalyn-xl-starter-pack</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Blog -->
   <url>
     <loc>https://bellafigurinha.com.br/blog</loc>
     <changefreq>weekly</changefreq>
@@ -55,6 +101,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- Institucional -->
   <url>
     <loc>https://bellafigurinha.com.br/politica-de-privacidade</loc>
     <changefreq>yearly</changefreq>
