@@ -43,7 +43,7 @@ const Contato = () => {
     }
     setSending(true);
     const text = `Olá! Meu nome é ${form.name}.%0A📧 ${form.email}%0A📞 ${form.phone || "Não informado"}%0A📋 Assunto: ${form.subject || "Geral"}%0A%0A${form.message}`;
-    window.open(`https://wa.me/5547992861752?text=${text}`, "_blank");
+    window.open(`https://wa.me/5511976609139?text=${text}`, "_blank");
     setSending(false);
     toast({ title: "Redirecionado para o WhatsApp!" });
     setForm({ name: "", phone: "", email: "", subject: "", message: "" });
@@ -83,7 +83,7 @@ const Contato = () => {
           {/* Left: Contact cards */}
           <div className="space-y-4">
             <a
-              href="https://wa.me/5547992861752?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20Bella%20Figurinha%20%E2%9A%BD"
+              href="https://wa.me/5511976609139?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20Bella%20Figurinha%20%E2%9A%BD"
               target="_blank"
               rel="noopener noreferrer"
               className="block bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-colors group"
@@ -94,7 +94,7 @@ const Contato = () => {
                 </div>
                 <div>
                   <p className="text-xs font-display tracking-widest uppercase text-muted-foreground">WhatsApp</p>
-                  <p className="font-display text-lg text-foreground">(47) 99286-1752</p>
+                  <p className="font-display text-lg text-foreground">(11) 97660-9139</p>
                   <p className="text-sm text-muted-foreground font-body">Resposta rápida · Seg a Sex</p>
                   <span className="inline-flex items-center gap-1.5 mt-3 bg-green-500 text-white text-sm font-display tracking-wider px-4 py-1.5 rounded-full group-hover:bg-green-600 transition-colors">
                     <MessageCircle size={14} /> Iniciar conversa
@@ -103,14 +103,14 @@ const Contato = () => {
               </div>
             </a>
 
-            <a href="tel:+5547992861752" className="block bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-colors">
+            <a href="tel:+5511976609139" className="block bg-card border border-border rounded-2xl p-6 hover:border-primary/30 transition-colors">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                   <Phone size={22} className="text-primary" />
                 </div>
                 <div>
                   <p className="text-xs font-display tracking-widest uppercase text-muted-foreground">Telefone</p>
-                  <p className="font-display text-lg text-foreground">(47) 99286-1752</p>
+                  <p className="font-display text-lg text-foreground">(11) 97660-9139</p>
                   <p className="text-sm text-muted-foreground font-body">Ligações e mensagens</p>
                 </div>
               </div>
