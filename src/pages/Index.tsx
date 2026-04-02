@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { ProductCard } from "@/components/ProductCard";
+import { useProducts } from "@/hooks/useProducts";
 import { Loader2, Package, Truck, Shield, Award, ArrowDown, Calendar, Star } from "lucide-react";
 import { type ShopifyProduct } from "@/lib/shopify";
 import { homePageJsonLd, injectJsonLd } from "@/lib/jsonld";
