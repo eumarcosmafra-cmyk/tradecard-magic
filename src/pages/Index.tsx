@@ -11,9 +11,24 @@ import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/logo-bella.png";
 import bannerPanini from "@/assets/banner-panini-copa2026.jpeg";
 
+/** Palavras-chave que identificam produtos de Figurinhas/Álbuns da Copa */
+const isCopaStickerProduct = (p: ShopifyProduct) => {
+  const text = (p.node.title + " " + p.node.handle).toLowerCase();
+  return (
+    text.includes("album") ||
+    text.includes("álbum") ||
+    text.includes("figurinha") ||
+    text.includes("sticker") ||
+    (text.includes("envelope") && !text.includes("adrenalyn"))
+  );
+};
+
 const Index = () => {
   const { data: products, isLoading, error } = useProducts();
   const location = useLocation();
+
+  const copaProducts = products?.filter(isCopaStickerProduct) || [];
+  const adrenalynProducts = products?.filter((p) => !isCopaStickerProduct(p)) || [];
 
   useEffect(() => {
     if (location.hash) {
