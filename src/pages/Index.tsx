@@ -9,6 +9,7 @@ import { Loader2, Package, Truck, Shield, Award, ArrowDown } from "lucide-react"
 import { homePageJsonLd, injectJsonLd } from "@/lib/jsonld";
 import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/logo-bella.png";
+import bannerPanini from "@/assets/banner-panini-copa2026.jpeg";
 
 const Index = () => {
   const { data: products, isLoading, error } = useProducts();
@@ -96,6 +97,18 @@ const Index = () => {
 
         <div className="absolute bottom-20 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
           <ArrowDown size={24} className="text-white" />
+        </div>
+      </section>
+
+      {/* Banner Oficial Panini */}
+      <section className="bg-[#006B3F]">
+        <div className="max-w-7xl mx-auto">
+          <img
+            src={bannerPanini}
+            alt="Banner Oficial Panini FIFA World Cup 2026 - Álbum de Figurinhas Oficial - 7 figurinhas por envelope - Pré-venda disponível"
+            className="w-full h-auto block"
+            loading="eager"
+          />
         </div>
       </section>
 
