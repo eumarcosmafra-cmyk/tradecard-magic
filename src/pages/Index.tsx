@@ -10,7 +10,7 @@ import { type ShopifyProduct } from "@/lib/shopify";
 import { homePageJsonLd, injectJsonLd } from "@/lib/jsonld";
 import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/logo-bella.png";
-import bannerPanini from "@/assets/banner-panini-copa2026.jpeg";
+import { CopaBannerCarousel } from "@/components/CopaBannerCarousel";
 
 /** Palavras-chave que identificam produtos de Figurinhas/Álbuns da Copa */
 const isCopaStickerProduct = (p: ShopifyProduct) => {
