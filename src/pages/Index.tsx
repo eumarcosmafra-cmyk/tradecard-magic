@@ -9,6 +9,7 @@ import { Loader2, Package, Truck, Shield, Award, ArrowDown } from "lucide-react"
 import { homePageJsonLd, injectJsonLd } from "@/lib/jsonld";
 import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/logo-bella.png";
+import bannerPanini from "@/assets/banner-panini-copa2026.jpeg";
 
 const Index = () => {
   const { data: products, isLoading, error } = useProducts();
