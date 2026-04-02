@@ -55,6 +55,11 @@ export const ProductCard = ({ product, showPreSale = false }: ProductCardProps) 
               Sem imagem
             </div>
           )}
+          {showPreSale && (
+            <div className="absolute top-3 right-3 bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-md font-display tracking-wider uppercase animate-pulse">
+              Pré-venda
+            </div>
+          )}
           {!available && (
             <div className="absolute top-3 left-3 bg-destructive text-destructive-foreground text-xs font-semibold px-3 py-1 rounded-md font-display tracking-wider uppercase">
               Esgotado
