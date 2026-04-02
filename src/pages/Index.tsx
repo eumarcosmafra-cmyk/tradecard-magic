@@ -72,12 +72,12 @@ const Index = () => {
             </span>
 
             <h1 className="font-display text-5xl md:text-8xl lg:text-9xl tracking-wider leading-none text-white opacity-0 animate-fade-in [animation-delay:0.15s] drop-shadow-lg">
-              COLECIONE{" "}
-              <span className="text-gradient-yellow">MEMÓRIAS!</span>
+              COPA DO MUNDO{" "}
+              <span className="text-gradient-yellow">2026™</span>
             </h1>
 
             <p className="text-lg md:text-xl text-white/90 max-w-2xl font-body opacity-0 animate-fade-in [animation-delay:0.3s] drop-shadow">
-              Cards FIFA World Cup 2026™ Adrenalyn XL™ — Os melhores cards e figurinhas colecionáveis. Confira nosso catálogo!
+              Álbum e figurinhas oficiais FIFA World Cup 2026™ — Garanta já na pré-venda! Envio na 1ª quinzena de Abril.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in [animation-delay:0.45s]">
