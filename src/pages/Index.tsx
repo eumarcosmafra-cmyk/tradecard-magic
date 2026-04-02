@@ -10,7 +10,7 @@ import { type ShopifyProduct } from "@/lib/shopify";
 import { homePageJsonLd, injectJsonLd } from "@/lib/jsonld";
 import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/logo-bella.png";
-import bannerPanini from "@/assets/banner-panini-copa2026.jpeg";
+import { CopaBannerCarousel } from "@/components/CopaBannerCarousel";
 
 /** Palavras-chave que identificam produtos de Figurinhas/Álbuns da Copa */
 const isCopaStickerProduct = (p: ShopifyProduct) => {
@@ -116,17 +116,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Banner Oficial Panini */}
-      <section className="bg-[#006B3F]">
-        <div className="max-w-7xl mx-auto">
-          <img
-            src={bannerPanini}
-            alt="Banner Oficial Panini FIFA World Cup 2026 - Álbum de Figurinhas Oficial - 7 figurinhas por envelope - Pré-venda disponível"
-            className="w-full h-auto block"
-            loading="eager"
-          />
-        </div>
-      </section>
+      {/* Banners Oficiais Panini */}
+      <CopaBannerCarousel />
 
       {/* ====== SEÇÃO 1 — Figurinhas & Álbuns Copa 2026 (Destaque + Pré-venda) ====== */}
       <section id="produtos" className="container mx-auto px-4 pt-20 pb-10">
