@@ -7,6 +7,7 @@ import { toast } from "sonner";
 
 interface ProductCardProps {
   product: ShopifyProduct;
+  showPreSale?: boolean;
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
