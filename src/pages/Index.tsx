@@ -5,11 +5,9 @@ import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { ProductCard } from "@/components/ProductCard";
 import { useProducts } from "@/hooks/useProducts";
-import { Loader2, Package, Truck, Shield, Award, ArrowDown, Calendar, Star } from "lucide-react";
+import { Loader2, Package, Calendar, Star } from "lucide-react";
 import { type ShopifyProduct } from "@/lib/shopify";
 import { homePageJsonLd, injectJsonLd } from "@/lib/jsonld";
-import heroBg from "@/assets/hero-bg.jpg";
-import logo from "@/assets/logo-bella.png";
 import { CopaBannerCarousel } from "@/components/CopaBannerCarousel";
 
 /** Palavras-chave que identificam produtos de Figurinhas/Álbuns da Copa */
