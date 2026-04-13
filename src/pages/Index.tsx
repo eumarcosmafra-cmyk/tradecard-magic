@@ -77,7 +77,7 @@ const Index = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-white/90 max-w-2xl font-body opacity-0 animate-fade-in [animation-delay:0.3s] drop-shadow">
-              Álbum e figurinhas oficiais FIFA World Cup 2026™ — Garanta já na pré-venda! Envio na 1ª quinzena de Abril.
+            Álbum e figurinhas oficiais FIFA World Cup 2026™ — Garanta já na pré-venda! Envio na 1ª quinzena de Maio.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in [animation-delay:0.45s]">
@@ -133,7 +133,7 @@ const Index = () => {
         <div className="text-center mb-14">
           <span className="inline-flex items-center gap-2 bg-primary/10 text-primary font-display text-sm tracking-widest uppercase px-5 py-2 rounded-full mb-4">
             <Calendar size={16} />
-            Pré-venda — Envio na 1ª quinzena de Abril
+            Pré-venda — Envio na 1ª quinzena de Maio
           </span>
           <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase text-foreground">
             <Star className="inline-block text-primary mb-2 mr-2" size={32} />
