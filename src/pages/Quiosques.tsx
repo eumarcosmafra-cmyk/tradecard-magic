@@ -79,16 +79,9 @@ const Quiosques = () => {
       {/* Photo gallery */}
       <section className="container mx-auto px-4 mb-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {kioskImages.slice(0, 4).map((src, i) => (
+          {kioskImages.map((src, i) => (
             <div key={i} className="rounded-xl overflow-hidden aspect-[4/3]">
-              <img src={src} alt={`Quiosque FIFA ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
-            </div>
-          ))}
-        </div>
-        <div className="grid grid-cols-3 gap-3 mt-3">
-          {kioskImages.slice(4).map((src, i) => (
-            <div key={i} className="rounded-xl overflow-hidden aspect-[4/3]">
-              <img src={src} alt={`Quiosque FIFA ${i + 5}`} className="w-full h-full object-cover" loading="lazy" />
+              <img src={src} alt={`Quiosque Bella Figurinha ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
             </div>
           ))}
         </div>
