@@ -41,12 +41,9 @@ const regions = [
 
 const kioskImages = [
   "/images/kiosk-1.jpeg",
-  "/images/kiosk-2.jpeg",
-  "/images/kiosk-3.jpeg",
-  "/images/kiosk-4.jpeg",
-  "/images/kiosk-5.jpeg",
-  "/images/kiosk-6.jpeg",
-  "/images/kiosk-7.jpeg",
+  "/images/kiosk-final-1.jpeg",
+  "/images/kiosk-final-2.jpeg",
+  "/images/kiosk-final-3.jpeg",
 ];
 
 const Quiosques = () => {
