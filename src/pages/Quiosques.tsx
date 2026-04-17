@@ -40,10 +40,10 @@ const regions = [
 ];
 
 const kioskImages = [
-  "/images/kiosk-1.jpeg",
   "/images/kiosk-final-1.jpeg",
   "/images/kiosk-final-2.jpeg",
   "/images/kiosk-final-3.jpeg",
+  "/images/kiosk-1.jpeg",
 ];
 
 const Quiosques = () => {
