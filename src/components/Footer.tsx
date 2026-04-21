@@ -55,7 +55,8 @@ export const Footer = () => (
               href="https://www.instagram.com/bellafigurinha?igsh=MWs3bnp2Y2tqYnNrNA%3D%3D&utm_source=qr"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 via-pink-500 to-orange-500 text-white px-4 py-3 rounded-lg font-body text-sm hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-3 text-white px-4 py-3 rounded-lg font-body text-sm hover:opacity-90 transition-opacity"
+              style={{ background: "linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%)" }}
             >
               <Instagram size={20} />
               <span className="font-medium">@bellafigurinha</span>
@@ -64,7 +65,7 @@ export const Footer = () => (
               href="https://www.tiktok.com/@bellafigurinhaof?_r=1&_t=ZS-95iykYG2PhA"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-black text-white px-4 py-3 rounded-lg font-body text-sm hover:opacity-90 transition-opacity border border-white/20"
+              className="inline-flex items-center gap-3 bg-secondary text-secondary-foreground px-4 py-3 rounded-lg font-body text-sm hover:opacity-90 transition-opacity"
             >
               <TikTokIcon className="w-5 h-5" />
               <span className="font-medium">@bellafigurinhaof</span>
