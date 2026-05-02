@@ -58,7 +58,7 @@ export const Header = () => {
         {/* Mobile */}
         <div className="flex md:hidden items-center gap-3">
           <CartDrawer />
-          <button className="text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
+          <button className={scrolled ? "text-foreground" : "text-white drop-shadow-md"} onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
