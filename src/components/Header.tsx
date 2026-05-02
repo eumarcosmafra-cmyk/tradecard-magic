@@ -38,25 +38,20 @@ export const Header = () => {
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-8">
-          {links.map((l) =>
-            (l as any).isRoute ? (
-              <Link
-                key={l.href}
-                to={l.href}
-                className="font-display text-lg tracking-wider uppercase text-foreground/70 hover:text-secondary transition-colors"
-              >
+          {links.map((l) => {
+            const linkClass = `font-display text-lg tracking-wider uppercase hover:text-secondary transition-colors ${
+              scrolled ? "text-foreground/70" : "text-white drop-shadow-md"
+            }`;
+            return (l as any).isRoute ? (
+              <Link key={l.href} to={l.href} className={linkClass}>
                 {l.label}
               </Link>
             ) : (
-              <a
-                key={l.href}
-                href={l.href}
-                className="font-display text-lg tracking-wider uppercase text-foreground/70 hover:text-secondary transition-colors"
-              >
+              <a key={l.href} href={l.href} className={linkClass}>
                 {l.label}
               </a>
-            )
-          )}
+            );
+          })}
           <CartDrawer />
         </div>
 
