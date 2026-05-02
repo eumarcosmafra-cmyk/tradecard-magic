@@ -20,6 +20,7 @@ import BlogPost from "./pages/BlogPost";
 import Collection from "./pages/Collection";
 import Collections from "./pages/Collections";
 import GuiaAdrenalynXL from "./pages/GuiaAdrenalynXL";
+import Revenda from "./pages/Revenda";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const AppContent = () => {
       <Route path="/colecao" element={<Collections />} />
       <Route path="/colecao/:handle" element={<Collection />} />
       <Route path="/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026" element={<GuiaAdrenalynXL />} />
+      <Route path="/revenda" element={<Revenda />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
