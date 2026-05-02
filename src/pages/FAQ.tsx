@@ -44,7 +44,7 @@ const faqItems = [
   },
   {
     q: "Como entro em contato com a Bella Figurinha?",
-    a: "Você pode entrar em contato pelo WhatsApp (11) 97660-9139, e-mail contato@bellafigurinha.com.br, ou através da nossa página de Contato.",
+    a: "Você pode entrar em contato pelo WhatsApp (41) 6347-5741, e-mail contato@bellafigurinha.com.br, ou através da nossa página de Contato.",
   },
 ];
 

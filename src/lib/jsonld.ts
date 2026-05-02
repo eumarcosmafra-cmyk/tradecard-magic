@@ -6,7 +6,7 @@
 const BASE_URL = "https://bellafigurinha.com.br";
 const LOGO_URL = `${BASE_URL}/favicon.png`;
 const ORG_NAME = "Bella Figurinha";
-const ORG_PHONE = "+55-11-97660-9139";
+const ORG_PHONE = "+55-41-6347-5741";
 
 // ─── Organization (reusable) ───
 export const organizationSchema = {
