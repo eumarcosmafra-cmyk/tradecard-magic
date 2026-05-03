@@ -24,6 +24,7 @@ export type Database = {
           id: string
           nome: string
           observacoes: string | null
+          sent_to_whatsapp: boolean
           telefone: string
           volume_interesse: string
         }
@@ -36,6 +37,7 @@ export type Database = {
           id?: string
           nome: string
           observacoes?: string | null
+          sent_to_whatsapp?: boolean
           telefone: string
           volume_interesse: string
         }
@@ -48,6 +50,7 @@ export type Database = {
           id?: string
           nome?: string
           observacoes?: string | null
+          sent_to_whatsapp?: boolean
           telefone?: string
           volume_interesse?: string
         }
