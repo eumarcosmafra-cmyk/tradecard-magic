@@ -163,7 +163,7 @@ const Index = () => {
             Álbum & Figurinhas <span className="text-gradient-yellow">Copa 2026</span>
           </h2>
           <p className="text-muted-foreground mt-3 font-body max-w-2xl mx-auto">
-            O álbum oficial e os envelopes de figurinhas FIFA World Cup 2026™ chegaram! Garanta já na pré-venda com envio prioritário.
+            O álbum oficial e os envelopes de figurinhas FIFA World Cup 2026™ chegaram! Garanta já o seu.
           </p>
         </div>
 
