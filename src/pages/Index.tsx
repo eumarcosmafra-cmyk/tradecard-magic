@@ -54,8 +54,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Bella Figurinha | Comprar Figurinhas e Cards FIFA World Cup 2026 Panini"
-        description="Distribuidor oficial Panini. Compre figurinhas e cards Adrenalyn XL FIFA World Cup 2026™ com envio para todo Brasil. Produto original, frete grátis nos kits."
+        title="Bella Figurinha | Figurinhas Panini FIFA 2026"
+        description="Distribuidor oficial Panini. Figurinhas e cards Adrenalyn XL FIFA World Cup 2026™ originais, com envio para todo o Brasil e frete grátis nos kits."
         canonical="https://bellafigurinha.com.br/"
       />
       <Header />
@@ -63,7 +63,7 @@ const Index = () => {
       {/* Hero */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroBg} alt="" className="w-full h-full object-cover" />
+          <img src={heroBg} alt="" width={1920} height={1080} fetchPriority="high" decoding="async" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70" />
         </div>
 

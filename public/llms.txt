@@ -1,0 +1,24 @@
+# Bella Figurinha
+
+> Distribuidor oficial Panini no Brasil. Loja online de figurinhas e cards Adrenalyn XL da FIFA World Cup 2026™, com envio para todo o país e quiosques físicos em SP, PR e SC.
+
+A Bella Figurinha vende produtos 100% originais Panini: álbuns capa dura, envelopes de figurinhas, kits e a coleção de trading cards Adrenalyn XL FIFA World Cup 2026™. Pagamento seguro, parcelamento em até 6x e frete grátis em compras acima de R$ 299,90.
+
+## Pages
+
+- [Home](/): Loja oficial com álbuns, figurinhas e cards FIFA World Cup 2026™.
+- [Quem Somos](/quem-somos): História da marca e sua relação com a Panini.
+- [Lojas Físicas](/lojas): Pop-up stores em shoppings de SP, PR e SC.
+- [Contato](/contato): Fale com nosso atendimento.
+- [Perguntas Frequentes](/perguntas-frequentes): Dúvidas sobre pedidos, envio e produtos.
+- [Coleções](/colecao): Todas as coleções Panini disponíveis.
+- [Adrenalyn XL](/colecao/adrenalyn-xl): Trading cards oficiais FIFA World Cup 2026™.
+- [Guia Adrenalyn XL](/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026): Como jogar a coleção FIFA World Cup 2026.
+- [Revenda B2B](/revenda): Programa para lojistas e distribuidores.
+- [Blog](/blog): Notícias, dicas e curiosidades sobre figurinhas e Copa do Mundo.
+
+## Optional
+
+- [Política de Privacidade](/politica-de-privacidade)
+- [Termos de Uso](/termos-de-uso)
+- [Trocas e Devoluções](/politica-de-trocas-e-devolucoes)
