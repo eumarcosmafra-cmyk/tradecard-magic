@@ -83,7 +83,7 @@ const Index = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-white/90 max-w-2xl font-body opacity-0 animate-fade-in [animation-delay:0.3s] drop-shadow">
-            Álbum e figurinhas oficiais FIFA World Cup 2026™ — Garanta já na pré-venda! Envio na 1ª quinzena de Maio.
+            Álbum e figurinhas oficiais FIFA World Cup 2026™ — Garanta já o seu.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in [animation-delay:0.45s]">
