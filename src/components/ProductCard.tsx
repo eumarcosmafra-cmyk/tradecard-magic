@@ -71,6 +71,15 @@ export const ProductCard = ({ product, showPreSale = false }: ProductCardProps) 
         <div className="p-5 space-y-3">
           <h3 className="font-display text-xl tracking-wider uppercase text-foreground line-clamp-2">{node.title}</h3>
           <p className="text-2xl font-bold text-gradient-yellow font-display tracking-wide">{formatPrice(price)}</p>
+          {arrivalDate && (
+            <div className="flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-md px-3 py-2">
+              <Calendar className="w-4 h-4 text-primary" />
+              <span className="text-xs font-body text-foreground">
+                <span className="font-display tracking-wider uppercase text-primary">Previsão de chegada:</span>{" "}
+                <strong>{arrivalDate}</strong>
+              </span>
+            </div>
+          )}
           <Button
             onClick={handleAddToCart}
             disabled={isLoading || !available}
