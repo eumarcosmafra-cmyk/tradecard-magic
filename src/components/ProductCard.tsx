@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Loader2 } from "lucide-react";
+import { ShoppingCart, Loader2, Calendar } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { type ShopifyProduct } from "@/lib/shopify";
+import { getArrivalDate } from "@/lib/arrivalDate";
 import { toast } from "sonner";
 
 interface ProductCardProps {
