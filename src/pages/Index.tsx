@@ -135,6 +135,18 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Banner Previsão de Chegada — Álbuns Capa Dura */}
+      <section className="bg-black py-6">
+        <div className="max-w-5xl mx-auto px-4">
+          <img
+            src={bannerPrevisaoCapaDura}
+            alt="Previsão de chegada dos álbuns Capa Dura FIFA World Cup 2026 — Capa Dura 18 de Maio, Capa Dura Prata 25 de Maio, Capa Dura Ouro 25 de Maio"
+            className="w-full h-auto block rounded-lg"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
       {/* ====== SEÇÃO 1 — Figurinhas & Álbuns Copa 2026 (Destaque + Pré-venda) ====== */}
       <section id="produtos" className="container mx-auto px-4 pt-20 pb-10">
         <div className="text-center mb-14">
