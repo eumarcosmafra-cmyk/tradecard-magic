@@ -123,27 +123,36 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Banner Oficial Panini */}
-      <section className="bg-[#006B3F]">
-        <div className="max-w-7xl mx-auto">
-          <img
-            src={bannerPanini}
-            alt="Banner Oficial Panini FIFA World Cup 2026 - Álbum de Figurinhas Oficial - 7 figurinhas por envelope - Pré-venda disponível"
-            className="w-full h-auto block"
-            loading="eager"
-          />
-        </div>
-      </section>
-
       {/* Banner Previsão de Chegada — Álbuns Capa Dura */}
-      <section className="bg-black py-6">
-        <div className="max-w-5xl mx-auto px-4">
-          <img
-            src={bannerPrevisaoCapaDura}
-            alt="Previsão de chegada dos álbuns Capa Dura FIFA World Cup 2026 — Capa Dura 18 de Maio, Capa Dura Prata 25 de Maio, Capa Dura Ouro 25 de Maio"
-            className="w-full h-auto block rounded-lg"
-            loading="lazy"
-          />
+      <section className="relative bg-gradient-to-b from-background via-black to-background py-12 md:py-16 overflow-hidden">
+        {/* glow decorativo */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative max-w-5xl mx-auto px-4">
+          <div className="text-center mb-6 md:mb-8">
+            <span className="inline-flex items-center gap-2 bg-primary/15 text-primary font-display text-xs md:text-sm tracking-widest uppercase px-4 py-1.5 rounded-full border border-primary/30">
+              <Calendar size={14} />
+              Previsão de Chegada
+            </span>
+            <h2 className="font-display text-3xl md:text-5xl tracking-wider uppercase text-foreground mt-3">
+              Álbuns <span className="text-gradient-yellow">Capa Dura</span>
+            </h2>
+          </div>
+
+          <div className="relative group">
+            {/* moldura com gradiente */}
+            <div className="absolute -inset-0.5 bg-gradient-yellow rounded-2xl opacity-60 group-hover:opacity-100 blur transition-opacity duration-500" />
+            <div className="relative rounded-2xl overflow-hidden border border-primary/40 shadow-yellow-lg">
+              <img
+                src={bannerPrevisaoCapaDura}
+                alt="Previsão de chegada dos álbuns Capa Dura FIFA World Cup 2026 — Capa Dura 18 de Maio, Capa Dura Prata 25 de Maio, Capa Dura Ouro 25 de Maio"
+                className="w-full h-auto block"
+                loading="lazy"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
