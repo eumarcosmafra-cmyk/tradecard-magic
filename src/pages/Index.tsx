@@ -158,10 +158,6 @@ const Index = () => {
       {/* ====== SEÇÃO 1 — Figurinhas & Álbuns Copa 2026 (Destaque + Pré-venda) ====== */}
       <section id="produtos" className="container mx-auto px-4 pt-20 pb-10">
         <div className="text-center mb-14">
-          <span className="inline-flex items-center gap-2 bg-primary/10 text-primary font-display text-sm tracking-widest uppercase px-5 py-2 rounded-full mb-4">
-            <Calendar size={16} />
-            Pré-venda — Envio na 1ª quinzena de Maio
-          </span>
           <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase text-foreground">
             <Star className="inline-block text-primary mb-2 mr-2" size={32} />
             Álbum & Figurinhas <span className="text-gradient-yellow">Copa 2026</span>
