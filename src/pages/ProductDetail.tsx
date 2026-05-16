@@ -302,7 +302,7 @@ const ProductDetail = () => {
             )}
 
             {(() => {
-              const arrivalDate = getArrivalDate(`${node.title} ${node.handle}`);
+              const arrivalDate = getArrivalDate(node.title);
               if (!arrivalDate) return null;
               return (
                 <div className="flex items-center gap-3 bg-primary/10 border border-primary/40 rounded-xl px-4 py-3">
