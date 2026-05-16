@@ -11,6 +11,13 @@ import { homePageJsonLd, injectJsonLd } from "@/lib/jsonld";
 import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/logo-bella.png";
 import bannerPanini from "@/assets/banner-panini-copa2026.jpeg";
+import bannerPrevisaoCapaDura from "@/assets/banner-previsao-capa-dura.png";
+
+/** Identifica se é um álbum capa dura (em pré-venda) */
+const isCapaDura = (p: ShopifyProduct) => {
+  const text = (p.node.title + " " + p.node.handle).toLowerCase();
+  return text.includes("capa dura") || text.includes("capa-dura") || text.includes("hardcover");
+};
 
 /** Palavras-chave que identificam produtos de Figurinhas/Álbuns da Copa */
 const isCopaStickerProduct = (p: ShopifyProduct) => {
@@ -128,6 +135,18 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Banner Previsão de Chegada — Álbuns Capa Dura */}
+      <section className="bg-black py-6">
+        <div className="max-w-5xl mx-auto px-4">
+          <img
+            src={bannerPrevisaoCapaDura}
+            alt="Previsão de chegada dos álbuns Capa Dura FIFA World Cup 2026 — Capa Dura 18 de Maio, Capa Dura Prata 25 de Maio, Capa Dura Ouro 25 de Maio"
+            className="w-full h-auto block rounded-lg"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
       {/* ====== SEÇÃO 1 — Figurinhas & Álbuns Copa 2026 (Destaque + Pré-venda) ====== */}
       <section id="produtos" className="container mx-auto px-4 pt-20 pb-10">
         <div className="text-center mb-14">
@@ -166,7 +185,7 @@ const Index = () => {
         {copaProducts.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {copaProducts.map((product) => (
-              <ProductCard key={product.node.id} product={product} showPreSale />
+              <ProductCard key={product.node.id} product={product} showPreSale={isCapaDura(product)} />
             ))}
           </div>
         )}
