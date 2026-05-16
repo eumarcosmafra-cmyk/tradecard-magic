@@ -11,6 +11,13 @@ import { homePageJsonLd, injectJsonLd } from "@/lib/jsonld";
 import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/logo-bella.png";
 import bannerPanini from "@/assets/banner-panini-copa2026.jpeg";
+import bannerPrevisaoCapaDura from "@/assets/banner-previsao-capa-dura.png";
+
+/** Identifica se é um álbum capa dura (em pré-venda) */
+const isCapaDura = (p: ShopifyProduct) => {
+  const text = (p.node.title + " " + p.node.handle).toLowerCase();
+  return text.includes("capa dura") || text.includes("capa-dura") || text.includes("hardcover");
+};
 
 /** Palavras-chave que identificam produtos de Figurinhas/Álbuns da Copa */
 const isCopaStickerProduct = (p: ShopifyProduct) => {
