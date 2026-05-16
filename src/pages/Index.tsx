@@ -34,7 +34,10 @@ const Index = () => {
   const { data: products, isLoading, error } = useProducts();
   const location = useLocation();
 
-  const copaProducts = products?.filter(isCopaStickerProduct) || [];
+  // Produtos da Copa: disponíveis (brochura, envelopes) primeiro; capa dura (pré-venda) por último
+  const copaProducts = (products?.filter(isCopaStickerProduct) || []).slice().sort((a, b) => {
+    return Number(isCapaDura(a)) - Number(isCapaDura(b));
+  });
   const adrenalynProducts = products?.filter((p) => !isCopaStickerProduct(p)) || [];
 
   useEffect(() => {
