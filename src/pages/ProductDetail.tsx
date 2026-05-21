@@ -477,6 +477,21 @@ const ProductDetail = () => {
               </div>
             ))}
           </div>
+        ) : isEnvelopesOnly ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+            {[
+              { emoji: "✉️", value: String(envelopeCount), label: "Envelopes lacrados" },
+              { emoji: "🃏", value: "7", label: "Cromos por envelope" },
+              { emoji: "📚", value: String(totalFigurinhas), label: "Figurinhas no kit" },
+              { emoji: "🏴", value: "48", label: "Seleções na coleção" },
+            ].map((stat) => (
+              <div key={stat.label} className="bg-card border border-border rounded-2xl p-6 text-center space-y-2 hover:border-primary/40 transition-colors">
+                <span className="text-3xl">{stat.emoji}</span>
+                <p className="font-display text-3xl tracking-wide text-foreground">{stat.value}</p>
+                <p className="text-xs text-muted-foreground font-body">{stat.label}</p>
+              </div>
+            ))}
+          </div>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
             {[
