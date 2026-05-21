@@ -138,6 +138,20 @@ const ProductDetail = () => {
   const productCategory = getProductCategory(handle || "");
   const isAlbumOnly = productCategory === "album-only";
   const isEnvelopesOnly = productCategory === "envelopes-only";
+  const isAlbumWithEnvelopes = productCategory === "album-with-envelopes";
+  const comboAlbumType: "brochura" | "capa-dura" | "capa-dura-ouro" | "capa-dura-prata" = (() => {
+    const h = (handle || "").toLowerCase();
+    if (h.includes("capa-dura-ouro")) return "capa-dura-ouro";
+    if (h.includes("capa-dura-prata")) return "capa-dura-prata";
+    if (h.includes("capa-dura")) return "capa-dura";
+    return "brochura";
+  })();
+  const comboAlbumLabel = {
+    "brochura": "brochura",
+    "capa-dura": "capa dura",
+    "capa-dura-ouro": "capa dura ouro",
+    "capa-dura-prata": "capa dura prata",
+  }[comboAlbumType];
   const _h = (handle || "").toLowerCase();
   const isAlbumBrochura = isAlbumOnly && (_h.includes("album-brochura") || _h.includes("album-capa-cartao"));
   const isAlbumTradicional = isAlbumOnly && !isAlbumBrochura && _h.includes("album-capa-dura") && _h.endsWith("-copy") && !_h.includes("prata");
@@ -213,8 +227,9 @@ const ProductDetail = () => {
   const { node } = product;
   const images = node.images.edges;
   const variants = node.variants.edges;
-  const envelopeCount = isEnvelopesOnly ? extractEnvelopeCount(node.title, handle || "") : 0;
+  const envelopeCount = (isEnvelopesOnly || isAlbumWithEnvelopes) ? extractEnvelopeCount(node.title, handle || "") : 0;
   const totalFigurinhas = envelopeCount * 7;
+  const percentColecao = ((totalFigurinhas / 980) * 100).toFixed(1);
   const selectedVariant = variants[selectedVariantIndex]?.node;
   const selectedImage = images[selectedImageIndex]?.node;
 
@@ -336,7 +351,11 @@ const ProductDetail = () => {
           <div className="space-y-5">
             {/* Breadcrumb badge */}
             <div className="inline-block border border-primary/40 rounded-full px-4 py-1">
-              {isAlbumOnly ? (
+              {isAlbumWithEnvelopes ? (
+                <span className="text-[11px] font-display tracking-[0.15em] uppercase text-foreground/60">
+                  PANINI · FIFA WORLD CUP 2026™ · ÁLBUM + ENVELOPES
+                </span>
+              ) : isAlbumOnly ? (
                 <span className="text-[11px] font-display tracking-[0.15em] uppercase text-foreground/60">
                   PANINI · FIFA WORLD CUP 2026™ · ÁLBUM OFICIAL
                 </span>
@@ -355,7 +374,14 @@ const ProductDetail = () => {
               {node.title}
             </h1>
 
-            {isAlbumOnly ? (
+            {isAlbumWithEnvelopes ? (
+              <p className="text-muted-foreground leading-relaxed font-body text-sm">
+                Combo de início da coleção FIFA World Cup 2026™: 1 álbum oficial Panini em formato {comboAlbumLabel} (112 páginas)
+                + {envelopeCount} envelopes lacrados com 7 cromos cada — {totalFigurinhas} figurinhas para começar a colar.
+                A coleção completa tem 980 cromos das 48 seleções do Mundial no México, EUA e Canadá.
+                Produto licenciado, pronta entrega e envio para todo o Brasil.
+              </p>
+            ) : isAlbumOnly ? (
               <p className="text-muted-foreground leading-relaxed font-body text-sm">
                 Álbum oficial Panini da FIFA World Cup 2026™ na versão {albumDescriptionPhrase}.
                 112 páginas + capa para colar os 980 cromos da coleção (68 especiais), com todas as 48
@@ -389,7 +415,7 @@ const ProductDetail = () => {
               );
             })()}
 
-            {(isAlbumOnly || isEnvelopesOnly) ? (
+            {(isAlbumOnly || isEnvelopesOnly || isAlbumWithEnvelopes) ? (
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4 text-primary" />
                 <span className="text-sm text-muted-foreground font-body">Distribuidor oficial Panini · Produto licenciado FIFA</span>
@@ -469,6 +495,21 @@ const ProductDetail = () => {
               { emoji: "🃏", value: "980", label: "Cromos na coleção" },
               { emoji: "✨", value: "68", label: "Cromos especiais" },
               { emoji: "🏴", value: "48", label: "Seleções participantes" },
+            ].map((stat) => (
+              <div key={stat.label} className="bg-card border border-border rounded-2xl p-6 text-center space-y-2 hover:border-primary/40 transition-colors">
+                <span className="text-3xl">{stat.emoji}</span>
+                <p className="font-display text-3xl tracking-wide text-foreground">{stat.value}</p>
+                <p className="text-xs text-muted-foreground font-body">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        ) : isAlbumWithEnvelopes ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+            {[
+              { emoji: "📕", value: "1", label: `Álbum ${comboAlbumLabel}` },
+              { emoji: "✉️", value: String(envelopeCount), label: "Envelopes lacrados" },
+              { emoji: "🃏", value: String(totalFigurinhas), label: "Cromos pra começar" },
+              { emoji: "📚", value: "980", label: "Coleção completa" },
             ].map((stat) => (
               <div key={stat.label} className="bg-card border border-border rounded-2xl p-6 text-center space-y-2 hover:border-primary/40 transition-colors">
                 <span className="text-3xl">{stat.emoji}</span>
@@ -692,7 +733,91 @@ const ProductDetail = () => {
           </>
         )}
 
-        {!isAlbumOnly && !isEnvelopesOnly && (
+        {isAlbumWithEnvelopes && (
+          <>
+            <section className="mt-16">
+              <div className="inline-block bg-primary/10 border border-primary/40 rounded-full px-4 py-1 mb-3">
+                <span className="text-[11px] font-display tracking-[0.15em] uppercase text-primary">
+                  CONTEÚDO DO COMBO
+                </span>
+              </div>
+              <h2 className="font-display text-2xl md:text-3xl tracking-wider uppercase mb-6">
+                O que você vai receber
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="bg-card border border-border rounded-2xl p-6 text-center">
+                  <div className="text-5xl mb-2">📕</div>
+                  <p className="font-display text-2xl tracking-wide">1 álbum</p>
+                  <p className="text-sm text-muted-foreground font-body mt-1">{comboAlbumLabel.charAt(0).toUpperCase() + comboAlbumLabel.slice(1)} · 112 páginas</p>
+                </div>
+                <div className="bg-card border border-border rounded-2xl p-6 text-center">
+                  <div className="text-5xl mb-2">✉️</div>
+                  <p className="font-display text-2xl tracking-wide">{envelopeCount} envelopes</p>
+                  <p className="text-sm text-muted-foreground font-body mt-1">{totalFigurinhas} cromos no total</p>
+                </div>
+              </div>
+              <div className="bg-primary/10 border-2 border-primary/30 rounded-2xl p-6 text-center mb-6">
+                <p className="text-sm font-body text-muted-foreground mb-2">{envelopeCount} envelopes × 7 cromos</p>
+                <p className="font-display text-4xl md:text-5xl tracking-wide text-primary">= {totalFigurinhas} figurinhas</p>
+                <p className="text-sm font-body text-muted-foreground mt-2">para começar a montar o álbum</p>
+              </div>
+              <div className="bg-card border border-border rounded-2xl p-6 mb-6">
+                <ul className="space-y-3 font-body text-sm">
+                  {[
+                    <><strong>1 álbum oficial Panini</strong> em formato {comboAlbumLabel}, 112 páginas + capa, dimensões 232 × 270 mm</>,
+                    <><strong>{envelopeCount} envelopes lacrados</strong> no formato 80 × 100 mm</>,
+                    <><strong>{totalFigurinhas} cromos</strong> das 48 seleções do Mundial 2026 (formato 49 × 65 mm)</>,
+                    <><strong>Chance de cromos especiais</strong> em papel metalizado (68 na coleção completa de 980)</>,
+                    <><strong>Produto licenciado FIFA</strong> e produzido pela Panini Brasil</>,
+                  ].map((content, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <div className="w-2 h-2 rounded-full bg-green-600" />
+                      </div>
+                      <span>{content}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+
+            <section className="mt-16">
+              <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
+                <div className="inline-block bg-primary/10 border border-primary/40 rounded-full px-4 py-1 mb-3">
+                  <span className="text-[11px] font-display tracking-[0.15em] uppercase text-primary">
+                    PLANO DE COLEÇÃO
+                  </span>
+                </div>
+                <h2 className="font-display text-2xl md:text-3xl tracking-wider uppercase mb-4">
+                  Este combo é o ponto de partida
+                </h2>
+                <div className="bg-muted/30 rounded-xl p-5 mb-4">
+                  <div className="flex justify-between items-baseline mb-2">
+                    <span className="text-sm font-body text-muted-foreground">Cromos neste combo</span>
+                    <span className="font-display text-lg tracking-wide">{totalFigurinhas} de 980</span>
+                  </div>
+                  <div className="bg-background h-2 rounded-full overflow-hidden">
+                    <div className="bg-primary h-full" style={{ width: `${percentColecao}%` }} />
+                  </div>
+                  <p className="text-xs text-muted-foreground font-body mt-2">
+                    ~{percentColecao}% do álbum (sem contar figurinhas repetidas)
+                  </p>
+                </div>
+                <p className="font-body text-foreground/80 leading-relaxed mb-4">
+                  Como os cromos vêm aleatórios e repetem com frequência, dificilmente se completa o álbum apenas comprando
+                  envelopes. O caminho realista para completar a coleção é combinar este combo inicial com mais kits, envelopes
+                  avulsos e trocas com outros colecionadores.
+                </p>
+                <Link to="/" className="inline-flex items-center gap-2 text-primary font-display text-sm tracking-wider uppercase hover:underline">
+                  Ver kits maiores e envelopes avulsos
+                  <ArrowLeft className="w-4 h-4 rotate-180" />
+                </Link>
+              </div>
+            </section>
+          </>
+        )}
+
+        {!isAlbumOnly && !isEnvelopesOnly && !isAlbumWithEnvelopes && (
           <>
             {/* ─── Envelope content section ─── */}
             <EnvelopeContent
@@ -736,6 +861,30 @@ const ProductDetail = () => {
               >
                 <ShoppingCart className="w-5 h-5 mr-2" />
                 Comprar álbum agora ↑
+              </Button>
+            </div>
+          </section>
+        ) : isAlbumWithEnvelopes ? (
+          <section className="mt-16">
+            <div className="bg-gradient-yellow rounded-3xl p-8 md:p-12 text-center shadow-yellow-lg">
+              <p className="text-xs font-display tracking-widest uppercase text-primary-foreground/80 mb-2">
+                PRÉ-VENDA · ENTREGA ANTES DA COPA
+              </p>
+              <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-primary-foreground mb-3">
+                Comece sua coleção da Copa
+              </h2>
+              <p className="font-body text-primary-foreground/90 mb-6 max-w-xl mx-auto">
+                1 álbum oficial + {envelopeCount} envelopes com {totalFigurinhas} cromos pra começar antes do Mundial.
+                Tudo o que você precisa para iniciar a coleção.
+              </p>
+              <Button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                size="lg"
+                variant="outline"
+                className="bg-white text-primary border-white hover:bg-white/90 font-display text-lg tracking-wider uppercase px-8 py-6"
+              >
+                <ShoppingCart className="w-5 h-5 mr-2" />
+                Comprar combo agora ↑
               </Button>
             </div>
           </section>
