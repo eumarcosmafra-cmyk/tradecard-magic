@@ -93,6 +93,29 @@ const albumCapaDuraOuroFaqItems: FaqItem[] = [
   },
 ];
 
+const albumCapaDuraTradicionalFaqItems: FaqItem[] = [
+  {
+    q: "Este produto vem com envelopes ou figurinhas?",
+    a: "Não. Este produto contém apenas o álbum oficial em capa dura tradicional. Os envelopes com figurinhas (7 cromos cada) são vendidos separadamente. Para completar a coleção, você pode comprar envelopes avulsos, kits ou caixas na Bella Figurinha.",
+  },
+  {
+    q: "Qual a diferença entre o capa dura tradicional e a versão brochura?",
+    a: "O conteúdo interno é o mesmo nas duas versões: 112 páginas + capa, com espaço para os 980 cromos da coleção. A diferença é a construção: a versão brochura tem capa flexível em 4 cores, enquanto a capa dura tradicional tem capa rígida, mais resistente para o uso e armazenamento de longo prazo.",
+  },
+  {
+    q: "Qual a diferença entre a capa dura tradicional e as versões metalizadas (ouro e prata)?",
+    a: "O conteúdo interno é idêntico nas três versões — 112 páginas + capa para os 980 cromos. A diferença é puramente estética. A capa dura tradicional traz o acabamento clássico da edição em capa rígida, sem efeito metalizado. As versões ouro e prata têm acabamento metalizado e geralmente são posicionadas como edições premium da Panini. A escolha é uma questão de preferência visual e orçamento.",
+  },
+  {
+    q: "Quando o produto será enviado?",
+    a: "Este produto está em pré-venda com previsão de envio em 25 de maio de 2026, antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026).",
+  },
+  {
+    q: "É um produto oficial Panini?",
+    a: "Sim, é o álbum oficial licenciado pela FIFA e produzido pela Panini Brasil. A Bella Figurinha é distribuidora oficial Panini — todos os produtos vêm direto da editora, sem revenda de marketplace.",
+  },
+];
+
 const albumCapaDuraPrataFaqItems: FaqItem[] = [
   {
     q: "Este produto vem com envelopes ou figurinhas?",
