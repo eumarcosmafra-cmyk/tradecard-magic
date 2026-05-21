@@ -864,6 +864,30 @@ const ProductDetail = () => {
               </Button>
             </div>
           </section>
+        ) : isAlbumWithEnvelopes ? (
+          <section className="mt-16">
+            <div className="bg-gradient-yellow rounded-3xl p-8 md:p-12 text-center shadow-yellow-lg">
+              <p className="text-xs font-display tracking-widest uppercase text-primary-foreground/80 mb-2">
+                PRÉ-VENDA · ENTREGA ANTES DA COPA
+              </p>
+              <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-primary-foreground mb-3">
+                Comece sua coleção da Copa
+              </h2>
+              <p className="font-body text-primary-foreground/90 mb-6 max-w-xl mx-auto">
+                1 álbum oficial + {envelopeCount} envelopes com {totalFigurinhas} cromos pra começar antes do Mundial.
+                Tudo o que você precisa para iniciar a coleção.
+              </p>
+              <Button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                size="lg"
+                variant="outline"
+                className="bg-white text-primary border-white hover:bg-white/90 font-display text-lg tracking-wider uppercase px-8 py-6"
+              >
+                <ShoppingCart className="w-5 h-5 mr-2" />
+                Comprar combo agora ↑
+              </Button>
+            </div>
+          </section>
         ) : isEnvelopesOnly ? (
           <section className="mt-16">
             <div className="bg-gradient-yellow rounded-3xl p-8 md:p-12 text-center shadow-yellow-lg">
