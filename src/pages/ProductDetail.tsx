@@ -331,7 +331,7 @@ const ProductDetail = () => {
 
             {isAlbumOnly ? (
               <p className="text-muted-foreground leading-relaxed font-body text-sm">
-                Álbum oficial Panini da FIFA World Cup 2026™ com capa dura e acabamento metalizado {albumColorAdj}.
+                Álbum oficial Panini da FIFA World Cup 2026™ na versão {albumDescriptionPhrase}.
                 112 páginas + capa para colar os 980 cromos da coleção (68 especiais), com todas as 48
                 seleções que disputam o Mundial no México, Estados Unidos e Canadá. Produto licenciado,
                 pronta entrega e envio para todo o Brasil.
