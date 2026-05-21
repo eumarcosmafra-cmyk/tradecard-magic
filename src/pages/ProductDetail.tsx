@@ -128,12 +128,20 @@ const ProductDetail = () => {
   const productCategory = getProductCategory(handle || "");
   const isAlbumOnly = productCategory === "album-only";
   const _h = (handle || "").toLowerCase();
-  const isAlbumTradicional = isAlbumOnly && _h.includes("album-capa-dura") && _h.endsWith("-copy") && !_h.includes("prata");
-  const isAlbumPrata = isAlbumOnly && !isAlbumTradicional && _h.includes("prata");
-  const albumColorAdj = isAlbumTradicional ? "tradicional" : isAlbumPrata ? "prateado" : "dourado";
-  const albumColorNoun = isAlbumTradicional ? "tradicional" : isAlbumPrata ? "prata" : "ouro";
-  const albumFinishLabel = isAlbumTradicional ? "Capa dura · 4 cores" : `Metalizado ${albumColorAdj} · 4 cores`;
-  const albumDescriptionPhrase = isAlbumTradicional
+  const isAlbumBrochura = isAlbumOnly && (_h.includes("album-brochura") || _h.includes("album-capa-cartao"));
+  const isAlbumTradicional = isAlbumOnly && !isAlbumBrochura && _h.includes("album-capa-dura") && _h.endsWith("-copy") && !_h.includes("prata");
+  const isAlbumPrata = isAlbumOnly && !isAlbumBrochura && !isAlbumTradicional && _h.includes("prata");
+  const albumColorAdj = isAlbumBrochura ? "brochura" : isAlbumTradicional ? "tradicional" : isAlbumPrata ? "prateado" : "dourado";
+  const albumColorNoun = isAlbumBrochura ? "brochura" : isAlbumTradicional ? "tradicional" : isAlbumPrata ? "prata" : "ouro";
+  const albumFinishLabel = isAlbumBrochura
+    ? "Capa flexível · 4 cores"
+    : isAlbumTradicional
+    ? "Capa dura · 4 cores"
+    : `Metalizado ${albumColorAdj} · 4 cores`;
+  const albumFormatLabel = isAlbumBrochura ? "Brochura · 232 × 270 mm" : "Capa dura · 232 × 270 mm";
+  const albumDescriptionPhrase = isAlbumBrochura
+    ? "brochura (capa flexível)"
+    : isAlbumTradicional
     ? "capa dura tradicional"
     : `capa dura com acabamento metalizado ${albumColorAdj}`;
 
