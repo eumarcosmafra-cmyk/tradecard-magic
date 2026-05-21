@@ -138,6 +138,20 @@ const ProductDetail = () => {
   const productCategory = getProductCategory(handle || "");
   const isAlbumOnly = productCategory === "album-only";
   const isEnvelopesOnly = productCategory === "envelopes-only";
+  const isAlbumWithEnvelopes = productCategory === "album-with-envelopes";
+  const comboAlbumType: "brochura" | "capa-dura" | "capa-dura-ouro" | "capa-dura-prata" = (() => {
+    const h = (handle || "").toLowerCase();
+    if (h.includes("capa-dura-ouro")) return "capa-dura-ouro";
+    if (h.includes("capa-dura-prata")) return "capa-dura-prata";
+    if (h.includes("capa-dura")) return "capa-dura";
+    return "brochura";
+  })();
+  const comboAlbumLabel = {
+    "brochura": "brochura",
+    "capa-dura": "capa dura",
+    "capa-dura-ouro": "capa dura ouro",
+    "capa-dura-prata": "capa dura prata",
+  }[comboAlbumType];
   const _h = (handle || "").toLowerCase();
   const isAlbumBrochura = isAlbumOnly && (_h.includes("album-brochura") || _h.includes("album-capa-cartao"));
   const isAlbumTradicional = isAlbumOnly && !isAlbumBrochura && _h.includes("album-capa-dura") && _h.endsWith("-copy") && !_h.includes("prata");
