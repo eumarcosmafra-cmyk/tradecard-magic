@@ -450,7 +450,7 @@ const ProductDetail = () => {
             <div className="bg-card border border-border rounded-2xl p-5 hover:border-primary/40 transition-colors">
               <Truck className="w-8 h-8 text-green-600 mb-3" />
               <p className="font-display text-base tracking-wide uppercase mb-1">Pronta entrega</p>
-              <p className="text-sm text-muted-foreground font-body">Postagem em até 24h úteis após confirmação do pagamento.</p>
+              <p className="text-sm text-muted-foreground font-body">Enviamos para todo o Brasil com agilidade e segurança.</p>
             </div>
             <div className="bg-card border border-border rounded-2xl p-5 hover:border-primary/40 transition-colors">
               <CreditCard className="w-8 h-8 text-green-600 mb-3" />
