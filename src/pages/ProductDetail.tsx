@@ -11,6 +11,8 @@ import { Loader2, ShoppingCart, ArrowLeft, Zap, Star, Shield, Truck, RefreshCw, 
 import { toast } from "sonner";
 import { getArrivalDate } from "@/lib/arrivalDate";
 import { ProductFAQ, getFaqItemsForHandle } from "@/components/ProductFAQ";
+import albumBrochuraImg from "@/assets/album-brochura.jpg";
+import envelopes24Img from "@/assets/envelopes-24.jpg";
 
 /* ─── Sub-components ─── */
 
@@ -387,12 +389,16 @@ const ProductDetail = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <div className="bg-card border border-border rounded-2xl p-6 text-center">
-              <div className="text-5xl mb-2">📕</div>
+              <div className="aspect-square w-full max-w-[260px] mx-auto mb-3 flex items-center justify-center">
+                <img src={albumBrochuraImg} alt="Álbum Brochura oficial Panini FIFA World Cup 2026" className="w-full h-full object-contain" loading="lazy" />
+              </div>
               <p className="font-display text-4xl tracking-wide">1</p>
               <p className="text-sm text-muted-foreground font-body mt-1">Álbum brochura oficial</p>
             </div>
             <div className="bg-card border border-border rounded-2xl p-6 text-center">
-              <div className="text-5xl mb-2">✉️</div>
+              <div className="aspect-square w-full max-w-[260px] mx-auto mb-3 flex items-center justify-center">
+                <img src={envelopes24Img} alt="24 envelopes lacrados Panini FIFA World Cup 2026" className="w-full h-full object-contain" loading="lazy" />
+              </div>
               <p className="font-display text-4xl tracking-wide">24</p>
               <p className="text-sm text-muted-foreground font-body mt-1">Envelopes lacrados</p>
             </div>
