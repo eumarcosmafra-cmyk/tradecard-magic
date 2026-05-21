@@ -494,7 +494,7 @@ const ProductDetail = () => {
                 </div>
                 <div className="flex justify-between border-b border-border pb-2">
                   <span className="text-muted-foreground">Acabamento</span>
-                  <span className="font-medium text-right">Metalizado {albumColorAdj} · 4 cores</span>
+                  <span className="font-medium text-right">{albumFinishLabel}</span>
                 </div>
                 <div className="flex justify-between border-b border-border pb-2">
                   <span className="text-muted-foreground">Páginas</span>
