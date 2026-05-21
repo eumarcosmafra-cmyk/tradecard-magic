@@ -598,7 +598,101 @@ const ProductDetail = () => {
           </section>
         )}
 
-        {!isAlbumOnly && (
+        {isEnvelopesOnly && (
+          <>
+            <section className="mt-16">
+              <div className="inline-block bg-primary/10 border border-primary/40 rounded-full px-4 py-1 mb-3">
+                <span className="text-[11px] font-display tracking-[0.15em] uppercase text-primary">
+                  CONTEÚDO DO KIT
+                </span>
+              </div>
+              <h2 className="font-display text-2xl md:text-3xl tracking-wider uppercase mb-6">
+                O que você vai receber
+              </h2>
+              <div className="bg-primary/10 border-2 border-primary/30 rounded-2xl p-6 text-center mb-6">
+                <p className="text-sm font-body text-muted-foreground mb-2">{envelopeCount} envelopes × 7 cromos</p>
+                <p className="font-display text-4xl md:text-5xl tracking-wide text-primary">= {totalFigurinhas} figurinhas</p>
+                <p className="text-sm font-body text-muted-foreground mt-2">para colar no álbum oficial</p>
+              </div>
+              <div className="bg-card border border-border rounded-2xl p-6 mb-6">
+                <ul className="space-y-3 font-body text-sm">
+                  {[
+                    <><strong>{envelopeCount} envelopes lacrados</strong> no formato 80 × 100 mm</>,
+                    <><strong>7 cromos por envelope</strong> no formato 49 × 65 mm</>,
+                    <><strong>Cromos das 48 seleções</strong> participantes do Mundial 2026 (México, EUA e Canadá)</>,
+                    <><strong>Chance de cromos especiais</strong> em papel metalizado (68 na coleção completa)</>,
+                    <><strong>Produto licenciado FIFA</strong> e produzido pela Panini Brasil</>,
+                  ].map((content, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <div className="w-2 h-2 rounded-full bg-green-600" />
+                      </div>
+                      <span>{content}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bg-card border border-border rounded-2xl p-6">
+                <p className="text-xs font-display tracking-widest uppercase text-muted-foreground mb-4">Ficha técnica</p>
+                <div className="space-y-2 text-sm font-body">
+                  <div className="flex justify-between border-b border-border pb-2">
+                    <span className="text-muted-foreground">Envelopes no kit</span>
+                    <span className="font-medium text-right">{envelopeCount} unidades lacradas</span>
+                  </div>
+                  <div className="flex justify-between border-b border-border pb-2">
+                    <span className="text-muted-foreground">Formato do envelope</span>
+                    <span className="font-medium text-right">80 × 100 mm</span>
+                  </div>
+                  <div className="flex justify-between border-b border-border pb-2">
+                    <span className="text-muted-foreground">Cromos por envelope</span>
+                    <span className="font-medium text-right">7 figurinhas</span>
+                  </div>
+                  <div className="flex justify-between border-b border-border pb-2">
+                    <span className="text-muted-foreground">Total de figurinhas</span>
+                    <span className="font-medium text-right">{totalFigurinhas} cromos</span>
+                  </div>
+                  <div className="flex justify-between border-b border-border pb-2">
+                    <span className="text-muted-foreground">Formato do cromo</span>
+                    <span className="font-medium text-right">49 × 65 mm</span>
+                  </div>
+                  <div className="flex justify-between border-b border-border pb-2">
+                    <span className="text-muted-foreground">Coleção completa</span>
+                    <span className="font-medium text-right">980 cromos (68 especiais)</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Editora</span>
+                    <span className="font-medium text-right">Panini · Licenciado FIFA™</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section className="mt-16">
+              <div className="bg-primary/5 border border-primary/30 rounded-2xl p-6 md:p-8">
+                <div className="flex items-start gap-4">
+                  <div className="text-4xl flex-shrink-0">📕</div>
+                  <div className="flex-1">
+                    <p className="text-xs font-display tracking-widest uppercase text-primary mb-2">ATENÇÃO</p>
+                    <h3 className="font-display text-xl md:text-2xl tracking-wide uppercase mb-2 text-foreground">
+                      Este produto não inclui o álbum
+                    </h3>
+                    <p className="font-body text-foreground/80 leading-relaxed mb-4">
+                      Este kit contém apenas os {envelopeCount} envelopes com figurinhas. Para colar os cromos,
+                      você precisa do álbum oficial da Copa do Mundo 2026, vendido separadamente em três versões:
+                      brochura (capa flexível), capa dura comum e capa dura com acabamento metalizado (Ouro ou Prata).
+                    </p>
+                    <Link to="/" className="inline-flex items-center gap-2 text-primary font-display text-sm tracking-wider uppercase hover:underline">
+                      Ver álbuns disponíveis
+                      <ArrowLeft className="w-4 h-4 rotate-180" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </>
+        )}
+
+        {!isAlbumOnly && !isEnvelopesOnly && (
           <>
             {/* ─── Envelope content section ─── */}
             <EnvelopeContent
