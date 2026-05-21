@@ -340,6 +340,10 @@ const ProductDetail = () => {
                 <span className="text-[11px] font-display tracking-[0.15em] uppercase text-foreground/60">
                   PANINI · FIFA WORLD CUP 2026™ · ÁLBUM OFICIAL
                 </span>
+              ) : isEnvelopesOnly ? (
+                <span className="text-[11px] font-display tracking-[0.15em] uppercase text-foreground/60">
+                  PANINI · FIFA WORLD CUP 2026™ · ENVELOPES OFICIAIS
+                </span>
               ) : (
                 <span className="text-[11px] font-display tracking-[0.15em] uppercase text-foreground/60">
                   PANINI · FIFA WORLD CUP 2026™ · ADRENALYN XL™
