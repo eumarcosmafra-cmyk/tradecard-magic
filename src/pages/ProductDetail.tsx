@@ -213,6 +213,8 @@ const ProductDetail = () => {
   const { node } = product;
   const images = node.images.edges;
   const variants = node.variants.edges;
+  const envelopeCount = isEnvelopesOnly ? extractEnvelopeCount(node.title, handle || "") : 0;
+  const totalFigurinhas = envelopeCount * 7;
   const selectedVariant = variants[selectedVariantIndex]?.node;
   const selectedImage = images[selectedImageIndex]?.node;
 
