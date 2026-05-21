@@ -281,7 +281,7 @@ const ProductDetail = () => {
             {/* Breadcrumb badge */}
             <div className="inline-block border border-primary/40 rounded-full px-4 py-1">
               <span className="text-[11px] font-display tracking-[0.15em] uppercase text-foreground/60">
-                PANINI · FIFA WORLD CUP 2026™ · ADRENALYN XL™
+                PANINI · FIFA WORLD CUP 2026™ · ÁLBUM OFICIAL
               </span>
             </div>
 
@@ -290,7 +290,7 @@ const ProductDetail = () => {
             </h1>
 
             <p className="text-muted-foreground leading-relaxed font-body text-sm">
-              Álbum oficial Panini da FIFA World Cup 2026™ acompanhado de envelopes lacrados com figurinhas originais. Produto licenciado, pronta entrega e envio para todo o Brasil.
+              Álbum brochura oficial Panini da FIFA World Cup 2026™ acompanhado de 24 envelopes lacrados com 7 cromos cada — 168 figurinhas no total. Produto licenciado, pronta entrega e envio para todo o Brasil.
             </p>
 
             {(() => {
@@ -307,7 +307,10 @@ const ProductDetail = () => {
               );
             })()}
 
-            <RatingBadge />
+            <div className="flex items-center gap-2">
+              <Shield className="w-4 h-4 text-primary" />
+              <span className="text-sm text-muted-foreground font-body">Distribuidor oficial Panini</span>
+            </div>
 
             {/* Price box */}
             {selectedVariant && (
