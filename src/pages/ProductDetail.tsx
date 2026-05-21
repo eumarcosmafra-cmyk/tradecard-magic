@@ -733,7 +733,91 @@ const ProductDetail = () => {
           </>
         )}
 
-        {!isAlbumOnly && !isEnvelopesOnly && (
+        {isAlbumWithEnvelopes && (
+          <>
+            <section className="mt-16">
+              <div className="inline-block bg-primary/10 border border-primary/40 rounded-full px-4 py-1 mb-3">
+                <span className="text-[11px] font-display tracking-[0.15em] uppercase text-primary">
+                  CONTEÚDO DO COMBO
+                </span>
+              </div>
+              <h2 className="font-display text-2xl md:text-3xl tracking-wider uppercase mb-6">
+                O que você vai receber
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="bg-card border border-border rounded-2xl p-6 text-center">
+                  <div className="text-5xl mb-2">📕</div>
+                  <p className="font-display text-2xl tracking-wide">1 álbum</p>
+                  <p className="text-sm text-muted-foreground font-body mt-1">{comboAlbumLabel.charAt(0).toUpperCase() + comboAlbumLabel.slice(1)} · 112 páginas</p>
+                </div>
+                <div className="bg-card border border-border rounded-2xl p-6 text-center">
+                  <div className="text-5xl mb-2">✉️</div>
+                  <p className="font-display text-2xl tracking-wide">{envelopeCount} envelopes</p>
+                  <p className="text-sm text-muted-foreground font-body mt-1">{totalFigurinhas} cromos no total</p>
+                </div>
+              </div>
+              <div className="bg-primary/10 border-2 border-primary/30 rounded-2xl p-6 text-center mb-6">
+                <p className="text-sm font-body text-muted-foreground mb-2">{envelopeCount} envelopes × 7 cromos</p>
+                <p className="font-display text-4xl md:text-5xl tracking-wide text-primary">= {totalFigurinhas} figurinhas</p>
+                <p className="text-sm font-body text-muted-foreground mt-2">para começar a montar o álbum</p>
+              </div>
+              <div className="bg-card border border-border rounded-2xl p-6 mb-6">
+                <ul className="space-y-3 font-body text-sm">
+                  {[
+                    <><strong>1 álbum oficial Panini</strong> em formato {comboAlbumLabel}, 112 páginas + capa, dimensões 232 × 270 mm</>,
+                    <><strong>{envelopeCount} envelopes lacrados</strong> no formato 80 × 100 mm</>,
+                    <><strong>{totalFigurinhas} cromos</strong> das 48 seleções do Mundial 2026 (formato 49 × 65 mm)</>,
+                    <><strong>Chance de cromos especiais</strong> em papel metalizado (68 na coleção completa de 980)</>,
+                    <><strong>Produto licenciado FIFA</strong> e produzido pela Panini Brasil</>,
+                  ].map((content, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <div className="w-2 h-2 rounded-full bg-green-600" />
+                      </div>
+                      <span>{content}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+
+            <section className="mt-16">
+              <div className="bg-card border border-border rounded-2xl p-6 md:p-8">
+                <div className="inline-block bg-primary/10 border border-primary/40 rounded-full px-4 py-1 mb-3">
+                  <span className="text-[11px] font-display tracking-[0.15em] uppercase text-primary">
+                    PLANO DE COLEÇÃO
+                  </span>
+                </div>
+                <h2 className="font-display text-2xl md:text-3xl tracking-wider uppercase mb-4">
+                  Este combo é o ponto de partida
+                </h2>
+                <div className="bg-muted/30 rounded-xl p-5 mb-4">
+                  <div className="flex justify-between items-baseline mb-2">
+                    <span className="text-sm font-body text-muted-foreground">Cromos neste combo</span>
+                    <span className="font-display text-lg tracking-wide">{totalFigurinhas} de 980</span>
+                  </div>
+                  <div className="bg-background h-2 rounded-full overflow-hidden">
+                    <div className="bg-primary h-full" style={{ width: `${percentColecao}%` }} />
+                  </div>
+                  <p className="text-xs text-muted-foreground font-body mt-2">
+                    ~{percentColecao}% do álbum (sem contar figurinhas repetidas)
+                  </p>
+                </div>
+                <p className="font-body text-foreground/80 leading-relaxed mb-4">
+                  Como os cromos vêm aleatórios e repetem com frequência, dificilmente se completa o álbum apenas comprando
+                  envelopes. O caminho realista para completar a coleção é combinar este combo inicial com mais kits, envelopes
+                  avulsos e trocas com outros colecionadores.
+                </p>
+                <Link to="/" className="inline-flex items-center gap-2 text-primary font-display text-sm tracking-wider uppercase hover:underline">
+                  Ver kits maiores e envelopes avulsos
+                  <ArrowLeft className="w-4 h-4 rotate-180" />
+                </Link>
+              </div>
+            </section>
+          </>
+        )}
+
+        {!isAlbumOnly && !isEnvelopesOnly && !isAlbumWithEnvelopes && (
           <>
             {/* ─── Envelope content section ─── */}
             <EnvelopeContent
