@@ -165,6 +165,46 @@ const albumBrochuraFaqItems: FaqItem[] = [
 export function getFaqItemsForHandle(handle?: string): FaqItem[] {
   const h = handle?.toLowerCase() || "";
 
+  if (h.includes("album") && h.includes("envelope")) {
+    const match = h.match(/(\d+)[-_]?\s*envelope/);
+    const count = match ? parseInt(match[1], 10) : 12;
+    const total = count * 7;
+    const percent = ((total / 980) * 100).toFixed(1);
+    const albumType = h.includes("capa-dura-ouro")
+      ? "capa dura ouro"
+      : h.includes("capa-dura-prata")
+      ? "capa dura prata"
+      : h.includes("capa-dura")
+      ? "capa dura"
+      : "brochura";
+    return [
+      {
+        q: "O álbum desse kit é o brochura ou capa dura?",
+        a: `Este combo vem com o álbum oficial no formato ${albumType}. Se preferir outra versão (brochura, capa dura comum, capa dura ouro ou prata), verifique os outros produtos disponíveis na Bella Figurinha — todos têm o mesmo conteúdo interno (112 páginas, 980 espaços).`,
+      },
+      {
+        q: "Quantas figurinhas vêm no total?",
+        a: `São ${total} figurinhas no total: ${count} envelopes lacrados × 7 cromos por envelope = ${total} cromos. Eles vêm distribuídos aleatoriamente entre as 48 seleções da Copa do Mundo 2026.`,
+      },
+      {
+        q: `${total} cromos é suficiente para completar o álbum?`,
+        a: `Não. A coleção completa tem 980 cromos, então ${total} cromos preenchem apenas cerca de ${percent}% do álbum (e isso sem contar as figurinhas repetidas que costumam aparecer). Este combo é o ponto de partida ideal para começar a colar — para completar, você vai precisar comprar mais envelopes ou fazer trocas com outros colecionadores.`,
+      },
+      {
+        q: "As figurinhas vêm repetidas?",
+        a: "Os envelopes são lacrados de fábrica pela Panini e a distribuição dos cromos é aleatória. Comprando vários envelopes, é normal aparecerem figurinhas repetidas — é parte do processo de colecionar. As repetidas geralmente são usadas para troca com outros colecionadores.",
+      },
+      {
+        q: "Vale mais a pena este combo ou comprar álbum e envelopes separados?",
+        a: "Depende. Se você está começando do zero e quer abrir tudo de uma vez, o combo é mais prático e geralmente sai com preço melhor que comprar separado. Se você já tem o álbum, vale comprar só envelopes avulsos. Se já tem envelopes, compre só o álbum.",
+      },
+      {
+        q: "Quando o produto será enviado?",
+        a: "Este produto está em pré-venda. A previsão de envio aparece em destaque no topo da página. O envio é feito antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026).",
+      },
+    ];
+  }
+
   if ((h.includes("envelope") || h.includes("kit") || h.includes("caixa")) && !h.includes("album")) {
     const match = h.match(/(\d+)[-_]?\s*envelope/) || h.match(/kit[- ]?(\d+)/);
     const count = match ? parseInt(match[1], 10) : 12;
