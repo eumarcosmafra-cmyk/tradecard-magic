@@ -26,7 +26,7 @@ const albumBrochuraFaqItems: FaqItem[] = [
   },
   {
     q: "O que vem exatamente no kit?",
-    a: "O kit contém 1 álbum capa-cartão (capa dura em formato brochura) com 80 páginas para colar as figurinhas + 24 envelopes lacrados da coleção FIFA World Cup 2026™, cada um com 7 cromos. Total de 168 figurinhas.",
+    a: "O kit contém 1 álbum capa-cartão (capa dura em formato brochura) com 112 páginas para colar as figurinhas + 24 envelopes lacrados da coleção FIFA World Cup 2026™, cada um com 7 cromos. Total de 168 figurinhas.",
   },
   {
     q: "As figurinhas são autocolantes?",
@@ -34,7 +34,7 @@ const albumBrochuraFaqItems: FaqItem[] = [
   },
   {
     q: "O álbum tem espaço para toda a coleção?",
-    a: "Sim. O álbum capa-cartão tem 80 páginas e acomoda toda a coleção completa da FIFA World Cup 2026™. Mesmo que o kit venha com 168 cromos, o álbum comporta todas as figurinhas da coleção para você completar depois.",
+    a: "Sim. O álbum capa-cartão tem 112 páginas e acomoda toda a coleção completa da FIFA World Cup 2026™. Mesmo que o kit venha com 168 cromos, o álbum comporta todas as figurinhas da coleção para você completar depois.",
   },
   {
     q: "Posso escolher as figurinhas que vêm nos envelopes?",
