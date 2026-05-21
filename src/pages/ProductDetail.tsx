@@ -297,9 +297,9 @@ const ProductDetail = () => {
               {node.title}
             </h1>
 
-            {node.description && (
-              <p className="text-muted-foreground leading-relaxed font-body text-sm">{node.description}</p>
-            )}
+            <p className="text-muted-foreground leading-relaxed font-body text-sm">
+              Álbum oficial Panini da FIFA World Cup 2026™ acompanhado de envelopes lacrados com figurinhas originais. Produto licenciado, pronta entrega e envio para todo o Brasil.
+            </p>
 
             {(() => {
               const arrivalDate = getArrivalDate(node.title);
