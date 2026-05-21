@@ -165,6 +165,38 @@ const albumBrochuraFaqItems: FaqItem[] = [
 export function getFaqItemsForHandle(handle?: string): FaqItem[] {
   const h = handle?.toLowerCase() || "";
 
+  if ((h.includes("envelope") || h.includes("kit") || h.includes("caixa")) && !h.includes("album")) {
+    const match = h.match(/(\d+)[-_]?\s*envelope/) || h.match(/kit[- ]?(\d+)/);
+    const count = match ? parseInt(match[1], 10) : 12;
+    const total = count * 7;
+    return [
+      {
+        q: "O álbum vem incluído neste kit?",
+        a: `Não. Este produto contém apenas ${count} envelopes lacrados com figurinhas (7 cromos por envelope). O álbum oficial é vendido separadamente — você pode escolher entre as versões brochura, capa dura comum, capa dura ouro ou capa dura prata na Bella Figurinha.`,
+      },
+      {
+        q: "Quantas figurinhas vêm no total?",
+        a: `São ${total} figurinhas no total. Cada envelope contém 7 cromos originais Panini, e o kit traz ${count} envelopes lacrados (${count} × 7 = ${total} cromos).`,
+      },
+      {
+        q: "Quantos envelopes preciso para completar o álbum?",
+        a: "A coleção completa tem 980 cromos. Em teoria, seriam necessários cerca de 140 envelopes — mas na prática, como os cromos vêm aleatórios, são necessários muito mais envelopes que isso para completar sem trocas. A forma mais eficiente de completar é combinar a compra de envelopes com trocas com outros colecionadores.",
+      },
+      {
+        q: "As figurinhas vêm repetidas?",
+        a: "Os envelopes são lacrados de fábrica pela Panini e a distribuição dos cromos é aleatória. Comprando vários envelopes, é normal aparecerem figurinhas repetidas — é parte do processo de colecionar. A Bella Figurinha não escolhe nem garante figurinhas específicas dentro dos envelopes.",
+      },
+      {
+        q: "Quando o produto será enviado?",
+        a: "Este produto está em pré-venda com previsão de envio para a segunda quinzena de abril/2026, antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026). A data exata aparece em destaque no topo da página.",
+      },
+      {
+        q: "As figurinhas são originais Panini?",
+        a: "Sim, 100% originais. A Bella Figurinha é distribuidora oficial Panini no Brasil — todos os envelopes vêm direto da editora, lacrados de fábrica, sem revenda de marketplace.",
+      },
+    ];
+  }
+
   if ((h.includes("album-brochura") || h.includes("album-capa-cartao")) && !h.includes("envelope")) {
     return albumBrochuraFaqItems;
   }
