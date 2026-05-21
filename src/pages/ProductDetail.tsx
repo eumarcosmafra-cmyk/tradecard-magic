@@ -481,13 +481,14 @@ const ProductDetail = () => {
               Previsão de envio em junho/2026 — antes do início do Mundial.
             </p>
             <Button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              asChild
               size="lg"
               variant="outline"
               className="bg-white text-primary border-white hover:bg-white/90 font-display text-lg tracking-wider uppercase px-8 py-6"
             >
-              <ShoppingCart className="w-5 h-5 mr-2" />
-              Comprar agora ↑
+              <Link to="/colecao">
+                Conhecer todos os produtos →
+              </Link>
             </Button>
           </div>
         </section>
