@@ -137,6 +137,7 @@ const ProductDetail = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const productCategory = getProductCategory(handle || "");
   const isAlbumOnly = productCategory === "album-only";
+  const isEnvelopesOnly = productCategory === "envelopes-only";
   const _h = (handle || "").toLowerCase();
   const isAlbumBrochura = isAlbumOnly && (_h.includes("album-brochura") || _h.includes("album-capa-cartao"));
   const isAlbumTradicional = isAlbumOnly && !isAlbumBrochura && _h.includes("album-capa-dura") && _h.endsWith("-copy") && !_h.includes("prata");
