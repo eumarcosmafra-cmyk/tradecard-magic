@@ -415,7 +415,7 @@ const ProductDetail = () => {
               );
             })()}
 
-            {(isAlbumOnly || isEnvelopesOnly) ? (
+            {(isAlbumOnly || isEnvelopesOnly || isAlbumWithEnvelopes) ? (
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4 text-primary" />
                 <span className="text-sm text-muted-foreground font-body">Distribuidor oficial Panini · Produto licenciado FIFA</span>
