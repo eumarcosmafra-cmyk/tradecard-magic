@@ -93,8 +93,35 @@ const albumCapaDuraOuroFaqItems: FaqItem[] = [
   },
 ];
 
+const albumCapaDuraPrataFaqItems: FaqItem[] = [
+  {
+    q: "Este produto vem com envelopes ou figurinhas?",
+    a: "Não. Este produto contém apenas o álbum oficial em capa dura com acabamento metalizado prateado. Os envelopes com figurinhas (7 cromos cada) são vendidos separadamente. Para completar a coleção, você pode comprar envelopes avulsos, kits ou caixas na Bella Figurinha.",
+  },
+  {
+    q: "Qual a diferença entre o capa dura prata e a versão brochura mais barata?",
+    a: "O conteúdo interno é o mesmo nas duas versões: 112 páginas + capa, com espaço para os 980 cromos da coleção. A diferença está na construção do álbum. A versão brochura tem capa flexível em 4 cores e custa menos. A versão capa dura prata tem capa rígida com acabamento metalizado prateado, indicada para colecionadores que querem preservar a edição como item de memória de longo prazo.",
+  },
+  {
+    q: "Qual a diferença entre a versão capa dura prata e a versão capa dura ouro?",
+    a: "O conteúdo interno é idêntico nas duas versões — 112 páginas + capa para os 980 cromos. A diferença é puramente estética: a capa dura ouro tem acabamento metalizado dourado e costuma ser posicionada como a edição premium da Panini, enquanto a capa dura prata traz acabamento metalizado prateado, com visual mais discreto e geralmente preço mais acessível. A escolha é uma questão de preferência visual.",
+  },
+  {
+    q: "Quando o produto será enviado?",
+    a: "Este produto está em pré-venda com previsão de envio em 25 de maio de 2026, antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026).",
+  },
+  {
+    q: "É um produto oficial Panini?",
+    a: "Sim, é o álbum oficial licenciado pela FIFA e produzido pela Panini Brasil. A Bella Figurinha é distribuidora oficial Panini — todos os produtos vêm direto da editora, sem revenda de marketplace.",
+  },
+];
+
 export function getFaqItemsForHandle(handle?: string): FaqItem[] {
   const h = handle?.toLowerCase() || "";
+
+  if (h.includes("album-capa-dura-prata")) {
+    return albumCapaDuraPrataFaqItems;
+  }
 
   if (
     h.includes("album-capa-dura-ouro") ||
