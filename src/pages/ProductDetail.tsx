@@ -126,9 +126,15 @@ const ProductDetail = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const productCategory = getProductCategory(handle || "");
   const isAlbumOnly = productCategory === "album-only";
-  const isAlbumPrata = isAlbumOnly && (handle || "").toLowerCase().includes("prata");
-  const albumColorAdj = isAlbumPrata ? "prateado" : "dourado";
-  const albumColorNoun = isAlbumPrata ? "prata" : "ouro";
+  const _h = (handle || "").toLowerCase();
+  const isAlbumTradicional = isAlbumOnly && _h.includes("album-capa-dura") && _h.endsWith("-copy") && !_h.includes("prata");
+  const isAlbumPrata = isAlbumOnly && !isAlbumTradicional && _h.includes("prata");
+  const albumColorAdj = isAlbumTradicional ? "tradicional" : isAlbumPrata ? "prateado" : "dourado";
+  const albumColorNoun = isAlbumTradicional ? "tradicional" : isAlbumPrata ? "prata" : "ouro";
+  const albumFinishLabel = isAlbumTradicional ? "Capa dura · 4 cores" : `Metalizado ${albumColorAdj} · 4 cores`;
+  const albumDescriptionPhrase = isAlbumTradicional
+    ? "capa dura tradicional"
+    : `capa dura com acabamento metalizado ${albumColorAdj}`;
 
   // Inject Product + Breadcrumb JSON-LD into <head> for crawlers
   useEffect(() => {
