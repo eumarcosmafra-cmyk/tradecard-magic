@@ -20,6 +20,15 @@ import { ProductFAQ, getFaqItemsForHandle } from "@/components/ProductFAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import AdrenalynDescription from "@/components/AdrenalynDescription";
 
+const getProductCategory = (handle: string): "album-only" | "album-with-envelopes" | "adrenalyn" | "default" => {
+  const h = handle.toLowerCase();
+  if (h.includes("album-capa-dura") && !h.includes("envelope")) return "album-only";
+  if (h.includes("album-brochura") && !h.includes("envelope")) return "album-only";
+  if (h.includes("album") && h.includes("envelope")) return "album-with-envelopes";
+  if (h.includes("adrenalyn") || h.includes("cards")) return "adrenalyn";
+  return "default";
+};
+
 /* ─── Sub-components ─── */
 
 const TrustStrip = () => (
@@ -109,6 +118,8 @@ const ProductDetail = () => {
   const cartLoading = useCartStore((s) => s.isLoading);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const productCategory = getProductCategory(handle || "");
+  const isAlbumOnly = productCategory === "album-only";
 
   // Inject Product + Breadcrumb JSON-LD into <head> for crawlers
   useEffect(() => {
@@ -288,17 +299,32 @@ const ProductDetail = () => {
           <div className="space-y-5">
             {/* Breadcrumb badge */}
             <div className="inline-block border border-primary/40 rounded-full px-4 py-1">
-              <span className="text-[11px] font-display tracking-[0.15em] uppercase text-foreground/60">
-                PANINI · FIFA WORLD CUP 2026™ · ADRENALYN XL™
-              </span>
+              {isAlbumOnly ? (
+                <span className="text-[11px] font-display tracking-[0.15em] uppercase text-foreground/60">
+                  PANINI · FIFA WORLD CUP 2026™ · ÁLBUM OFICIAL
+                </span>
+              ) : (
+                <span className="text-[11px] font-display tracking-[0.15em] uppercase text-foreground/60">
+                  PANINI · FIFA WORLD CUP 2026™ · ADRENALYN XL™
+                </span>
+              )}
             </div>
 
             <h1 className="font-display text-3xl md:text-4xl lg:text-[2.6rem] tracking-wider uppercase text-foreground leading-tight">
               {node.title}
             </h1>
 
-            {node.description && (
-              <p className="text-muted-foreground leading-relaxed font-body text-sm">{node.description}</p>
+            {isAlbumOnly ? (
+              <p className="text-muted-foreground leading-relaxed font-body text-sm">
+                Álbum oficial Panini da FIFA World Cup 2026™ com capa dura e acabamento metalizado dourado.
+                112 páginas + capa para colar os 980 cromos da coleção (68 especiais), com todas as 48
+                seleções que disputam o Mundial no México, Estados Unidos e Canadá. Produto licenciado,
+                pronta entrega e envio para todo o Brasil.
+              </p>
+            ) : (
+              node.description && (
+                <p className="text-muted-foreground leading-relaxed font-body text-sm">{node.description}</p>
+              )
             )}
 
             {(() => {
@@ -315,7 +341,14 @@ const ProductDetail = () => {
               );
             })()}
 
-            <RatingBadge />
+            {isAlbumOnly ? (
+              <div className="flex items-center gap-2">
+                <Shield className="w-4 h-4 text-primary" />
+                <span className="text-sm text-muted-foreground font-body">Distribuidor oficial Panini · Produto licenciado FIFA</span>
+              </div>
+            ) : (
+              <RatingBadge />
+            )}
 
             {/* Price box */}
             {selectedVariant && (
@@ -381,52 +414,173 @@ const ProductDetail = () => {
         </div>
 
         {/* ─── Stats bar ─── */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
-          {[
-            { emoji: "🃏", value: "8", label: "Cards por envelope" },
-            { emoji: "🏆", value: "630", label: "Cards na coleção total" },
-            { emoji: "⭐", value: "9", label: "Golden Ballers exclusivos" },
-            { emoji: "🏴", value: "42", label: "Seleções na coleção" },
-          ].map((stat) => (
-            <div key={stat.label} className="bg-card border border-border rounded-2xl p-6 text-center space-y-2 hover:border-primary/40 transition-colors">
-              <span className="text-3xl">{stat.emoji}</span>
-              <p className="font-display text-3xl tracking-wide text-foreground">{stat.value}</p>
-              <p className="text-xs text-muted-foreground font-body">{stat.label}</p>
+        {isAlbumOnly ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+            {[
+              { emoji: "📖", value: "112", label: "Páginas + capa" },
+              { emoji: "🃏", value: "980", label: "Cromos na coleção" },
+              { emoji: "✨", value: "68", label: "Cromos especiais" },
+              { emoji: "🏴", value: "48", label: "Seleções participantes" },
+            ].map((stat) => (
+              <div key={stat.label} className="bg-card border border-border rounded-2xl p-6 text-center space-y-2 hover:border-primary/40 transition-colors">
+                <span className="text-3xl">{stat.emoji}</span>
+                <p className="font-display text-3xl tracking-wide text-foreground">{stat.value}</p>
+                <p className="text-xs text-muted-foreground font-body">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+            {[
+              { emoji: "🃏", value: "8", label: "Cards por envelope" },
+              { emoji: "🏆", value: "630", label: "Cards na coleção total" },
+              { emoji: "⭐", value: "9", label: "Golden Ballers exclusivos" },
+              { emoji: "🏴", value: "42", label: "Seleções na coleção" },
+            ].map((stat) => (
+              <div key={stat.label} className="bg-card border border-border rounded-2xl p-6 text-center space-y-2 hover:border-primary/40 transition-colors">
+                <span className="text-3xl">{stat.emoji}</span>
+                <p className="font-display text-3xl tracking-wide text-foreground">{stat.value}</p>
+                <p className="text-xs text-muted-foreground font-body">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {isAlbumOnly && (
+          <section className="mt-16">
+            <div className="inline-block bg-primary/10 border border-primary/40 rounded-full px-4 py-1 mb-3">
+              <span className="text-[11px] font-display tracking-[0.15em] uppercase text-primary">
+                SOBRE O PRODUTO
+              </span>
             </div>
-          ))}
-        </div>
+            <h2 className="font-display text-2xl md:text-3xl tracking-wider uppercase mb-6">
+              O álbum oficial da Copa do Mundo 2026
+            </h2>
+            <div className="bg-card border border-border rounded-2xl p-6 mb-6">
+              <p className="font-body text-foreground/80 leading-relaxed mb-4">
+                Este é o álbum oficial da FIFA World Cup 2026™ na versão <strong>capa dura com acabamento metalizado dourado</strong> —
+                a edição premium da coleção para colecionadores que querem preservar a memória do maior Mundial da história,
+                com 48 seleções participantes e três países-sede (México, Estados Unidos e Canadá).
+              </p>
+              <p className="font-body text-foreground/80 leading-relaxed">
+                Cada página foi desenhada para receber os 980 cromos da coleção, com espaço dedicado às seleções,
+                cromos especiais em papel metalizado e o universo completo do torneio. <strong>O produto vem apenas com o álbum</strong> —
+                os envelopes com figurinhas são vendidos separadamente.
+              </p>
+            </div>
+            <div className="bg-card border border-border rounded-2xl p-6">
+              <p className="text-xs font-display tracking-widest uppercase text-muted-foreground mb-4">Ficha técnica</p>
+              <div className="space-y-2 text-sm font-body">
+                <div className="flex justify-between border-b border-border pb-2">
+                  <span className="text-muted-foreground">Formato</span>
+                  <span className="font-medium text-right">Capa dura · 232 × 270 mm</span>
+                </div>
+                <div className="flex justify-between border-b border-border pb-2">
+                  <span className="text-muted-foreground">Acabamento</span>
+                  <span className="font-medium text-right">Metalizado dourado · 4 cores</span>
+                </div>
+                <div className="flex justify-between border-b border-border pb-2">
+                  <span className="text-muted-foreground">Páginas</span>
+                  <span className="font-medium text-right">112 + capa</span>
+                </div>
+                <div className="flex justify-between border-b border-border pb-2">
+                  <span className="text-muted-foreground">Espaço para</span>
+                  <span className="font-medium text-right">980 cromos (68 especiais)</span>
+                </div>
+                <div className="flex justify-between border-b border-border pb-2">
+                  <span className="text-muted-foreground">Seleções</span>
+                  <span className="font-medium text-right">48 (todas as classificadas)</span>
+                </div>
+                <div className="flex justify-between border-b border-border pb-2">
+                  <span className="text-muted-foreground">Idioma</span>
+                  <span className="font-medium text-right">Português</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Editora</span>
+                  <span className="font-medium text-right">Panini · Licenciado FIFA™</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
-        {/* ─── Envelope content section ─── */}
-        <EnvelopeContent
-          imageUrl={images[0]?.node.url}
-          imageAlt={node.title}
-          variantTitle={selectedVariant?.title}
-          productHandle={node.handle}
-        />
+        {isAlbumOnly && (
+          <section className="mt-16">
+            <div className="bg-primary/5 border border-primary/30 rounded-2xl p-6 md:p-8">
+              <div className="flex items-start gap-4">
+                <div className="text-4xl flex-shrink-0">✉️</div>
+                <div className="flex-1">
+                  <p className="text-xs font-display tracking-widest uppercase text-primary mb-2">
+                    ATENÇÃO
+                  </p>
+                  <h3 className="font-display text-xl md:text-2xl tracking-wide uppercase mb-2 text-foreground">
+                    Este produto contém apenas o álbum
+                  </h3>
+                  <p className="font-body text-foreground/80 leading-relaxed mb-4">
+                    Os envelopes com figurinhas são vendidos separadamente. Cada envelope contém 7 cromos
+                    no formato 80 × 100 mm. Para completar os 980 espaços da coleção, você pode comprar
+                    envelopes avulsos, kits ou caixas na Bella Figurinha.
+                  </p>
+                  <Link to="/" className="inline-flex items-center gap-2 text-primary font-display text-sm tracking-wider uppercase hover:underline">
+                    Ver envelopes e kits disponíveis
+                    <ArrowLeft className="w-4 h-4 rotate-180" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
-        {/* ─── Descrição da coleção (dobra 2) ─── */}
-        <AdrenalynDescription />
+        {!isAlbumOnly && (
+          <>
+            {/* ─── Envelope content section ─── */}
+            <EnvelopeContent
+              imageUrl={images[0]?.node.url}
+              imageAlt={node.title}
+              variantTitle={selectedVariant?.title}
+              productHandle={node.handle}
+            />
 
-        {/* ─── 42 Seleções ─── */}
-        <Selecoes />
-
-        {/* ─── Card categories section ─── */}
-        <CardCategories />
-
-        {/* ─── Golden Ballers ─── */}
-        <GoldenBallers />
-
-        {/* ─── Eternos 22 ─── */}
-        <Eternos22 />
-
-        {/* ─── Mascotes ─── */}
-        <Mascotes />
+            <AdrenalynDescription />
+            <Selecoes />
+            <CardCategories />
+            <GoldenBallers />
+            <Eternos22 />
+            <Mascotes />
+          </>
+        )}
 
         {/* ─── FAQ ─── */}
         <ProductFAQ productHandle={node.handle} />
 
         {/* ─── Final CTA ─── */}
-        <FinalCTA />
+        {isAlbumOnly ? (
+          <section className="mt-16">
+            <div className="bg-gradient-yellow rounded-3xl p-8 md:p-12 text-center shadow-yellow-lg">
+              <p className="text-xs font-display tracking-widest uppercase text-primary-foreground/80 mb-2">
+                PRÉ-VENDA · ENVIO EM 25 DE MAIO
+              </p>
+              <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-primary-foreground mb-3">
+                Começa a sua coleção da Copa
+              </h2>
+              <p className="font-body text-primary-foreground/90 mb-6 max-w-xl mx-auto">
+                Garanta o álbum oficial antes do início do Mundial e prepare-se para colar os 980 cromos
+                da maior Copa do Mundo da história.
+              </p>
+              <Button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                size="lg"
+                variant="outline"
+                className="bg-white text-primary border-white hover:bg-white/90 font-display text-lg tracking-wider uppercase px-8 py-6"
+              >
+                <ShoppingCart className="w-5 h-5 mr-2" />
+                Comprar álbum agora ↑
+              </Button>
+            </div>
+          </section>
+        ) : (
+          <FinalCTA />
+        )}
       </div>
       <Footer />
     </div>

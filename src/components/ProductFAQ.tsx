@@ -70,10 +70,37 @@ const preOrderFaq: FaqItem = {
   a: "Este produto está em pré-venda. O despacho ocorrerá assim que os itens chegarem ao estoque. Você receberá um e-mail com rastreamento assim que seu pedido for enviado.",
 };
 
+const albumCapaDuraOuroFaqItems: FaqItem[] = [
+  {
+    q: "Este produto vem com envelopes ou figurinhas?",
+    a: "Não. Este produto contém apenas o álbum oficial em capa dura com acabamento metalizado dourado. Os envelopes com figurinhas (7 cromos cada) são vendidos separadamente. Para completar a coleção, você pode comprar envelopes avulsos, kits ou caixas na Bella Figurinha.",
+  },
+  {
+    q: "Qual a diferença entre o capa dura ouro e a versão brochura mais barata?",
+    a: "O conteúdo interno é o mesmo nas duas versões: 112 páginas + capa, com espaço para os 980 cromos da coleção. A diferença está na construção do álbum. A versão brochura tem capa flexível em 4 cores e custa menos. A versão capa dura ouro tem capa rígida com acabamento metalizado dourado, indicada para colecionadores que querem preservar a edição como item de memória de longo prazo.",
+  },
+  {
+    q: "Vale a pena pagar mais pela versão capa dura ouro?",
+    a: "Depende do uso. Se você é colecionador e pretende guardar o álbum completo como peça de memória da Copa, a capa dura ouro é mais durável e tem apelo visual maior — é a versão premium da Panini. Se o álbum é para uso casual ou para a criançada colar as figurinhas, a versão brochura cumpre a função pela metade do preço.",
+  },
+  {
+    q: "Quando o produto será enviado?",
+    a: "Este produto está em pré-venda com previsão de envio em 25 de maio de 2026, antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026).",
+  },
+  {
+    q: "É um produto oficial Panini?",
+    a: "Sim, é o álbum oficial licenciado pela FIFA e produzido pela Panini Brasil. A Bella Figurinha é distribuidora oficial Panini — todos os produtos vêm direto da editora, sem revenda de marketplace.",
+  },
+];
+
 export function getFaqItemsForHandle(handle?: string): FaqItem[] {
   const h = handle?.toLowerCase() || "";
-  let specific: FaqItem[];
 
+  if (h.includes("album-capa-dura-ouro")) {
+    return albumCapaDuraOuroFaqItems;
+  }
+
+  let specific: FaqItem[];
   if (h.includes("lata-classic-tin") || h.includes("classic-tin")) {
     specific = classicTinFaqItems;
   } else if (h.includes("starter-pack")) {
