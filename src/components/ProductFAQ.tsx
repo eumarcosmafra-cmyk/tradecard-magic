@@ -96,7 +96,11 @@ const albumCapaDuraOuroFaqItems: FaqItem[] = [
 export function getFaqItemsForHandle(handle?: string): FaqItem[] {
   const h = handle?.toLowerCase() || "";
 
-  if (h.includes("album-capa-dura-ouro")) {
+  if (
+    h.includes("album-capa-dura-ouro") ||
+    h === "copa-do-mundo-2026-kit-com-12-envelopes-fifa-world-cup-2026™️-copy" ||
+    h === "copa-do-mundo-2026-kit-com-12-envelopes-fifa-world-cup-2026-copy"
+  ) {
     return albumCapaDuraOuroFaqItems;
   }
 
