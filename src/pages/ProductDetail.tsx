@@ -20,6 +20,15 @@ import { ProductFAQ, getFaqItemsForHandle } from "@/components/ProductFAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import AdrenalynDescription from "@/components/AdrenalynDescription";
 
+const getProductCategory = (handle: string): "album-only" | "album-with-envelopes" | "adrenalyn" | "default" => {
+  const h = handle.toLowerCase();
+  if (h.includes("album-capa-dura") && !h.includes("envelope")) return "album-only";
+  if (h.includes("album-brochura") && !h.includes("envelope")) return "album-only";
+  if (h.includes("album") && h.includes("envelope")) return "album-with-envelopes";
+  if (h.includes("adrenalyn") || h.includes("cards")) return "adrenalyn";
+  return "default";
+};
+
 /* ─── Sub-components ─── */
 
 const TrustStrip = () => (
