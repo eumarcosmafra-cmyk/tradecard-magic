@@ -142,6 +142,10 @@ const albumCapaDuraPrataFaqItems: FaqItem[] = [
 export function getFaqItemsForHandle(handle?: string): FaqItem[] {
   const h = handle?.toLowerCase() || "";
 
+  if (h.includes("album-capa-dura") && h.endsWith("-copy") && !h.includes("prata")) {
+    return albumCapaDuraTradicionalFaqItems;
+  }
+
   if (h.includes("album-capa-dura-prata")) {
     return albumCapaDuraPrataFaqItems;
   }
