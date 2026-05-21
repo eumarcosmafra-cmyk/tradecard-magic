@@ -362,6 +362,13 @@ const ProductDetail = () => {
                 seleções que disputam o Mundial no México, Estados Unidos e Canadá. Produto licenciado,
                 pronta entrega e envio para todo o Brasil.
               </p>
+            ) : isEnvelopesOnly ? (
+              <p className="text-muted-foreground leading-relaxed font-body text-sm">
+                Kit com {envelopeCount} envelopes lacrados da FIFA World Cup 2026™, cada um contendo 7 cromos
+                originais Panini — {totalFigurinhas} figurinhas no total para colar no álbum oficial.
+                A coleção completa tem 980 cromos das 48 seleções que disputam o Mundial.
+                Produto licenciado, pronta entrega e envio para todo o Brasil.
+              </p>
             ) : (
               node.description && (
                 <p className="text-muted-foreground leading-relaxed font-body text-sm">{node.description}</p>
@@ -382,7 +389,7 @@ const ProductDetail = () => {
               );
             })()}
 
-            {isAlbumOnly ? (
+            {(isAlbumOnly || isEnvelopesOnly) ? (
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4 text-primary" />
                 <span className="text-sm text-muted-foreground font-body">Distribuidor oficial Panini · Produto licenciado FIFA</span>
