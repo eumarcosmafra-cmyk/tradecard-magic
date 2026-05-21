@@ -299,17 +299,32 @@ const ProductDetail = () => {
           <div className="space-y-5">
             {/* Breadcrumb badge */}
             <div className="inline-block border border-primary/40 rounded-full px-4 py-1">
-              <span className="text-[11px] font-display tracking-[0.15em] uppercase text-foreground/60">
-                PANINI · FIFA WORLD CUP 2026™ · ADRENALYN XL™
-              </span>
+              {isAlbumOnly ? (
+                <span className="text-[11px] font-display tracking-[0.15em] uppercase text-foreground/60">
+                  PANINI · FIFA WORLD CUP 2026™ · ÁLBUM OFICIAL
+                </span>
+              ) : (
+                <span className="text-[11px] font-display tracking-[0.15em] uppercase text-foreground/60">
+                  PANINI · FIFA WORLD CUP 2026™ · ADRENALYN XL™
+                </span>
+              )}
             </div>
 
             <h1 className="font-display text-3xl md:text-4xl lg:text-[2.6rem] tracking-wider uppercase text-foreground leading-tight">
               {node.title}
             </h1>
 
-            {node.description && (
-              <p className="text-muted-foreground leading-relaxed font-body text-sm">{node.description}</p>
+            {isAlbumOnly ? (
+              <p className="text-muted-foreground leading-relaxed font-body text-sm">
+                Álbum oficial Panini da FIFA World Cup 2026™ com capa dura e acabamento metalizado dourado.
+                112 páginas + capa para colar os 980 cromos da coleção (68 especiais), com todas as 48
+                seleções que disputam o Mundial no México, Estados Unidos e Canadá. Produto licenciado,
+                pronta entrega e envio para todo o Brasil.
+              </p>
+            ) : (
+              node.description && (
+                <p className="text-muted-foreground leading-relaxed font-body text-sm">{node.description}</p>
+              )
             )}
 
             {(() => {
@@ -326,7 +341,14 @@ const ProductDetail = () => {
               );
             })()}
 
-            <RatingBadge />
+            {isAlbumOnly ? (
+              <div className="flex items-center gap-2">
+                <Shield className="w-4 h-4 text-primary" />
+                <span className="text-sm text-muted-foreground font-body">Distribuidor oficial Panini · Produto licenciado FIFA</span>
+              </div>
+            ) : (
+              <RatingBadge />
+            )}
 
             {/* Price box */}
             {selectedVariant && (
