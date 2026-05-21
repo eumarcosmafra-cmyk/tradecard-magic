@@ -22,6 +22,12 @@ import AdrenalynDescription from "@/components/AdrenalynDescription";
 
 const getProductCategory = (handle: string): "album-only" | "album-with-envelopes" | "adrenalyn" | "default" => {
   const h = handle.toLowerCase();
+  // Handles específicos do Shopify (cópias com nome enganoso) que são álbuns sozinhos
+  const albumOnlyHandles = [
+    "copa-do-mundo-2026-kit-com-12-envelopes-fifa-world-cup-2026™️-copy",
+    "copa-do-mundo-2026-kit-com-12-envelopes-fifa-world-cup-2026-copy",
+  ];
+  if (albumOnlyHandles.includes(h)) return "album-only";
   if (h.includes("album-capa-dura") && !h.includes("envelope")) return "album-only";
   if (h.includes("album-brochura") && !h.includes("envelope")) return "album-only";
   if (h.includes("album") && h.includes("envelope")) return "album-with-envelopes";
