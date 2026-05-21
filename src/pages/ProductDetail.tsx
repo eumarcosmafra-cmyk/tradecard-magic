@@ -483,14 +483,16 @@ const ProductDetail = () => {
             <div className="bg-card border border-border rounded-2xl p-6 mb-6">
               <p className="font-body text-foreground/80 leading-relaxed mb-4">
                 Este é o álbum oficial da FIFA World Cup 2026™ na versão <strong>{albumDescriptionPhrase}</strong> —
-                {isAlbumTradicional
+                {isAlbumBrochura
+                  ? " a edição mais acessível da coleção, ideal para quem quer aproveitar a Copa colando as figurinhas sem pagar a mais pelo acabamento premium, "
+                  : isAlbumTradicional
                   ? " a edição clássica do álbum, ideal para colecionar e colar os cromos da maior Copa do Mundo da história, "
                   : " a edição premium da coleção para colecionadores que querem preservar a memória do maior Mundial da história, "}
                 com 48 seleções participantes e três países-sede (México, Estados Unidos e Canadá).
               </p>
               <p className="font-body text-foreground/80 leading-relaxed">
-                Cada página foi desenhada para receber os 980 cromos da coleção, com espaço dedicado às seleções,
-                cromos especiais em papel metalizado e o universo completo do torneio. <strong>O produto vem apenas com o álbum</strong> —
+                O álbum tem 112 páginas com espaço para os 980 cromos da coleção, com cromos especiais em papel
+                metalizado e o universo completo do torneio. <strong>O produto vem apenas com o álbum</strong> —
                 os envelopes com figurinhas são vendidos separadamente.
               </p>
             </div>
