@@ -89,11 +89,6 @@ const starterPackFaqItems: FaqItem[] = [
   },
 ];
 
-const preOrderFaq: FaqItem = {
-  q: "Quando o produto estará disponível para envio?",
-  a: "Este produto está em pré-venda. O despacho ocorrerá assim que os itens chegarem ao estoque. Você receberá um e-mail com rastreamento assim que seu pedido for enviado.",
-};
-
 export function getFaqItemsForHandle(handle?: string): FaqItem[] {
   const h = handle?.toLowerCase() || "";
   let specific: FaqItem[];
@@ -110,10 +105,10 @@ export function getFaqItemsForHandle(handle?: string): FaqItem[] {
 
   // Produtos de álbum não usam os FAQs de Adrenalyn XL (cards)
   if (h.includes("album-capa-cartao") || h.includes("album-brochura")) {
-    return [...specific, preOrderFaq];
+    return specific;
   }
 
-  return [...specific, ...sharedFaqItems, preOrderFaq];
+  return [...specific, ...sharedFaqItems];
 }
 
 interface ProductFAQProps {
