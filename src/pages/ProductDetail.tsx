@@ -118,6 +118,8 @@ const ProductDetail = () => {
   const cartLoading = useCartStore((s) => s.isLoading);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const productCategory = getProductCategory(handle || "");
+  const isAlbumOnly = productCategory === "album-only";
 
   // Inject Product + Breadcrumb JSON-LD into <head> for crawlers
   useEffect(() => {
