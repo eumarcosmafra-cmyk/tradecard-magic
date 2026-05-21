@@ -374,7 +374,14 @@ const ProductDetail = () => {
               {node.title}
             </h1>
 
-            {isAlbumOnly ? (
+            {isAlbumWithEnvelopes ? (
+              <p className="text-muted-foreground leading-relaxed font-body text-sm">
+                Combo de início da coleção FIFA World Cup 2026™: 1 álbum oficial Panini em formato {comboAlbumLabel} (112 páginas)
+                + {envelopeCount} envelopes lacrados com 7 cromos cada — {totalFigurinhas} figurinhas para começar a colar.
+                A coleção completa tem 980 cromos das 48 seleções do Mundial no México, EUA e Canadá.
+                Produto licenciado, pronta entrega e envio para todo o Brasil.
+              </p>
+            ) : isAlbumOnly ? (
               <p className="text-muted-foreground leading-relaxed font-body text-sm">
                 Álbum oficial Panini da FIFA World Cup 2026™ na versão {albumDescriptionPhrase}.
                 112 páginas + capa para colar os 980 cromos da coleção (68 especiais), com todas as 48
