@@ -20,7 +20,7 @@ import { ProductFAQ, getFaqItemsForHandle } from "@/components/ProductFAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import AdrenalynDescription from "@/components/AdrenalynDescription";
 
-const getProductCategory = (handle: string): "album-only" | "album-with-envelopes" | "adrenalyn" | "default" => {
+const getProductCategory = (handle: string): "album-only" | "envelopes-only" | "album-with-envelopes" | "adrenalyn" | "default" => {
   const h = handle.toLowerCase();
   // Handles específicos do Shopify (cópias com nome enganoso) que são álbuns sozinhos
   const albumOnlyHandles = [
@@ -32,9 +32,19 @@ const getProductCategory = (handle: string): "album-only" | "album-with-envelope
   if (h.includes("album-brochura") && !h.includes("envelope")) return "album-only";
   if (h.includes("album-capa-cartao") && !h.includes("envelope")) return "album-only";
   if (h.includes("album") && h.includes("envelope")) return "album-with-envelopes";
+  if (h.includes("envelope") && !h.includes("album")) return "envelopes-only";
+  if (h.includes("kit") && !h.includes("album")) return "envelopes-only";
+  if (h.includes("caixa") && !h.includes("album")) return "envelopes-only";
   if (h.includes("adrenalyn") || h.includes("cards")) return "adrenalyn";
   return "default";
 };
+
+const extractEnvelopeCount = (title: string, handle: string): number => {
+  const source = `${title} ${handle}`.toLowerCase();
+  const match = source.match(/(\d+)\s*[-_]?\s*envelope/);
+  return match ? parseInt(match[1], 10) : 12;
+};
+
 
 /* ─── Sub-components ─── */
 
