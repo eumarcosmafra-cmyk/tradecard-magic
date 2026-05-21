@@ -227,8 +227,9 @@ const ProductDetail = () => {
   const { node } = product;
   const images = node.images.edges;
   const variants = node.variants.edges;
-  const envelopeCount = isEnvelopesOnly ? extractEnvelopeCount(node.title, handle || "") : 0;
+  const envelopeCount = (isEnvelopesOnly || isAlbumWithEnvelopes) ? extractEnvelopeCount(node.title, handle || "") : 0;
   const totalFigurinhas = envelopeCount * 7;
+  const percentColecao = ((totalFigurinhas / 980) * 100).toFixed(1);
   const selectedVariant = variants[selectedVariantIndex]?.node;
   const selectedImage = images[selectedImageIndex]?.node;
 
