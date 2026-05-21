@@ -30,6 +30,7 @@ const getProductCategory = (handle: string): "album-only" | "album-with-envelope
   if (albumOnlyHandles.includes(h)) return "album-only";
   if (h.includes("album-capa-dura") && !h.includes("envelope")) return "album-only";
   if (h.includes("album-brochura") && !h.includes("envelope")) return "album-only";
+  if (h.includes("album-capa-cartao") && !h.includes("envelope")) return "album-only";
   if (h.includes("album") && h.includes("envelope")) return "album-with-envelopes";
   if (h.includes("adrenalyn") || h.includes("cards")) return "adrenalyn";
   return "default";
@@ -127,12 +128,20 @@ const ProductDetail = () => {
   const productCategory = getProductCategory(handle || "");
   const isAlbumOnly = productCategory === "album-only";
   const _h = (handle || "").toLowerCase();
-  const isAlbumTradicional = isAlbumOnly && _h.includes("album-capa-dura") && _h.endsWith("-copy") && !_h.includes("prata");
-  const isAlbumPrata = isAlbumOnly && !isAlbumTradicional && _h.includes("prata");
-  const albumColorAdj = isAlbumTradicional ? "tradicional" : isAlbumPrata ? "prateado" : "dourado";
-  const albumColorNoun = isAlbumTradicional ? "tradicional" : isAlbumPrata ? "prata" : "ouro";
-  const albumFinishLabel = isAlbumTradicional ? "Capa dura · 4 cores" : `Metalizado ${albumColorAdj} · 4 cores`;
-  const albumDescriptionPhrase = isAlbumTradicional
+  const isAlbumBrochura = isAlbumOnly && (_h.includes("album-brochura") || _h.includes("album-capa-cartao"));
+  const isAlbumTradicional = isAlbumOnly && !isAlbumBrochura && _h.includes("album-capa-dura") && _h.endsWith("-copy") && !_h.includes("prata");
+  const isAlbumPrata = isAlbumOnly && !isAlbumBrochura && !isAlbumTradicional && _h.includes("prata");
+  const albumColorAdj = isAlbumBrochura ? "brochura" : isAlbumTradicional ? "tradicional" : isAlbumPrata ? "prateado" : "dourado";
+  const albumColorNoun = isAlbumBrochura ? "brochura" : isAlbumTradicional ? "tradicional" : isAlbumPrata ? "prata" : "ouro";
+  const albumFinishLabel = isAlbumBrochura
+    ? "Capa flexível · 4 cores"
+    : isAlbumTradicional
+    ? "Capa dura · 4 cores"
+    : `Metalizado ${albumColorAdj} · 4 cores`;
+  const albumFormatLabel = isAlbumBrochura ? "Brochura · 232 × 270 mm" : "Capa dura · 232 × 270 mm";
+  const albumDescriptionPhrase = isAlbumBrochura
+    ? "brochura (capa flexível)"
+    : isAlbumTradicional
     ? "capa dura tradicional"
     : `capa dura com acabamento metalizado ${albumColorAdj}`;
 
@@ -474,14 +483,16 @@ const ProductDetail = () => {
             <div className="bg-card border border-border rounded-2xl p-6 mb-6">
               <p className="font-body text-foreground/80 leading-relaxed mb-4">
                 Este é o álbum oficial da FIFA World Cup 2026™ na versão <strong>{albumDescriptionPhrase}</strong> —
-                {isAlbumTradicional
+                {isAlbumBrochura
+                  ? " a edição mais acessível da coleção, ideal para quem quer aproveitar a Copa colando as figurinhas sem pagar a mais pelo acabamento premium, "
+                  : isAlbumTradicional
                   ? " a edição clássica do álbum, ideal para colecionar e colar os cromos da maior Copa do Mundo da história, "
                   : " a edição premium da coleção para colecionadores que querem preservar a memória do maior Mundial da história, "}
                 com 48 seleções participantes e três países-sede (México, Estados Unidos e Canadá).
               </p>
               <p className="font-body text-foreground/80 leading-relaxed">
-                Cada página foi desenhada para receber os 980 cromos da coleção, com espaço dedicado às seleções,
-                cromos especiais em papel metalizado e o universo completo do torneio. <strong>O produto vem apenas com o álbum</strong> —
+                O álbum tem 112 páginas com espaço para os 980 cromos da coleção, com cromos especiais em papel
+                metalizado e o universo completo do torneio. <strong>O produto vem apenas com o álbum</strong> —
                 os envelopes com figurinhas são vendidos separadamente.
               </p>
             </div>
@@ -490,7 +501,7 @@ const ProductDetail = () => {
               <div className="space-y-2 text-sm font-body">
                 <div className="flex justify-between border-b border-border pb-2">
                   <span className="text-muted-foreground">Formato</span>
-                  <span className="font-medium text-right">Capa dura · 232 × 270 mm</span>
+                  <span className="font-medium text-right">{albumFormatLabel}</span>
                 </div>
                 <div className="flex justify-between border-b border-border pb-2">
                   <span className="text-muted-foreground">Acabamento</span>

@@ -139,8 +139,35 @@ const albumCapaDuraPrataFaqItems: FaqItem[] = [
   },
 ];
 
+const albumBrochuraFaqItems: FaqItem[] = [
+  {
+    q: "Este produto vem com envelopes ou figurinhas?",
+    a: "Não. Este produto contém apenas o álbum oficial em formato brochura (capa flexível). Os envelopes com figurinhas (7 cromos cada) são vendidos separadamente. Para completar a coleção, você pode comprar envelopes avulsos, kits ou caixas na Bella Figurinha.",
+  },
+  {
+    q: "Qual a diferença entre a brochura e as versões capa dura?",
+    a: "O conteúdo interno é o mesmo em todas as versões: 112 páginas + capa, com espaço para os 980 cromos da coleção. A diferença está na construção do álbum. A brochura tem capa flexível em 4 cores e é a versão mais acessível. As versões capa dura têm capa rígida e podem ter acabamento metalizado (Ouro ou Prata), indicadas para colecionadores que querem preservar o álbum como item de memória.",
+  },
+  {
+    q: "A versão brochura é mais frágil?",
+    a: "A capa flexível é menos resistente que a versão capa dura para uso intenso ou armazenamento de longo prazo, mas é totalmente adequada para colar figurinhas e acompanhar a Copa. Se o álbum vai ser usado por crianças ou se você quer guardá-lo por muitos anos, a capa dura é a melhor escolha.",
+  },
+  {
+    q: "Quando o produto será enviado?",
+    a: "Este produto está em pré-venda com previsão de envio em 30 de abril de 2026, antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026). A data exata aparece em destaque no topo da página.",
+  },
+  {
+    q: "É um produto oficial Panini?",
+    a: "Sim, é o álbum oficial licenciado pela FIFA e produzido pela Panini Brasil. A Bella Figurinha é distribuidora oficial Panini — todos os produtos vêm direto da editora, sem revenda de marketplace.",
+  },
+];
+
 export function getFaqItemsForHandle(handle?: string): FaqItem[] {
   const h = handle?.toLowerCase() || "";
+
+  if ((h.includes("album-brochura") || h.includes("album-capa-cartao")) && !h.includes("envelope")) {
+    return albumBrochuraFaqItems;
+  }
 
   if (h.includes("album-capa-dura") && h.endsWith("-copy") && !h.includes("prata")) {
     return albumCapaDuraTradicionalFaqItems;
