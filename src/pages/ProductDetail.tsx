@@ -501,7 +501,7 @@ const ProductDetail = () => {
               <div className="space-y-2 text-sm font-body">
                 <div className="flex justify-between border-b border-border pb-2">
                   <span className="text-muted-foreground">Formato</span>
-                  <span className="font-medium text-right">Capa dura · 232 × 270 mm</span>
+                  <span className="font-medium text-right">{albumFormatLabel}</span>
                 </div>
                 <div className="flex justify-between border-b border-border pb-2">
                   <span className="text-muted-foreground">Acabamento</span>
