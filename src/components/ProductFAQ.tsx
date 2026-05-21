@@ -2,7 +2,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 type FaqItem = { q: string; a: string };
 
-/** FAQs genéricos da coleção Adrenalyn XL (compartilhados entre todos os produtos) */
+/** FAQs genéricos da coleção Adrenalyn XL (compartilhados entre produtos de cards) */
 const sharedFaqItems: FaqItem[] = [
   {
     q: "Quais são os 9 Golden Ballers?",
@@ -15,6 +15,30 @@ const sharedFaqItems: FaqItem[] = [
   {
     q: "Como funcionam os cards bônus Team Logo e Official Emblem?",
     a: "Os Team Logos (42 cards, um por seleção) adicionam +5 pontos em todos os valores quando usados junto com um TEAM MATE da mesma seleção. O Official Emblem (1 card) dá +10 pontos em todos os valores quando combinado com qualquer TEAM MATE!",
+  },
+];
+
+/** FAQs específicas do Álbum Brochura + 24 Envelopes (figurinhas/cromos) */
+const albumBrochuraFaqItems: FaqItem[] = [
+  {
+    q: "Quantas figurinhas vêm no total?",
+    a: "São 168 figurinhas no total. Cada envelope contém 7 cromos (figurinhas) e você recebe 24 envelopes lacrados. Total: 24 × 7 = 168 cromos para colar no álbum.",
+  },
+  {
+    q: "O que vem exatamente no kit?",
+    a: "O kit contém 1 álbum capa-cartão (capa dura em formato brochura) com 80 páginas para colar as figurinhas + 24 envelopes lacrados da coleção FIFA World Cup 2026™, cada um com 7 cromos. Total de 168 figurinhas.",
+  },
+  {
+    q: "As figurinhas são autocolantes?",
+    a: "Sim, todos os cromos são autocolantes (self-adhesive). Basta retirar a proteção do verso e colar no álbum, sem necessidade de cola adicional.",
+  },
+  {
+    q: "O álbum tem espaço para toda a coleção?",
+    a: "Sim. O álbum capa-cartão tem 80 páginas e acomoda toda a coleção completa da FIFA World Cup 2026™. Mesmo que o kit venha com 168 cromos, o álbum comporta todas as figurinhas da coleção para você completar depois.",
+  },
+  {
+    q: "Posso escolher as figurinhas que vêm nos envelopes?",
+    a: "Não, as figurinhas em cada envelope são sortidas e os envelopes são lacrados de fábrica. A emoção da coleção está justamente na surpresa de completar o álbum!",
   },
 ];
 
@@ -74,12 +98,19 @@ export function getFaqItemsForHandle(handle?: string): FaqItem[] {
   const h = handle?.toLowerCase() || "";
   let specific: FaqItem[];
 
-  if (h.includes("lata-classic-tin") || h.includes("classic-tin")) {
+  if (h.includes("album-capa-cartao") || h.includes("album-brochura")) {
+    specific = albumBrochuraFaqItems;
+  } else if (h.includes("lata-classic-tin") || h.includes("classic-tin")) {
     specific = classicTinFaqItems;
   } else if (h.includes("starter-pack")) {
     specific = starterPackFaqItems;
   } else {
     specific = getEnvelopeFaqItems(h);
+  }
+
+  // Produtos de álbum não usam os FAQs de Adrenalyn XL (cards)
+  if (h.includes("album-capa-cartao") || h.includes("album-brochura")) {
+    return [...specific, preOrderFaq];
   }
 
   return [...specific, ...sharedFaqItems, preOrderFaq];
