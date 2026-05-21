@@ -375,53 +375,116 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        {/* ─── Stats bar ─── */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
-          {[
-            { emoji: "🃏", value: "8", label: "Cards por envelope" },
-            { emoji: "🏆", value: "630", label: "Cards na coleção total" },
-            { emoji: "⭐", value: "9", label: "Golden Ballers exclusivos" },
-            { emoji: "🏴", value: "42", label: "Seleções na coleção" },
-          ].map((stat) => (
-            <div key={stat.label} className="bg-card border border-border rounded-2xl p-6 text-center space-y-2 hover:border-primary/40 transition-colors">
-              <span className="text-3xl">{stat.emoji}</span>
-              <p className="font-display text-3xl tracking-wide text-foreground">{stat.value}</p>
-              <p className="text-xs text-muted-foreground font-body">{stat.label}</p>
+        {/* ─── Dobra 2 — O que vem dentro ─── */}
+        <section className="mt-16">
+          <div className="inline-block bg-primary/10 border border-primary/40 rounded-full px-4 py-1 mb-3">
+            <span className="text-[11px] font-display tracking-[0.15em] uppercase text-primary">
+              CONTEÚDO DA CAIXA
+            </span>
+          </div>
+          <h2 className="font-display text-2xl md:text-3xl tracking-wider uppercase mb-6">
+            O que você vai receber
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="bg-card border border-border rounded-2xl p-6 text-center">
+              <div className="text-5xl mb-2">📕</div>
+              <p className="font-display text-4xl tracking-wide">1</p>
+              <p className="text-sm text-muted-foreground font-body mt-1">Álbum brochura oficial</p>
             </div>
-          ))}
-        </div>
+            <div className="bg-card border border-border rounded-2xl p-6 text-center">
+              <div className="text-5xl mb-2">✉️</div>
+              <p className="font-display text-4xl tracking-wide">24</p>
+              <p className="text-sm text-muted-foreground font-body mt-1">Envelopes lacrados</p>
+            </div>
+          </div>
+          <div className="bg-primary/10 border-2 border-primary/30 rounded-2xl p-6 text-center mb-6">
+            <p className="text-sm font-body text-muted-foreground mb-2">24 envelopes × 7 figurinhas</p>
+            <p className="font-display text-4xl md:text-5xl tracking-wide text-primary">= 168 figurinhas</p>
+            <p className="text-sm font-body text-muted-foreground mt-2">para colar no seu álbum oficial</p>
+          </div>
+          <div className="bg-card border border-border rounded-2xl p-6">
+            <p className="text-xs font-display tracking-widest uppercase text-muted-foreground mb-4">Ficha técnica</p>
+            <div className="space-y-2 text-sm font-body">
+              <div className="flex justify-between border-b border-border pb-2">
+                <span className="text-muted-foreground">Álbum</span>
+                <span className="font-medium text-right">Brochura · 80 páginas · 232×270mm</span>
+              </div>
+              <div className="flex justify-between border-b border-border pb-2">
+                <span className="text-muted-foreground">Envelope</span>
+                <span className="font-medium text-right">80×100mm · 7 cromos cada</span>
+              </div>
+              <div className="flex justify-between border-b border-border pb-2">
+                <span className="text-muted-foreground">Total da coleção</span>
+                <span className="font-medium text-right">670 cromos</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Editora</span>
+                <span className="font-medium text-right">Panini · Licenciado FIFA™</span>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        {/* ─── Envelope content section ─── */}
-        <EnvelopeContent
-          imageUrl={images[0]?.node.url}
-          imageAlt={node.title}
-          variantTitle={selectedVariant?.title}
-          productHandle={node.handle}
-        />
-
-        {/* ─── Descrição da coleção (dobra 2) ─── */}
-        <AdrenalynDescription />
-
-        {/* ─── 42 Seleções ─── */}
-        <Selecoes />
-
-        {/* ─── Card categories section ─── */}
-        <CardCategories />
-
-        {/* ─── Golden Ballers ─── */}
-        <GoldenBallers />
-
-        {/* ─── Eternos 22 ─── */}
-        <Eternos22 />
-
-        {/* ─── Mascotes ─── */}
-        <Mascotes />
+        {/* ─── Dobra 3 — Por que comprar aqui ─── */}
+        <section className="mt-16">
+          <div className="inline-block bg-primary/10 border border-primary/40 rounded-full px-4 py-1 mb-3">
+            <span className="text-[11px] font-display tracking-[0.15em] uppercase text-primary">
+              POR QUE COMPRAR AQUI
+            </span>
+          </div>
+          <h2 className="font-display text-2xl md:text-3xl tracking-wider uppercase mb-6">
+            Distribuidor oficial Panini
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="bg-card border border-border rounded-2xl p-5 hover:border-primary/40 transition-colors">
+              <Shield className="w-8 h-8 text-green-600 mb-3" />
+              <p className="font-display text-base tracking-wide uppercase mb-1">100% original</p>
+              <p className="text-sm text-muted-foreground font-body">Comprado direto da Panini Brasil. Sem revenda de marketplace.</p>
+            </div>
+            <div className="bg-card border border-border rounded-2xl p-5 hover:border-primary/40 transition-colors">
+              <Truck className="w-8 h-8 text-green-600 mb-3" />
+              <p className="font-display text-base tracking-wide uppercase mb-1">Pronta entrega</p>
+              <p className="text-sm text-muted-foreground font-body">Postagem em até 24h úteis após confirmação do pagamento.</p>
+            </div>
+            <div className="bg-card border border-border rounded-2xl p-5 hover:border-primary/40 transition-colors">
+              <CreditCard className="w-8 h-8 text-green-600 mb-3" />
+              <p className="font-display text-base tracking-wide uppercase mb-1">Pagamento seguro</p>
+              <p className="text-sm text-muted-foreground font-body">Pix, cartão em até 6x sem juros e boleto. Frete grátis acima de R$ 299,90.</p>
+            </div>
+            <div className="bg-card border border-border rounded-2xl p-5 hover:border-primary/40 transition-colors">
+              <RefreshCw className="w-8 h-8 text-green-600 mb-3" />
+              <p className="font-display text-base tracking-wide uppercase mb-1">Troca em 30 dias</p>
+              <p className="text-sm text-muted-foreground font-body">Recebeu danificado? Troca garantida sem burocracia.</p>
+            </div>
+          </div>
+        </section>
 
         {/* ─── FAQ ─── */}
         <ProductFAQ productHandle={node.handle} />
 
-        {/* ─── Final CTA ─── */}
-        <FinalCTA />
+        {/* ─── CTA final ─── */}
+        <section className="mt-16">
+          <div className="bg-gradient-yellow rounded-3xl p-8 md:p-12 text-center shadow-yellow-lg">
+            <p className="text-xs font-display tracking-widest uppercase text-primary-foreground/80 mb-2">
+              PRÉ-VENDA · ESTOQUE LIMITADO
+            </p>
+            <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-primary-foreground mb-3">
+              Garanta seu álbum antes da Copa
+            </h2>
+            <p className="font-body text-primary-foreground/90 mb-6">
+              Previsão de envio em junho/2026 — antes do início do Mundial.
+            </p>
+            <Button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              size="lg"
+              variant="outline"
+              className="bg-white text-primary border-white hover:bg-white/90 font-display text-lg tracking-wider uppercase px-8 py-6"
+            >
+              <ShoppingCart className="w-5 h-5 mr-2" />
+              Comprar agora ↑
+            </Button>
+          </div>
+        </section>
       </div>
       <Footer />
     </div>
