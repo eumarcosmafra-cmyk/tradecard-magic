@@ -472,13 +472,13 @@ const ProductDetail = () => {
         <section className="mt-16">
           <div className="bg-gradient-yellow rounded-3xl p-8 md:p-12 text-center shadow-yellow-lg">
             <p className="text-xs font-display tracking-widest uppercase text-primary-foreground/80 mb-2">
-              PRÉ-VENDA · ESTOQUE LIMITADO
+              ESTOQUE LIMITADO · GARANTA SEUS PRODUTOS
             </p>
             <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-primary-foreground mb-3">
-              Garanta seu álbum antes da Copa
+              A MAIOR COPA DE TODAS VAI COMEÇAR
             </h2>
             <p className="font-body text-primary-foreground/90 mb-6">
-              Previsão de envio em junho/2026 — antes do início do Mundial.
+              Garanta seu álbum antes da Copa.
             </p>
             <Button
               asChild
