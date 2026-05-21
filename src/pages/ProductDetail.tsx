@@ -420,8 +420,8 @@ const ProductDetail = () => {
                 <span className="font-medium text-right">80×100mm · 7 cromos cada</span>
               </div>
               <div className="flex justify-between border-b border-border pb-2">
-                <span className="text-muted-foreground">Total da coleção</span>
-                <span className="font-medium text-right">670 cromos</span>
+                <span className="text-muted-foreground">Total de cromos no kit</span>
+                <span className="font-medium text-right">168 cromos</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Editora</span>
