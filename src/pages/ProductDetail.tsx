@@ -413,7 +413,7 @@ const ProductDetail = () => {
             <div className="space-y-2 text-sm font-body">
               <div className="flex justify-between border-b border-border pb-2">
                 <span className="text-muted-foreground">Álbum</span>
-                <span className="font-medium text-right">Brochura · 80 páginas · 232×270mm</span>
+                <span className="font-medium text-right">Brochura · 112 páginas · 232×270mm</span>
               </div>
               <div className="flex justify-between border-b border-border pb-2">
                 <span className="text-muted-foreground">Envelope</span>
