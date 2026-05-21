@@ -30,6 +30,7 @@ const getProductCategory = (handle: string): "album-only" | "album-with-envelope
   if (albumOnlyHandles.includes(h)) return "album-only";
   if (h.includes("album-capa-dura") && !h.includes("envelope")) return "album-only";
   if (h.includes("album-brochura") && !h.includes("envelope")) return "album-only";
+  if (h.includes("album-capa-cartao") && !h.includes("envelope")) return "album-only";
   if (h.includes("album") && h.includes("envelope")) return "album-with-envelopes";
   if (h.includes("adrenalyn") || h.includes("cards")) return "adrenalyn";
   return "default";
