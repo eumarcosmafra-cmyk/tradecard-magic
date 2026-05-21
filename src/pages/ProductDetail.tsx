@@ -351,7 +351,11 @@ const ProductDetail = () => {
           <div className="space-y-5">
             {/* Breadcrumb badge */}
             <div className="inline-block border border-primary/40 rounded-full px-4 py-1">
-              {isAlbumOnly ? (
+              {isAlbumWithEnvelopes ? (
+                <span className="text-[11px] font-display tracking-[0.15em] uppercase text-foreground/60">
+                  PANINI · FIFA WORLD CUP 2026™ · ÁLBUM + ENVELOPES
+                </span>
+              ) : isAlbumOnly ? (
                 <span className="text-[11px] font-display tracking-[0.15em] uppercase text-foreground/60">
                   PANINI · FIFA WORLD CUP 2026™ · ÁLBUM OFICIAL
                 </span>
