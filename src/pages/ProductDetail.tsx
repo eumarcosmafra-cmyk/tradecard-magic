@@ -126,9 +126,15 @@ const ProductDetail = () => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const productCategory = getProductCategory(handle || "");
   const isAlbumOnly = productCategory === "album-only";
-  const isAlbumPrata = isAlbumOnly && (handle || "").toLowerCase().includes("prata");
-  const albumColorAdj = isAlbumPrata ? "prateado" : "dourado";
-  const albumColorNoun = isAlbumPrata ? "prata" : "ouro";
+  const _h = (handle || "").toLowerCase();
+  const isAlbumTradicional = isAlbumOnly && _h.includes("album-capa-dura") && _h.endsWith("-copy") && !_h.includes("prata");
+  const isAlbumPrata = isAlbumOnly && !isAlbumTradicional && _h.includes("prata");
+  const albumColorAdj = isAlbumTradicional ? "tradicional" : isAlbumPrata ? "prateado" : "dourado";
+  const albumColorNoun = isAlbumTradicional ? "tradicional" : isAlbumPrata ? "prata" : "ouro";
+  const albumFinishLabel = isAlbumTradicional ? "Capa dura · 4 cores" : `Metalizado ${albumColorAdj} · 4 cores`;
+  const albumDescriptionPhrase = isAlbumTradicional
+    ? "capa dura tradicional"
+    : `capa dura com acabamento metalizado ${albumColorAdj}`;
 
   // Inject Product + Breadcrumb JSON-LD into <head> for crawlers
   useEffect(() => {
@@ -325,7 +331,7 @@ const ProductDetail = () => {
 
             {isAlbumOnly ? (
               <p className="text-muted-foreground leading-relaxed font-body text-sm">
-                Álbum oficial Panini da FIFA World Cup 2026™ com capa dura e acabamento metalizado {albumColorAdj}.
+                Álbum oficial Panini da FIFA World Cup 2026™ na versão {albumDescriptionPhrase}.
                 112 páginas + capa para colar os 980 cromos da coleção (68 especiais), com todas as 48
                 seleções que disputam o Mundial no México, Estados Unidos e Canadá. Produto licenciado,
                 pronta entrega e envio para todo o Brasil.
@@ -467,8 +473,10 @@ const ProductDetail = () => {
             </h2>
             <div className="bg-card border border-border rounded-2xl p-6 mb-6">
               <p className="font-body text-foreground/80 leading-relaxed mb-4">
-                Este é o álbum oficial da FIFA World Cup 2026™ na versão <strong>capa dura com acabamento metalizado {albumColorAdj}</strong> —
-                a edição premium da coleção para colecionadores que querem preservar a memória do maior Mundial da história,
+                Este é o álbum oficial da FIFA World Cup 2026™ na versão <strong>{albumDescriptionPhrase}</strong> —
+                {isAlbumTradicional
+                  ? " a edição clássica do álbum, ideal para colecionar e colar os cromos da maior Copa do Mundo da história, "
+                  : " a edição premium da coleção para colecionadores que querem preservar a memória do maior Mundial da história, "}
                 com 48 seleções participantes e três países-sede (México, Estados Unidos e Canadá).
               </p>
               <p className="font-body text-foreground/80 leading-relaxed">
@@ -486,7 +494,7 @@ const ProductDetail = () => {
                 </div>
                 <div className="flex justify-between border-b border-border pb-2">
                   <span className="text-muted-foreground">Acabamento</span>
-                  <span className="font-medium text-right">Metalizado {albumColorAdj} · 4 cores</span>
+                  <span className="font-medium text-right">{albumFinishLabel}</span>
                 </div>
                 <div className="flex justify-between border-b border-border pb-2">
                   <span className="text-muted-foreground">Páginas</span>
