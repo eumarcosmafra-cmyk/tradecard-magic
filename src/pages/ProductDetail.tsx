@@ -10,15 +10,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { Loader2, ShoppingCart, ArrowLeft, Zap, Star, Shield, Truck, RefreshCw, CreditCard, Calendar } from "lucide-react";
 import { toast } from "sonner";
 import { getArrivalDate } from "@/lib/arrivalDate";
-import { EnvelopeContent } from "@/components/EnvelopeContent";
-import { CardCategories } from "@/components/CardCategories";
-import { GoldenBallers } from "@/components/GoldenBallers";
-import { Eternos22 } from "@/components/Eternos22";
-import { Mascotes } from "@/components/Mascotes";
-import { Selecoes } from "@/components/Selecoes";
 import { ProductFAQ, getFaqItemsForHandle } from "@/components/ProductFAQ";
-import { FinalCTA } from "@/components/FinalCTA";
-import AdrenalynDescription from "@/components/AdrenalynDescription";
 
 /* ─── Sub-components ─── */
 
