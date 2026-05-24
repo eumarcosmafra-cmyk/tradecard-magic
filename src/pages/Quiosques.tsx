@@ -45,11 +45,10 @@ const storeAddresses: Record<string, string> = {
 };
 
 const kioskImages = [
-  "/images/kiosk-final-1.jpeg",
-  "/images/kiosk-final-2.jpeg",
-  "/images/kiosk-final-3.jpeg",
-  "/images/kiosk-1.jpeg",
+  "/images/kiosk-new-1.jpeg",
+  "/images/kiosk-new-2.jpeg",
 ];
+const kioskVideo = "/images/kiosk-new.mp4";
 
 const Quiosques = () => {
   useEffect(() => {
@@ -81,14 +80,25 @@ const Quiosques = () => {
         </p>
       </section>
 
-      {/* Photo gallery */}
+      {/* Photo & video gallery */}
       <section className="container mx-auto px-4 mb-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           {kioskImages.map((src, i) => (
             <div key={i} className="rounded-xl overflow-hidden aspect-[4/3]">
               <img src={src} alt={`Quiosque Bella Figurinha ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
             </div>
           ))}
+          <div className="rounded-xl overflow-hidden aspect-[4/3] bg-black">
+            <video
+              src={kioskVideo}
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+            />
+          </div>
         </div>
       </section>
 
