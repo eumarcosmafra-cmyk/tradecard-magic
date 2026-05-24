@@ -12,6 +12,8 @@ const regions = [
     locations: [
       "Morumbi Shopping",
       "Shopping Anália Franco",
+      "Parque Shopping São Caetano",
+      "Shopping Alphaville",
     ],
   },
   {
@@ -23,7 +25,7 @@ const regions = [
       "Jockey Plaza Shopping",
       "Ventura Shopping",
       "Shopping Estação",
-      "Shopping Curitiba",
+      
       "City Center Outlet Premium",
       "Palladium Ponta Grossa",
       "Shopping Plaza Campos Gerais",
