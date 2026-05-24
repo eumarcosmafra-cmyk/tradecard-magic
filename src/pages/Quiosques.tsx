@@ -25,7 +25,6 @@ const regions = [
       "Jockey Plaza Shopping",
       "Ventura Shopping",
       "Shopping Estação",
-      
       "City Center Outlet Premium",
       "Palladium Ponta Grossa",
       "Shopping Plaza Campos Gerais",
