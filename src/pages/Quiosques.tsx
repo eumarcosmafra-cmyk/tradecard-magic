@@ -83,11 +83,9 @@ const Quiosques = () => {
       {/* Photo & video gallery */}
       <section className="container mx-auto px-4 mb-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-          {kioskImages.map((src, i) => (
-            <div key={i} className="rounded-xl overflow-hidden aspect-[4/3]">
-              <img src={src} alt={`Quiosque Bella Figurinha ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
-            </div>
-          ))}
+          <div className="rounded-xl overflow-hidden aspect-[4/3]">
+            <img src={kioskImages[1]} alt="Quiosque Bella Figurinha 2" className="w-full h-full object-cover" loading="lazy" />
+          </div>
           <div className="rounded-xl overflow-hidden aspect-[4/3] bg-black">
             <video
               src={kioskVideo}
@@ -98,6 +96,9 @@ const Quiosques = () => {
               playsInline
               controls
             />
+          </div>
+          <div className="rounded-xl overflow-hidden aspect-[4/3]">
+            <img src={kioskImages[0]} alt="Quiosque Bella Figurinha 1" className="w-full h-full object-cover" loading="lazy" />
           </div>
         </div>
       </section>
