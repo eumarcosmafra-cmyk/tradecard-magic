@@ -110,12 +110,22 @@ const Quiosques = () => {
               </div>
 
               <ul className="space-y-3">
-                {region.locations.map((loc) => (
-                  <li key={loc} className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
-                    <span className="text-foreground/80 font-medium">{loc}</span>
-                  </li>
-                ))}
+                {region.locations.map((loc) => {
+                  const address = storeAddresses[loc];
+                  return (
+                    <li key={loc} className="flex items-start gap-3">
+                      <MapPin className="w-5 h-5 text-secondary mt-0.5 shrink-0" />
+                      <div className="flex flex-col">
+                        <span className="text-foreground/80 font-medium">{loc}</span>
+                        {address && (
+                          <span className="text-sm text-muted-foreground whitespace-pre-line mt-1">
+                            {address}
+                          </span>
+                        )}
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}
