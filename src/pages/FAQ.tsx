@@ -28,7 +28,7 @@ const faqItems = [
   },
   {
     q: "Vocês enviam para todo o Brasil?",
-    a: "Sim, realizamos envios para todos os estados do Brasil. O frete é calculado no checkout e oferecemos frete grátis em kits selecionados.",
+    a: "Sim, realizamos envios para todos os estados do Brasil. O frete é calculado no checkout.",
   },
   {
     q: "Quando os produtos em pré-venda serão enviados?",

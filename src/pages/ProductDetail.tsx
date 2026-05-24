@@ -275,10 +275,7 @@ const ProductDetail = () => {
     if (index === 1 || lowerTitle.includes("20") || lowerTitle.includes("popular")) {
       badges.push({ label: "Mais vendido 🔥", color: "fire" });
     }
-    // "Frete Grátis" for kits with 20+ envelopes
-    if (index >= 1 || lowerTitle.includes("30") || lowerTitle.includes("caixa")) {
-      badges.push({ label: "Frete Grátis", color: "green" });
-    }
+    // No free shipping badge
     return badges;
   };
 
@@ -468,11 +465,7 @@ const ProductDetail = () => {
               </Button>
             </div>
 
-            {/* Free shipping banner */}
-            <div className="flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-lg px-4 py-2.5">
-              <Truck className="w-4 h-4 text-green-600 flex-shrink-0" />
-              <span className="text-sm font-body text-green-700 font-medium">Frete grátis em pedidos acima de R$ 299,90</span>
-            </div>
+            {/* Free shipping removed */}
 
             {/* Installment info */}
             <div className="flex items-center gap-2 bg-primary/5 border border-primary/20 rounded-lg px-4 py-2.5">

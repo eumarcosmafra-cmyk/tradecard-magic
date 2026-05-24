@@ -55,7 +55,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SEOHead
         title="Bella Figurinha | Figurinhas Panini FIFA 2026"
-        description="Distribuidor oficial Panini. Figurinhas e cards Adrenalyn XL FIFA World Cup 2026™ originais, com envio para todo o Brasil e frete grátis nos kits."
+        description="Distribuidor oficial Panini. Figurinhas e cards Adrenalyn XL FIFA World Cup 2026™ originais, com envio para todo o Brasil."
         canonical="https://bellafigurinha.com.br/"
       />
       <Header />
