@@ -40,6 +40,10 @@ const regions = [
   },
 ];
 
+const storeAddresses: Record<string, string> = {
+  "Shopping Alphaville": "Centro Comercial Alphaville\nCalçada das Hortênsias, 156 - Alphaville\nCEP: 06453-017",
+};
+
 const kioskImages = [
   "/images/kiosk-final-1.jpeg",
   "/images/kiosk-final-2.jpeg",
