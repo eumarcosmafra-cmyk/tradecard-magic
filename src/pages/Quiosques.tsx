@@ -45,11 +45,10 @@ const storeAddresses: Record<string, string> = {
 };
 
 const kioskImages = [
-  "/images/kiosk-final-1.jpeg",
-  "/images/kiosk-final-2.jpeg",
-  "/images/kiosk-final-3.jpeg",
-  "/images/kiosk-1.jpeg",
+  "/images/kiosk-new-1.jpeg",
+  "/images/kiosk-new-2.jpeg",
 ];
+const kioskVideo = "/images/kiosk-new.mp4";
 
 const Quiosques = () => {
   useEffect(() => {
