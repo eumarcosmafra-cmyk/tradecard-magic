@@ -25,6 +25,14 @@ const classicTinItems = [
   { bold: "Produto licenciado oficialmente pela FIFA", text: "— ideal para presentear e colecionar" },
 ];
 
+const boxPremiumItems = [
+  { bold: "1 álbum oficial capa dura dourado", text: "" },
+  { bold: "1 álbum oficial capa dura prata", text: "" },
+  { bold: "40 envelopes oficiais Panini", text: "" },
+  { bold: "Box colecionador premium exclusivo", text: "" },
+  { bold: "Embalagem especial temática “We Are 26”", text: "" },
+];
+
 interface EnvelopeContentProps {
   imageUrl?: string;
   imageAlt?: string;
@@ -33,15 +41,20 @@ interface EnvelopeContentProps {
 }
 
 export const EnvelopeContent = ({ imageUrl, imageAlt, variantTitle, productHandle }: EnvelopeContentProps) => {
-  const isStarterPack = productHandle?.toLowerCase().includes("starter-pack");
-  const isClassicTin = productHandle?.toLowerCase().includes("lata-classic-tin") || productHandle?.toLowerCase().includes("classic-tin");
-  const items = isClassicTin ? classicTinItems : isStarterPack ? starterPackItems : envelopeItems;
-  const sectionLabel = isClassicTin ? "Conteúdo da Lata Classic Tin" : isStarterPack ? "Conteúdo do Starter Pack" : "Conteúdo do Envelope";
-  const sectionDescription = isClassicTin
+  const handleLower = productHandle?.toLowerCase() || "";
+  const isBoxPremium = handleLower.includes("we-are-26") || handleLower.includes("box-premium");
+  const isStarterPack = handleLower.includes("starter-pack");
+  const isClassicTin = handleLower.includes("lata-classic-tin") || handleLower.includes("classic-tin");
+  const items = isBoxPremium ? boxPremiumItems : isClassicTin ? classicTinItems : isStarterPack ? starterPackItems : envelopeItems;
+  const sectionLabel = isBoxPremium ? "Conteúdo do Box Premium" : isClassicTin ? "Conteúdo da Lata Classic Tin" : isStarterPack ? "Conteúdo do Starter Pack" : "Conteúdo do Envelope";
+  const sectionDescription = isBoxPremium
+    ? "O Box Premium “We Are 26” é uma edição exclusiva para os apaixonados por futebol e colecionismo."
+    : isClassicTin
     ? "A Lata Classic Tin é perfeita para quem quer acelerar a coleção com cards exclusivos e uma lata colecionável."
     : isStarterPack
     ? "O Starter Pack é o kit ideal para começar sua coleção de cards Adrenalyn XL™ FIFA World Cup 2026™."
     : "Cada envelope é uma surpresa com cards premium dos maiores jogadores da Copa do Mundo 2026.";
+
 
   return (
     <section className="mt-20">
