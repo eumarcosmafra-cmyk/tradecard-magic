@@ -31,8 +31,8 @@ const faqItems = [
     a: "Sim, realizamos envios para todos os estados do Brasil. O frete é calculado no checkout.",
   },
   {
-    q: "Quando os produtos em pré-venda serão enviados?",
-    a: "Produtos em pré-venda serão despachados assim que chegarem ao nosso estoque. Você receberá um e-mail com rastreamento assim que seu pedido for enviado.",
+    q: "Qual o prazo de envio?",
+    a: "O envio é realizado em até 2 dias úteis após a confirmação do pagamento. Você receberá um e-mail com rastreamento assim que seu pedido for enviado.",
   },
   {
     q: "Quais formas de pagamento vocês aceitam?",

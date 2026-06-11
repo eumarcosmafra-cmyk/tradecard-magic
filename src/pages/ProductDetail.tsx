@@ -817,9 +817,6 @@ const ProductDetail = () => {
         {isAlbumOnly ? (
           <section className="mt-16">
             <div className="bg-gradient-yellow rounded-3xl p-8 md:p-12 text-center shadow-yellow-lg">
-              <p className="text-xs font-display tracking-widest uppercase text-primary-foreground/80 mb-2">
-                PRÉ-VENDA
-              </p>
               <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-primary-foreground mb-3">
                 Começa a sua coleção da Copa
               </h2>
@@ -841,9 +838,6 @@ const ProductDetail = () => {
         ) : isAlbumWithEnvelopes ? (
           <section className="mt-16">
             <div className="bg-gradient-yellow rounded-3xl p-8 md:p-12 text-center shadow-yellow-lg">
-              <p className="text-xs font-display tracking-widest uppercase text-primary-foreground/80 mb-2">
-                PRÉ-VENDA · ENTREGA ANTES DA COPA
-              </p>
               <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-primary-foreground mb-3">
                 Comece sua coleção da Copa
               </h2>
@@ -865,9 +859,6 @@ const ProductDetail = () => {
         ) : isEnvelopesOnly ? (
           <section className="mt-16">
             <div className="bg-gradient-yellow rounded-3xl p-8 md:p-12 text-center shadow-yellow-lg">
-              <p className="text-xs font-display tracking-widest uppercase text-primary-foreground/80 mb-2">
-                PRÉ-VENDA
-              </p>
               <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-primary-foreground mb-3">
                 Comece sua coleção da Copa
               </h2>
