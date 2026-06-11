@@ -26,6 +26,7 @@ const isCopaStickerProduct = (p: ShopifyProduct) => {
     text.includes("álbum") ||
     text.includes("figurinha") ||
     text.includes("sticker") ||
+    text.includes("we are 26") ||
     (text.includes("envelope") && !text.includes("adrenalyn"))
   );
 };
