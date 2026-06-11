@@ -7,10 +7,9 @@ import { toast } from "sonner";
 
 interface ProductCardProps {
   product: ShopifyProduct;
-  showPreSale?: boolean;
 }
 
-export const ProductCard = ({ product, showPreSale = false }: ProductCardProps) => {
+export const ProductCard = ({ product }: ProductCardProps) => {
   const addItem = useCartStore(state => state.addItem);
   const isLoading = useCartStore(state => state.isLoading);
   const { node } = product;
@@ -53,11 +52,6 @@ export const ProductCard = ({ product, showPreSale = false }: ProductCardProps) 
           ) : (
             <div className="w-full h-full flex items-center justify-center text-muted-foreground">
               Sem imagem
-            </div>
-          )}
-          {showPreSale && (
-            <div className="absolute top-3 right-3 bg-primary text-primary-foreground text-xs font-semibold px-3 py-1 rounded-md font-display tracking-wider uppercase animate-pulse">
-              Pré-venda
             </div>
           )}
           {!available && (

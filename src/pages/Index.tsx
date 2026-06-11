@@ -12,11 +12,6 @@ import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/logo-bella.png";
 import weAre26Video from "@/assets/we-are-26.mp4.asset.json";
 
-/** Identifica se é um álbum capa dura (em pré-venda) */
-const isCapaDura = (p: ShopifyProduct) => {
-  const text = (p.node.title + " " + p.node.handle).toLowerCase();
-  return text.includes("capa dura") || text.includes("capa-dura") || text.includes("hardcover");
-};
 
 /** Palavras-chave que identificam produtos de Figurinhas/Álbuns da Copa */
 const isCopaStickerProduct = (p: ShopifyProduct) => {
@@ -191,7 +186,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ====== SEÇÃO 1 — Figurinhas & Álbuns Copa 2026 (Destaque + Pré-venda) ====== */}
+      {/* ====== SEÇÃO 1 — Figurinhas & Álbuns Copa 2026 ====== */}
       <section id="produtos" className="container mx-auto px-4 pt-20 pb-10">
         <div className="text-center mb-14">
           <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase text-foreground">
@@ -225,7 +220,7 @@ const Index = () => {
         {copaProducts.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {copaProducts.map((product) => (
-              <ProductCard key={product.node.id} product={product} showPreSale={isCapaDura(product)} />
+              <ProductCard key={product.node.id} product={product} />
             ))}
           </div>
         )}

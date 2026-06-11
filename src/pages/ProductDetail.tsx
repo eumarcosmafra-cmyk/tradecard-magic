@@ -311,10 +311,6 @@ const ProductDetail = () => {
           {/* ─── Images ─── */}
           <div className="space-y-4">
             <div className="aspect-square rounded-2xl overflow-hidden bg-card border-2 border-primary/20 relative">
-              {/* PRÉ-VENDA badge */}
-              <div className="absolute top-4 left-4 z-10 bg-primary text-primary-foreground text-xs font-display tracking-widest uppercase px-3 py-1.5 rounded-md shadow-yellow">
-                Pré-venda
-              </div>
               {selectedImage ? (
                 <img src={selectedImage.url} alt={selectedImage.altText || node.title} className="w-full h-full object-contain p-6" />
               ) : (
