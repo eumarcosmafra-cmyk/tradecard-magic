@@ -200,7 +200,7 @@ export function getFaqItemsForHandle(handle?: string): FaqItem[] {
       },
       {
         q: "Quando o produto será enviado?",
-        a: "Este produto está em pré-venda. A previsão de envio aparece em destaque no topo da página. O envio é feito antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026).",
+        a: "Este produto está em pré-venda. O envio será realizado antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026).",
       },
     ];
   }

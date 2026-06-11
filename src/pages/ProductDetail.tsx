@@ -822,7 +822,7 @@ const ProductDetail = () => {
           <section className="mt-16">
             <div className="bg-gradient-yellow rounded-3xl p-8 md:p-12 text-center shadow-yellow-lg">
               <p className="text-xs font-display tracking-widest uppercase text-primary-foreground/80 mb-2">
-                PRÉ-VENDA · ENVIO EM 25 DE MAIO
+                PRÉ-VENDA
               </p>
               <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-primary-foreground mb-3">
                 Começa a sua coleção da Copa
@@ -870,7 +870,7 @@ const ProductDetail = () => {
           <section className="mt-16">
             <div className="bg-gradient-yellow rounded-3xl p-8 md:p-12 text-center shadow-yellow-lg">
               <p className="text-xs font-display tracking-widest uppercase text-primary-foreground/80 mb-2">
-                PRÉ-VENDA · ENVIO EM ABRIL/2026
+                PRÉ-VENDA
               </p>
               <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-primary-foreground mb-3">
                 Comece sua coleção da Copa
