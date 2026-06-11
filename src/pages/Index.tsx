@@ -35,7 +35,13 @@ const Index = () => {
   const { data: products, isLoading, error } = useProducts();
   const location = useLocation();
 
-  const copaProducts = products?.filter(isCopaStickerProduct) || [];
+  const copaProducts = products?.filter(isCopaStickerProduct).sort((a, b) => {
+    const aWeAre26 = (a.node.title + " " + a.node.handle).toLowerCase().includes("we are 26");
+    const bWeAre26 = (b.node.title + " " + b.node.handle).toLowerCase().includes("we are 26");
+    if (aWeAre26 && !bWeAre26) return -1;
+    if (!aWeAre26 && bWeAre26) return 1;
+    return 0;
+  }) || [];
   const adrenalynProducts = products?.filter((p) => !isCopaStickerProduct(p)) || [];
 
   useEffect(() => {
