@@ -165,7 +165,37 @@ const albumBrochuraFaqItems: FaqItem[] = [
 export function getFaqItemsForHandle(handle?: string): FaqItem[] {
   const h = handle?.toLowerCase() || "";
 
+  if (h.includes("we-are-26") || h.includes("box-premium")) {
+    return [
+      {
+        q: "O que vem dentro do Box Premium We Are 26?",
+        a: "O Box Premium We Are 26 inclui: 1 álbum oficial capa dura dourado, 1 álbum oficial capa dura prata, 40 envelopes oficiais Panini, box colecionador premium exclusivo e embalagem especial temática 'We Are 26'.",
+      },
+      {
+        q: "Quantas figurinhas vêm no total?",
+        a: "São 280 figurinhas no total — 40 envelopes lacrados × 7 cromos por envelope = 280 cromos originais Panini distribuídos aleatoriamente entre as 48 seleções do Mundial 2026.",
+      },
+      {
+        q: "Os álbuns são originais Panini?",
+        a: "Sim, ambos os álbuns são oficiais licenciados pela FIFA e produzidos pela Panini Brasil. A Bella Figurinha é distribuidora oficial Panini — todos os produtos vêm direto da editora, sem revenda de marketplace.",
+      },
+      {
+        q: "Qual a diferença entre o álbum capa dura ouro e o capa dura prata?",
+        a: "O conteúdo interno é idêntico: 112 páginas + capa para os 980 cromos. A diferença é puramente estética: a capa dura ouro tem acabamento metalizado dourado e a capa dura prata tem acabamento metalizado prateado.",
+      },
+      {
+        q: "As figurinhas vêm repetidas?",
+        a: "Os envelopes são lacrados de fábrica pela Panini e a distribuição dos cromos é aleatória. É normal aparecerem figurinhas repetidas — parte do processo de colecionar e trocar com outros colecionadores.",
+      },
+      {
+        q: "Quando o produto será enviado?",
+        a: "O envio será realizado em até 2 dias úteis após a confirmação do pagamento.",
+      },
+    ];
+  }
+
   if (h.includes("album") && h.includes("envelope")) {
+
     const match = h.match(/(\d+)[-_]?\s*envelope/);
     const count = match ? parseInt(match[1], 10) : 12;
     const total = count * 7;
