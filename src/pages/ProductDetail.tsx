@@ -820,13 +820,53 @@ const ProductDetail = () => {
         )}
 
         {isBoxPremium && (
-          <EnvelopeContent
-            imageUrl={images[0]?.node.url}
-            imageAlt={node.title}
-            variantTitle={selectedVariant?.title}
-            productHandle={node.handle}
-          />
+          <section className="mt-16">
+            <div className="inline-block bg-primary/10 border border-primary/40 rounded-full px-4 py-1 mb-3">
+              <span className="text-[11px] font-display tracking-[0.15em] uppercase text-primary">
+                CONTEÚDO DO BOX
+              </span>
+            </div>
+            <h2 className="font-display text-2xl md:text-3xl tracking-wider uppercase mb-6">
+              O que você vai receber
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div className="bg-card border border-border rounded-2xl p-6 text-center">
+                <div className="text-5xl mb-2">📕</div>
+                <p className="font-display text-2xl tracking-wide">2 álbuns</p>
+                <p className="text-sm text-muted-foreground font-body mt-1">Capa dura · Dourado + Prata</p>
+              </div>
+              <div className="bg-card border border-border rounded-2xl p-6 text-center">
+                <div className="text-5xl mb-2">✉️</div>
+                <p className="font-display text-2xl tracking-wide">40 envelopes</p>
+                <p className="text-sm text-muted-foreground font-body mt-1">280 cromos no total</p>
+              </div>
+            </div>
+            <div className="bg-primary/10 border-2 border-primary/30 rounded-2xl p-6 text-center mb-6">
+              <p className="text-sm font-body text-muted-foreground mb-2">40 envelopes × 7 cromos</p>
+              <p className="font-display text-4xl md:text-5xl tracking-wide text-primary">= 280 figurinhas</p>
+              <p className="text-sm font-body text-muted-foreground mt-2">para começar a montar sua coleção</p>
+            </div>
+            <div className="bg-card border border-border rounded-2xl p-6 mb-6">
+              <ul className="space-y-3 font-body text-sm">
+                {[
+                  <><strong>1 álbum oficial capa dura dourado</strong></>,
+                  <><strong>1 álbum oficial capa dura prata</strong></>,
+                  <><strong>40 envelopes oficiais Panini</strong></>,
+                  <><strong>Box colecionador premium exclusivo</strong></>,
+                  <><strong>Embalagem especial temática "We Are 26"</strong></>,
+                ].map((content, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <div className="w-2 h-2 rounded-full bg-green-600" />
+                    </div>
+                    <span>{content}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
         )}
+
 
         {!isAlbumOnly && !isEnvelopesOnly && !isAlbumWithEnvelopes && !isBoxPremium && (
           <>
