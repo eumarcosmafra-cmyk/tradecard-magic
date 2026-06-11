@@ -819,7 +819,16 @@ const ProductDetail = () => {
           </>
         )}
 
-        {!isAlbumOnly && !isEnvelopesOnly && !isAlbumWithEnvelopes && (
+        {isBoxPremium && (
+          <EnvelopeContent
+            imageUrl={images[0]?.node.url}
+            imageAlt={node.title}
+            variantTitle={selectedVariant?.title}
+            productHandle={node.handle}
+          />
+        )}
+
+        {!isAlbumOnly && !isEnvelopesOnly && !isAlbumWithEnvelopes && !isBoxPremium && (
           <>
             {/* ─── Envelope content section ─── */}
             <EnvelopeContent
@@ -837,6 +846,7 @@ const ProductDetail = () => {
             <Mascotes />
           </>
         )}
+
 
         {/* ─── FAQ ─── */}
         <ProductFAQ productHandle={node.handle} />
