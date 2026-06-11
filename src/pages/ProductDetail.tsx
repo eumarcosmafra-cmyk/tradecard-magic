@@ -535,6 +535,21 @@ const ProductDetail = () => {
               </div>
             ))}
           </div>
+        ) : isBoxPremium ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+            {[
+              { emoji: "📕", value: "2", label: "Álbuns capa dura" },
+              { emoji: "✉️", value: "40", label: "Envelopes lacrados" },
+              { emoji: "🃏", value: "280", label: "Cromos pra começar" },
+              { emoji: "📚", value: "980", label: "Coleção completa" },
+            ].map((stat) => (
+              <div key={stat.label} className="bg-card border border-border rounded-2xl p-6 text-center space-y-2 hover:border-primary/40 transition-colors">
+                <span className="text-3xl">{stat.emoji}</span>
+                <p className="font-display text-3xl tracking-wide text-foreground">{stat.value}</p>
+                <p className="text-xs text-muted-foreground font-body">{stat.label}</p>
+              </div>
+            ))}
+          </div>
         ) : (
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
             {[
@@ -551,6 +566,7 @@ const ProductDetail = () => {
             ))}
           </div>
         )}
+
 
         {isAlbumOnly && (
           <section className="mt-16">
