@@ -122,6 +122,67 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ====== BANNER — Box Premium "We Are 26" ====== */}
+      <section className="container mx-auto px-4 py-16">
+        <div className="relative overflow-hidden rounded-3xl border border-primary/30 bg-gradient-to-br from-black via-zinc-900 to-black shadow-yellow-lg">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
+            {/* Vídeo */}
+            <div className="relative aspect-[9/16] lg:aspect-auto lg:h-[600px] bg-black">
+              <video
+                src={weAre26Video.url}
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                className="w-full h-full object-cover"
+              />
+            </div>
+
+            {/* Conteúdo */}
+            <div className="p-8 md:p-12 lg:p-14 space-y-6">
+              <span className="inline-block bg-primary/15 text-primary font-display text-xs md:text-sm tracking-widest uppercase px-4 py-1.5 rounded-full">
+                Novidade Exclusiva
+              </span>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-wider uppercase text-white leading-none">
+                Box Premium <span className="text-gradient-yellow">"We Are 26"</span>
+              </h2>
+              <p className="text-white/80 font-body text-base md:text-lg leading-relaxed">
+                O box premium <strong>"We Are 26"</strong> chegou por aqui trazendo uma edição
+                exclusiva para os apaixonados por futebol e colecionismo ✨
+              </p>
+              <ul className="space-y-3 text-white/90 font-body">
+                <li className="flex items-start gap-3">
+                  <Star className="text-primary mt-0.5 shrink-0" size={18} />
+                  <span>1 álbum oficial capa dura <strong>dourado</strong></span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Star className="text-primary mt-0.5 shrink-0" size={18} />
+                  <span>1 álbum oficial capa dura <strong>prata</strong></span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Star className="text-primary mt-0.5 shrink-0" size={18} />
+                  <span>40 envelopes oficiais Panini</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Star className="text-primary mt-0.5 shrink-0" size={18} />
+                  <span>Box colecionador premium exclusivo</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Star className="text-primary mt-0.5 shrink-0" size={18} />
+                  <span>Embalagem especial temática "We Are 26"</span>
+                </li>
+              </ul>
+              <a
+                href="#produtos"
+                className="inline-block bg-gradient-yellow text-primary-foreground font-display text-lg md:text-xl tracking-wider uppercase px-8 py-4 rounded-xl hover:opacity-90 transition-opacity shadow-yellow-lg"
+              >
+                Garantir o meu
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* ====== SEÇÃO 1 — Figurinhas & Álbuns Copa 2026 (Destaque + Pré-venda) ====== */}
       <section id="produtos" className="container mx-auto px-4 pt-20 pb-10">
