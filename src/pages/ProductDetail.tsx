@@ -152,6 +152,7 @@ const ProductDetail = () => {
     "capa-dura-prata": "capa dura prata",
   }[comboAlbumType];
   const _h = (handle || "").toLowerCase();
+  const isBoxPremium = _h.includes("we-are-26") || _h.includes("box-premium");
   const isAlbumBrochura = isAlbumOnly && (_h.includes("album-brochura") || _h.includes("album-capa-cartao"));
   const isAlbumTradicional = isAlbumOnly && !isAlbumBrochura && _h.includes("album-capa-dura") && _h.endsWith("-copy") && !_h.includes("prata");
   const isAlbumPrata = isAlbumOnly && !isAlbumBrochura && !isAlbumTradicional && _h.includes("prata");
@@ -366,7 +367,34 @@ const ProductDetail = () => {
               {node.title}
             </h1>
 
-            {isAlbumWithEnvelopes ? (
+            {isBoxPremium ? (
+              <div className="space-y-3 text-muted-foreground font-body text-sm">
+                <p className="leading-relaxed">Ele inclui:</p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2">
+                    <Star className="text-primary mt-0.5 shrink-0" size={16} />
+                    <span>1 álbum oficial capa dura <strong>dourado</strong></span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Star className="text-primary mt-0.5 shrink-0" size={16} />
+                    <span>1 álbum oficial capa dura <strong>prata</strong></span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Star className="text-primary mt-0.5 shrink-0" size={16} />
+                    <span>40 envelopes oficiais Panini</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Star className="text-primary mt-0.5 shrink-0" size={16} />
+                    <span>Box colecionador premium exclusivo</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Star className="text-primary mt-0.5 shrink-0" size={16} />
+                    <span>Embalagem especial temática "We Are 26"</span>
+                  </li>
+                </ul>
+                <p className="leading-relaxed">Produto licenciado, pronta entrega e envio para todo o Brasil.</p>
+              </div>
+            ) : isAlbumWithEnvelopes ? (
               <p className="text-muted-foreground leading-relaxed font-body text-sm">
                 Combo de início da coleção FIFA World Cup 2026™: 1 álbum oficial Panini em formato {comboAlbumLabel} (112 páginas)
                 + {envelopeCount} envelopes lacrados com 7 cromos cada — {totalFigurinhas} figurinhas para começar a colar.
@@ -393,7 +421,7 @@ const ProductDetail = () => {
               )
             )}
 
-            {(isAlbumOnly || isEnvelopesOnly || isAlbumWithEnvelopes) ? (
+            {(isAlbumOnly || isEnvelopesOnly || isAlbumWithEnvelopes || isBoxPremium) ? (
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4 text-primary" />
                 <span className="text-sm text-muted-foreground font-body">Distribuidor oficial Panini · Produto licenciado FIFA</span>

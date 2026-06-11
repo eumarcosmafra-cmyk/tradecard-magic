@@ -150,8 +150,7 @@ const Index = () => {
                 Box Premium <span className="text-gradient-yellow">"We Are 26"</span>
               </h2>
               <p className="text-white/80 font-body text-base md:text-lg leading-relaxed">
-                O box premium <strong>"We Are 26"</strong> chegou por aqui trazendo uma edição
-                exclusiva para os apaixonados por futebol e colecionismo ✨
+                Ele inclui:
               </p>
               <ul className="space-y-3 text-white/90 font-body">
                 <li className="flex items-start gap-3">
