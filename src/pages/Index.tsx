@@ -122,47 +122,6 @@ const Index = () => {
         </div>
       </section>
 
-
-      {/* ====== SEÇÃO 1 — Figurinhas & Álbuns Copa 2026 (Destaque + Pré-venda) ====== */}
-      <section id="produtos" className="container mx-auto px-4 pt-20 pb-10">
-        <div className="text-center mb-14">
-          <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase text-foreground">
-            <Star className="inline-block text-primary mb-2 mr-2" size={32} />
-            Álbum & Figurinhas <span className="text-gradient-yellow">Copa 2026</span>
-          </h2>
-          <p className="text-muted-foreground mt-3 font-body max-w-2xl mx-auto">
-            O álbum oficial e os envelopes de figurinhas FIFA World Cup 2026™ chegaram! Garanta já o seu.
-          </p>
-        </div>
-
-        {isLoading && (
-          <div className="flex justify-center py-20">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-          </div>
-        )}
-
-        {error && (
-          <div className="text-center py-20 text-destructive">
-            <p className="font-body">Erro ao carregar produtos. Tente novamente mais tarde.</p>
-          </div>
-        )}
-
-        {!isLoading && !error && copaProducts.length === 0 && (
-          <div className="text-center py-12">
-            <Package className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <p className="text-muted-foreground font-body">Em breve — produtos da Copa serão adicionados.</p>
-          </div>
-        )}
-
-        {copaProducts.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {copaProducts.map((product) => (
-              <ProductCard key={product.node.id} product={product} showPreSale={isCapaDura(product)} />
-            ))}
-          </div>
-        )}
-      </section>
-
       {/* ====== BANNER — Box Premium "We Are 26" ====== */}
       <section className="container mx-auto px-4 py-16">
         <div className="relative overflow-hidden rounded-3xl border border-primary/30 bg-gradient-to-br from-black via-zinc-900 to-black shadow-yellow-lg">
@@ -223,6 +182,46 @@ const Index = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* ====== SEÇÃO 1 — Figurinhas & Álbuns Copa 2026 (Destaque + Pré-venda) ====== */}
+      <section id="produtos" className="container mx-auto px-4 pt-20 pb-10">
+        <div className="text-center mb-14">
+          <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase text-foreground">
+            <Star className="inline-block text-primary mb-2 mr-2" size={32} />
+            Álbum & Figurinhas <span className="text-gradient-yellow">Copa 2026</span>
+          </h2>
+          <p className="text-muted-foreground mt-3 font-body max-w-2xl mx-auto">
+            O álbum oficial e os envelopes de figurinhas FIFA World Cup 2026™ chegaram! Garanta já o seu.
+          </p>
+        </div>
+
+        {isLoading && (
+          <div className="flex justify-center py-20">
+            <Loader2 className="h-8 w-8 animate-spin text-primary" />
+          </div>
+        )}
+
+        {error && (
+          <div className="text-center py-20 text-destructive">
+            <p className="font-body">Erro ao carregar produtos. Tente novamente mais tarde.</p>
+          </div>
+        )}
+
+        {!isLoading && !error && copaProducts.length === 0 && (
+          <div className="text-center py-12">
+            <Package className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+            <p className="text-muted-foreground font-body">Em breve — produtos da Copa serão adicionados.</p>
+          </div>
+        )}
+
+        {copaProducts.length > 0 && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {copaProducts.map((product) => (
+              <ProductCard key={product.node.id} product={product} showPreSale={isCapaDura(product)} />
+            ))}
+          </div>
+        )}
       </section>
 
       {/* ====== SEÇÃO 2 — Cards Adrenalyn XL ====== */}
