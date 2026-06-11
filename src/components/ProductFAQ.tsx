@@ -66,8 +66,8 @@ const starterPackFaqItems: FaqItem[] = [
 ];
 
 const preOrderFaq: FaqItem = {
-  q: "Quando o produto estará disponível para envio?",
-  a: "Este produto está em pré-venda. O despacho ocorrerá assim que os itens chegarem ao estoque. Você receberá um e-mail com rastreamento assim que seu pedido for enviado.",
+  q: "Quando o produto será enviado?",
+  a: "O envio será realizado em até 2 dias úteis após a confirmação do pagamento. Você receberá um e-mail com rastreamento assim que seu pedido for enviado.",
 };
 
 const albumCapaDuraOuroFaqItems: FaqItem[] = [
@@ -85,7 +85,7 @@ const albumCapaDuraOuroFaqItems: FaqItem[] = [
   },
   {
     q: "Quando o produto será enviado?",
-    a: "Este produto está em pré-venda. O envio será realizado antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026).",
+    a: "O envio será realizado em até 2 dias úteis após a confirmação do pagamento.",
   },
   {
     q: "É um produto oficial Panini?",
@@ -108,7 +108,7 @@ const albumCapaDuraTradicionalFaqItems: FaqItem[] = [
   },
   {
     q: "Quando o produto será enviado?",
-    a: "Este produto está em pré-venda. O envio será realizado antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026).",
+    a: "O envio será realizado em até 2 dias úteis após a confirmação do pagamento.",
   },
   {
     q: "É um produto oficial Panini?",
@@ -131,7 +131,7 @@ const albumCapaDuraPrataFaqItems: FaqItem[] = [
   },
   {
     q: "Quando o produto será enviado?",
-    a: "Este produto está em pré-venda. O envio será realizado antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026).",
+    a: "O envio será realizado em até 2 dias úteis após a confirmação do pagamento.",
   },
   {
     q: "É um produto oficial Panini?",
@@ -154,7 +154,7 @@ const albumBrochuraFaqItems: FaqItem[] = [
   },
   {
     q: "Quando o produto será enviado?",
-    a: "Este produto está em pré-venda. O envio será realizado antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026).",
+    a: "O envio será realizado em até 2 dias úteis após a confirmação do pagamento.",
   },
   {
     q: "É um produto oficial Panini?",
@@ -200,7 +200,7 @@ export function getFaqItemsForHandle(handle?: string): FaqItem[] {
       },
       {
         q: "Quando o produto será enviado?",
-        a: "Este produto está em pré-venda. O envio será realizado antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026).",
+        a: "O envio será realizado em até 2 dias úteis após a confirmação do pagamento.",
       },
     ];
   }
@@ -228,7 +228,7 @@ export function getFaqItemsForHandle(handle?: string): FaqItem[] {
       },
       {
         q: "Quando o produto será enviado?",
-        a: "Este produto está em pré-venda com previsão de envio para a segunda quinzena de abril/2026, antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026).",
+        a: "O envio será realizado em até 2 dias úteis após a confirmação do pagamento.",
       },
       {
         q: "As figurinhas são originais Panini?",

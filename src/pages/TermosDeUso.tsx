@@ -45,7 +45,7 @@ const TermosDeUso = () => {
           <li>Os preços exibidos estão em Reais (BRL) e podem ser alterados sem aviso prévio</li>
           <li>As imagens dos produtos são ilustrativas e podem variar do produto real</li>
           <li>A disponibilidade dos produtos está sujeita ao estoque</li>
-          <li>Produtos em pré-venda serão enviados conforme o prazo informado na página do produto</li>
+          <li>O prazo de envio é de até 2 dias úteis após a confirmação do pagamento</li>
         </ul>
 
         <h2 className="font-display text-xl tracking-wider uppercase text-foreground !mt-10">5. Pagamento</h2>

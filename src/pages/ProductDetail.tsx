@@ -311,10 +311,6 @@ const ProductDetail = () => {
           {/* ─── Images ─── */}
           <div className="space-y-4">
             <div className="aspect-square rounded-2xl overflow-hidden bg-card border-2 border-primary/20 relative">
-              {/* PRÉ-VENDA badge */}
-              <div className="absolute top-4 left-4 z-10 bg-primary text-primary-foreground text-xs font-display tracking-widest uppercase px-3 py-1.5 rounded-md shadow-yellow">
-                Pré-venda
-              </div>
               {selectedImage ? (
                 <img src={selectedImage.url} alt={selectedImage.altText || node.title} className="w-full h-full object-contain p-6" />
               ) : (
@@ -821,9 +817,6 @@ const ProductDetail = () => {
         {isAlbumOnly ? (
           <section className="mt-16">
             <div className="bg-gradient-yellow rounded-3xl p-8 md:p-12 text-center shadow-yellow-lg">
-              <p className="text-xs font-display tracking-widest uppercase text-primary-foreground/80 mb-2">
-                PRÉ-VENDA
-              </p>
               <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-primary-foreground mb-3">
                 Começa a sua coleção da Copa
               </h2>
@@ -845,9 +838,6 @@ const ProductDetail = () => {
         ) : isAlbumWithEnvelopes ? (
           <section className="mt-16">
             <div className="bg-gradient-yellow rounded-3xl p-8 md:p-12 text-center shadow-yellow-lg">
-              <p className="text-xs font-display tracking-widest uppercase text-primary-foreground/80 mb-2">
-                PRÉ-VENDA · ENTREGA ANTES DA COPA
-              </p>
               <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-primary-foreground mb-3">
                 Comece sua coleção da Copa
               </h2>
@@ -869,9 +859,6 @@ const ProductDetail = () => {
         ) : isEnvelopesOnly ? (
           <section className="mt-16">
             <div className="bg-gradient-yellow rounded-3xl p-8 md:p-12 text-center shadow-yellow-lg">
-              <p className="text-xs font-display tracking-widest uppercase text-primary-foreground/80 mb-2">
-                PRÉ-VENDA
-              </p>
               <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-primary-foreground mb-3">
                 Comece sua coleção da Copa
               </h2>
