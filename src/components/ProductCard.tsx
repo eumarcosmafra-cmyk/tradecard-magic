@@ -19,7 +19,6 @@ export const ProductCard = ({ product, showPreSale = false }: ProductCardProps) 
   const price = parseFloat(node.priceRange.minVariantPrice.amount);
   const currency = node.priceRange.minVariantPrice.currencyCode;
   const available = variant?.availableForSale ?? false;
-  const arrivalDate = getArrivalDate(node.title);
 
   const formatPrice = (amount: number) => {
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency }).format(amount);
