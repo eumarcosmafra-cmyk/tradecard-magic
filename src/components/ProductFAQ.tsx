@@ -85,7 +85,7 @@ const albumCapaDuraOuroFaqItems: FaqItem[] = [
   },
   {
     q: "Quando o produto será enviado?",
-    a: "Este produto está em pré-venda com previsão de envio em 25 de maio de 2026, antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026).",
+    a: "Este produto está em pré-venda. O envio será realizado antes do início da Copa do Mundo FIFA 2026™ (11 de junho a 19 de julho de 2026).",
   },
   {
     q: "É um produto oficial Panini?",

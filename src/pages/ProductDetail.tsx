@@ -7,9 +7,8 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useProductByHandle } from "@/hooks/useProducts";
 import { useCartStore } from "@/stores/cartStore";
-import { Loader2, ShoppingCart, ArrowLeft, Zap, Star, Shield, Truck, RefreshCw, CreditCard, Calendar } from "lucide-react";
+import { Loader2, ShoppingCart, ArrowLeft, Zap, Star, Shield, Truck, RefreshCw, CreditCard } from "lucide-react";
 import { toast } from "sonner";
-import { getArrivalDate } from "@/lib/arrivalDate";
 import { EnvelopeContent } from "@/components/EnvelopeContent";
 import { CardCategories } from "@/components/CardCategories";
 import { GoldenBallers } from "@/components/GoldenBallers";
@@ -397,20 +396,6 @@ const ProductDetail = () => {
                 <p className="text-muted-foreground leading-relaxed font-body text-sm">{node.description}</p>
               )
             )}
-
-            {(() => {
-              const arrivalDate = getArrivalDate(node.title);
-              if (!arrivalDate) return null;
-              return (
-                <div className="flex items-center gap-3 bg-primary/10 border border-primary/40 rounded-xl px-4 py-3">
-                  <Calendar className="w-5 h-5 text-primary shrink-0" />
-                  <div className="font-body text-sm text-foreground">
-                    <span className="font-display tracking-wider uppercase text-primary">Previsão de chegada:</span>{" "}
-                    <strong className="text-base">{arrivalDate}</strong>
-                  </div>
-                </div>
-              );
-            })()}
 
             {(isAlbumOnly || isEnvelopesOnly || isAlbumWithEnvelopes) ? (
               <div className="flex items-center gap-2">
