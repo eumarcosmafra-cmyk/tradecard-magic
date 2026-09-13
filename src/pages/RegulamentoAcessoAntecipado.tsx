@@ -2,13 +2,13 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
-import { DROP_DATE_LABEL } from "@/lib/drop";
+import { DROP_DATE_LABEL, OFFER_DISCOUNT, OFFER_LINE } from "@/lib/drop";
 
 const RegulamentoAcessoAntecipado = () => (
   <div className="min-h-screen bg-background">
     <SEOHead
       title="Regulamento do Acesso Antecipado | Bella Figurinha"
-      description="Regras da ação de acesso antecipado da Bella Figurinha: participação, condição promocional de lançamento, limite de 1 item por CPF e tratamento de dados."
+      description="Regras do acesso antecipado da Bella Figurinha: 20% de desconto em produtos Pokémon 30 anos, 1 unidade por CPF, por ordem de chegada e enquanto durar o estoque."
       canonical="https://bellafigurinha.com.br/regulamento-acesso-antecipado"
     />
     <Header />
