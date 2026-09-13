@@ -13,11 +13,14 @@ Cada meta tem seu caminho visível na home: um bloco de loja física, um bloco d
 ## O que muda para quem visita
 
 **Nova home**
-- Abertura nova: "Um novo universo está chegando à Bella" + "Cards. Coleções. Raridades." 
+- Abertura nova: "Um novo universo está chegando à Bella" + "Cards. Coleções. Raridades."
 - Botões "Quero acesso antecipado" e "Descobrir a nova Bella", com contagem regressiva para 25/09.
+- **Bloco de destaque Pokémon** logo abaixo da abertura — é o principal ativo da nova fase. Aparece escrito ("cards Pokémon"), com o clima visual do universo: amarelo elétrico com raio de energia, azul intenso, vermelho e branco, cartas em leque, brilho holográfico. Sem logotipo, tipografia oficial, Pokébola ou personagens.
 - Seção "O que está chegando": Booster Packs, Boxes, Coleções Especiais, Acessórios, Outros Colecionáveis — em "Em breve" enquanto não houver produtos cadastrados.
 - Seção "Muito além dos cards" para COPAG.
 - A Copa aparece como um bloco/categoria, não mais como identidade do site.
+
+**Clima visual Pokémon sem a marca**: o site inteiro (home, acesso antecipado, página da coleção) usa a paleta amarelo elétrico + azul intenso + vermelho + branco, energia elétrica, brilho holográfico, cantos de carta e raridades. A associação é imediata, mas nenhum elemento gráfico proprietário é reproduzido. Nas páginas de produto aparecem normalmente o nome comercial e as imagens dos itens cadastrados.
 
 **Página de acesso antecipado (/acesso-antecipado)**
 - Funciona sozinha, pensada primeiro para celular, cadastro em menos de 30 segundos.
