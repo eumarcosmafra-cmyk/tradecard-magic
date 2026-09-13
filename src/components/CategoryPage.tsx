@@ -41,6 +41,7 @@ export const CategoryPage = ({
   emptyMessage = "Em breve — estamos preparando essa coleção.",
   children,
   dark = false,
+  sections,
 }: Props) => {
   const { data: products, isLoading, error } = useProducts(100);
   const list = products?.filter(filter) ?? [];
