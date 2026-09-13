@@ -63,6 +63,19 @@ export default {
           DEFAULT: "hsl(var(--green))",
           light: "hsl(var(--green-light))",
         },
+        electric: {
+          DEFAULT: "hsl(var(--electric))",
+          soft: "hsl(var(--electric-soft))",
+        },
+        volt: {
+          DEFAULT: "hsl(var(--volt))",
+          deep: "hsl(var(--volt-deep))",
+        },
+        spark: "hsl(var(--spark))",
+        ink: {
+          DEFAULT: "hsl(var(--ink))",
+          soft: "hsl(var(--ink-soft))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
