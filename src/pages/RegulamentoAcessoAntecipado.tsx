@@ -2,13 +2,13 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { Link } from "react-router-dom";
-import { DROP_DATE_LABEL } from "@/lib/drop";
+import { DROP_DATE_LABEL, OFFER_DISCOUNT, OFFER_LINE } from "@/lib/drop";
 
 const RegulamentoAcessoAntecipado = () => (
   <div className="min-h-screen bg-background">
     <SEOHead
       title="Regulamento do Acesso Antecipado | Bella Figurinha"
-      description="Regras da ação de acesso antecipado da Bella Figurinha: participação, condição promocional de lançamento, limite de 1 item por CPF e tratamento de dados."
+      description="Regras do acesso antecipado da Bella Figurinha: 20% de desconto em produtos Pokémon 30 anos, 1 unidade por CPF, por ordem de chegada e enquanto durar o estoque."
       canonical="https://bellafigurinha.com.br/regulamento-acesso-antecipado"
     />
     <Header />
@@ -27,18 +27,23 @@ const RegulamentoAcessoAntecipado = () => (
           em {DROP_DATE_LABEL}.
         </p>
 
-        <h2>2. Quem pode participar</h2>
+        <h2>2. Quem pode participar e até quando</h2>
         <p>
           Pessoas físicas maiores de 18 anos, com CPF válido, que realizem o cadastro na página de acesso antecipado
-          informando nome completo, CPF, WhatsApp e e-mail, e que aceitem este regulamento.
+          informando nome completo, CPF, WhatsApp e e-mail, e que aceitem este regulamento. Os cadastros ficam abertos
+          <strong> até {DROP_DATE_LABEL}</strong>, data de abertura do quiosque e do primeiro drop.
         </p>
 
         <h2>3. O benefício</h2>
         <p>
-          Participantes cadastrados poderão acessar condições promocionais de lançamento em produtos selecionados,
-          incluindo cards Pokémon, antes da comunicação ao público geral. O benefício é limitado a
-          <strong> 1 (um) item promocional por CPF</strong> e está sujeito à disponibilidade de estoque, podendo ser
-          encerrado a qualquer momento.
+          Participantes cadastrados têm direito a <strong>{OFFER_DISCOUNT} de desconto em produtos {OFFER_LINE}</strong>,
+          limitado a <strong>1 (uma) unidade por CPF</strong>. O atendimento é por <strong>ordem de chegada</strong> ao
+          quiosque e o benefício é válido <strong>enquanto durar o estoque</strong>, podendo ser encerrado a qualquer
+          momento.
+        </p>
+        <p>
+          <strong>O cadastro dá acesso ao desconto, mas não reserva produto nem garante unidade.</strong> Não há
+          cobrança antecipada, reserva de item ou fila prioritária além da ordem de chegada ao quiosque.
         </p>
 
         <h2>4. Como resgatar</h2>
@@ -46,6 +51,7 @@ const RegulamentoAcessoAntecipado = () => (
           O resgate é presencial, no quiosque do Shopping Palladium, mediante identificação do CPF cadastrado. Cada CPF
           pode resgatar o benefício uma única vez; após o resgate, o cadastro é marcado como utilizado.
         </p>
+
 
         <h2>5. Cadastro duplicado</h2>
         <p>

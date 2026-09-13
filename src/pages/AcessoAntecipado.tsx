@@ -7,21 +7,31 @@ import { Countdown } from "@/components/Countdown";
 import { supabase } from "@/integrations/supabase/client";
 import { captureAttribution, getAttribution, trackEvent } from "@/lib/analytics";
 import { isValidCpf, isValidEmail, maskCpf, maskPhone, onlyDigits } from "@/lib/cpf";
-import { DROP_DATE_LABEL, TERMS_VERSION } from "@/lib/drop";
+import {
+  DROP_DATE_LABEL,
+  DROP_DATE_SHORT,
+  OFFER_FULL,
+  
+  OFFER_NO_RESERVE,
+  OFFER_SHORT,
+  TERMS_VERSION,
+  isSignupOpen,
+} from "@/lib/drop";
 import dropCards from "@/assets/drop-cards.jpg";
 import logo from "@/assets/logo-bella.png";
 
 type Status = "idle" | "sending" | "created" | "already_registered";
 
 const steps = [
-  { n: "01", title: "Cadastre-se", text: "Entre gratuitamente na lista de acesso antecipado." },
+  { n: "01", title: "Cadastre-se", text: `Entre gratuitamente na lista de acesso antecipado até ${DROP_DATE_SHORT}.` },
   { n: "02", title: "Receba o aviso", text: "Avisamos quando o primeiro drop estiver disponível." },
   {
     n: "03",
     title: "Garanta o seu",
-    text: "Quem estiver cadastrado acessa a condição promocional de lançamento, limitada a 1 unidade por CPF e sujeita ao estoque.",
+    text: `No quiosque do Palladium você usa o desconto de ${OFFER_SHORT.toLowerCase()} — 1 unidade por CPF, por ordem de chegada e enquanto durar o estoque. O cadastro não reserva produto.`,
   },
 ];
+
 
 const AcessoAntecipado = () => {
   const [form, setForm] = useState({ nome: "", cpf: "", whatsapp: "", email: "", consent: false });
@@ -95,12 +105,13 @@ const AcessoAntecipado = () => {
   };
 
   const done = status === "created" || status === "already_registered";
+  const signupOpen = isSignupOpen();
 
   return (
     <div className="min-h-screen bg-arena text-white">
       <SEOHead
         title="Acesso Antecipado | Primeiro Drop da Bella Figurinha"
-        description="Entre na lista de acesso antecipado da Bella Figurinha e garanta condição promocional de lançamento em cards Pokémon selecionados. Primeiro drop em 25/09."
+        description="Entre na lista de acesso antecipado da Bella Figurinha até 25/09 e garanta 20% de desconto em produtos Pokémon 30 anos — 1 unidade por CPF, enquanto durar o estoque."
         canonical="https://bellafigurinha.com.br/acesso-antecipado"
       />
 
@@ -123,23 +134,31 @@ const AcessoAntecipado = () => {
             </h1>
             <p className="font-body text-lg text-white/80 max-w-xl">
               Comemorando os 30 anos da coleção de cards mais amada do mundo, abrimos nosso quiosque no Shopping
-              Palladium com cards Pokémon e colecionáveis selecionados em condições especiais de lançamento.
+              Palladium. Quem entrar na lista até {DROP_DATE_SHORT} leva a oferta de lançamento:
             </p>
+            <p className="font-display text-3xl md:text-4xl tracking-wider uppercase text-electric leading-tight">
+              {OFFER_FULL}
+            </p>
+            <div className="rounded-2xl border-2 border-spark/60 bg-spark/10 px-5 py-4">
+              <p className="font-display text-lg tracking-widest uppercase text-spark">Atenção</p>
+              <p className="font-body text-sm text-white/90 mt-1">{OFFER_NO_RESERVE}</p>
+            </div>
             <Countdown />
             <ul className="space-y-3 font-body text-white/80">
               <li className="flex gap-3">
                 <Sparkles className="text-electric shrink-0 mt-0.5" size={18} />
-                Desconto de lançamento em produtos Pokémon selecionados para quem está na lista.
+                {OFFER_SHORT} para quem está na lista.
               </li>
               <li className="flex gap-3">
                 <ShieldCheck className="text-electric shrink-0 mt-0.5" size={18} />
-                1 item promocional por CPF, sujeito à disponibilidade de estoque.
+                1 unidade por CPF, por ordem de chegada e enquanto durar o estoque.
               </li>
               <li className="flex gap-3">
                 <MapPin className="text-electric shrink-0 mt-0.5" size={18} />
                 Resgate presencial no quiosque do Shopping Palladium, em Curitiba.
               </li>
             </ul>
+
             <img
               src={dropCards}
               alt="Envelopes lacrados e cards colecionáveis com brilho holográfico"
@@ -152,12 +171,27 @@ const AcessoAntecipado = () => {
 
           {/* Formulário */}
           <div id="cadastro" className="rounded-3xl bg-ink-soft/90 p-6 md:p-8 holo-border shadow-volt">
-            {!done ? (
+            {!signupOpen ? (
+              <div className="text-center space-y-4 py-4">
+                <h2 className="font-display text-3xl tracking-wider uppercase">Cadastros encerrados</h2>
+                <p className="font-body text-white/80">
+                  A lista de acesso antecipado ficou aberta até {DROP_DATE_LABEL}. Agora é só passar no quiosque do
+                  Shopping Palladium — o atendimento é por ordem de chegada, enquanto durar o estoque.
+                </p>
+                <Link
+                  to="/loja-fisica"
+                  className="inline-block bg-gradient-electric text-ink font-display text-lg tracking-widest uppercase py-3 px-8 rounded-xl"
+                >
+                  Ver o quiosque
+                </Link>
+              </div>
+            ) : !done ? (
               <form onSubmit={submit} noValidate className="space-y-4">
                 <h2 className="font-display text-3xl tracking-wider uppercase">Quem entra antes tem vantagem</h2>
                 <p className="font-body text-sm text-white/70">
-                  Cadastro gratuito, leva menos de 30 segundos.
+                  Cadastro gratuito, leva menos de 30 segundos. Inscrições até {DROP_DATE_SHORT}.
                 </p>
+
 
                 <div>
                   <label htmlFor="nome" className="font-body text-sm text-white/70">Nome completo</label>
@@ -247,7 +281,12 @@ const AcessoAntecipado = () => {
                   {status === "sending" && <Loader2 className="animate-spin" size={20} />}
                   Quero acesso antecipado
                 </button>
+
+                <p className="font-body text-xs text-white/70 border border-spark/40 bg-spark/10 rounded-xl px-4 py-3">
+                  {OFFER_NO_RESERVE}
+                </p>
               </form>
+
             ) : (
               <div className="text-center space-y-5 py-4">
                 <CheckCircle2 className="text-electric mx-auto" size={56} />
@@ -302,7 +341,7 @@ const AcessoAntecipado = () => {
           >
             Entrar na lista
           </a>
-          <p className="font-body text-white/50 text-sm mt-3">1 item promocional por CPF.</p>
+          <p className="font-body text-white/70 text-sm mt-3 max-w-2xl mx-auto">{OFFER_NO_RESERVE}</p>
         </div>
       </section>
 
