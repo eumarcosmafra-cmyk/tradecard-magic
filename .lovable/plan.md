@@ -15,8 +15,9 @@ Cada meta tem seu caminho visível na home: um bloco de loja física, um bloco d
 ## O que muda para quem visita
 
 **Nova home**
-- Abertura nova: "Um novo universo está chegando à Bella" + "Cards. Coleções. Raridades."
+- Abertura nova: selo "30 anos de cards" + "Um novo universo está chegando à Bella" + "Cards. Coleções. Raridades."
 - Botões "Quero acesso antecipado" e "Descobrir a nova Bella", com contagem regressiva para 25/09.
+- Faixa curta contando a comemoração dos 30 anos e ligando ao quiosque que abre no Palladium.
 - **Bloco de destaque Pokémon** logo abaixo da abertura — é o principal ativo da nova fase. Aparece escrito ("cards Pokémon"), com o clima visual do universo: amarelo elétrico com raio de energia, azul intenso, vermelho e branco, cartas em leque, brilho holográfico. Sem logotipo, tipografia oficial, Pokébola ou personagens.
 - Seção "O que está chegando": Booster Packs, Boxes, Coleções Especiais, Acessórios, Outros Colecionáveis — em "Em breve" enquanto não houver produtos cadastrados.
 - Seção "Muito além dos cards" para COPAG.
