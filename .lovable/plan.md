@@ -1,30 +1,30 @@
 # Ajustes no site a partir do texto para o Smolka
 
-O desenho descrito no seu texto já está, em quase tudo, refletido no site: a Copa ficou como área separada (só no menu), a home virou Pokémon/30 anos, a página de cadastro da pré-lista existe com limite de 1 CPF, e a retirada é presencial no quiosque do Palladium. O que falta mudar na página são três pontos.
+O desenho descrito no seu texto já está, em quase tudo, refletido no site: a Copa ficou como área separada (só no menu), a home virou Pokémon/30 anos, a página de cadastro da pré-lista existe com limite de 1 CPF, e a retirada é presencial no quiosque do Palladium. O que falta mudar na página são quatro pontos.
 
-## 1. Prazo da pré-lista: até 25/09
+## 1. A oferta fica clara e específica
 
-Hoje o site fala do dia 25/09 como data do lançamento/abertura do quiosque, mas não diz que o cadastro fica aberto "até" essa data. Passar a deixar isso explícito na página de cadastro, no regulamento e na barra fixa: cadastros até 25/09, com o formulário mostrando "encerrado" depois disso.
+Trocar o texto genérico "produtos selecionados" pela oferta real, repetida na home, na página de cadastro, na barra fixa, na página do quiosque e no regulamento:
 
-## 2. "O cadastro não reserva produto"
+**20% de desconto em produtos Pokémon 30 anos — 1 unidade por CPF, por ordem de chegada, enquanto durar o estoque.**
 
-O regulamento já diz que não há reserva. Subir essa frase para a própria página de cadastro (perto do botão) e para o bloco da home, para evitar expectativa errada: o cadastro dá acesso ao preço especial, não garante unidade.
+## 2. Destaque para "não garante o produto"
 
-## 3. Quantidade limitada de produtos (não só Pokémon)
+Tratar isso como aviso visível, não letra miúda: bloco destacado na página de cadastro (acima e abaixo do formulário) e na home, com a frase "O cadastro dá acesso ao desconto, não reserva produto. O atendimento é por ordem de chegada no quiosque, enquanto durar o estoque."
 
-O texto fala em "preço especial para uma quantidade limitada de produtos". Hoje o site diz "cards Pokémon selecionados". Ajustar a redação para "produtos selecionados, com destaque para cards Pokémon", mantendo o Pokémon como carro-chefe visual sem travar a oferta a uma única linha.
+## 3. Prazo da pré-lista: até 25/09
 
-## Medição do funil
+Hoje o 25/09 aparece como data do lançamento, mas não como limite de cadastro. Deixar explícito "cadastros até 25/09" na página, no regulamento e na barra fixa, com o formulário passando para o estado "cadastros encerrados" depois da data.
 
-Os eventos de campanha → página → cadastro → quiosque já são registrados (visita, início de formulário, cadastro concluído, cadastro duplicado, clique em "como chegar" no quiosque, cliques nos botões de acesso antecipado). Complemento com o evento que falta para fechar o funil do texto: clique para comprar no site (e-commerce).
+## 4. Medição do funil
+
+Os eventos campanha → página → cadastro → quiosque já são registrados. Acrescento o evento de clique de compra no site, para fechar o funil de e-commerce descrito no texto.
 
 ## Detalhes técnicos
 
-- Textos: `src/pages/AcessoAntecipado.tsx`, `src/pages/RegulamentoAcessoAntecipado.tsx`, `src/pages/LojaFisica.tsx`, `src/components/DropBar.tsx`, bloco Pokémon em `src/pages/Index.tsx`.
-- Prazo: usar `DROP_DATE`/`DROP_DATE_SHORT` de `src/lib/drop.ts` como data-limite de cadastro, com estado "encerrado" no formulário após 25/09.
-- Novo evento `ecommerce_buy_click` em `src/lib/analytics.ts`, disparado nos botões de compra.
+- Criar `OFFER_*` em `src/lib/drop.ts` (rótulo da oferta, percentual, limite por CPF) e usar em todas as páginas, para não haver texto divergente.
+- Textos: `src/pages/AcessoAntecipado.tsx`, `src/pages/RegulamentoAcessoAntecipado.tsx`, `src/pages/LojaFisica.tsx`, `src/components/DropBar.tsx` e bloco Pokémon em `src/pages/Index.tsx`.
+- Regulamento: cláusulas de 20%, ordem de chegada, ausência de reserva, prazo de cadastro até 25/09 e retirada presencial com CPF.
+- Prazo: usar `DROP_DATE` como corte do formulário.
+- Novo evento `ecommerce_buy_click` em `src/lib/analytics.ts`.
 - Sem mudanças de banco de dados.
-
-## Pendência sua
-
-- Confirmar se a oferta de lançamento é só Pokémon ou também outras linhas.
