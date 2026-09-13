@@ -38,6 +38,7 @@ Cada meta tem seu caminho visível na home: um bloco de loja física, um bloco d
 
 **Loja física (/loja-fisica)**
 - Apenas Shopping Palladium, Curitiba – PR, abertura em 25/09/2026, horário do shopping, botão "Como chegar".
+- A página conta que o quiosque nasce da comemoração dos 30 anos e é onde o desconto da lista é resgatado (1 item por CPF).
 - Os 13 quiosques antigos saem da comunicação. A página /lojas passa a levar para a nova.
 
 **Quem Somos** — nova narrativa "Somos movidos por coleções", sem menção aos quiosques da Copa.
