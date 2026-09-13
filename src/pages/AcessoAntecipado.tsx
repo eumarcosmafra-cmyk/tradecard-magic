@@ -7,21 +7,31 @@ import { Countdown } from "@/components/Countdown";
 import { supabase } from "@/integrations/supabase/client";
 import { captureAttribution, getAttribution, trackEvent } from "@/lib/analytics";
 import { isValidCpf, isValidEmail, maskCpf, maskPhone, onlyDigits } from "@/lib/cpf";
-import { DROP_DATE_LABEL, TERMS_VERSION } from "@/lib/drop";
+import {
+  DROP_DATE_LABEL,
+  DROP_DATE_SHORT,
+  OFFER_FULL,
+  OFFER_LINE,
+  OFFER_NO_RESERVE,
+  OFFER_SHORT,
+  TERMS_VERSION,
+  isSignupOpen,
+} from "@/lib/drop";
 import dropCards from "@/assets/drop-cards.jpg";
 import logo from "@/assets/logo-bella.png";
 
 type Status = "idle" | "sending" | "created" | "already_registered";
 
 const steps = [
-  { n: "01", title: "Cadastre-se", text: "Entre gratuitamente na lista de acesso antecipado." },
+  { n: "01", title: "Cadastre-se", text: `Entre gratuitamente na lista de acesso antecipado até ${DROP_DATE_SHORT}.` },
   { n: "02", title: "Receba o aviso", text: "Avisamos quando o primeiro drop estiver disponível." },
   {
     n: "03",
     title: "Garanta o seu",
-    text: "Quem estiver cadastrado acessa a condição promocional de lançamento, limitada a 1 unidade por CPF e sujeita ao estoque.",
+    text: `No quiosque do Palladium você usa o desconto de ${OFFER_SHORT.toLowerCase()} — 1 unidade por CPF, por ordem de chegada e enquanto durar o estoque. O cadastro não reserva produto.`,
   },
 ];
+
 
 const AcessoAntecipado = () => {
   const [form, setForm] = useState({ nome: "", cpf: "", whatsapp: "", email: "", consent: false });
