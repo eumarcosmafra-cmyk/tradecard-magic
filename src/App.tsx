@@ -21,7 +21,7 @@ import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
-import Quiosques from "./pages/Quiosques";
+
 import QuemSomos from "./pages/QuemSomos";
 import Contato from "./pages/Contato";
 import PoliticaPrivacidade from "./pages/PoliticaPrivacidade";

@@ -15,13 +15,12 @@ export const Header = () => {
   }, []);
 
   const links = [
-    { label: "Produtos", href: "/#produtos", isRoute: true },
-    { label: "Guia Adrenalyn XL", href: "/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026", isRoute: true },
+    { label: "Pokémon", href: "/pokemon", isRoute: true },
+    { label: "Cards & Colecionáveis", href: "/cards-e-colecionaveis", isRoute: true },
+    { label: "COPAG", href: "/copag", isRoute: true },
+    { label: "Copa 2026", href: "/copa-2026", isRoute: true },
+    { label: "Loja Física", href: "/loja-fisica", isRoute: true },
     { label: "Quem Somos", href: "/quem-somos", isRoute: true },
-    { label: "Nossas Lojas", href: "/lojas", isRoute: true },
-    { label: "Contato", href: "/contato", isRoute: true },
-    { label: "Revenda", href: "/revenda", isRoute: true },
-    { label: "Blog", href: "/blog", isRoute: true },
   ];
 
   return (
@@ -38,9 +37,9 @@ export const Header = () => {
         </Link>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {links.map((l) => {
-            const linkClass = `font-display text-lg tracking-wider uppercase hover:text-secondary transition-colors ${
+            const linkClass = `font-display text-base tracking-wider uppercase hover:text-secondary transition-colors ${
               scrolled ? "text-foreground/70" : "text-white drop-shadow-md"
             }`;
             return (l as any).isRoute ? (
