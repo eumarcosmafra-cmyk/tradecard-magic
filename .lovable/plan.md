@@ -54,6 +54,7 @@ Cada meta tem seu caminho visível na home: um bloco de loja física, um bloco d
 
 Taxonomia por coleções, fácil de editar depois:
 - Cards & Colecionáveis (Lançamentos, Booster Packs, Boxes, Coleções, Acessórios)
+- Pokémon — coleção própria no catálogo e item de menu, usando os nomes e imagens comerciais dos produtos cadastrados. A identidade visual do site segue sem logotipo, personagens ou Pokébola.
 - COPAG
 - Copa 2026 (Álbuns, Figurinhas, Adrenalyn XL)
 - Outros produtos existentes
