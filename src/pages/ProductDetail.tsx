@@ -9,6 +9,7 @@ import { useProductByHandle } from "@/hooks/useProducts";
 import { useCartStore } from "@/stores/cartStore";
 import { Loader2, ShoppingCart, ArrowLeft, Zap, Star, Shield, Truck, RefreshCw, CreditCard } from "lucide-react";
 import { toast } from "sonner";
+import { trackEvent } from "@/lib/analytics";
 import { EnvelopeContent } from "@/components/EnvelopeContent";
 import { CardCategories } from "@/components/CardCategories";
 import { GoldenBallers } from "@/components/GoldenBallers";
