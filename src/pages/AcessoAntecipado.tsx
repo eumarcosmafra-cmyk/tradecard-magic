@@ -170,12 +170,27 @@ const AcessoAntecipado = () => {
 
           {/* Formulário */}
           <div id="cadastro" className="rounded-3xl bg-ink-soft/90 p-6 md:p-8 holo-border shadow-volt">
-            {!done ? (
+            {!signupOpen ? (
+              <div className="text-center space-y-4 py-4">
+                <h2 className="font-display text-3xl tracking-wider uppercase">Cadastros encerrados</h2>
+                <p className="font-body text-white/80">
+                  A lista de acesso antecipado ficou aberta até {DROP_DATE_LABEL}. Agora é só passar no quiosque do
+                  Shopping Palladium — o atendimento é por ordem de chegada, enquanto durar o estoque.
+                </p>
+                <Link
+                  to="/loja-fisica"
+                  className="inline-block bg-gradient-electric text-ink font-display text-lg tracking-widest uppercase py-3 px-8 rounded-xl"
+                >
+                  Ver o quiosque
+                </Link>
+              </div>
+            ) : !done ? (
               <form onSubmit={submit} noValidate className="space-y-4">
                 <h2 className="font-display text-3xl tracking-wider uppercase">Quem entra antes tem vantagem</h2>
                 <p className="font-body text-sm text-white/70">
-                  Cadastro gratuito, leva menos de 30 segundos.
+                  Cadastro gratuito, leva menos de 30 segundos. Inscrições até {DROP_DATE_SHORT}.
                 </p>
+
 
                 <div>
                   <label htmlFor="nome" className="font-body text-sm text-white/70">Nome completo</label>
