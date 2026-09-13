@@ -46,7 +46,7 @@ Cada meta tem seu caminho visível na home: um bloco de loja física, um bloco d
 
 - CPF e telefone nunca vão para endereço da página, analytics, pixel ou registros públicos. Ficam guardados no banco com acesso restrito a administradores autenticados.
 - Guardamos data/hora do consentimento, versão dos termos, origem e UTMs de cada cadastro.
-- Eventos do funil: landing_view, early_access_cta_click, form_started, form_completed, registration_success — sem dado pessoal.
+- Eventos do funil, sem dado pessoal: visita da landing, clique no botão, início e conclusão do cadastro, cadastro confirmado; clique em "Como chegar" e visita da página da loja física; e os passos de compra (ver produto, adicionar ao carrinho, ir para o checkout).
 - Banner de cookies exibido só para visitantes em regiões que exigem consentimento; no Brasil a medição segue normal. Rejeitar é tão fácil quanto aceitar e a escolha pode ser alterada depois.
 - Política de privacidade atualizada citando os dados coletados, as plataformas de medição e as finalidades.
 
