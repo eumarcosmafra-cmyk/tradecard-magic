@@ -1,7 +1,7 @@
 export const FinalCTA = () => (
   <section className="mt-20 mb-10">
     <div className="bg-gradient-to-br from-primary/10 via-card to-secondary/10 border-2 border-primary/20 rounded-2xl p-10 md:p-16 text-center">
-      <p className="text-sm font-display tracking-widest uppercase text-primary mb-3">Coleção oficial FIFA — Estoque limitado</p>
+      <p className="text-sm font-display tracking-widest uppercase text-primary mb-3">Coleção oficial FIFA — Produtos originais Panini</p>
       <h2 className="font-display text-4xl md:text-5xl tracking-wider uppercase text-foreground">
         Monte sua coleção<br />FIFA World Cup 2026™
       </h2>
