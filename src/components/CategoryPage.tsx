@@ -21,6 +21,12 @@ type Props = {
   emptyMessage?: string;
   children?: ReactNode;
   dark?: boolean;
+  /** Optional split of the filtered list into titled sections. */
+  sections?: {
+    title: string;
+    description?: string;
+    filter: (product: ShopifyProduct) => boolean;
+  }[];
 };
 
 export const CategoryPage = ({
@@ -35,6 +41,7 @@ export const CategoryPage = ({
   emptyMessage = "Em breve — estamos preparando essa coleção.",
   children,
   dark = false,
+  sections,
 }: Props) => {
   const { data: products, isLoading, error } = useProducts(100);
   const list = products?.filter(filter) ?? [];
@@ -93,11 +100,37 @@ export const CategoryPage = ({
           </div>
         )}
 
-        {list.length > 0 && (
+        {list.length > 0 && !sections && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {list.map((product) => (
               <ProductCard key={product.node.id} product={product} />
             ))}
+          </div>
+        )}
+
+        {list.length > 0 && sections && (
+          <div className="space-y-20">
+            {sections.map((section) => {
+              const items = list.filter(section.filter);
+              if (items.length === 0) return null;
+              return (
+                <div key={section.title}>
+                  <div className="mb-8 space-y-2">
+                    <h2 className="font-display text-3xl md:text-4xl tracking-wider uppercase text-foreground">
+                      {section.title}
+                    </h2>
+                    {section.description && (
+                      <p className="font-body text-muted-foreground max-w-2xl">{section.description}</p>
+                    )}
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {items.map((product) => (
+                      <ProductCard key={product.node.id} product={product} />
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         )}
       </section>
