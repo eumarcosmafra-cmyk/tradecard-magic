@@ -8,6 +8,7 @@ import { Countdown } from "@/components/Countdown";
 import { breadcrumbSchema, organizationSchema, injectJsonLd } from "@/lib/jsonld";
 import { trackEvent } from "@/lib/analytics";
 import { DROP_DATE_LABEL, DROP_DATE_SHORT, OFFER_FULL, OFFER_NO_RESERVE } from "@/lib/drop";
+import quiosqueArena from "@/assets/quiosque-arena.png.asset.json";
 
 const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Shopping+Palladium+Curitiba";
 
@@ -64,6 +65,17 @@ const LojaFisica = () => {
               Entrar na lista
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="container mx-auto px-4 pt-12">
+        <div className="rounded-3xl overflow-hidden border border-border shadow-yellow">
+          <img
+            src={quiosqueArena.url}
+            alt="Quiosque da Bella Figurinha com arena de cards no shopping"
+            loading="lazy"
+            className="w-full object-cover aspect-[16/9]"
+          />
         </div>
       </section>
 
