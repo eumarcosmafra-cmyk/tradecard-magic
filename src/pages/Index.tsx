@@ -40,7 +40,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SEOHead
         title="Bella Figurinha | Cards, Coleções e Raridades"
-        description="Um novo universo de cards e colecionáveis. Cards Pokémon, COPAG, Copa 2026 e mais. Primeiro drop e quiosque no Palladium em 25 de setembro."
+        description="Um novo universo de cards e colecionáveis. Cards Pokémon, boxes, boosters e acessórios. Primeiro drop e quiosque no Palladium em 25 de setembro."
         canonical="https://bellafigurinha.com.br/"
       />
       <Header />
