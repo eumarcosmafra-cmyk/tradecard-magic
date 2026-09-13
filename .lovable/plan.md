@@ -2,6 +2,8 @@
 
 Reposicionamento completo: a Bella deixa de ser "a loja da Copa" e passa a ser uma marca de cards, colecionáveis e comunidade. A Copa vira uma categoria dentro do site. Nada de produto, carrinho, checkout ou integração com a loja é removido ou quebrado.
 
+**O mote de tudo**: os 30 anos da franquia de cards mais colecionada do mundo. É esse aniversário que justifica o quiosque, o primeiro drop e a lista de acesso antecipado — e ele aparece como fio condutor na home, na página da lista e na página da loja física. Comunicamos por escrito ("30 anos", "cards Pokémon") e pelo clima visual, nunca com logotipo, tipografia oficial, Pokébola ou personagens.
+
 Três metas guiam todas as decisões do site:
 
 1. **Levar gente ao quiosque do Palladium** — página da loja forte, "Como chegar", data de abertura e o resgate do acesso antecipado acontecendo lá.
