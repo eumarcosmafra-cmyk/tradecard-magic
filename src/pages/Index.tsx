@@ -196,23 +196,34 @@ const Index = () => {
 
       {/* ====== QUIOSQUE PALLADIUM ====== */}
       <section className="bg-muted py-20">
-        <div className="container mx-auto px-4 text-center space-y-5">
-          <span className="inline-flex items-center gap-2 bg-secondary/10 text-secondary font-display text-sm tracking-widest uppercase px-4 py-1.5 rounded-full">
-            <MapPin size={16} /> Shopping Palladium · Curitiba
-          </span>
-          <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase">Venha colecionar com a gente</h2>
-          <p className="font-body text-muted-foreground max-w-2xl mx-auto">
-            Nosso quiosque abre em {DROP_DATE_LABEL} para comemorar os 30 anos dos cards. É lá que a condição de
-            lançamento da lista de acesso antecipado é resgatada, pessoalmente, com o CPF cadastrado.
-          </p>
-          <Link
-            to="/loja-fisica"
-            className="inline-block bg-gradient-yellow text-primary-foreground font-display text-lg tracking-widest uppercase px-8 py-4 rounded-xl shadow-yellow"
-          >
-            Ver a loja física
-          </Link>
+        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+          <div className="rounded-3xl overflow-hidden border border-border shadow-yellow">
+            <img
+              src="/images/kiosk-new-1.jpeg"
+              alt="Quiosque da Bella Figurinha no Shopping Palladium, em Curitiba"
+              loading="lazy"
+              className="w-full h-full object-cover aspect-[4/3]"
+            />
+          </div>
+          <div className="space-y-5 text-center md:text-left">
+            <span className="inline-flex items-center gap-2 bg-secondary/10 text-secondary font-display text-sm tracking-widest uppercase px-4 py-1.5 rounded-full">
+              <MapPin size={16} /> Shopping Palladium · Curitiba
+            </span>
+            <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase">Venha colecionar com a gente</h2>
+            <p className="font-body text-muted-foreground max-w-2xl">
+              Nosso quiosque abre em {DROP_DATE_LABEL} para comemorar os 30 anos dos cards. É lá que a condição de
+              lançamento da lista de acesso antecipado é resgatada, pessoalmente, com o CPF cadastrado.
+            </p>
+            <Link
+              to="/loja-fisica"
+              className="inline-block bg-gradient-yellow text-primary-foreground font-display text-lg tracking-widest uppercase px-8 py-4 rounded-xl shadow-yellow"
+            >
+              Ver a loja física
+            </Link>
+          </div>
         </div>
       </section>
+
 
       {/* ====== MUITO ALÉM DOS CARDS — COPAG ====== */}
       <section className="container mx-auto px-4 py-20">
