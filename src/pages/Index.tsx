@@ -77,6 +77,22 @@ const Index = () => {
               Cards. Coleções. Raridades.
             </p>
 
+            <div className="w-full max-w-3xl rounded-3xl border-2 border-electric/60 bg-ink/80 backdrop-blur-sm px-6 py-6 space-y-3">
+              <p className="font-display text-sm tracking-widest uppercase text-electric">
+                Oferta exclusiva da pré-lista
+              </p>
+              <p className="font-display text-3xl md:text-5xl tracking-wider uppercase text-white leading-tight">
+                Cadastre-se e ganhe <span className="text-gradient-electric">20% OFF</span>
+                <br className="hidden md:block" /> em produtos Pokémon 30 anos
+              </p>
+              <p className="font-body text-base text-white/85">
+                1 unidade por CPF · por ordem de chegada · enquanto durar o estoque · cadastros até {DROP_DATE_SHORT}
+              </p>
+              <p className="font-body text-sm text-spark border border-spark/50 bg-spark/10 rounded-xl px-4 py-3">
+                {OFFER_NO_RESERVE}
+              </p>
+            </div>
+
             <p className="font-body text-base md:text-lg text-white/75 max-w-2xl">
               Comemoramos os 30 anos da coleção de cards mais amada do mundo abrindo nosso quiosque no Shopping
               Palladium e lançando o primeiro drop em {DROP_DATE_LABEL}.
@@ -90,15 +106,16 @@ const Index = () => {
                 onClick={() => trackEvent("early_access_cta_click", { location: "hero" })}
                 className="bg-gradient-electric text-ink font-display text-xl tracking-wider uppercase px-10 py-4 rounded-xl shadow-electric hover:opacity-90 transition-opacity"
               >
-                Quero acesso antecipado
+                Quero meus 20% de desconto
               </Link>
               <a
-                href="#o-que-esta-chegando"
+                href="#como-funciona"
                 className="border border-white/25 text-white font-display text-xl tracking-wider uppercase px-10 py-4 rounded-xl hover:bg-white/10 transition-colors"
               >
-                Descobrir a nova Bella
+                Como funciona
               </a>
             </div>
+
           </div>
         </div>
 
@@ -121,6 +138,63 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* ====== COMO FUNCIONA A OFERTA ====== */}
+      <section id="como-funciona" className="container mx-auto px-4 py-20">
+        <div className="text-center mb-12 space-y-3">
+          <span className="inline-block bg-secondary/10 text-secondary font-display text-sm tracking-widest uppercase px-4 py-1.5 rounded-full">
+            Oferta de lançamento
+          </span>
+          <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase">Como funciona o desconto</h2>
+          <p className="font-body text-muted-foreground max-w-2xl mx-auto">
+            20% de desconto em produtos Pokémon 30 anos para quem estiver na pré-lista. 1 unidade por CPF, por ordem de
+            chegada e enquanto durar o estoque.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {[
+            {
+              n: "01",
+              title: "Entre na pré-lista",
+              text: `Cadastro gratuito com CPF, até ${DROP_DATE_SHORT}. Leva menos de 30 segundos.`,
+            },
+            {
+              n: "02",
+              title: "Receba o aviso do drop",
+              text: `Avisamos quando os produtos Pokémon 30 anos entrarem, no dia ${DROP_DATE_LABEL}.`,
+            },
+            {
+              n: "03",
+              title: "Retire no quiosque com 20% OFF",
+              text: "No quiosque do Shopping Palladium, informe o CPF cadastrado e leve 1 unidade com desconto.",
+            },
+          ].map((s) => (
+            <div key={s.n} className="rounded-2xl border border-border bg-card p-6">
+              <span className="font-display text-3xl tracking-widest text-secondary">{s.n}</span>
+              <h3 className="font-display text-2xl tracking-wider uppercase mt-3">{s.title}</h3>
+              <p className="font-body text-sm text-muted-foreground mt-2">{s.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 rounded-2xl border-2 border-secondary/50 bg-secondary/10 px-6 py-5 text-center">
+          <p className="font-display text-lg tracking-widest uppercase text-secondary">Importante</p>
+          <p className="font-body text-sm text-foreground/90 mt-1 max-w-3xl mx-auto">{OFFER_NO_RESERVE}</p>
+        </div>
+
+        <div className="text-center mt-8">
+          <Link
+            to="/acesso-antecipado"
+            onClick={() => trackEvent("early_access_cta_click", { location: "como_funciona" })}
+            className="inline-block bg-gradient-yellow text-primary-foreground font-display text-lg tracking-widest uppercase px-10 py-4 rounded-xl shadow-yellow"
+          >
+            Quero meus 20% de desconto
+          </Link>
+        </div>
+      </section>
+
+
 
       {/* ====== DESTAQUE — cards Pokémon ====== */}
       <section className="bg-arena text-white py-20">
