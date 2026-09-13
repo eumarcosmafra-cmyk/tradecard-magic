@@ -7,7 +7,7 @@ import { SEOHead } from "@/components/SEOHead";
 import { Countdown } from "@/components/Countdown";
 import { breadcrumbSchema, organizationSchema, injectJsonLd } from "@/lib/jsonld";
 import { trackEvent } from "@/lib/analytics";
-import { DROP_DATE_LABEL } from "@/lib/drop";
+import { DROP_DATE_LABEL, DROP_DATE_SHORT, OFFER_FULL, OFFER_NO_RESERVE } from "@/lib/drop";
 
 const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Shopping+Palladium+Curitiba";
 

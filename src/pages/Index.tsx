@@ -7,7 +7,7 @@ import { Countdown } from "@/components/Countdown";
 import { Truck, Shield, Sparkles, MapPin, ArrowRight } from "lucide-react";
 import { homePageJsonLd, injectJsonLd } from "@/lib/jsonld";
 import { trackEvent } from "@/lib/analytics";
-import { DROP_DATE_LABEL } from "@/lib/drop";
+import { DROP_DATE_LABEL, DROP_DATE_SHORT, OFFER_FULL, OFFER_NO_RESERVE } from "@/lib/drop";
 import heroCards from "@/assets/hero-cards-2026.jpg";
 import dropCards from "@/assets/drop-cards.jpg";
 import logo from "@/assets/logo-bella.png";
