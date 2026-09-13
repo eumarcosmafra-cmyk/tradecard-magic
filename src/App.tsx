@@ -2,10 +2,23 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useEffect } from "react";
 import { useCartSync } from "@/hooks/useCartSync";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { DropBar } from "@/components/DropBar";
+import { CookieBanner } from "@/components/CookieBanner";
+import { captureAttribution } from "@/lib/analytics";
+import AcessoAntecipado from "./pages/AcessoAntecipado";
+import LojaFisica from "./pages/LojaFisica";
+import RegulamentoAcessoAntecipado from "./pages/RegulamentoAcessoAntecipado";
+import Pokemon from "./pages/Pokemon";
+import CardsColecionaveis from "./pages/CardsColecionaveis";
+import Copag from "./pages/Copag";
+import Copa2026 from "./pages/Copa2026";
+import Admin from "./pages/Admin";
+import AdminLogin from "./pages/AdminLogin";
 import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
 import Quiosques from "./pages/Quiosques";
@@ -27,11 +40,25 @@ const queryClient = new QueryClient();
 
 const AppContent = () => {
   useCartSync();
+  useEffect(() => {
+    captureAttribution();
+  }, []);
   return (
     <Routes>
       <Route path="/" element={<Index />} />
       <Route path="/produto/:handle" element={<ProductDetail />} />
-      <Route path="/lojas" element={<Quiosques />} />
+      <Route path="/acesso-antecipado" element={<AcessoAntecipado />} />
+      <Route path="/primeiro-drop" element={<Navigate to="/acesso-antecipado" replace />} />
+      <Route path="/regulamento-acesso-antecipado" element={<RegulamentoAcessoAntecipado />} />
+      <Route path="/loja-fisica" element={<LojaFisica />} />
+      <Route path="/pokemon" element={<Pokemon />} />
+      <Route path="/cards-e-colecionaveis" element={<CardsColecionaveis />} />
+      <Route path="/copag" element={<Copag />} />
+      <Route path="/copa-2026" element={<Copa2026 />} />
+      <Route path="/admin" element={<Admin />} />
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/lojas" element={<Navigate to="/loja-fisica" replace />} />
+      <Route path="/quiosques" element={<Navigate to="/loja-fisica" replace />} />
       <Route path="/quem-somos" element={<QuemSomos />} />
       <Route path="/contato" element={<Contato />} />
       <Route path="/politica-de-privacidade" element={<PoliticaPrivacidade />} />
@@ -56,6 +83,8 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <DropBar />
+        <CookieBanner />
         <WhatsAppButton />
         <AppContent />
       </BrowserRouter>
