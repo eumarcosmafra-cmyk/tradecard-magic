@@ -3,31 +3,14 @@ import { Link, useLocation } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
-import { ProductCard } from "@/components/ProductCard";
 import { Countdown } from "@/components/Countdown";
-import { useProducts } from "@/hooks/useProducts";
-import { Loader2, Package, Truck, Shield, Sparkles, MapPin, Star, ArrowRight } from "lucide-react";
-import { type ShopifyProduct } from "@/lib/shopify";
+import { Truck, Shield, Sparkles, MapPin, ArrowRight } from "lucide-react";
 import { homePageJsonLd, injectJsonLd } from "@/lib/jsonld";
 import { trackEvent } from "@/lib/analytics";
 import { DROP_DATE_LABEL } from "@/lib/drop";
 import heroCards from "@/assets/hero-cards-2026.jpg";
 import dropCards from "@/assets/drop-cards.jpg";
 import logo from "@/assets/logo-bella.png";
-import weAre26Video from "@/assets/we-are-26.mp4.asset.json";
-
-/** Palavras-chave que identificam produtos de Figurinhas/Álbuns da Copa */
-const isCopaStickerProduct = (p: ShopifyProduct) => {
-  const text = (p.node.title + " " + p.node.handle).toLowerCase();
-  return (
-    text.includes("album") ||
-    text.includes("álbum") ||
-    text.includes("figurinha") ||
-    text.includes("sticker") ||
-    text.includes("we are 26") ||
-    (text.includes("envelope") && !text.includes("adrenalyn"))
-  );
-};
 
 const comingSoon = [
   { title: "Booster Packs", text: "Pacotes individuais para abrir e colecionar." },
@@ -38,18 +21,7 @@ const comingSoon = [
 ];
 
 const Index = () => {
-  const { data: products, isLoading, error } = useProducts();
   const location = useLocation();
-
-  const copaProducts =
-    products?.filter(isCopaStickerProduct).sort((a, b) => {
-      const aWeAre26 = (a.node.title + " " + a.node.handle).toLowerCase().includes("we are 26");
-      const bWeAre26 = (b.node.title + " " + b.node.handle).toLowerCase().includes("we are 26");
-      if (aWeAre26 && !bWeAre26) return -1;
-      if (!aWeAre26 && bWeAre26) return 1;
-      return 0;
-    }) || [];
-  const adrenalynProducts = products?.filter((p) => !isCopaStickerProduct(p)) || [];
 
   useEffect(() => {
     if (location.hash) {
@@ -57,6 +29,7 @@ const Index = () => {
       if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100);
     }
   }, [location.hash]);
+
 
   useEffect(() => {
     trackEvent("landing_view", { page: "home" });
@@ -67,7 +40,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SEOHead
         title="Bella Figurinha | Cards, Coleções e Raridades"
-        description="Um novo universo de cards e colecionáveis. Cards Pokémon, COPAG, Copa 2026 e mais. Primeiro drop e quiosque no Palladium em 25 de setembro."
+        description="Um novo universo de cards e colecionáveis. Cards Pokémon, boxes, boosters e acessórios. Primeiro drop e quiosque no Palladium em 25 de setembro."
         canonical="https://bellafigurinha.com.br/"
       />
       <Header />
@@ -252,112 +225,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ====== BANNER — Box Premium "We Are 26" ====== */}
-      <section className="container mx-auto px-4 pb-4">
-        <div className="relative overflow-hidden rounded-3xl border border-primary/30 bg-gradient-to-br from-black via-zinc-900 to-black shadow-yellow-lg">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-center">
-            <div className="relative aspect-[9/16] lg:aspect-auto lg:h-[600px] bg-black">
-              <video src={weAre26Video.url} autoPlay muted loop playsInline controls className="w-full h-full object-cover" />
-            </div>
 
-            <div className="p-8 md:p-12 lg:p-14 space-y-6">
-              <span className="inline-block bg-primary/15 text-primary font-display text-xs md:text-sm tracking-widest uppercase px-4 py-1.5 rounded-full">
-                Novidade Exclusiva
-              </span>
-              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl tracking-wider uppercase text-white leading-none">
-                Box Premium <span className="text-gradient-yellow">"We Are 26"</span>
-              </h2>
-              <p className="text-white/80 font-body text-base md:text-lg leading-relaxed">Ele inclui:</p>
-              <ul className="space-y-3 text-white/90 font-body">
-                {[
-                  <>1 álbum oficial capa dura <strong>dourado</strong></>,
-                  <>1 álbum oficial capa dura <strong>prata</strong></>,
-                  <>40 envelopes oficiais Panini</>,
-                  <>Box colecionador premium exclusivo</>,
-                  <>Embalagem especial temática "We Are 26"</>,
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Star className="text-primary mt-0.5 shrink-0" size={18} />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="#produtos"
-                className="inline-block bg-gradient-yellow text-primary-foreground font-display text-lg md:text-xl tracking-wider uppercase px-8 py-4 rounded-xl hover:opacity-90 transition-opacity shadow-yellow-lg"
-              >
-                Garantir o meu
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ====== CATEGORIA — Copa 2026 ====== */}
-      <section id="produtos" className="container mx-auto px-4 pt-16 pb-10">
-        <div className="text-center mb-14">
-          <span className="inline-block bg-secondary/10 text-secondary font-display text-sm tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">
-            Categoria
-          </span>
-          <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase text-foreground">
-            Álbum & Figurinhas <span className="text-gradient-yellow">Copa 2026</span>
-          </h2>
-          <p className="text-muted-foreground mt-3 font-body max-w-2xl mx-auto">
-            Álbuns, envelopes e cards oficiais da FIFA World Cup 2026™ continuam disponíveis com envio para todo o
-            Brasil.
-          </p>
-        </div>
-
-        {isLoading && (
-          <div className="flex justify-center py-20">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-          </div>
-        )}
-
-        {error && (
-          <div className="text-center py-20 text-destructive">
-            <p className="font-body">Erro ao carregar produtos. Tente novamente mais tarde.</p>
-          </div>
-        )}
-
-        {!isLoading && !error && copaProducts.length === 0 && (
-          <div className="text-center py-12">
-            <Package className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <p className="text-muted-foreground font-body">Em breve — produtos da Copa serão adicionados.</p>
-          </div>
-        )}
-
-        {copaProducts.length > 0 && (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {copaProducts.map((product) => (
-              <ProductCard key={product.node.id} product={product} />
-            ))}
-          </div>
-        )}
-      </section>
-
-      {/* ====== CATEGORIA — Adrenalyn XL ====== */}
-      {!isLoading && !error && adrenalynProducts.length > 0 && (
-        <section className="container mx-auto px-4 pt-10 pb-20">
-          <div className="text-center mb-14">
-            <span className="inline-block bg-secondary/10 text-secondary font-display text-sm tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">
-              Categoria
-            </span>
-            <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase text-foreground">
-              Cards <span className="text-gradient-yellow">Adrenalyn XL</span>
-            </h2>
-            <p className="text-muted-foreground mt-3 font-body">
-              A coleção oficial de trading cards FIFA World Cup 2026™
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {adrenalynProducts.map((product) => (
-              <ProductCard key={product.node.id} product={product} />
-            ))}
-          </div>
-        </section>
-      )}
 
       <Footer />
     </div>
