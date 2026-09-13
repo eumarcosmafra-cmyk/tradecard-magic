@@ -2,6 +2,8 @@
 
 Reposicionamento completo: a Bella deixa de ser "a loja da Copa" e passa a ser uma marca de cards, colecionáveis e comunidade. A Copa vira uma categoria dentro do site. Nada de produto, carrinho, checkout ou integração com a loja é removido ou quebrado.
 
+**O mote de tudo**: os 30 anos da franquia de cards mais colecionada do mundo. É esse aniversário que justifica o quiosque, o primeiro drop e a lista de acesso antecipado — e ele aparece como fio condutor na home, na página da lista e na página da loja física. Comunicamos por escrito ("30 anos", "cards Pokémon") e pelo clima visual, nunca com logotipo, tipografia oficial, Pokébola ou personagens.
+
 Três metas guiam todas as decisões do site:
 
 1. **Levar gente ao quiosque do Palladium** — página da loja forte, "Como chegar", data de abertura e o resgate do acesso antecipado acontecendo lá.
@@ -13,8 +15,9 @@ Cada meta tem seu caminho visível na home: um bloco de loja física, um bloco d
 ## O que muda para quem visita
 
 **Nova home**
-- Abertura nova: "Um novo universo está chegando à Bella" + "Cards. Coleções. Raridades."
+- Abertura nova: selo "30 anos de cards" + "Um novo universo está chegando à Bella" + "Cards. Coleções. Raridades."
 - Botões "Quero acesso antecipado" e "Descobrir a nova Bella", com contagem regressiva para 25/09.
+- Faixa curta contando a comemoração dos 30 anos e ligando ao quiosque que abre no Palladium.
 - **Bloco de destaque Pokémon** logo abaixo da abertura — é o principal ativo da nova fase. Aparece escrito ("cards Pokémon"), com o clima visual do universo: amarelo elétrico com raio de energia, azul intenso, vermelho e branco, cartas em leque, brilho holográfico. Sem logotipo, tipografia oficial, Pokébola ou personagens.
 - Seção "O que está chegando": Booster Packs, Boxes, Coleções Especiais, Acessórios, Outros Colecionáveis — em "Em breve" enquanto não houver produtos cadastrados.
 - Seção "Muito além dos cards" para COPAG.
@@ -23,7 +26,7 @@ Cada meta tem seu caminho visível na home: um bloco de loja física, um bloco d
 **Clima visual Pokémon sem a marca**: o site inteiro (home, acesso antecipado, página da coleção) usa a paleta amarelo elétrico + azul intenso + vermelho + branco, energia elétrica, brilho holográfico, cantos de carta e raridades. A associação é imediata, mas nenhum elemento gráfico proprietário é reproduzido. Nas páginas de produto aparecem normalmente o nome comercial e as imagens dos itens cadastrados.
 
 **Página de acesso antecipado (/acesso-antecipado)**
-- A oferta fica clara: quem estiver na lista terá desconto de lançamento em **produtos Pokémon selecionados**, limitado a 1 item por CPF e sujeito ao estoque.
+- A oferta fica clara: em comemoração aos 30 anos, quem estiver na lista terá desconto de lançamento em **produtos Pokémon selecionados**, limitado a 1 item por CPF e sujeito ao estoque, com resgate no quiosque do Palladium.
 - Mesma linguagem visual do destaque Pokémon, sem uso da marca.
 - Funciona sozinha, pensada primeiro para celular, cadastro em menos de 30 segundos.
 - Formulário: nome completo, CPF, WhatsApp, e-mail + caixa obrigatória de consentimento com link para regulamento e privacidade.
@@ -35,6 +38,7 @@ Cada meta tem seu caminho visível na home: um bloco de loja física, um bloco d
 
 **Loja física (/loja-fisica)**
 - Apenas Shopping Palladium, Curitiba – PR, abertura em 25/09/2026, horário do shopping, botão "Como chegar".
+- A página conta que o quiosque nasce da comemoração dos 30 anos e é onde o desconto da lista é resgatado (1 item por CPF).
 - Os 13 quiosques antigos saem da comunicação. A página /lojas passa a levar para a nova.
 
 **Quem Somos** — nova narrativa "Somos movidos por coleções", sem menção aos quiosques da Copa.
