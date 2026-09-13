@@ -265,7 +265,12 @@ const AcessoAntecipado = () => {
                   {status === "sending" && <Loader2 className="animate-spin" size={20} />}
                   Quero acesso antecipado
                 </button>
+
+                <p className="font-body text-xs text-white/70 border border-spark/40 bg-spark/10 rounded-xl px-4 py-3">
+                  {OFFER_NO_RESERVE}
+                </p>
               </form>
+
             ) : (
               <div className="text-center space-y-5 py-4">
                 <CheckCircle2 className="text-electric mx-auto" size={56} />
@@ -320,7 +325,7 @@ const AcessoAntecipado = () => {
           >
             Entrar na lista
           </a>
-          <p className="font-body text-white/50 text-sm mt-3">1 item promocional por CPF.</p>
+          <p className="font-body text-white/70 text-sm mt-3 max-w-2xl mx-auto">{OFFER_NO_RESERVE}</p>
         </div>
       </section>
 
