@@ -11,6 +11,7 @@ import { DROP_DATE_LABEL, DROP_DATE_SHORT, OFFER_FULL, OFFER_NO_RESERVE } from "
 import heroCards from "@/assets/hero-cards-2026.jpg";
 import dropCards from "@/assets/drop-cards.jpg";
 import logo from "@/assets/logo-bella.png";
+import quiosqueArena from "@/assets/quiosque-arena.png.asset.json";
 
 const comingSoon = [
   { title: "Booster Packs", text: "Pacotes individuais para abrir e colecionar." },
@@ -273,8 +274,8 @@ const Index = () => {
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
           <div className="rounded-3xl overflow-hidden border border-border shadow-yellow">
             <img
-              src="/images/kiosk-new-1.jpeg"
-              alt="Quiosque da Bella Figurinha no Shopping Palladium, em Curitiba"
+              src={quiosqueArena.url}
+              alt="Quiosque da Bella Figurinha com arena de cards no shopping"
               loading="lazy"
               className="w-full h-full object-cover aspect-[4/3]"
             />
