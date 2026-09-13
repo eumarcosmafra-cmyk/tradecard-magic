@@ -2,7 +2,13 @@
 
 Reposicionamento completo: a Bella deixa de ser "a loja da Copa" e passa a ser uma marca de cards, colecionáveis e comunidade. A Copa vira uma categoria dentro do site. Nada de produto, carrinho, checkout ou integração com a loja é removido ou quebrado.
 
-Meta número 1 até 25/09/2026: transformar tráfego de campanha em cadastros identificados.
+Três metas guiam todas as decisões do site:
+
+1. **Levar gente ao quiosque do Palladium** — página da loja forte, "Como chegar", data de abertura e o resgate do acesso antecipado acontecendo lá.
+2. **Encher a lista de acesso antecipado** — página dedicada para as campanhas, cadastro rápido com CPF.
+3. **Vender na loja online** — produtos novos (cards, COPAG e demais) com compra normal, sem quebrar carrinho nem checkout.
+
+Cada meta tem seu caminho visível na home: um bloco de loja física, um bloco de acesso antecipado e a vitrine de produtos. A medição do funil separa os três, para saber quantos cadastraram, quantos resgataram no quiosque e quantos compraram online.
 
 ## O que muda para quem visita
 
