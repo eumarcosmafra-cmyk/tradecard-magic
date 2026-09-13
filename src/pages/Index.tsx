@@ -136,10 +136,16 @@ const Index = () => {
               Cards <span className="text-gradient-electric">Pokémon</span> na Bella
             </h2>
             <p className="font-body text-white/80 text-lg">
-              Booster packs, boxes, coleções especiais e acessórios. Quem entrar na lista de acesso antecipado recebe o
-              aviso primeiro e acessa a condição promocional de lançamento em produtos Pokémon selecionados — 1 item por
-              CPF, enquanto durar o estoque.
+              Booster packs, boxes, coleções especiais e acessórios. Quem entrar na lista de acesso antecipado até{" "}
+              {DROP_DATE_SHORT} garante a oferta de lançamento:
             </p>
+            <p className="font-display text-2xl md:text-3xl tracking-wider uppercase text-electric leading-tight">
+              {OFFER_FULL}
+            </p>
+            <p className="font-body text-sm text-white/90 border border-electric/40 bg-electric/10 rounded-xl px-4 py-3">
+              {OFFER_NO_RESERVE}
+            </p>
+
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/acesso-antecipado"
