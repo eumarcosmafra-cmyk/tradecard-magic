@@ -29,6 +29,7 @@ export const Header = () => {
         scrolled ? "bg-card/95 backdrop-blur-md border-b border-border shadow-md" : "bg-transparent"
       }`}
     >
+      <div className="kiosk-stripe h-1.5 w-full" />
       <div className="container mx-auto flex items-center justify-between py-2 px-4">
         <Link to="/" className="flex items-center">
           <span className="inline-flex items-center justify-center bg-foreground rounded-lg px-3 py-1.5 shadow-sm">
