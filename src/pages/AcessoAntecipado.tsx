@@ -105,6 +105,7 @@ const AcessoAntecipado = () => {
   };
 
   const done = status === "created" || status === "already_registered";
+  const signupOpen = isSignupOpen();
 
   return (
     <div className="min-h-screen bg-arena text-white">
