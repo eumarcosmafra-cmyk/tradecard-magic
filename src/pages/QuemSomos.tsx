@@ -40,8 +40,8 @@ const QuemSomos = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Quem Somos | Bella Figurinha — Distribuidor Oficial Panini"
-        description="Conheça a Bella Figurinha: distribuidor oficial Panini de cards e figurinhas colecionáveis FIFA World Cup 2026. Nossa história, missão, visão e valores."
+        title="Quem Somos | Bella Figurinha"
+        description="Somos movidos por coleções: cards, colecionáveis, cultura e comunidade. Conheça a história, a missão e os valores da Bella Figurinha."
         canonical="https://bellafigurinha.com.br/quem-somos"
       />
       <Header />
@@ -57,10 +57,11 @@ const QuemSomos = () => {
             Sobre a Bella Figurinha
           </span>
           <h1 className="font-display text-5xl md:text-7xl tracking-wider text-white drop-shadow-lg mb-4">
-            Quem somos
+            Somos movidos por coleções
           </h1>
           <p className="text-white/80 font-body text-lg md:text-xl max-w-2xl mx-auto">
-            Somos apaixonados por figurinhas, cards e tudo que envolve o universo de colecionar. Conectamos fãs e colecionadores de todo o Brasil.
+            Cards, colecionáveis, cultura e comunidade. Conectamos quem coleciona em todo o Brasil — do online ao
+            nosso quiosque em Curitiba.
           </p>
         </div>
       </section>
@@ -155,33 +156,34 @@ const QuemSomos = () => {
         </div>
       </section>
 
-      {/* Nossos Quiosques */}
+      {/* Loja física */}
       <section className="bg-white py-20">
         <div className="container mx-auto px-4 text-center">
           <span className="inline-block bg-secondary/10 text-secondary font-display text-sm tracking-widest uppercase px-4 py-1.5 rounded-full mb-4">
-            ⭐ Nossos Quiosques
+            Estamos também no físico
           </span>
           <h2 className="font-display text-3xl md:text-5xl tracking-wider text-foreground mb-3">
-            Estamos também no físico
+            Nosso quiosque no Shopping Palladium
           </h2>
           <p className="text-muted-foreground font-body mb-10 max-w-xl mx-auto">
-            13 quiosques temáticos FIFA World Cup 2026™ nos principais shoppings de SP, PR e SC.
+            Em Curitiba, nosso quiosque abre para comemorar os 30 anos dos cards e receber quem coleciona de perto.
+            Já passamos por dezenas de shoppings pelo Brasil — e seguimos construindo essa comunidade.
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 max-w-4xl mx-auto mb-8">
-            {kiosks.map((src, i) => (
+            {kiosks.slice(0, 4).map((src, i) => (
               <div key={i} className="rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-                <img src={src} alt={`Quiosque Bella Figurinha ${i + 1}`} className="w-full h-40 object-cover" />
+                <img src={src} alt={`Quiosque Bella Figurinha ${i + 1}`} className="w-full h-40 object-cover" loading="lazy" />
               </div>
             ))}
           </div>
 
           <Link
-            to="/lojas"
+            to="/loja-fisica"
             className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground font-display tracking-wider uppercase px-8 py-3 rounded-xl hover:opacity-90 transition-opacity"
           >
             <MapPin size={18} />
-            Ver todos os endereços
+            Ver a loja física
           </Link>
         </div>
       </section>
