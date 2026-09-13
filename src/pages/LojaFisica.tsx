@@ -91,9 +91,12 @@ const LojaFisica = () => {
             Resgate do acesso antecipado
           </h2>
           <p className="font-body text-muted-foreground mt-3 max-w-2xl mx-auto">
-            Quem estiver cadastrado na lista poderá resgatar a condição promocional de lançamento no quiosque,
-            limitada a 1 item por CPF e sujeita à disponibilidade de estoque.
+            {OFFER_FULL} Cadastros na pré-lista até {DROP_DATE_SHORT}.
           </p>
+          <p className="font-body text-sm font-semibold text-foreground mt-4 max-w-2xl mx-auto border border-secondary/40 bg-secondary/10 rounded-xl px-4 py-3">
+            {OFFER_NO_RESERVE}
+          </p>
+
           <Link
             to="/acesso-antecipado"
             onClick={() => trackEvent("early_access_cta_click", { placement: "loja_fisica_resgate" })}
