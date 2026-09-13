@@ -17,15 +17,19 @@ export const Footer = () => (
             <img src={logo} alt="Bella Figurinha" className="h-12 w-auto" />
           </span>
           <p className="text-sm text-muted-foreground leading-relaxed font-body">
-            Distribuidor oficial Panini. Cards e figurinhas colecionáveis.
+            Cards, coleções e raridades. Uma casa para quem coleciona.
           </p>
         </div>
         <div>
           <h5 className="font-display text-lg tracking-wider uppercase mb-4 text-secondary">Navegação</h5>
           <ul className="space-y-2">
-            <li><Link to="/#produtos" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Produtos</Link></li>
+            <li><Link to="/pokemon" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Pokémon</Link></li>
+            <li><Link to="/cards-e-colecionaveis" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Cards &amp; Colecionáveis</Link></li>
+            <li><Link to="/copag" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">COPAG</Link></li>
+            <li><Link to="/copa-2026" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Copa 2026</Link></li>
+            <li><Link to="/acesso-antecipado" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Acesso Antecipado</Link></li>
             <li><Link to="/quem-somos" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Quem Somos</Link></li>
-            <li><Link to="/lojas" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Nossas Lojas</Link></li>
+            <li><Link to="/loja-fisica" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Loja Física</Link></li>
             <li><Link to="/contato" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Contato</Link></li>
             <li><Link to="/revenda" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Revenda</Link></li>
             <li><Link to="/perguntas-frequentes" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Perguntas Frequentes</Link></li>
@@ -39,6 +43,7 @@ export const Footer = () => (
             <li><Link to="/politica-de-privacidade" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Política de Privacidade</Link></li>
             <li><Link to="/termos-de-uso" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Termos de Uso</Link></li>
             <li><Link to="/politica-de-trocas-e-devolucoes" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Trocas e Devoluções</Link></li>
+            <li><Link to="/regulamento-acesso-antecipado" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Regulamento do Acesso Antecipado</Link></li>
           </ul>
         </div>
         <div>
@@ -81,7 +86,8 @@ export const Footer = () => (
           Bella Figurinha LTDA — CNPJ: 65.289.034/0001-93
         </p>
         <p className="text-xs text-muted-foreground font-body mt-1">
-          © {new Date().getFullYear()} Bella Figurinha — Distribuidor oficial Panini. Todos os direitos reservados.
+          © {new Date().getFullYear()} Bella Figurinha. Todos os direitos reservados. Marcas e personagens citados
+          pertencem aos seus respectivos titulares.
         </p>
       </div>
     </div>

@@ -15,13 +15,12 @@ export const Header = () => {
   }, []);
 
   const links = [
-    { label: "Produtos", href: "/#produtos", isRoute: true },
-    { label: "Guia Adrenalyn XL", href: "/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026", isRoute: true },
+    { label: "Pokémon", href: "/pokemon", isRoute: true },
+    { label: "Cards & Colecionáveis", href: "/cards-e-colecionaveis", isRoute: true },
+    { label: "COPAG", href: "/copag", isRoute: true },
+    { label: "Copa 2026", href: "/copa-2026", isRoute: true },
+    { label: "Loja Física", href: "/loja-fisica", isRoute: true },
     { label: "Quem Somos", href: "/quem-somos", isRoute: true },
-    { label: "Nossas Lojas", href: "/lojas", isRoute: true },
-    { label: "Contato", href: "/contato", isRoute: true },
-    { label: "Revenda", href: "/revenda", isRoute: true },
-    { label: "Blog", href: "/blog", isRoute: true },
   ];
 
   return (
@@ -38,9 +37,9 @@ export const Header = () => {
         </Link>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {links.map((l) => {
-            const linkClass = `font-display text-lg tracking-wider uppercase hover:text-secondary transition-colors ${
+            const linkClass = `font-display text-base tracking-wider uppercase hover:text-secondary transition-colors ${
               scrolled ? "text-foreground/70" : "text-white drop-shadow-md"
             }`;
             return (l as any).isRoute ? (
@@ -53,11 +52,17 @@ export const Header = () => {
               </a>
             );
           })}
+          <Link
+            to="/acesso-antecipado"
+            className="bg-gradient-yellow text-primary-foreground font-display text-base tracking-widest uppercase px-4 py-2 rounded-lg shadow-yellow"
+          >
+            Acesso antecipado
+          </Link>
           <CartDrawer />
         </div>
 
         {/* Mobile */}
-        <div className="flex md:hidden items-center gap-3">
+        <div className="flex lg:hidden items-center gap-3">
           <CartDrawer />
           <button className={scrolled ? "text-foreground" : "text-white drop-shadow-md"} onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -66,7 +71,7 @@ export const Header = () => {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-card/98 backdrop-blur-md border-b border-border px-4 pb-6 animate-fade-in">
+        <div className="lg:hidden bg-card/98 backdrop-blur-md border-b border-border px-4 pb-6 animate-fade-in">
           {links.map((l) =>
             (l as any).isRoute ? (
               <Link
@@ -88,6 +93,13 @@ export const Header = () => {
               </a>
             )
           )}
+          <Link
+            to="/acesso-antecipado"
+            onClick={() => setMobileOpen(false)}
+            className="block mt-3 text-center bg-gradient-yellow text-primary-foreground font-display text-lg tracking-widest uppercase py-3 rounded-xl shadow-yellow"
+          >
+            Acesso antecipado
+          </Link>
         </div>
       )}
     </nav>

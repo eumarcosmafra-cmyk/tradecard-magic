@@ -14,6 +14,78 @@ export type Database = {
   }
   public: {
     Tables: {
+      early_access_leads: {
+        Row: {
+          consent_accepted: boolean
+          consent_at: string
+          cpf: string
+          created_at: string
+          email: string
+          id: string
+          landing_path: string | null
+          nome: string
+          origem: string | null
+          promo_redeemed: boolean
+          redeem_code: string | null
+          redeemed_at: string | null
+          referrer: string | null
+          terms_version: string
+          updated_at: string
+          utm_campaign: string | null
+          utm_content: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          utm_term: string | null
+          whatsapp: string
+        }
+        Insert: {
+          consent_accepted?: boolean
+          consent_at?: string
+          cpf: string
+          created_at?: string
+          email: string
+          id?: string
+          landing_path?: string | null
+          nome: string
+          origem?: string | null
+          promo_redeemed?: boolean
+          redeem_code?: string | null
+          redeemed_at?: string | null
+          referrer?: string | null
+          terms_version?: string
+          updated_at?: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+          whatsapp: string
+        }
+        Update: {
+          consent_accepted?: boolean
+          consent_at?: string
+          cpf?: string
+          created_at?: string
+          email?: string
+          id?: string
+          landing_path?: string | null
+          nome?: string
+          origem?: string | null
+          promo_redeemed?: boolean
+          redeem_code?: string | null
+          redeemed_at?: string | null
+          referrer?: string | null
+          terms_version?: string
+          updated_at?: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+          whatsapp?: string
+        }
+        Relationships: []
+      }
       leads_b2b: {
         Row: {
           cep: string
@@ -56,6 +128,27 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -64,7 +157,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "staff" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -191,6 +284,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "staff", "user"],
+    },
   },
 } as const
