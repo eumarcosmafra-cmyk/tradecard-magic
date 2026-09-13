@@ -9,7 +9,8 @@ const TikTokIcon = ({ className }: { className?: string }) => (
 );
 
 export const Footer = () => (
-  <footer className="bg-card border-t border-border py-12">
+  <footer className="bg-card border-t border-border pb-12">
+    <div className="kiosk-stripe h-1.5 w-full mb-12" />
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
         <div className="col-span-2 md:col-span-1">

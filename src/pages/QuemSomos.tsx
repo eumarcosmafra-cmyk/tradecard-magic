@@ -127,8 +127,8 @@ const QuemSomos = () => {
             </div>
 
             <div className="bg-card rounded-2xl p-8 border border-border shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 bg-blue-500/10 rounded-xl flex items-center justify-center mb-5">
-                <Eye className="text-blue-500" size={24} />
+              <div className="w-12 h-12 bg-ink/10 rounded-xl flex items-center justify-center mb-5">
+                <Eye className="text-ink" size={24} />
               </div>
               <h3 className="font-display text-2xl tracking-wider uppercase text-foreground mb-3">Visão</h3>
               <p className="text-muted-foreground font-body text-sm leading-relaxed">
