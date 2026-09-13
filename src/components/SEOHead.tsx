@@ -5,9 +5,10 @@ interface SEOHeadProps {
   description: string;
   canonical?: string;
   ogImage?: string;
+  noindex?: boolean;
 }
 
-export const SEOHead = ({ title, description, canonical, ogImage }: SEOHeadProps) => {
+export const SEOHead = ({ title, description, canonical, ogImage, noindex }: SEOHeadProps) => {
   useEffect(() => {
     document.title = title;
 
@@ -27,6 +28,7 @@ export const SEOHead = ({ title, description, canonical, ogImage }: SEOHeadProps
     setMeta("property", "og:url", canonical || window.location.href);
     setMeta("name", "twitter:title", title);
     setMeta("name", "twitter:description", description);
+    setMeta("name", "robots", noindex ? "noindex, nofollow" : "index, follow");
 
     if (ogImage) {
       setMeta("property", "og:image", ogImage);
@@ -42,7 +44,7 @@ export const SEOHead = ({ title, description, canonical, ogImage }: SEOHeadProps
       }
       link.setAttribute("href", canonical);
     }
-  }, [title, description, canonical, ogImage]);
+  }, [title, description, canonical, ogImage, noindex]);
 
   return null;
 };
