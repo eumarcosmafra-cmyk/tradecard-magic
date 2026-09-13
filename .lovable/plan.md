@@ -23,6 +23,8 @@ Cada meta tem seu caminho visível na home: um bloco de loja física, um bloco d
 **Clima visual Pokémon sem a marca**: o site inteiro (home, acesso antecipado, página da coleção) usa a paleta amarelo elétrico + azul intenso + vermelho + branco, energia elétrica, brilho holográfico, cantos de carta e raridades. A associação é imediata, mas nenhum elemento gráfico proprietário é reproduzido. Nas páginas de produto aparecem normalmente o nome comercial e as imagens dos itens cadastrados.
 
 **Página de acesso antecipado (/acesso-antecipado)**
+- A oferta fica clara: quem estiver na lista terá desconto de lançamento em **produtos Pokémon selecionados**, limitado a 1 item por CPF e sujeito ao estoque.
+- Mesma linguagem visual do destaque Pokémon, sem uso da marca.
 - Funciona sozinha, pensada primeiro para celular, cadastro em menos de 30 segundos.
 - Formulário: nome completo, CPF, WhatsApp, e-mail + caixa obrigatória de consentimento com link para regulamento e privacidade.
 - CPF com máscara e validação real; CPF repetido mostra "Você já está na lista!" sem criar novo cadastro e sem exibir dados de ninguém.
