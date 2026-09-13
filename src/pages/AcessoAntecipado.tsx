@@ -110,7 +110,7 @@ const AcessoAntecipado = () => {
     <div className="min-h-screen bg-arena text-white">
       <SEOHead
         title="Acesso Antecipado | Primeiro Drop da Bella Figurinha"
-        description="Entre na lista de acesso antecipado da Bella Figurinha e garanta condição promocional de lançamento em cards Pokémon selecionados. Primeiro drop em 25/09."
+        description="Entre na lista de acesso antecipado da Bella Figurinha até 25/09 e garanta 20% de desconto em produtos Pokémon 30 anos — 1 unidade por CPF, enquanto durar o estoque."
         canonical="https://bellafigurinha.com.br/acesso-antecipado"
       />
 
@@ -133,23 +133,31 @@ const AcessoAntecipado = () => {
             </h1>
             <p className="font-body text-lg text-white/80 max-w-xl">
               Comemorando os 30 anos da coleção de cards mais amada do mundo, abrimos nosso quiosque no Shopping
-              Palladium com cards Pokémon e colecionáveis selecionados em condições especiais de lançamento.
+              Palladium. Quem entrar na lista até {DROP_DATE_SHORT} leva a oferta de lançamento:
             </p>
+            <p className="font-display text-3xl md:text-4xl tracking-wider uppercase text-electric leading-tight">
+              {OFFER_FULL}
+            </p>
+            <div className="rounded-2xl border-2 border-spark/60 bg-spark/10 px-5 py-4">
+              <p className="font-display text-lg tracking-widest uppercase text-spark">Atenção</p>
+              <p className="font-body text-sm text-white/90 mt-1">{OFFER_NO_RESERVE}</p>
+            </div>
             <Countdown />
             <ul className="space-y-3 font-body text-white/80">
               <li className="flex gap-3">
                 <Sparkles className="text-electric shrink-0 mt-0.5" size={18} />
-                Desconto de lançamento em produtos Pokémon selecionados para quem está na lista.
+                {OFFER_SHORT} para quem está na lista.
               </li>
               <li className="flex gap-3">
                 <ShieldCheck className="text-electric shrink-0 mt-0.5" size={18} />
-                1 item promocional por CPF, sujeito à disponibilidade de estoque.
+                1 unidade por CPF, por ordem de chegada e enquanto durar o estoque.
               </li>
               <li className="flex gap-3">
                 <MapPin className="text-electric shrink-0 mt-0.5" size={18} />
                 Resgate presencial no quiosque do Shopping Palladium, em Curitiba.
               </li>
             </ul>
+
             <img
               src={dropCards}
               alt="Envelopes lacrados e cards colecionáveis com brilho holográfico"
