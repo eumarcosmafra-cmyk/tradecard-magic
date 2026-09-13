@@ -251,6 +251,7 @@ const ProductDetail = () => {
 
   const handleBuyNow = async () => {
     if (!selectedVariant) return;
+    trackEvent("ecommerce_buy_click", { handle: node.handle });
     await addItem({
       product,
       variantId: selectedVariant.id,
