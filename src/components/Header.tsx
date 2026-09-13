@@ -52,11 +52,17 @@ export const Header = () => {
               </a>
             );
           })}
+          <Link
+            to="/acesso-antecipado"
+            className="bg-gradient-yellow text-primary-foreground font-display text-base tracking-widest uppercase px-4 py-2 rounded-lg shadow-yellow"
+          >
+            Acesso antecipado
+          </Link>
           <CartDrawer />
         </div>
 
         {/* Mobile */}
-        <div className="flex md:hidden items-center gap-3">
+        <div className="flex lg:hidden items-center gap-3">
           <CartDrawer />
           <button className={scrolled ? "text-foreground" : "text-white drop-shadow-md"} onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -65,7 +71,7 @@ export const Header = () => {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-card/98 backdrop-blur-md border-b border-border px-4 pb-6 animate-fade-in">
+        <div className="lg:hidden bg-card/98 backdrop-blur-md border-b border-border px-4 pb-6 animate-fade-in">
           {links.map((l) =>
             (l as any).isRoute ? (
               <Link
