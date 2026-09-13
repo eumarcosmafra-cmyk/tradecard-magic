@@ -34,7 +34,7 @@ Cada meta tem seu caminho visível na home: um bloco de loja física, um bloco d
 
 **Quem Somos** — nova narrativa "Somos movidos por coleções", sem menção aos quiosques da Copa.
 
-**Menu novo**: Início | Cards & Colecionáveis | COPAG | Copa 2026 | Loja Física | Sobre a Bella, mais busca, minha conta e carrinho.
+**Menu novo**: Início | Cards & Colecionáveis | Pokémon | COPAG | Copa 2026 | Loja Física | Sobre a Bella, mais busca, minha conta e carrinho.
 
 **Visual**: amarelo elétrico, azul intenso, branco, preto/grafite, vermelho como detalhe, brilhos e holografia discreta. Premium e energético, não infantil. Sem qualquer elemento gráfico de marcas de terceiros.
 
