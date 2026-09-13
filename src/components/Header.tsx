@@ -93,6 +93,13 @@ export const Header = () => {
               </a>
             )
           )}
+          <Link
+            to="/acesso-antecipado"
+            onClick={() => setMobileOpen(false)}
+            className="block mt-3 text-center bg-gradient-yellow text-primary-foreground font-display text-lg tracking-widest uppercase py-3 rounded-xl shadow-yellow"
+          >
+            Acesso antecipado
+          </Link>
         </div>
       )}
     </nav>
