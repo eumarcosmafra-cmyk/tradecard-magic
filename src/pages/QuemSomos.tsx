@@ -82,7 +82,7 @@ const QuemSomos = () => {
                   A <strong className="text-foreground">Bella Figurinha</strong> nasceu de um sonho simples: levar a magia das figurinhas e cards colecionáveis para fãs de todas as idades. O que começou como uma pequena operação movida pela paixão por álbuns e envelopes se transformou em uma das referências do segmento no Brasil.
                 </p>
                 <p>
-                  Trabalhamos exclusivamente com <strong className="text-foreground">produtos originais e licenciados</strong>, trazendo as coleções mais desejadas — como a <strong className="text-foreground">Panini FIFA World Cup 2026™ Adrenalyn XL™</strong> — diretamente para a sua casa, com segurança, rapidez e o carinho que todo colecionador merece.
+                  Trabalhamos exclusivamente com <strong className="text-foreground">produtos originais e licenciados</strong>: cards Pokémon, jogos COPAG, colecionáveis da Copa 2026 e as novidades de cada drop — sempre com segurança, rapidez e o carinho que todo colecionador merece.
                 </p>
               </div>
             </div>
