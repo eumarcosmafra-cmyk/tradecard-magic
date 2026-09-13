@@ -21,6 +21,12 @@ type Props = {
   emptyMessage?: string;
   children?: ReactNode;
   dark?: boolean;
+  /** Optional split of the filtered list into titled sections. */
+  sections?: {
+    title: string;
+    description?: string;
+    filter: (product: ShopifyProduct) => boolean;
+  }[];
 };
 
 export const CategoryPage = ({
