@@ -74,7 +74,11 @@ const PoliticaPrivacidade = () => {
           <li>Revogar o consentimento para comunicações</li>
         </ul>
 
-        <h2 className="font-display text-xl tracking-wider uppercase text-foreground !mt-10">7. Contato</h2>
+        <h2 className="font-display text-xl tracking-wider uppercase text-foreground !mt-10">7. Lista de Acesso Antecipado</h2>
+        <p>Ao se cadastrar na lista de acesso antecipado, coletamos nome completo, CPF, WhatsApp e e-mail, além de data e hora do consentimento, versão do regulamento aceito, origem do cadastro e parâmetros de campanha (UTMs). Esses dados são usados exclusivamente para avisar sobre o drop, validar a condição promocional e controlar o resgate presencial no quiosque — o CPF evita cadastros e resgates duplicados.</p>
+        <p>Seus dados de identificação (nome, CPF, telefone e e-mail) <strong className="text-foreground">não são enviados a plataformas de publicidade ou de medição</strong>. Nossas ferramentas de análise recebem apenas eventos anônimos de navegação, como visualização de página e envio de formulário. Mantemos os dados da campanha enquanto ela durar e por até 12 meses após o encerramento, salvo obrigação legal diversa.</p>
+
+        <h2 className="font-display text-xl tracking-wider uppercase text-foreground !mt-10">8. Contato</h2>
         <p>Para exercer seus direitos ou esclarecer dúvidas sobre esta política, entre em contato:</p>
         <p><strong className="text-foreground">E-mail:</strong> contato@bellafigurinha.com.br<br />
         <strong className="text-foreground">WhatsApp:</strong> (41) 6347-5741</p>
