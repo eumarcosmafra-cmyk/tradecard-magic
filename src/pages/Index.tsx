@@ -198,6 +198,9 @@ const Index = () => {
 
 
 
+      {/* ====== PRODUTOS DO DROP — 30 anos ====== */}
+      <Pokemon30Showcase />
+
       {/* ====== DESTAQUE — cards Pokémon ====== */}
       <section className="bg-arena text-white py-20">
         <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-10 items-center">
