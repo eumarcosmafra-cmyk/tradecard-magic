@@ -1,4 +1,5 @@
 import { CategoryPage } from "@/components/CategoryPage";
+import { Pokemon30Showcase } from "@/components/Pokemon30Showcase";
 import { isPokemonProduct } from "@/lib/catalog";
 
 const Pokemon = () => (
@@ -13,7 +14,9 @@ const Pokemon = () => (
     breadcrumbLabel="Pokémon"
     filter={isPokemonProduct}
     emptyMessage="Em breve — os primeiros produtos chegam no drop de 25 de setembro."
-  />
+  >
+    <Pokemon30Showcase dark />
+  </CategoryPage>
 );
 
 export default Pokemon;

@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { Countdown } from "@/components/Countdown";
+import { Pokemon30Showcase } from "@/components/Pokemon30Showcase";
 import { Truck, Shield, Sparkles, MapPin, ArrowRight } from "lucide-react";
 import { homePageJsonLd, injectJsonLd } from "@/lib/jsonld";
 import { trackEvent } from "@/lib/analytics";
@@ -196,6 +197,9 @@ const Index = () => {
       </section>
 
 
+
+      {/* ====== PRODUTOS DO DROP — 30 anos ====== */}
+      <Pokemon30Showcase />
 
       {/* ====== DESTAQUE — cards Pokémon ====== */}
       <section className="bg-arena text-white py-20">
