@@ -58,6 +58,7 @@ const AppContent = () => {
       <Route path="/copa-2026" element={<Copa2026 />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/lista-cadastros" element={<ListaCadastros />} />
       <Route path="/lojas" element={<Navigate to="/loja-fisica" replace />} />
       <Route path="/quiosques" element={<Navigate to="/loja-fisica" replace />} />
       <Route path="/quem-somos" element={<QuemSomos />} />
