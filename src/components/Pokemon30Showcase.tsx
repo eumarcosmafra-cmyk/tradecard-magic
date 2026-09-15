@@ -51,11 +51,10 @@ export const Pokemon30Showcase = ({ dark = false }: Props) => (
           <Sparkles size={16} /> Celebração de 30 anos
         </span>
         <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase">
-          Os produtos do primeiro drop
+          O que vem em cada coleção
         </h2>
         <p className={`font-body max-w-2xl mx-auto ${dark ? "text-white/80" : "text-muted-foreground"}`}>
-          Coleções comemorativas de 30 anos dos cards Pokémon. Quem está na pré-lista leva 20% OFF em uma
-          unidade, por ordem de chegada e enquanto durar o estoque.
+          Conteúdo das coleções comemorativas de 30 anos dos cards Pokémon.
         </p>
       </div>
 
