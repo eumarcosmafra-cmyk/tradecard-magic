@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram } from "lucide-react";
-import logo from "@/assets/logo-bella-preto.png";
+import logo from "@/assets/logo-bella.png";
 
 const TikTokIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -14,7 +14,7 @@ export const Footer = () => (
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
         <div className="col-span-2 md:col-span-1">
-          <span className="inline-flex items-center justify-center bg-white rounded-lg px-3 py-1.5 border border-black/10 shadow-sm mb-4 w-fit">
+          <span className="inline-flex items-center justify-center bg-foreground rounded-lg px-3 py-1.5 shadow-sm mb-4 w-fit">
             <img src={logo} alt="Bella Figurinha" className="h-12 w-auto" />
           </span>
           <p className="text-sm text-muted-foreground leading-relaxed font-body">

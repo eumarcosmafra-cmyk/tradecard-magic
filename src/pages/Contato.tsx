@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { contactPageJsonLd, breadcrumbSchema, injectJsonLd } from "@/lib/jsonld";
-import logo from "@/assets/logo-bella-preto.png";
+import logo from "@/assets/logo-bella.png";
 
 const Contato = () => {
   const { toast } = useToast();

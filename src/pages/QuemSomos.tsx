@@ -7,7 +7,7 @@ import { Target, Eye, Heart, CheckCircle, MapPin, MessageCircle } from "lucide-r
 import { breadcrumbSchema, organizationSchema, injectJsonLd } from "@/lib/jsonld";
 import heroBg from "@/assets/hero-bg.jpg";
 import quemSomosBg from "@/assets/quem-somos-bg.jpg";
-import logo from "@/assets/logo-bella-preto.png";
+import logo from "@/assets/logo-bella.png";
 
 const valores = [
   { bold: "Autenticidade", text: "Somente produtos originais e licenciados." },
