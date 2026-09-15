@@ -18,7 +18,7 @@ import {
   isSignupOpen,
 } from "@/lib/drop";
 import pkm30TrainerBox from "@/assets/pkm30-trainer-box.webp.asset.json";
-import logo from "@/assets/logo-bella.png";
+import logo from "@/assets/logo-bella-preto.png";
 
 type Status = "idle" | "sending" | "created" | "already_registered";
 
@@ -116,7 +116,7 @@ const AcessoAntecipado = () => {
       />
 
       <header className="container mx-auto px-4 py-6 flex items-center justify-between gap-4">
-        <Link to="/" className="inline-flex items-center bg-ink rounded-lg px-4 py-2 border border-white/15 shadow-md">
+        <Link to="/" className="inline-flex items-center bg-white rounded-lg px-4 py-2 border border-black/10 shadow-md">
           <img src={logo} alt="Bella Figurinha" className="h-11 md:h-14 w-auto" />
         </Link>
         <div className="flex items-center gap-3 md:gap-5">

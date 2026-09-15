@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
-import logo from "@/assets/logo-bella.png";
+import logo from "@/assets/logo-bella-preto.png";
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -32,7 +32,7 @@ export const Header = () => {
       <div className="kiosk-stripe h-1.5 w-full" />
       <div className="container mx-auto flex items-center justify-between py-2 px-4">
         <Link to="/" className="flex items-center">
-          <span className="inline-flex items-center justify-center bg-ink rounded-lg px-3 py-1.5 border border-white/15 shadow-sm">
+          <span className="inline-flex items-center justify-center bg-white rounded-lg px-3 py-1.5 border border-black/10 shadow-sm">
             <img src={logo} alt="Bella Figurinha" className="h-10 md:h-12 w-auto" />
           </span>
         </Link>
