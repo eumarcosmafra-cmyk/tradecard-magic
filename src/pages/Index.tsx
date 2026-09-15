@@ -64,7 +64,9 @@ const Index = () => {
 
         <div className="container mx-auto px-4 relative z-10 pt-32 pb-20">
           <div className="flex flex-col items-center text-center space-y-7">
-            <img src={logo} alt="Bella Figurinha" className="w-36 md:w-52 drop-shadow-2xl floating" />
+            <span className="inline-flex items-center justify-center bg-white rounded-2xl px-6 py-4 border border-black/10 shadow-2xl floating">
+              <img src={logo} alt="Bella Figurinha" className="w-36 md:w-52" />
+            </span>
 
             <span className="inline-flex items-center gap-2 bg-electric/15 text-electric font-display text-sm md:text-base tracking-widest uppercase px-5 py-1.5 rounded-full">
               <Sparkles size={16} /> 30 anos de cards
