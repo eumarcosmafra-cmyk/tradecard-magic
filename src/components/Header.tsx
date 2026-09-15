@@ -32,7 +32,7 @@ export const Header = () => {
       <div className="kiosk-stripe h-1.5 w-full" />
       <div className="container mx-auto flex items-center justify-between py-2 px-4">
         <Link to="/" className="flex items-center">
-          <span className="inline-flex items-center justify-center bg-arena rounded-lg px-3 py-1.5 shadow-sm">
+          <span className="inline-flex items-center justify-center bg-background rounded-lg px-3 py-1.5 shadow-sm">
             <img src={logo} alt="Bella Figurinha" className="h-10 md:h-12 w-auto" />
           </span>
         </Link>
