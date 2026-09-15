@@ -19,6 +19,7 @@ import { Selecoes } from "@/components/Selecoes";
 import { ProductFAQ, getFaqItemsForHandle } from "@/components/ProductFAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import AdrenalynDescription from "@/components/AdrenalynDescription";
+import { DROP_DATE_SHORT, OFFER_SHORT } from "@/lib/drop";
 
 const getProductCategory = (handle: string): "album-only" | "envelopes-only" | "album-with-envelopes" | "adrenalyn" | "default" => {
   const h = handle.toLowerCase();
@@ -233,6 +234,9 @@ const ProductDetail = () => {
   const percentColecao = ((totalFigurinhas / 980) * 100).toFixed(1);
   const selectedVariant = variants[selectedVariantIndex]?.node;
   const selectedImage = images[selectedImageIndex]?.node;
+  // Produto ainda sem preço/estoque no Shopify: exibir como "Em breve"
+  const isComingSoon =
+    !selectedVariant || parseFloat(selectedVariant.price.amount) <= 0 || !selectedVariant.availableForSale;
 
   const formatPrice = (amount: string) =>
     new Intl.NumberFormat("pt-BR", { style: "currency", currency: selectedVariant?.price.currencyCode || "BRL" }).format(parseFloat(amount));
@@ -319,9 +323,9 @@ const ProductDetail = () => {
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-muted-foreground font-body">Sem imagem</div>
               )}
-              {!selectedVariant?.availableForSale && (
-                <div className="absolute top-4 right-4 bg-destructive text-destructive-foreground text-xs font-display tracking-wider uppercase px-3 py-1.5 rounded-md">
-                  Esgotado
+              {isComingSoon && (
+                <div className="absolute top-4 right-4 bg-secondary text-secondary-foreground text-xs font-display tracking-wider uppercase px-3 py-1.5 rounded-md">
+                  Em breve
                 </div>
               )}
             </div>
@@ -433,7 +437,7 @@ const ProductDetail = () => {
             )}
 
             {/* Price box */}
-            {selectedVariant && (
+            {selectedVariant && !isComingSoon && (
               <div className="border border-border rounded-xl p-5">
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-muted-foreground font-body uppercase tracking-wide">Por</span>
@@ -444,47 +448,68 @@ const ProductDetail = () => {
               </div>
             )}
 
+            {isComingSoon && (
+              <div className="border-2 border-secondary/50 bg-secondary/10 rounded-xl p-5 space-y-2">
+                <p className="font-display text-lg tracking-widest uppercase text-secondary">
+                  Em breve · drop de {DROP_DATE_SHORT}
+                </p>
+                <p className="font-body text-sm text-foreground/80">
+                  Este produto ainda não está à venda. Entre na pré-lista e garanta {OFFER_SHORT}.
+                </p>
+              </div>
+            )}
+
             {/* Action buttons */}
             <div className="space-y-3 pt-2">
-              <Button
-                onClick={handleAddToCart}
-                disabled={cartLoading || !selectedVariant?.availableForSale}
-                size="lg"
-                className="w-full bg-gradient-yellow text-primary-foreground font-display text-xl tracking-wider uppercase shadow-yellow-lg hover:opacity-90 transition-opacity py-7"
-              >
-                {cartLoading ? (
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                ) : !selectedVariant?.availableForSale ? (
-                  "Produto Esgotado"
-                ) : (
-                  <>
-                    <ShoppingCart className="w-5 h-5 mr-2" />
-                    Adicionar ao Carrinho
-                  </>
-                )}
-              </Button>
+              {isComingSoon ? (
+                <Button
+                  asChild
+                  size="lg"
+                  className="w-full bg-gradient-yellow text-primary-foreground font-display text-xl tracking-wider uppercase shadow-yellow-lg hover:opacity-90 transition-opacity py-7"
+                >
+                  <Link to="/acesso-antecipado">Quero meus 20% de desconto</Link>
+                </Button>
+              ) : (
+                <>
+                  <Button
+                    onClick={handleAddToCart}
+                    disabled={cartLoading}
+                    size="lg"
+                    className="w-full bg-gradient-yellow text-primary-foreground font-display text-xl tracking-wider uppercase shadow-yellow-lg hover:opacity-90 transition-opacity py-7"
+                  >
+                    {cartLoading ? (
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                    ) : (
+                      <>
+                        <ShoppingCart className="w-5 h-5 mr-2" />
+                        Adicionar ao Carrinho
+                      </>
+                    )}
+                  </Button>
 
-              <Button
-                onClick={handleBuyNow}
-                disabled={cartLoading || !selectedVariant?.availableForSale}
-                variant="outline"
-                size="lg"
-                className="w-full font-display text-xl tracking-wider uppercase border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground transition-all py-7"
-              >
-                <Zap className="w-5 h-5 mr-2" />
-                Comprar Agora
-              </Button>
+                  <Button
+                    onClick={handleBuyNow}
+                    disabled={cartLoading}
+                    variant="outline"
+                    size="lg"
+                    className="w-full font-display text-xl tracking-wider uppercase border-2 border-secondary text-secondary hover:bg-secondary hover:text-secondary-foreground transition-all py-7"
+                  >
+                    <Zap className="w-5 h-5 mr-2" />
+                    Comprar Agora
+                  </Button>
+                </>
+              )}
             </div>
-
-            {/* Free shipping removed */}
 
             {/* Installment info */}
-            <div className="flex items-center gap-2 bg-primary/5 border border-primary/20 rounded-lg px-4 py-2.5">
-              <CreditCard className="w-4 h-4 text-primary flex-shrink-0" />
-              <span className="text-sm font-body text-foreground/80 font-medium">
-                Parcele em até 6x sem juros (parcela mínima de R$ 100,00)
-              </span>
-            </div>
+            {!isComingSoon && (
+              <div className="flex items-center gap-2 bg-primary/5 border border-primary/20 rounded-lg px-4 py-2.5">
+                <CreditCard className="w-4 h-4 text-primary flex-shrink-0" />
+                <span className="text-sm font-body text-foreground/80 font-medium">
+                  Parcele em até 6x sem juros (parcela mínima de R$ 100,00)
+                </span>
+              </div>
+            )}
 
             {/* Trust strip */}
             <TrustStrip />

@@ -15,12 +15,11 @@ import dropCards from "@/assets/drop-cards.jpg";
 import logo from "@/assets/logo-bella.png";
 import quiosqueArena from "@/assets/quiosque-arena.png.asset.json";
 
-const comingSoon = [
-  { title: "Booster Packs", text: "Pacotes individuais para abrir e colecionar." },
-  { title: "Boxes", text: "Caixas fechadas com maior volume e melhores chances." },
-  { title: "Coleções Especiais", text: "Edições comemorativas e lançamentos limitados." },
-  { title: "Acessórios", text: "Sleeves, binders e tudo para proteger a coleção." },
-  { title: "Outros Colecionáveis", text: "Novas linhas que chegam a cada drop." },
+const categories = [
+  { title: "Pokémon", to: "/pokemon", text: "Coleções comemorativas de 30 anos de cards." },
+  { title: "Cards & Colecionáveis", to: "/cards-e-colecionaveis", text: "Boosters, boxes e acessórios para colecionar." },
+  { title: "COPAG", to: "/copag", text: "Jogos e colecionáveis para reunir a mesa." },
+  { title: "Copa 2026", to: "/copa-2026", text: "Álbuns, envelopes e Adrenalyn XL da Copa." },
 ];
 
 const Index = () => {
@@ -202,7 +201,7 @@ const Index = () => {
       {/* ====== PRODUTOS NA LOJA ====== */}
       <HomeProducts />
 
-      {/* ====== PRODUTOS DO DROP — 30 anos ====== */}
+      {/* ====== O QUE VEM EM CADA COLEÇÃO ====== */}
       <Pokemon30Showcase />
 
       {/* ====== DESTAQUE — cards Pokémon ====== */}
@@ -219,14 +218,8 @@ const Index = () => {
               Cards <span className="text-gradient-electric">Pokémon</span> na Bella
             </h2>
             <p className="font-body text-white/80 text-lg">
-              Booster packs, boxes, coleções especiais e acessórios. Quem entrar na lista de acesso antecipado até{" "}
-              {DROP_DATE_SHORT} garante a oferta de lançamento:
-            </p>
-            <p className="font-display text-2xl md:text-3xl tracking-wider uppercase text-electric leading-tight">
-              {OFFER_FULL}
-            </p>
-            <p className="font-body text-sm text-white/90 border border-electric/40 bg-electric/10 rounded-xl px-4 py-3">
-              {OFFER_NO_RESERVE}
+              Coleções comemorativas de 30 anos: fichário, pôster, treinador avançado e adesivos tech. Tudo original,
+              com estreia no quiosque do Palladium e na loja online.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -248,29 +241,25 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ====== O QUE ESTÁ CHEGANDO ====== */}
+      {/* ====== CATEGORIAS ====== */}
       <section id="o-que-esta-chegando" className="container mx-auto px-4 py-20">
         <div className="text-center mb-12">
-          <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase">O que está chegando</h2>
+          <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase">Navegue por categoria</h2>
           <p className="font-body text-muted-foreground mt-3 max-w-2xl mx-auto">
-            As linhas que abrem a nova fase da Bella. Os primeiros produtos entram no catálogo a partir do drop de{" "}
-            {DROP_DATE_LABEL}.
+            Tudo que a Bella tem hoje, em quatro caminhos.
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {comingSoon.map((item) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {categories.map((item) => (
             <Link
               key={item.title}
-              to="/cards-e-colecionaveis"
+              to={item.to}
               className="group rounded-2xl border border-border bg-card p-6 hover:border-secondary transition-colors"
             >
-              <span className="inline-block bg-secondary/10 text-secondary font-display text-xs tracking-widest uppercase px-3 py-1 rounded-full">
-                Em breve
-              </span>
-              <h3 className="font-display text-2xl tracking-wider uppercase mt-4">{item.title}</h3>
+              <h3 className="font-display text-2xl tracking-wider uppercase">{item.title}</h3>
               <p className="font-body text-sm text-muted-foreground mt-2">{item.text}</p>
               <span className="inline-flex items-center gap-1 font-body text-sm text-secondary mt-4 group-hover:gap-2 transition-all">
-                Saiba mais <ArrowRight size={14} />
+                Ver produtos <ArrowRight size={14} />
               </span>
             </Link>
           ))}
@@ -327,6 +316,43 @@ const Index = () => {
 
 
 
+
+      {/* ====== FAIXA COPA 2026 ====== */}
+      <section className="container mx-auto px-4 pb-16">
+        <Link
+          to="/copa-2026"
+          className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-border bg-muted px-6 py-5 hover:border-secondary transition-colors"
+        >
+          <span className="font-display text-xl md:text-2xl tracking-wider uppercase">
+            Coleção Copa 2026 — últimas unidades
+          </span>
+          <span className="inline-flex items-center gap-2 font-display text-base tracking-widest uppercase text-secondary">
+            Ver a coleção <ArrowRight size={16} />
+          </span>
+        </Link>
+      </section>
+
+      {/* ====== CTA FINAL — pré-lista ====== */}
+      <section className="bg-arena text-white py-16">
+        <div className="container mx-auto px-4 text-center space-y-5">
+          <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase leading-none">
+            Ainda dá tempo de entrar na pré-lista
+          </h2>
+          <p className="font-body text-white/80 max-w-2xl mx-auto">
+            {OFFER_FULL} Cadastros até {DROP_DATE_SHORT}.
+          </p>
+          <Countdown className="justify-center flex-wrap" />
+          <div>
+            <Link
+              to="/acesso-antecipado"
+              onClick={() => trackEvent("early_access_cta_click", { location: "footer_cta" })}
+              className="inline-block bg-gradient-electric text-ink font-display text-xl tracking-widest uppercase px-10 py-4 rounded-xl shadow-electric"
+            >
+              Quero meus 20% de desconto
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>

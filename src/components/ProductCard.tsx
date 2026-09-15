@@ -4,6 +4,7 @@ import { ShoppingCart, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { type ShopifyProduct } from "@/lib/shopify";
 import { toast } from "sonner";
+import { DROP_DATE_SHORT } from "@/lib/drop";
 
 interface ProductCardProps {
   product: ShopifyProduct;
@@ -18,6 +19,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
   const price = parseFloat(node.priceRange.minVariantPrice.amount);
   const currency = node.priceRange.minVariantPrice.currencyCode;
   const available = variant?.availableForSale ?? false;
+  // Produto ainda sem preço/estoque no Shopify: mostrar como "Em breve" em vez de R$ 0,00 / Esgotado
+  const comingSoon = price <= 0 || !available;
 
   const formatPrice = (amount: number) => {
     return new Intl.NumberFormat('pt-BR', { style: 'currency', currency }).format(amount);
@@ -54,22 +57,39 @@ export const ProductCard = ({ product }: ProductCardProps) => {
               Sem imagem
             </div>
           )}
-          {!available && (
-            <div className="absolute top-3 left-3 bg-destructive text-destructive-foreground text-xs font-semibold px-3 py-1 rounded-md font-display tracking-wider uppercase">
-              Esgotado
+          {comingSoon && (
+            <div className="absolute top-3 left-3 bg-secondary text-secondary-foreground text-xs font-semibold px-3 py-1 rounded-md font-display tracking-wider uppercase">
+              Em breve
             </div>
           )}
         </div>
         <div className="p-5 space-y-3">
           <h3 className="font-display text-xl tracking-wider uppercase text-foreground line-clamp-2">{node.title}</h3>
-          <p className="text-2xl font-bold text-gradient-yellow font-display tracking-wide">{formatPrice(price)}</p>
-          <Button
-            onClick={handleAddToCart}
-            disabled={isLoading || !available}
-            className="w-full bg-gradient-yellow text-primary-foreground font-display text-base tracking-wider uppercase shadow-yellow hover:opacity-90 transition-opacity"
-          >
-            {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ShoppingCart className="w-4 h-4 mr-2" />{available ? 'Adicionar' : 'Esgotado'}</>}
-          </Button>
+          {comingSoon ? (
+            <p className="font-body text-sm text-muted-foreground">
+              Disponível no drop de {DROP_DATE_SHORT}
+            </p>
+          ) : (
+            <p className="text-2xl font-bold text-gradient-yellow font-display tracking-wide">{formatPrice(price)}</p>
+          )}
+          {comingSoon ? (
+            <Button
+              asChild
+              className="w-full bg-gradient-yellow text-primary-foreground font-display text-base tracking-wider uppercase shadow-yellow hover:opacity-90 transition-opacity"
+            >
+              <Link to="/acesso-antecipado" onClick={(e) => e.stopPropagation()}>
+                Quero avisos e 20% OFF
+              </Link>
+            </Button>
+          ) : (
+            <Button
+              onClick={handleAddToCart}
+              disabled={isLoading}
+              className="w-full bg-gradient-yellow text-primary-foreground font-display text-base tracking-wider uppercase shadow-yellow hover:opacity-90 transition-opacity"
+            >
+              {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ShoppingCart className="w-4 h-4 mr-2" />Adicionar</>}
+            </Button>
+          )}
         </div>
       </div>
     </Link>
