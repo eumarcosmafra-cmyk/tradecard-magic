@@ -317,6 +317,43 @@ const Index = () => {
 
 
 
+      {/* ====== FAIXA COPA 2026 ====== */}
+      <section className="container mx-auto px-4 pb-16">
+        <Link
+          to="/copa-2026"
+          className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-border bg-muted px-6 py-5 hover:border-secondary transition-colors"
+        >
+          <span className="font-display text-xl md:text-2xl tracking-wider uppercase">
+            Coleção Copa 2026 — últimas unidades
+          </span>
+          <span className="inline-flex items-center gap-2 font-display text-base tracking-widest uppercase text-secondary">
+            Ver a coleção <ArrowRight size={16} />
+          </span>
+        </Link>
+      </section>
+
+      {/* ====== CTA FINAL — pré-lista ====== */}
+      <section className="bg-arena text-white py-16">
+        <div className="container mx-auto px-4 text-center space-y-5">
+          <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase leading-none">
+            Ainda dá tempo de entrar na pré-lista
+          </h2>
+          <p className="font-body text-white/80 max-w-2xl mx-auto">
+            {OFFER_FULL} Cadastros até {DROP_DATE_SHORT}.
+          </p>
+          <Countdown className="justify-center flex-wrap" />
+          <div>
+            <Link
+              to="/acesso-antecipado"
+              onClick={() => trackEvent("early_access_cta_click", { location: "footer_cta" })}
+              className="inline-block bg-gradient-electric text-ink font-display text-xl tracking-widest uppercase px-10 py-4 rounded-xl shadow-electric"
+            >
+              Quero meus 20% de desconto
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
