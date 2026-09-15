@@ -17,7 +17,7 @@ import {
   TERMS_VERSION,
   isSignupOpen,
 } from "@/lib/drop";
-import dropCards from "@/assets/drop-cards.jpg";
+import pkm30TrainerBox from "@/assets/pkm30-trainer-box.webp.asset.json";
 import logo from "@/assets/logo-bella.png";
 
 type Status = "idle" | "sending" | "created" | "already_registered";
@@ -160,12 +160,10 @@ const AcessoAntecipado = () => {
             </ul>
 
             <img
-              src={dropCards}
-              alt="Envelopes lacrados e cards colecionáveis com brilho holográfico"
+              src={pkm30TrainerBox.url}
+              alt="Coleção comemorativa de 30 anos de cards Pokémon"
               loading="lazy"
-              width={1024}
-              height={1280}
-              className="hidden lg:block rounded-3xl w-full max-w-md object-cover"
+              className="hidden lg:block rounded-3xl w-full max-w-md object-contain bg-white/5 p-4"
             />
           </div>
 
