@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Zap, ShieldCheck, Sparkles, MapPin, Instagram, CheckCircle2, Loader2 } from "lucide-react";
+import { Zap, ShieldCheck, Sparkles, MapPin, Instagram, CheckCircle2, Loader2, LockKeyhole } from "lucide-react";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { Countdown } from "@/components/Countdown";
@@ -115,11 +115,20 @@ const AcessoAntecipado = () => {
         canonical="https://bellafigurinha.com.br/acesso-antecipado"
       />
 
-      <header className="container mx-auto px-4 py-6 flex items-center justify-between">
-        <Link to="/" className="inline-flex items-center bg-background rounded-lg px-3 py-1.5">
-          <img src={logo} alt="Bella Figurinha" className="h-9 w-auto" />
+      <header className="container mx-auto px-4 py-6 flex items-center justify-between gap-4">
+        <Link to="/" className="inline-flex items-center bg-ink rounded-lg px-4 py-2 border border-white/15 shadow-md">
+          <img src={logo} alt="Bella Figurinha" className="h-11 md:h-14 w-auto" />
         </Link>
-        <span className="font-display text-sm tracking-widest uppercase text-electric">30 anos de cards</span>
+        <div className="flex items-center gap-3 md:gap-5">
+          <span className="hidden sm:inline font-display text-sm tracking-widest uppercase text-electric">30 anos de cards</span>
+          <Link
+            to="/lista-cadastros"
+            className="inline-flex items-center gap-2 rounded-lg border border-electric/60 px-3 py-2 font-display text-sm tracking-wider uppercase text-electric transition-colors hover:bg-electric/10"
+          >
+            <LockKeyhole size={15} />
+            Acessar pré-lista
+          </Link>
+        </div>
       </header>
 
       {/* Seção 1 — hero + formulário */}
