@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
-import logo from "@/assets/logo-bella.png";
+import logo from "@/assets/logo-bella-preto.png";
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);

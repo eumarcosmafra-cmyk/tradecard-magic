@@ -18,7 +18,7 @@ import {
   isSignupOpen,
 } from "@/lib/drop";
 import pkm30TrainerBox from "@/assets/pkm30-trainer-box.webp.asset.json";
-import logo from "@/assets/logo-bella.png";
+import logo from "@/assets/logo-bella-preto.png";
 
 type Status = "idle" | "sending" | "created" | "already_registered";
 
