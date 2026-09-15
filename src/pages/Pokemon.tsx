@@ -13,9 +13,7 @@ const Pokemon = () => (
     breadcrumbLabel="Pokémon"
     filter={isPokemonProduct}
     emptyMessage="Em breve — os primeiros produtos chegam no drop de 25 de setembro."
-  >
-    <Pokemon30Showcase dark />
-  </CategoryPage>
+  />
 );
 
 export default Pokemon;
