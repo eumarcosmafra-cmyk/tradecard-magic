@@ -1,5 +1,4 @@
 import { CategoryPage } from "@/components/CategoryPage";
-import { Pokemon30Showcase } from "@/components/Pokemon30Showcase";
 import { isPokemonProduct } from "@/lib/catalog";
 
 const Pokemon = () => (
