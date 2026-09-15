@@ -15,12 +15,11 @@ import dropCards from "@/assets/drop-cards.jpg";
 import logo from "@/assets/logo-bella.png";
 import quiosqueArena from "@/assets/quiosque-arena.png.asset.json";
 
-const comingSoon = [
-  { title: "Booster Packs", text: "Pacotes individuais para abrir e colecionar." },
-  { title: "Boxes", text: "Caixas fechadas com maior volume e melhores chances." },
-  { title: "Coleções Especiais", text: "Edições comemorativas e lançamentos limitados." },
-  { title: "Acessórios", text: "Sleeves, binders e tudo para proteger a coleção." },
-  { title: "Outros Colecionáveis", text: "Novas linhas que chegam a cada drop." },
+const categories = [
+  { title: "Pokémon", to: "/pokemon", text: "Coleções comemorativas de 30 anos de cards." },
+  { title: "Cards & Colecionáveis", to: "/cards-e-colecionaveis", text: "Boosters, boxes e acessórios para colecionar." },
+  { title: "COPAG", to: "/copag", text: "Jogos e colecionáveis para reunir a mesa." },
+  { title: "Copa 2026", to: "/copa-2026", text: "Álbuns, envelopes e Adrenalyn XL da Copa." },
 ];
 
 const Index = () => {
@@ -242,29 +241,25 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ====== O QUE ESTÁ CHEGANDO ====== */}
+      {/* ====== CATEGORIAS ====== */}
       <section id="o-que-esta-chegando" className="container mx-auto px-4 py-20">
         <div className="text-center mb-12">
-          <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase">O que está chegando</h2>
+          <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase">Navegue por categoria</h2>
           <p className="font-body text-muted-foreground mt-3 max-w-2xl mx-auto">
-            As linhas que abrem a nova fase da Bella. Os primeiros produtos entram no catálogo a partir do drop de{" "}
-            {DROP_DATE_LABEL}.
+            Tudo que a Bella tem hoje, em quatro caminhos.
           </p>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {comingSoon.map((item) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {categories.map((item) => (
             <Link
               key={item.title}
-              to="/cards-e-colecionaveis"
+              to={item.to}
               className="group rounded-2xl border border-border bg-card p-6 hover:border-secondary transition-colors"
             >
-              <span className="inline-block bg-secondary/10 text-secondary font-display text-xs tracking-widest uppercase px-3 py-1 rounded-full">
-                Em breve
-              </span>
-              <h3 className="font-display text-2xl tracking-wider uppercase mt-4">{item.title}</h3>
+              <h3 className="font-display text-2xl tracking-wider uppercase">{item.title}</h3>
               <p className="font-body text-sm text-muted-foreground mt-2">{item.text}</p>
               <span className="inline-flex items-center gap-1 font-body text-sm text-secondary mt-4 group-hover:gap-2 transition-all">
-                Saiba mais <ArrowRight size={14} />
+                Ver produtos <ArrowRight size={14} />
               </span>
             </Link>
           ))}
