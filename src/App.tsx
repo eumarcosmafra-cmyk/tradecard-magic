@@ -19,6 +19,7 @@ import Copag from "./pages/Copag";
 import Copa2026 from "./pages/Copa2026";
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
+import ListaCadastros from "./pages/ListaCadastros";
 import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
 
