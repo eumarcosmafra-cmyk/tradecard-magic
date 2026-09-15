@@ -116,7 +116,7 @@ const AcessoAntecipado = () => {
       />
 
       <header className="container mx-auto px-4 py-6 flex items-center justify-between">
-        <Link to="/" className="inline-flex items-center bg-white rounded-lg px-3 py-1.5">
+        <Link to="/" className="inline-flex items-center bg-black rounded-lg px-3 py-1.5">
           <img src={logo} alt="Bella Figurinha" className="h-9 w-auto" />
         </Link>
         <span className="font-display text-sm tracking-widest uppercase text-electric">30 anos de cards</span>
@@ -342,6 +342,15 @@ const AcessoAntecipado = () => {
           <p className="font-body text-white/70 text-sm mt-3 max-w-2xl mx-auto">{OFFER_NO_RESERVE}</p>
         </div>
       </section>
+
+      <div className="container mx-auto px-4 pb-12 text-center">
+        <Link
+          to="/lista-cadastros"
+          className="inline-flex items-center gap-2 border border-white/25 text-white/70 hover:text-white font-display text-sm tracking-widest uppercase px-6 py-3 rounded-xl"
+        >
+          <ShieldCheck size={16} /> Acesso administrativo
+        </Link>
+      </div>
 
       <Footer />
     </div>
