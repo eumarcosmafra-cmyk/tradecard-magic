@@ -116,7 +116,7 @@ const AcessoAntecipado = () => {
       />
 
       <header className="container mx-auto px-4 py-6 flex items-center justify-between">
-        <Link to="/" className="inline-flex items-center bg-white rounded-lg px-3 py-1.5">
+        <Link to="/" className="inline-flex items-center bg-background rounded-lg px-3 py-1.5">
           <img src={logo} alt="Bella Figurinha" className="h-9 w-auto" />
         </Link>
         <span className="font-display text-sm tracking-widest uppercase text-electric">30 anos de cards</span>
