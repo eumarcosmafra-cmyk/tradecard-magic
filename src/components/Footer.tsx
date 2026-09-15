@@ -14,7 +14,7 @@ export const Footer = () => (
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
         <div className="col-span-2 md:col-span-1">
-          <span className="inline-flex items-center justify-center bg-foreground rounded-lg px-3 py-1.5 shadow-sm mb-4 w-fit">
+          <span className="inline-flex items-center justify-center bg-arena rounded-lg px-3 py-1.5 shadow-sm mb-4 w-fit">
             <img src={logo} alt="Bella Figurinha" className="h-12 w-auto" />
           </span>
           <p className="text-sm text-muted-foreground leading-relaxed font-body">
