@@ -19,6 +19,7 @@ import Copag from "./pages/Copag";
 import Copa2026 from "./pages/Copa2026";
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
+import ListaCadastros from "./pages/ListaCadastros";
 import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
 
@@ -57,6 +58,7 @@ const AppContent = () => {
       <Route path="/copa-2026" element={<Copa2026 />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/lista-cadastros" element={<ListaCadastros />} />
       <Route path="/lojas" element={<Navigate to="/loja-fisica" replace />} />
       <Route path="/quiosques" element={<Navigate to="/loja-fisica" replace />} />
       <Route path="/quem-somos" element={<QuemSomos />} />
