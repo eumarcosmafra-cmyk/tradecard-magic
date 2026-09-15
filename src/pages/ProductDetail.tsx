@@ -19,6 +19,7 @@ import { Selecoes } from "@/components/Selecoes";
 import { ProductFAQ, getFaqItemsForHandle } from "@/components/ProductFAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import AdrenalynDescription from "@/components/AdrenalynDescription";
+import { DROP_DATE_SHORT, OFFER_SHORT } from "@/lib/drop";
 
 const getProductCategory = (handle: string): "album-only" | "envelopes-only" | "album-with-envelopes" | "adrenalyn" | "default" => {
   const h = handle.toLowerCase();
@@ -233,6 +234,9 @@ const ProductDetail = () => {
   const percentColecao = ((totalFigurinhas / 980) * 100).toFixed(1);
   const selectedVariant = variants[selectedVariantIndex]?.node;
   const selectedImage = images[selectedImageIndex]?.node;
+  // Produto ainda sem preço/estoque no Shopify: exibir como "Em breve"
+  const isComingSoon =
+    !selectedVariant || parseFloat(selectedVariant.price.amount) <= 0 || !selectedVariant.availableForSale;
 
   const formatPrice = (amount: string) =>
     new Intl.NumberFormat("pt-BR", { style: "currency", currency: selectedVariant?.price.currencyCode || "BRL" }).format(parseFloat(amount));
