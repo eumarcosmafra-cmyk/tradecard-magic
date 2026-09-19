@@ -10,7 +10,7 @@ import logo from "@/assets/logo-bella.png";
 
 type Status = "idle" | "sending" | "created" | "already_registered";
 
-const EVENT_DATE = new Date("2026-09-27T19:00:00-03:00");
+const EVENT_DATE = new Date("2026-09-24T19:00:00-03:00");
 
 const useCountdown = () => {
   const [left, setLeft] = useState(EVENT_DATE.getTime() - Date.now());
@@ -122,7 +122,7 @@ const ConviteInfluenciadores = () => {
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="rounded-2xl bg-ink-soft/70 p-5 holo-border">
                 <CalendarDays className="text-electric" size={20} />
-                <p className="font-display text-2xl tracking-wider uppercase mt-2">27/09/2026</p>
+                <p className="font-display text-2xl tracking-wider uppercase mt-2">24/09/2026</p>
                 <p className="font-body text-sm text-white/70">Domingo</p>
               </div>
               <div className="rounded-2xl bg-ink-soft/70 p-5 holo-border">
@@ -242,7 +242,7 @@ const ConviteInfluenciadores = () => {
                   {status === "created" ? "Presença confirmada!" : "Você já está confirmado"}
                 </h2>
                 <p className="font-body text-white/80">
-                  Te esperamos dia 27/09 no quiosque da Bella, no Shopping Palladium.
+                  Te esperamos dia 24/09 no quiosque da Bella, no Shopping Palladium.
                 </p>
                 <a
                   href="https://www.instagram.com/bellafigurinha"
