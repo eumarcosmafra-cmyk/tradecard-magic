@@ -20,6 +20,8 @@ import Copa2026 from "./pages/Copa2026";
 import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import ListaCadastros from "./pages/ListaCadastros";
+import ConviteInfluenciadores from "./pages/ConviteInfluenciadores";
+import ListaInfluenciadores from "./pages/ListaInfluenciadores";
 import Index from "./pages/Index";
 import ProductDetail from "./pages/ProductDetail";
 
@@ -59,6 +61,8 @@ const AppContent = () => {
       <Route path="/admin" element={<Admin />} />
       <Route path="/admin/login" element={<AdminLogin />} />
       <Route path="/lista-cadastros" element={<ListaCadastros />} />
+      <Route path="/convite-influenciadores" element={<ConviteInfluenciadores />} />
+      <Route path="/lista-influenciadores" element={<ListaInfluenciadores />} />
       <Route path="/lojas" element={<Navigate to="/loja-fisica" replace />} />
       <Route path="/quiosques" element={<Navigate to="/loja-fisica" replace />} />
       <Route path="/quem-somos" element={<QuemSomos />} />

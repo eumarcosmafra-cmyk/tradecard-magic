@@ -9,6 +9,7 @@ export const DropBar = () => {
   if (!isSignupOpen()) return null;
   if (pathname.startsWith("/acesso-antecipado") || pathname.startsWith("/primeiro-drop")) return null;
   if (pathname.startsWith("/admin") || pathname.startsWith("/lista-cadastros")) return null;
+  if (pathname.startsWith("/convite-influenciadores") || pathname.startsWith("/lista-influenciadores")) return null;
 
   const daysLeft = Math.ceil((DROP_DATE.getTime() - Date.now()) / 86400000);
 
