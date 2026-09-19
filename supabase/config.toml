@@ -2,3 +2,9 @@ project_id = "ovwaazzelmqpmuixknlh"
 
 [functions.leads-lista]
 verify_jwt = false
+
+[functions.influencer-rsvp]
+verify_jwt = false
+
+[functions.influencer-lista]
+verify_jwt = false

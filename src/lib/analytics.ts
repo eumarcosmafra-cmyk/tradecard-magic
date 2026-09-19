@@ -64,6 +64,7 @@ export type FunnelEvent =
   | "product_view"
   | "add_to_cart"
   | "ecommerce_buy_click"
+  | "influencer_rsvp_success"
   | "begin_checkout";
 
 const PERSONAL_KEYS = ["cpf", "nome", "name", "email", "whatsapp", "phone", "telefone"];
