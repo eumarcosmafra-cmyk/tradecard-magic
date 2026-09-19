@@ -86,6 +86,69 @@ export type Database = {
         }
         Relationships: []
       }
+      influencer_rsvps: {
+        Row: {
+          attended: boolean
+          attended_at: string | null
+          consent_accepted: boolean
+          created_at: string
+          email: string
+          id: string
+          instagram: string
+          landing_path: string | null
+          nome: string
+          origem: string | null
+          referrer: string | null
+          updated_at: string
+          utm_campaign: string | null
+          utm_content: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          utm_term: string | null
+          whatsapp: string
+        }
+        Insert: {
+          attended?: boolean
+          attended_at?: string | null
+          consent_accepted?: boolean
+          created_at?: string
+          email: string
+          id?: string
+          instagram: string
+          landing_path?: string | null
+          nome: string
+          origem?: string | null
+          referrer?: string | null
+          updated_at?: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+          whatsapp: string
+        }
+        Update: {
+          attended?: boolean
+          attended_at?: string | null
+          consent_accepted?: boolean
+          created_at?: string
+          email?: string
+          id?: string
+          instagram?: string
+          landing_path?: string | null
+          nome?: string
+          origem?: string | null
+          referrer?: string | null
+          updated_at?: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+          whatsapp?: string
+        }
+        Relationships: []
+      }
       leads_b2b: {
         Row: {
           cep: string
