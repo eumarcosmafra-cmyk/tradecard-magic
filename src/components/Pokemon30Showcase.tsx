@@ -40,7 +40,7 @@ type Props = {
 };
 
 export const Pokemon30Showcase = ({ dark = false }: Props) => (
-  <section className={dark ? "bg-arena text-white py-20" : "bg-muted py-20"}>
+  <section className={dark ? "bg-arena text-white py-20" : "bg-background py-20"}>
     <div className="container mx-auto px-4">
       <div className="text-center space-y-3 mb-12">
         <span
@@ -85,9 +85,11 @@ export const Pokemon30Showcase = ({ dark = false }: Props) => (
       <div className="text-center mt-10">
         <Link
           to="/acesso-antecipado"
-          className="inline-block bg-gradient-yellow text-primary-foreground font-display text-lg tracking-widest uppercase px-10 py-4 rounded-xl shadow-yellow"
+          className={`inline-flex items-center gap-2 font-display text-lg tracking-widest uppercase ${
+            dark ? "text-electric" : "text-secondary"
+          }`}
         >
-          Quero meus 20% de desconto
+          Entrar na pré-lista <ArrowRight size={18} />
         </Link>
       </div>
     </div>
