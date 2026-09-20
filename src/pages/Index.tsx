@@ -11,7 +11,6 @@ import { homePageJsonLd, injectJsonLd } from "@/lib/jsonld";
 import { trackEvent } from "@/lib/analytics";
 import { DROP_DATE_LABEL, DROP_DATE_SHORT, OFFER_FULL, OFFER_NO_RESERVE } from "@/lib/drop";
 import heroCards from "@/assets/hero-cards-2026.jpg";
-import dropCards from "@/assets/drop-cards.jpg";
 import logo from "@/assets/logo-bella.png";
 import quiosqueArena from "@/assets/quiosque-arena.png.asset.json";
 
@@ -47,7 +46,7 @@ const Index = () => {
       />
       <Header />
 
-      {/* ====== HERO — nova Bella ====== */}
+      {/* ====== HERO ====== */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-ink">
         <div className="absolute inset-0">
           <img
@@ -62,7 +61,7 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/60 to-ink" />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 pt-32 pb-20">
+        <div className="container mx-auto px-4 relative z-10 pt-32 pb-24">
           <div className="flex flex-col items-center text-center space-y-7">
             <img src={logo} alt="Bella Figurinha" className="w-36 md:w-52 drop-shadow-2xl floating" />
 
@@ -88,36 +87,23 @@ const Index = () => {
                 <br className="hidden md:block" /> em produtos Pokémon 30 anos
               </p>
               <p className="font-body text-base text-white/85">
-                1 unidade por CPF · por ordem de chegada · enquanto durar o estoque · cadastros até {DROP_DATE_SHORT}
-              </p>
-              <p className="font-body text-sm text-spark border border-spark/50 bg-spark/10 rounded-xl px-4 py-3">
-                {OFFER_NO_RESERVE}
+                1 unidade por CPF · por ordem de chegada · cadastros até {DROP_DATE_SHORT}
               </p>
             </div>
-
-            <p className="font-body text-base md:text-lg text-white/75 max-w-2xl">
-              Comemoramos os 30 anos da coleção de cards mais amada do mundo abrindo nosso quiosque no Shopping
-              Palladium e lançando o primeiro drop em {DROP_DATE_LABEL}.
-            </p>
 
             <Countdown className="justify-center flex-wrap" />
 
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-              <Link
-                to="/acesso-antecipado"
-                onClick={() => trackEvent("early_access_cta_click", { location: "hero" })}
-                className="bg-gradient-electric text-ink font-display text-xl tracking-wider uppercase px-10 py-4 rounded-xl shadow-electric hover:opacity-90 transition-opacity"
-              >
-                Quero meus 20% de desconto
-              </Link>
-              <a
-                href="#como-funciona"
-                className="border border-white/25 text-white font-display text-xl tracking-wider uppercase px-10 py-4 rounded-xl hover:bg-white/10 transition-colors"
-              >
-                Como funciona
-              </a>
-            </div>
+            <Link
+              to="/acesso-antecipado"
+              onClick={() => trackEvent("early_access_cta_click", { location: "hero" })}
+              className="bg-gradient-electric text-ink font-display text-xl tracking-wider uppercase px-10 py-4 rounded-xl shadow-electric hover:opacity-90 transition-opacity"
+            >
+              Quero meus 20% de desconto
+            </Link>
 
+            <a href="#como-funciona" className="font-body text-sm text-white/70 underline underline-offset-4">
+              Como funciona o desconto
+            </a>
           </div>
         </div>
 
@@ -141,102 +127,85 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ====== COMO FUNCIONA A OFERTA ====== */}
-      <section id="como-funciona" className="container mx-auto px-4 py-20">
-        <div className="text-center mb-12 space-y-3">
-          <span className="inline-block bg-secondary/10 text-secondary font-display text-sm tracking-widest uppercase px-4 py-1.5 rounded-full">
-            Oferta de lançamento
-          </span>
-          <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase">Como funciona o desconto</h2>
-          <p className="font-body text-muted-foreground max-w-2xl mx-auto">
-            20% de desconto em produtos Pokémon 30 anos para quem estiver na pré-lista. 1 unidade por CPF, por ordem de
-            chegada e enquanto durar o estoque.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            {
-              n: "01",
-              title: "Entre na pré-lista",
-              text: `Cadastro gratuito com CPF, até ${DROP_DATE_SHORT}. Leva menos de 30 segundos.`,
-            },
-            {
-              n: "02",
-              title: "Receba o aviso do drop",
-              text: `Avisamos quando os produtos Pokémon 30 anos entrarem, no dia ${DROP_DATE_LABEL}.`,
-            },
-            {
-              n: "03",
-              title: "Retire no quiosque com 20% OFF",
-              text: "No quiosque do Shopping Palladium, informe o CPF cadastrado e leve 1 unidade com desconto.",
-            },
-          ].map((s) => (
-            <div key={s.n} className="rounded-2xl border border-border bg-card p-6">
-              <span className="font-display text-3xl tracking-widest text-secondary">{s.n}</span>
-              <h3 className="font-display text-2xl tracking-wider uppercase mt-3">{s.title}</h3>
-              <p className="font-body text-sm text-muted-foreground mt-2">{s.text}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-8 rounded-2xl border-2 border-secondary/50 bg-secondary/10 px-6 py-5 text-center">
-          <p className="font-display text-lg tracking-widest uppercase text-secondary">Importante</p>
-          <p className="font-body text-sm text-foreground/90 mt-1 max-w-3xl mx-auto">{OFFER_NO_RESERVE}</p>
-        </div>
-
-        <div className="text-center mt-8">
-          <Link
-            to="/acesso-antecipado"
-            onClick={() => trackEvent("early_access_cta_click", { location: "como_funciona" })}
-            className="inline-block bg-gradient-yellow text-primary-foreground font-display text-lg tracking-widest uppercase px-10 py-4 rounded-xl shadow-yellow"
-          >
-            Quero meus 20% de desconto
-          </Link>
-        </div>
-      </section>
-
-
-
       {/* ====== PRODUTOS NA LOJA ====== */}
       <HomeProducts />
+
+      {/* ====== COMO FUNCIONA A OFERTA ====== */}
+      <section id="como-funciona" className="bg-muted py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12 space-y-3">
+            <span className="inline-block bg-secondary/10 text-secondary font-display text-sm tracking-widest uppercase px-4 py-1.5 rounded-full">
+              Oferta de lançamento
+            </span>
+            <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase">Como funciona o desconto</h2>
+            <p className="font-body text-muted-foreground max-w-2xl mx-auto">
+              20% de desconto em produtos Pokémon 30 anos para quem estiver na pré-lista. 1 unidade por CPF, por ordem
+              de chegada e enquanto durar o estoque.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                n: "01",
+                title: "Entre na pré-lista",
+                text: `Cadastro gratuito com CPF, até ${DROP_DATE_SHORT}. Leva menos de 30 segundos.`,
+              },
+              {
+                n: "02",
+                title: "Receba o aviso do drop",
+                text: `Avisamos quando os produtos Pokémon 30 anos entrarem, no dia ${DROP_DATE_LABEL}.`,
+              },
+              {
+                n: "03",
+                title: "Retire no quiosque com 20% OFF",
+                text: "No quiosque do Shopping Palladium, informe o CPF cadastrado e leve 1 unidade com desconto.",
+              },
+            ].map((s) => (
+              <div key={s.n} className="rounded-2xl border border-border bg-card p-6">
+                <span className="font-display text-3xl tracking-widest text-secondary">{s.n}</span>
+                <h3 className="font-display text-2xl tracking-wider uppercase mt-3">{s.title}</h3>
+                <p className="font-body text-sm text-muted-foreground mt-2">{s.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 rounded-2xl border-2 border-secondary/50 bg-secondary/10 px-6 py-5 text-center">
+            <p className="font-display text-lg tracking-widest uppercase text-secondary">Importante</p>
+            <p className="font-body text-sm text-foreground/90 mt-1 max-w-3xl mx-auto">{OFFER_NO_RESERVE}</p>
+          </div>
+        </div>
+      </section>
 
       {/* ====== O QUE VEM EM CADA COLEÇÃO ====== */}
       <Pokemon30Showcase />
 
-      {/* ====== DESTAQUE — cards Pokémon ====== */}
-      <section className="bg-arena text-white py-20">
-        <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-10 items-center">
-          <div className="relative rounded-3xl overflow-hidden holo-border">
-            <img src={dropCards} alt="Cards colecionáveis do primeiro drop" className="w-full h-full object-cover" loading="lazy" />
+      {/* ====== QUIOSQUE PALLADIUM ====== */}
+      <section className="bg-muted py-20">
+        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+          <div className="rounded-3xl overflow-hidden border border-border shadow-yellow">
+            <img
+              src={quiosqueArena.url}
+              alt="Quiosque da Bella Figurinha com arena de cards no shopping"
+              loading="lazy"
+              className="w-full h-full object-cover aspect-[4/3]"
+            />
           </div>
-          <div className="space-y-5">
-            <span className="inline-block bg-electric/15 text-electric font-display text-sm tracking-widest uppercase px-4 py-1.5 rounded-full">
-              O principal destaque
+          <div className="space-y-5 text-center md:text-left">
+            <span className="inline-flex items-center gap-2 bg-secondary/10 text-secondary font-display text-sm tracking-widest uppercase px-4 py-1.5 rounded-full">
+              <MapPin size={16} /> Shopping Palladium · Curitiba
             </span>
-            <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase leading-none">
-              Cards <span className="text-gradient-electric">Pokémon</span> na Bella
-            </h2>
-            <p className="font-body text-white/80 text-lg">
-              Coleções comemorativas de 30 anos: fichário, pôster, treinador avançado e adesivos tech. Tudo original,
-              com estreia no quiosque do Palladium e na loja online.
+            <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase">Venha colecionar com a gente</h2>
+            <p className="font-body text-muted-foreground max-w-2xl">
+              Nosso quiosque abre em {DROP_DATE_LABEL} para comemorar os 30 anos dos cards. É lá que a condição de
+              lançamento da lista de acesso antecipado é resgatada, pessoalmente, com o CPF cadastrado.
             </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Link
-                to="/acesso-antecipado"
-                onClick={() => trackEvent("early_access_cta_click", { location: "pokemon_block" })}
-                className="bg-gradient-electric text-ink font-display text-lg tracking-widest uppercase px-8 py-3 rounded-xl shadow-electric"
-              >
-                Entrar na lista
-              </Link>
-              <Link
-                to="/pokemon"
-                className="inline-flex items-center gap-2 border border-white/25 font-display text-lg tracking-widest uppercase px-8 py-3 rounded-xl hover:bg-white/10 transition-colors"
-              >
-                Ver a categoria <ArrowRight size={18} />
-              </Link>
-            </div>
+            <Link
+              to="/loja-fisica"
+              className="inline-flex items-center gap-2 font-display text-lg tracking-widest uppercase text-secondary"
+            >
+              Ver a loja física <ArrowRight size={18} />
+            </Link>
           </div>
         </div>
       </section>
@@ -266,74 +235,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ====== QUIOSQUE PALLADIUM ====== */}
-      <section className="bg-muted py-20">
-        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
-          <div className="rounded-3xl overflow-hidden border border-border shadow-yellow">
-            <img
-              src={quiosqueArena.url}
-              alt="Quiosque da Bella Figurinha com arena de cards no shopping"
-              loading="lazy"
-              className="w-full h-full object-cover aspect-[4/3]"
-            />
-          </div>
-          <div className="space-y-5 text-center md:text-left">
-            <span className="inline-flex items-center gap-2 bg-secondary/10 text-secondary font-display text-sm tracking-widest uppercase px-4 py-1.5 rounded-full">
-              <MapPin size={16} /> Shopping Palladium · Curitiba
-            </span>
-            <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase">Venha colecionar com a gente</h2>
-            <p className="font-body text-muted-foreground max-w-2xl">
-              Nosso quiosque abre em {DROP_DATE_LABEL} para comemorar os 30 anos dos cards. É lá que a condição de
-              lançamento da lista de acesso antecipado é resgatada, pessoalmente, com o CPF cadastrado.
-            </p>
-            <Link
-              to="/loja-fisica"
-              className="inline-block bg-gradient-yellow text-primary-foreground font-display text-lg tracking-widest uppercase px-8 py-4 rounded-xl shadow-yellow"
-            >
-              Ver a loja física
-            </Link>
-          </div>
-        </div>
-      </section>
-
-
-      {/* ====== MUITO ALÉM DOS CARDS — COPAG ====== */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="rounded-3xl border border-border bg-card p-8 md:p-14 text-center space-y-5">
-          <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase">Muito além dos cards</h2>
-          <p className="font-body text-muted-foreground max-w-2xl mx-auto">
-            Jogos e colecionáveis COPAG para reunir pessoas dentro e fora da mesa. Uma linha que amplia a experiência da
-            Bella para toda a família.
-          </p>
-          <Link
-            to="/copag"
-            className="inline-flex items-center gap-2 font-display text-lg tracking-widest uppercase text-secondary"
-          >
-            Conhecer a linha COPAG <ArrowRight size={18} />
-          </Link>
-        </div>
-      </section>
-
-
-
-
-      {/* ====== FAIXA COPA 2026 ====== */}
-      <section className="container mx-auto px-4 pb-16">
-        <Link
-          to="/copa-2026"
-          className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-border bg-muted px-6 py-5 hover:border-secondary transition-colors"
-        >
-          <span className="font-display text-xl md:text-2xl tracking-wider uppercase">
-            Coleção Copa 2026 — últimas unidades
-          </span>
-          <span className="inline-flex items-center gap-2 font-display text-base tracking-widest uppercase text-secondary">
-            Ver a coleção <ArrowRight size={16} />
-          </span>
-        </Link>
-      </section>
-
       {/* ====== CTA FINAL — pré-lista ====== */}
-      <section className="bg-arena text-white py-16">
+      <section className="bg-arena text-white py-20">
         <div className="container mx-auto px-4 text-center space-y-5">
           <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase leading-none">
             Ainda dá tempo de entrar na pré-lista
@@ -352,6 +255,32 @@ const Index = () => {
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* ====== FAIXAS SECUNDÁRIAS — Copa e COPAG ====== */}
+      <section className="container mx-auto px-4 py-20 space-y-4">
+        <Link
+          to="/copa-2026"
+          className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-border bg-muted px-6 py-5 hover:border-secondary transition-colors"
+        >
+          <span className="font-display text-xl md:text-2xl tracking-wider uppercase">
+            Coleção Copa 2026 — últimas unidades
+          </span>
+          <span className="inline-flex items-center gap-2 font-display text-base tracking-widest uppercase text-secondary">
+            Ver a coleção <ArrowRight size={16} />
+          </span>
+        </Link>
+        <Link
+          to="/copag"
+          className="flex flex-col sm:flex-row items-center justify-between gap-4 rounded-2xl border border-border bg-muted px-6 py-5 hover:border-secondary transition-colors"
+        >
+          <span className="font-display text-xl md:text-2xl tracking-wider uppercase">
+            Muito além dos cards — linha COPAG
+          </span>
+          <span className="inline-flex items-center gap-2 font-display text-base tracking-widest uppercase text-secondary">
+            Conhecer a linha <ArrowRight size={16} />
+          </span>
+        </Link>
       </section>
 
       <Footer />

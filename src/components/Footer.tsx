@@ -22,18 +22,22 @@ export const Footer = () => (
           </p>
         </div>
         <div>
-          <h5 className="font-display text-lg tracking-wider uppercase mb-4 text-secondary">Navegação</h5>
+          <h5 className="font-display text-lg tracking-wider uppercase mb-4 text-secondary">Comprar</h5>
           <ul className="space-y-2">
             <li><Link to="/pokemon" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Pokémon</Link></li>
             <li><Link to="/cards-e-colecionaveis" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Cards &amp; Colecionáveis</Link></li>
             <li><Link to="/copag" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">COPAG</Link></li>
             <li><Link to="/copa-2026" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Copa 2026</Link></li>
             <li><Link to="/acesso-antecipado" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Acesso Antecipado</Link></li>
-            <li><Link to="/quem-somos" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Quem Somos</Link></li>
             <li><Link to="/loja-fisica" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Loja Física</Link></li>
+          </ul>
+
+          <h5 className="font-display text-lg tracking-wider uppercase mt-6 mb-4 text-secondary">Ajuda</h5>
+          <ul className="space-y-2">
+            <li><Link to="/perguntas-frequentes" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Perguntas Frequentes</Link></li>
             <li><Link to="/contato" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Contato</Link></li>
             <li><Link to="/revenda" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Revenda</Link></li>
-            <li><Link to="/perguntas-frequentes" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Perguntas Frequentes</Link></li>
+            <li><Link to="/quem-somos" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Quem Somos</Link></li>
             <li><Link to="/blog" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Blog</Link></li>
             <li><Link to="/guias/como-jogar-adrenalyn-xl-fifa-world-cup-2026" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Como Jogar Adrenalyn XL Copa</Link></li>
           </ul>
