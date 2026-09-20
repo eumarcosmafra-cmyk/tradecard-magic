@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Zap } from "lucide-react";
 import { isSignupOpen, DROP_DATE, DROP_DATE_SHORT, OFFER_SHORT } from "@/lib/drop";
@@ -6,10 +7,26 @@ import { trackEvent } from "@/lib/analytics";
 export const DropBar = () => {
   const { pathname } = useLocation();
 
-  if (!isSignupOpen()) return null;
-  if (pathname.startsWith("/acesso-antecipado") || pathname.startsWith("/primeiro-drop")) return null;
-  if (pathname.startsWith("/admin") || pathname.startsWith("/lista-cadastros")) return null;
-  if (pathname.startsWith("/convite-influenciadores") || pathname.startsWith("/lista-influenciadores")) return null;
+  const hidden =
+    !isSignupOpen() ||
+    pathname.startsWith("/acesso-antecipado") ||
+    pathname.startsWith("/primeiro-drop") ||
+    pathname.startsWith("/admin") ||
+    pathname.startsWith("/lista-cadastros") ||
+    pathname.startsWith("/convite-influenciadores") ||
+    pathname.startsWith("/lista-influenciadores");
+
+  /** Libera espaço no fim da página para a barra fixa não cobrir o conteúdo. */
+  useEffect(() => {
+    if (hidden) return;
+    const previous = document.body.style.paddingBottom;
+    document.body.style.paddingBottom = "6rem";
+    return () => {
+      document.body.style.paddingBottom = previous;
+    };
+  }, [hidden]);
+
+  if (hidden) return null;
 
   const daysLeft = Math.ceil((DROP_DATE.getTime() - Date.now()) / 86400000);
 
