@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Sparkles } from "lucide-react";
+import { Sparkles, ArrowRight } from "lucide-react";
 import binder from "@/assets/pkm30-binder.webp.asset.json";
 import poster from "@/assets/pkm30-poster.webp.asset.json";
 import trainerBox from "@/assets/pkm30-trainer-box.webp.asset.json";
