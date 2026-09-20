@@ -1,8 +1,20 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
 import logo from "@/assets/logo-bella.png";
+
+const mainLinks = [
+  { label: "Pokémon", href: "/pokemon" },
+  { label: "Copa 2026", href: "/copa-2026" },
+  { label: "Loja Física", href: "/loja-fisica" },
+  { label: "Quem Somos", href: "/quem-somos" },
+];
+
+const categoryLinks = [
+  { label: "Cards & Colecionáveis", href: "/cards-e-colecionaveis" },
+  { label: "COPAG", href: "/copag" },
+];
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -14,14 +26,9 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const links = [
-    { label: "Pokémon", href: "/pokemon", isRoute: true },
-    { label: "Cards & Colecionáveis", href: "/cards-e-colecionaveis", isRoute: true },
-    { label: "COPAG", href: "/copag", isRoute: true },
-    { label: "Copa 2026", href: "/copa-2026", isRoute: true },
-    { label: "Loja Física", href: "/loja-fisica", isRoute: true },
-    { label: "Quem Somos", href: "/quem-somos", isRoute: true },
-  ];
+  const linkClass = `font-display text-base tracking-wider uppercase hover:text-secondary transition-colors ${
+    scrolled ? "text-foreground/70" : "text-white drop-shadow-md"
+  }`;
 
   return (
     <nav
@@ -39,20 +46,35 @@ export const Header = () => {
 
         {/* Desktop */}
         <div className="hidden lg:flex items-center gap-6">
-          {links.map((l) => {
-            const linkClass = `font-display text-base tracking-wider uppercase hover:text-secondary transition-colors ${
-              scrolled ? "text-foreground/70" : "text-white drop-shadow-md"
-            }`;
-            return (l as any).isRoute ? (
-              <Link key={l.href} to={l.href} className={linkClass}>
-                {l.label}
-              </Link>
-            ) : (
-              <a key={l.href} href={l.href} className={linkClass}>
-                {l.label}
-              </a>
-            );
-          })}
+          <Link to="/pokemon" className={linkClass}>
+            Pokémon
+          </Link>
+
+          <div className="relative group">
+            <button className={`${linkClass} inline-flex items-center gap-1`}>
+              Categorias <ChevronDown size={16} />
+            </button>
+            <div className="absolute left-0 top-full pt-3 hidden group-hover:block group-focus-within:block">
+              <div className="min-w-[14rem] rounded-xl border border-border bg-card shadow-md p-2">
+                {categoryLinks.map((l) => (
+                  <Link
+                    key={l.href}
+                    to={l.href}
+                    className="block rounded-lg px-3 py-2 font-body text-sm text-foreground/80 hover:bg-muted hover:text-secondary transition-colors"
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {mainLinks.slice(1).map((l) => (
+            <Link key={l.href} to={l.href} className={linkClass}>
+              {l.label}
+            </Link>
+          ))}
+
           <Link
             to="/acesso-antecipado"
             className="bg-gradient-yellow text-primary-foreground font-display text-base tracking-widest uppercase px-4 py-2 rounded-lg shadow-yellow"
@@ -65,7 +87,11 @@ export const Header = () => {
         {/* Mobile */}
         <div className="flex lg:hidden items-center gap-3">
           <CartDrawer />
-          <button className={scrolled ? "text-foreground" : "text-white drop-shadow-md"} onClick={() => setMobileOpen(!mobileOpen)}>
+          <button
+            aria-label="Abrir menu"
+            className={scrolled ? "text-foreground" : "text-white drop-shadow-md"}
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -73,31 +99,31 @@ export const Header = () => {
 
       {mobileOpen && (
         <div className="lg:hidden bg-card/98 backdrop-blur-md border-b border-border px-4 pb-6 animate-fade-in">
-          {links.map((l) =>
-            (l as any).isRoute ? (
-              <Link
-                key={l.href}
-                to={l.href}
-                onClick={() => setMobileOpen(false)}
-                className="block py-3 font-display text-lg tracking-wider uppercase text-foreground/70 hover:text-secondary transition-colors"
-              >
-                {l.label}
-              </Link>
-            ) : (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setMobileOpen(false)}
-                className="block py-3 font-display text-lg tracking-wider uppercase text-foreground/70 hover:text-secondary transition-colors"
-              >
-                {l.label}
-              </a>
-            )
-          )}
+          {mainLinks.map((l) => (
+            <Link
+              key={l.href}
+              to={l.href}
+              onClick={() => setMobileOpen(false)}
+              className="block py-3 font-display text-lg tracking-wider uppercase text-foreground/70 hover:text-secondary transition-colors"
+            >
+              {l.label}
+            </Link>
+          ))}
+          <p className="pt-3 font-display text-sm tracking-widest uppercase text-secondary">Categorias</p>
+          {categoryLinks.map((l) => (
+            <Link
+              key={l.href}
+              to={l.href}
+              onClick={() => setMobileOpen(false)}
+              className="block py-2 font-body text-base text-foreground/70 hover:text-secondary transition-colors"
+            >
+              {l.label}
+            </Link>
+          ))}
           <Link
             to="/acesso-antecipado"
             onClick={() => setMobileOpen(false)}
-            className="block mt-3 text-center bg-gradient-yellow text-primary-foreground font-display text-lg tracking-widest uppercase py-3 rounded-xl shadow-yellow"
+            className="block mt-4 text-center bg-gradient-yellow text-primary-foreground font-display text-lg tracking-widest uppercase py-3 rounded-xl shadow-yellow"
           >
             Acesso antecipado
           </Link>
