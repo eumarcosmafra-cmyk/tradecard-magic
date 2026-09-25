@@ -165,14 +165,20 @@ const AcessoAntecipado = () => {
               <div className="text-center space-y-4 py-4">
                 <h2 className="font-display text-3xl tracking-wider uppercase">Cadastros encerrados</h2>
                 <p className="font-body text-white/80">
-                  A lista de acesso antecipado ficou aberta até {DROP_DATE_LABEL}. Agora é só passar no quiosque do
-                  Shopping Palladium — o atendimento é por ordem de chegada, enquanto durar o estoque.
+                  O prazo da pré-lista terminou em {DROP_DATE_SHORT} e não aceitamos novos cadastros. O quiosque do
+                  Shopping Palladium já está aberto — venha nos visitar!
                 </p>
                 <Link
                   to="/loja-fisica"
                   className="inline-block bg-gradient-electric text-ink font-display text-lg tracking-widest uppercase py-3 px-8 rounded-xl"
                 >
                   Ver o quiosque
+                </Link>
+                <Link
+                  to="/pokemon"
+                  className="block font-display text-base tracking-widest uppercase text-electric underline underline-offset-4"
+                >
+                  Comprar Pokémon 30 anos no site
                 </Link>
               </div>
             ) : !done ? (

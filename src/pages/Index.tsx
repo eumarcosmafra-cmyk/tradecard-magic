@@ -38,8 +38,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Bella Figurinha | Cards, Coleções e Raridades"
-        description="Um novo universo de cards e colecionáveis. Cards Pokémon, boxes, boosters e acessórios. Primeiro drop e quiosque no Palladium em 25 de setembro."
+        title="Bella Figurinha | Pokémon 30 anos no Palladium"
+        description="Quiosque Pokémon 30 anos aberto no Shopping Palladium, Curitiba. Cards, boxes, boosters e colecionáveis — visite ou compre online."
         canonical="https://bellafigurinha.com.br/"
       />
       <Header />
@@ -145,8 +145,8 @@ const Index = () => {
             </span>
             <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase">Venha colecionar com a gente</h2>
             <p className="font-body text-muted-foreground max-w-2xl">
-              Nosso quiosque abre em {DROP_DATE_LABEL} para comemorar os 30 anos dos cards. É lá que a condição de
-              lançamento da lista de acesso antecipado é resgatada, pessoalmente, com o CPF cadastrado.
+              Nosso quiosque está aberto e funcionando no Shopping Palladium, em Curitiba, comemorando os 30 anos dos
+              cards. Venha ver as coleções de perto, tirar dúvidas e levar a sua.
             </p>
             <Link
               to="/loja-fisica"

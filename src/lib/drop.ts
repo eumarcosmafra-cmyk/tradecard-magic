@@ -18,3 +18,7 @@ export const OFFER_NO_RESERVE =
 export const SIGNUP_DEADLINE = DROP_DATE;
 export const SIGNUP_DEADLINE_LABEL = DROP_DATE_LABEL;
 export const isSignupOpen = () => Date.now() < SIGNUP_DEADLINE.getTime();
+
+/** Operação aberta no quiosque (após o drop). */
+export const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Shopping+Palladium+Curitiba";
+export const STORE_OPEN_LINE = "Quiosque Pokémon 30 anos aberto no Shopping Palladium · Curitiba";

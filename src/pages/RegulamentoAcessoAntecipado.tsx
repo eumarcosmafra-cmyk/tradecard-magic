@@ -18,6 +18,9 @@ const RegulamentoAcessoAntecipado = () => (
         Regulamento do acesso antecipado
       </h1>
       <p className="font-body text-muted-foreground mt-3">Versão v1 — vigente a partir de setembro de 2026.</p>
+      <p className="mt-4 rounded-xl border-2 border-secondary/50 bg-secondary/10 px-4 py-3 font-display tracking-widest uppercase text-secondary">
+        Ação encerrada em 25/09/2026 — não aceitamos novos cadastros.
+      </p>
 
       <div className="prose prose-neutral max-w-none mt-8 font-body">
         <h2>1. Do que se trata</h2>
