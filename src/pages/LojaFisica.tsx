@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MapPin, Clock, Zap, Navigation } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -12,11 +12,12 @@ import quiosqueArena from "@/assets/quiosque-arena.png.asset.json";
 const MAPS_URL = MAPS;
 
 const LojaFisica = () => {
+  const location = useLocation();
   useEffect(() => {
-    if (window.location.hash === "#mapa") {
+    if (location.hash === "#mapa") {
       setTimeout(() => document.getElementById("mapa")?.scrollIntoView({ behavior: "smooth" }), 300);
     }
-  }, []);
+  }, [location.hash, location.key]);
 
   useEffect(() => {
     trackEvent("store_page_view", { store: "palladium" });
