@@ -35,7 +35,7 @@ export const DropBar = () => {
           {STORE_OPEN_LINE}
         </span>
         <Link
-          to="/loja-fisica"
+          to="/loja-fisica#mapa"
           onClick={() => trackEvent("store_directions_click", { placement: "drop_bar" })}
           className="font-display text-xs sm:text-sm tracking-widest uppercase bg-gradient-electric text-ink px-3 py-1 rounded-full hover:opacity-90 transition-opacity"
         >
