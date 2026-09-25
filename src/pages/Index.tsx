@@ -3,14 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
-import { Countdown } from "@/components/Countdown";
 import { Pokemon30Showcase } from "@/components/Pokemon30Showcase";
 import { HomeProducts } from "@/components/HomeProducts";
-import { Truck, Shield, Sparkles, MapPin, ArrowRight } from "lucide-react";
+import { Truck, Shield, MapPin, ArrowRight, Clock, Navigation } from "lucide-react";
 import { homePageJsonLd, injectJsonLd } from "@/lib/jsonld";
 import { trackEvent } from "@/lib/analytics";
-import { DROP_DATE_LABEL, DROP_DATE_SHORT, OFFER_FULL, OFFER_NO_RESERVE } from "@/lib/drop";
-import heroCards from "@/assets/hero-cards-2026.jpg";
+import { MAPS_URL } from "@/lib/drop";
 import logo from "@/assets/logo-bella.png";
 import quiosqueArena from "@/assets/quiosque-arena.png.asset.json";
 
@@ -50,13 +48,11 @@ const Index = () => {
       <section className="relative min-h-screen flex items-center overflow-hidden bg-ink">
         <div className="absolute inset-0">
           <img
-            src={heroCards}
-            alt="Cards colecionáveis em destaque"
-            width={1920}
-            height={1080}
+            src={quiosqueArena.url}
+            alt="Quiosque Bella Figurinha no Shopping Palladium"
             fetchPriority="high"
             decoding="async"
-            className="w-full h-full object-cover opacity-70"
+            className="w-full h-full object-cover opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/60 to-ink" />
         </div>
@@ -66,44 +62,42 @@ const Index = () => {
             <img src={logo} alt="Bella Figurinha" className="w-36 md:w-52 drop-shadow-2xl floating" />
 
             <span className="inline-flex items-center gap-2 bg-electric/15 text-electric font-display text-sm md:text-base tracking-widest uppercase px-5 py-1.5 rounded-full">
-              <Sparkles size={16} /> 30 anos de cards
+              <span className="h-2 w-2 rounded-full bg-electric animate-pulse" /> Aberto agora · Shopping Palladium · Curitiba
             </span>
 
             <h1 className="font-display text-5xl md:text-7xl lg:text-8xl tracking-wider leading-none text-white">
-              Um novo universo está chegando à{" "}
-              <span className="text-gradient-electric">Bella</span>
+              Pokémon 30 anos chegou à <span className="text-gradient-electric">Bella</span>
             </h1>
 
             <p className="font-display text-2xl md:text-4xl tracking-widest uppercase text-white/90">
               Cards. Coleções. Raridades.
             </p>
 
-            <div className="w-full max-w-3xl rounded-3xl border-2 border-electric/60 bg-ink/80 backdrop-blur-sm px-6 py-6 space-y-3">
-              <p className="font-display text-sm tracking-widest uppercase text-electric">
-                Oferta exclusiva da pré-lista
-              </p>
-              <p className="font-display text-3xl md:text-5xl tracking-wider uppercase text-white leading-tight">
-                Cadastre-se e ganhe <span className="text-gradient-electric">20% OFF</span>
-                <br className="hidden md:block" /> em produtos Pokémon 30 anos
-              </p>
-              <p className="font-body text-base text-white/85">
-                1 unidade por CPF · por ordem de chegada · cadastros até {DROP_DATE_SHORT}
-              </p>
+            <p className="font-body text-lg text-white/85 max-w-2xl">
+              Nosso quiosque está aberto e funcionando. Venha conhecer as coleções comemorativas de 30 anos de perto.
+            </p>
+
+            <p className="inline-flex items-center gap-2 font-body text-base text-white/80">
+              <Clock size={18} className="text-electric" /> Shopping Palladium · Curitiba · Aberto no horário do shopping
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent("store_directions_click", { placement: "hero" })}
+                className="inline-flex items-center justify-center gap-2 bg-gradient-electric text-ink font-display text-xl tracking-wider uppercase px-10 py-4 rounded-xl shadow-electric hover:opacity-90 transition-opacity"
+              >
+                <Navigation size={20} /> Como chegar
+              </a>
+              <Link
+                to="/pokemon"
+                className="inline-flex items-center justify-center border border-white/30 text-white font-display text-xl tracking-wider uppercase px-10 py-4 rounded-xl hover:bg-white/10 transition-colors"
+              >
+                Comprar online
+              </Link>
             </div>
-
-            <Countdown className="justify-center flex-wrap" />
-
-            <Link
-              to="/acesso-antecipado"
-              onClick={() => trackEvent("early_access_cta_click", { location: "hero" })}
-              className="bg-gradient-electric text-ink font-display text-xl tracking-wider uppercase px-10 py-4 rounded-xl shadow-electric hover:opacity-90 transition-opacity"
-            >
-              Quero meus 20% de desconto
-            </Link>
-
-            <a href="#como-funciona" className="font-body text-sm text-white/70 underline underline-offset-4">
-              Como funciona o desconto
-            </a>
           </div>
         </div>
 
@@ -130,52 +124,6 @@ const Index = () => {
       {/* ====== PRODUTOS NA LOJA ====== */}
       <HomeProducts />
 
-      {/* ====== COMO FUNCIONA A OFERTA ====== */}
-      <section id="como-funciona" className="bg-muted py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12 space-y-3">
-            <span className="inline-block bg-secondary/10 text-secondary font-display text-sm tracking-widest uppercase px-4 py-1.5 rounded-full">
-              Oferta de lançamento
-            </span>
-            <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase">Como funciona o desconto</h2>
-            <p className="font-body text-muted-foreground max-w-2xl mx-auto">
-              20% de desconto em produtos Pokémon 30 anos para quem estiver na pré-lista. 1 unidade por CPF, por ordem
-              de chegada e enquanto durar o estoque.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                n: "01",
-                title: "Entre na pré-lista",
-                text: `Cadastro gratuito com CPF, até ${DROP_DATE_SHORT}. Leva menos de 30 segundos.`,
-              },
-              {
-                n: "02",
-                title: "Receba o aviso do drop",
-                text: `Avisamos quando os produtos Pokémon 30 anos entrarem, no dia ${DROP_DATE_LABEL}.`,
-              },
-              {
-                n: "03",
-                title: "Retire no quiosque com 20% OFF",
-                text: "No quiosque do Shopping Palladium, informe o CPF cadastrado e leve 1 unidade com desconto.",
-              },
-            ].map((s) => (
-              <div key={s.n} className="rounded-2xl border border-border bg-card p-6">
-                <span className="font-display text-3xl tracking-widest text-secondary">{s.n}</span>
-                <h3 className="font-display text-2xl tracking-wider uppercase mt-3">{s.title}</h3>
-                <p className="font-body text-sm text-muted-foreground mt-2">{s.text}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 rounded-2xl border-2 border-secondary/50 bg-secondary/10 px-6 py-5 text-center">
-            <p className="font-display text-lg tracking-widest uppercase text-secondary">Importante</p>
-            <p className="font-body text-sm text-foreground/90 mt-1 max-w-3xl mx-auto">{OFFER_NO_RESERVE}</p>
-          </div>
-        </div>
-      </section>
 
       {/* ====== O QUE VEM EM CADA COLEÇÃO ====== */}
       <Pokemon30Showcase />
@@ -235,23 +183,31 @@ const Index = () => {
         </div>
       </section>
 
-      {/* ====== CTA FINAL — pré-lista ====== */}
+      {/* ====== CTA FINAL — visite o quiosque ====== */}
       <section className="bg-arena text-white py-20">
         <div className="container mx-auto px-4 text-center space-y-5">
           <h2 className="font-display text-4xl md:text-6xl tracking-wider uppercase leading-none">
-            Ainda dá tempo de entrar na pré-lista
+            Te esperamos no Palladium
           </h2>
           <p className="font-body text-white/80 max-w-2xl mx-auto">
-            {OFFER_FULL} Cadastros até {DROP_DATE_SHORT}.
+            O quiosque Bella Figurinha Pokémon 30 anos está aberto no Shopping Palladium, em Curitiba. Venha conhecer
+            as coleções de perto — ou compre online e receba em casa.
           </p>
-          <Countdown className="justify-center flex-wrap" />
-          <div>
-            <Link
-              to="/acesso-antecipado"
-              onClick={() => trackEvent("early_access_cta_click", { location: "footer_cta" })}
-              className="inline-block bg-gradient-electric text-ink font-display text-xl tracking-widest uppercase px-10 py-4 rounded-xl shadow-electric"
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href={MAPS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("store_directions_click", { placement: "home_footer_cta" })}
+              className="inline-flex items-center justify-center gap-2 bg-gradient-electric text-ink font-display text-xl tracking-widest uppercase px-10 py-4 rounded-xl shadow-electric"
             >
-              Quero meus 20% de desconto
+              <Navigation size={20} /> Como chegar
+            </a>
+            <Link
+              to="/pokemon"
+              className="inline-flex items-center justify-center border border-white/30 text-white font-display text-xl tracking-widest uppercase px-10 py-4 rounded-xl"
+            >
+              Comprar online
             </Link>
           </div>
         </div>
