@@ -84,12 +84,12 @@ export const Pokemon30Showcase = ({ dark = false }: Props) => (
 
       <div className="text-center mt-10">
         <Link
-          to="/acesso-antecipado"
+          to="/pokemon"
           className={`inline-flex items-center gap-2 font-display text-lg tracking-widest uppercase ${
             dark ? "text-electric" : "text-secondary"
           }`}
         >
-          Entrar na pré-lista <ArrowRight size={18} />
+          Ver produtos <ArrowRight size={18} />
         </Link>
       </div>
     </div>

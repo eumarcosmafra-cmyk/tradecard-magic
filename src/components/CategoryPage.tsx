@@ -92,10 +92,10 @@ export const CategoryPage = ({
             <Package className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
             <p className="font-body text-muted-foreground">{emptyMessage}</p>
             <Link
-              to="/acesso-antecipado"
+              to="/loja-fisica"
               className="inline-block mt-6 bg-gradient-yellow text-primary-foreground font-display text-lg tracking-widest uppercase px-8 py-3 rounded-xl shadow-yellow"
             >
-              Avise-me no primeiro drop
+              Visite o quiosque
             </Link>
           </div>
         )}

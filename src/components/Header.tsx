@@ -76,10 +76,10 @@ export const Header = () => {
           ))}
 
           <Link
-            to="/acesso-antecipado"
+            to="/loja-fisica"
             className="bg-gradient-yellow text-primary-foreground font-display text-base tracking-widest uppercase px-4 py-2 rounded-lg shadow-yellow"
           >
-            Acesso antecipado
+            Visite o quiosque
           </Link>
           <CartDrawer />
         </div>
@@ -121,11 +121,11 @@ export const Header = () => {
             </Link>
           ))}
           <Link
-            to="/acesso-antecipado"
+            to="/loja-fisica"
             onClick={() => setMobileOpen(false)}
             className="block mt-4 text-center bg-gradient-yellow text-primary-foreground font-display text-lg tracking-widest uppercase py-3 rounded-xl shadow-yellow"
           >
-            Acesso antecipado
+            Visite o quiosque
           </Link>
         </div>
       )}

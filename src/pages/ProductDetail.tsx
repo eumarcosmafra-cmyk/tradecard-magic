@@ -19,7 +19,7 @@ import { Selecoes } from "@/components/Selecoes";
 import { ProductFAQ, getFaqItemsForHandle } from "@/components/ProductFAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import AdrenalynDescription from "@/components/AdrenalynDescription";
-import { DROP_DATE_SHORT, OFFER_SHORT } from "@/lib/drop";
+
 
 const getProductCategory = (handle: string): "album-only" | "envelopes-only" | "album-with-envelopes" | "adrenalyn" | "default" => {
   const h = handle.toLowerCase();
@@ -451,10 +451,10 @@ const ProductDetail = () => {
             {isComingSoon && (
               <div className="border-2 border-secondary/50 bg-secondary/10 rounded-xl p-5 space-y-2">
                 <p className="font-display text-lg tracking-widest uppercase text-secondary">
-                  Em breve · drop de {DROP_DATE_SHORT}
+                  Disponível no quiosque
                 </p>
                 <p className="font-body text-sm text-foreground/80">
-                  Este produto ainda não está à venda. Entre na pré-lista e garanta {OFFER_SHORT}.
+                  Este produto ainda não está à venda online. Procure no nosso quiosque do Shopping Palladium, em Curitiba.
                 </p>
               </div>
             )}
@@ -467,7 +467,7 @@ const ProductDetail = () => {
                   size="lg"
                   className="w-full bg-gradient-yellow text-primary-foreground font-display text-xl tracking-wider uppercase shadow-yellow-lg hover:opacity-90 transition-opacity py-7"
                 >
-                  <Link to="/acesso-antecipado">Quero meus 20% de desconto</Link>
+                  <Link to="/loja-fisica">Ver o quiosque</Link>
                 </Button>
               ) : (
                 <>

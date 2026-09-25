@@ -110,8 +110,8 @@ const AcessoAntecipado = () => {
   return (
     <div className="min-h-screen bg-arena text-white">
       <SEOHead
-        title="Acesso Antecipado | Primeiro Drop da Bella Figurinha"
-        description="Entre na lista de acesso antecipado da Bella Figurinha até 25/09 e garanta 20% de desconto em produtos Pokémon 30 anos — 1 unidade por CPF, enquanto durar o estoque."
+        title="Pré-lista encerrada | Bella Figurinha Palladium"
+        description="A pré-lista da Bella Figurinha foi encerrada em 25/09. O quiosque Pokémon 30 anos está aberto no Shopping Palladium, em Curitiba."
         canonical="https://bellafigurinha.com.br/acesso-antecipado"
       />
 
@@ -127,35 +127,27 @@ const AcessoAntecipado = () => {
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           <div className="space-y-6">
             <span className="inline-flex items-center gap-2 rounded-full bg-electric/15 text-electric px-4 py-1.5 font-display text-sm tracking-widest uppercase">
-              <Zap size={15} /> Primeiro drop · {DROP_DATE_LABEL}
+              <Zap size={15} /> Aberto agora · Shopping Palladium
             </span>
             <h1 className="font-display text-5xl md:text-7xl leading-none tracking-wider uppercase">
-              O primeiro drop da <span className="text-gradient-electric">nova Bella</span> está chegando.
+              A pré-lista foi <span className="text-gradient-electric">encerrada</span>.
             </h1>
             <p className="font-body text-lg text-white/80 max-w-xl">
-              Comemorando os 30 anos da coleção de cards mais amada do mundo, abrimos nosso quiosque no Shopping
-              Palladium. Quem entrar na lista até {DROP_DATE_SHORT} leva a oferta de lançamento:
+              O prazo de cadastro terminou em {DROP_DATE_SHORT}. Obrigado a todos que entraram na lista! Agora o
+              quiosque Bella Figurinha Pokémon 30 anos está aberto e funcionando no Shopping Palladium, em Curitiba.
             </p>
-            <p className="font-display text-3xl md:text-4xl tracking-wider uppercase text-electric leading-tight">
-              {OFFER_FULL}
-            </p>
-            <div className="rounded-2xl border-2 border-spark/60 bg-spark/10 px-5 py-4">
-              <p className="font-display text-lg tracking-widest uppercase text-spark">Atenção</p>
-              <p className="font-body text-sm text-white/90 mt-1">{OFFER_NO_RESERVE}</p>
-            </div>
-            <Countdown />
             <ul className="space-y-3 font-body text-white/80">
               <li className="flex gap-3">
+                <MapPin className="text-electric shrink-0 mt-0.5" size={18} />
+                Shopping Palladium · Curitiba – PR
+              </li>
+              <li className="flex gap-3">
                 <Sparkles className="text-electric shrink-0 mt-0.5" size={18} />
-                {OFFER_SHORT} para quem está na lista.
+                Coleções Pokémon 30 anos, cards e colecionáveis.
               </li>
               <li className="flex gap-3">
                 <ShieldCheck className="text-electric shrink-0 mt-0.5" size={18} />
-                1 unidade por CPF, por ordem de chegada e enquanto durar o estoque.
-              </li>
-              <li className="flex gap-3">
-                <MapPin className="text-electric shrink-0 mt-0.5" size={18} />
-                Resgate presencial no quiosque do Shopping Palladium, em Curitiba.
+                Já se cadastrou? Informe seu CPF no quiosque.
               </li>
             </ul>
 
@@ -173,14 +165,20 @@ const AcessoAntecipado = () => {
               <div className="text-center space-y-4 py-4">
                 <h2 className="font-display text-3xl tracking-wider uppercase">Cadastros encerrados</h2>
                 <p className="font-body text-white/80">
-                  A lista de acesso antecipado ficou aberta até {DROP_DATE_LABEL}. Agora é só passar no quiosque do
-                  Shopping Palladium — o atendimento é por ordem de chegada, enquanto durar o estoque.
+                  O prazo da pré-lista terminou em {DROP_DATE_SHORT} e não aceitamos novos cadastros. O quiosque do
+                  Shopping Palladium já está aberto — venha nos visitar!
                 </p>
                 <Link
                   to="/loja-fisica"
                   className="inline-block bg-gradient-electric text-ink font-display text-lg tracking-widest uppercase py-3 px-8 rounded-xl"
                 >
                   Ver o quiosque
+                </Link>
+                <Link
+                  to="/pokemon"
+                  className="block font-display text-base tracking-widest uppercase text-electric underline underline-offset-4"
+                >
+                  Comprar Pokémon 30 anos no site
                 </Link>
               </div>
             ) : !done ? (
@@ -316,30 +314,6 @@ const AcessoAntecipado = () => {
               </div>
             )}
           </div>
-        </div>
-      </section>
-
-      {/* Seção 3 — como funciona */}
-      <section className="container mx-auto px-4 pb-20">
-        <h2 className="font-display text-4xl md:text-5xl tracking-wider uppercase text-center mb-10">Como funciona</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {steps.map((s) => (
-            <div key={s.n} className="rounded-2xl bg-ink-soft/70 p-6 holo-border">
-              <span className="font-display text-5xl text-electric/70">{s.n}</span>
-              <h3 className="font-display text-2xl tracking-wider uppercase mt-3">{s.title}</h3>
-              <p className="font-body text-white/70 mt-2 text-sm leading-relaxed">{s.text}</p>
-            </div>
-          ))}
-        </div>
-        <div className="text-center mt-10">
-          <a
-            href="#cadastro"
-            onClick={() => trackEvent("early_access_cta_click", { placement: "como_funciona" })}
-            className="inline-block bg-gradient-electric text-ink font-display text-xl tracking-widest uppercase px-10 py-4 rounded-xl"
-          >
-            Entrar na lista
-          </a>
-          <p className="font-body text-white/70 text-sm mt-3 max-w-2xl mx-auto">{OFFER_NO_RESERVE}</p>
         </div>
       </section>
 

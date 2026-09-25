@@ -28,7 +28,6 @@ export const Footer = () => (
             <li><Link to="/cards-e-colecionaveis" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Cards &amp; Colecionáveis</Link></li>
             <li><Link to="/copag" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">COPAG</Link></li>
             <li><Link to="/copa-2026" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Copa 2026</Link></li>
-            <li><Link to="/acesso-antecipado" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Acesso Antecipado</Link></li>
             <li><Link to="/loja-fisica" className="text-sm text-muted-foreground hover:text-secondary transition-colors font-body">Loja Física</Link></li>
           </ul>
 

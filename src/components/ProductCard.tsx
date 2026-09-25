@@ -4,7 +4,6 @@ import { ShoppingCart, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { type ShopifyProduct } from "@/lib/shopify";
 import { toast } from "sonner";
-import { DROP_DATE_SHORT } from "@/lib/drop";
 
 interface ProductCardProps {
   product: ShopifyProduct;
@@ -67,7 +66,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
           <h3 className="font-display text-xl tracking-wider uppercase text-foreground line-clamp-2">{node.title}</h3>
           {comingSoon ? (
             <p className="font-body text-sm text-muted-foreground">
-              Disponível no drop de {DROP_DATE_SHORT}
+              Disponível no quiosque
             </p>
           ) : (
             <p className="text-2xl font-bold text-gradient-yellow font-display tracking-wide">{formatPrice(price)}</p>
@@ -77,8 +76,8 @@ export const ProductCard = ({ product }: ProductCardProps) => {
               asChild
               className="w-full bg-gradient-yellow text-primary-foreground font-display text-base tracking-wider uppercase shadow-yellow hover:opacity-90 transition-opacity"
             >
-              <Link to="/acesso-antecipado" onClick={(e) => e.stopPropagation()}>
-                Quero avisos e 20% OFF
+              <Link to="/loja-fisica" onClick={(e) => e.stopPropagation()}>
+                Ver no quiosque
               </Link>
             </Button>
           ) : (
