@@ -19,7 +19,7 @@ import { Selecoes } from "@/components/Selecoes";
 import { ProductFAQ, getFaqItemsForHandle } from "@/components/ProductFAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import AdrenalynDescription from "@/components/AdrenalynDescription";
-import { DROP_DATE_SHORT, OFFER_SHORT } from "@/lib/drop";
+
 
 const getProductCategory = (handle: string): "album-only" | "envelopes-only" | "album-with-envelopes" | "adrenalyn" | "default" => {
   const h = handle.toLowerCase();

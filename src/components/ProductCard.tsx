@@ -4,7 +4,6 @@ import { ShoppingCart, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { type ShopifyProduct } from "@/lib/shopify";
 import { toast } from "sonner";
-import { DROP_DATE_SHORT } from "@/lib/drop";
 
 interface ProductCardProps {
   product: ShopifyProduct;
