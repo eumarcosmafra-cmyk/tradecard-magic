@@ -82,7 +82,7 @@ const Index = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                to="/loja-fisica"
+                to="/loja-fisica#mapa"
                 onClick={() => trackEvent("store_directions_click", { placement: "hero" })}
                 className="inline-flex items-center justify-center gap-2 bg-gradient-electric text-ink font-display text-xl tracking-wider uppercase px-10 py-4 rounded-xl shadow-electric hover:opacity-90 transition-opacity"
               >
@@ -192,7 +192,7 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              to="/loja-fisica"
+              to="/loja-fisica#mapa"
               onClick={() => trackEvent("store_directions_click", { placement: "home_footer_cta" })}
               className="inline-flex items-center justify-center gap-2 bg-gradient-electric text-ink font-display text-xl tracking-widest uppercase px-10 py-4 rounded-xl shadow-electric"
             >

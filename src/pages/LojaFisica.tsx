@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MapPin, Clock, Zap, Navigation } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -12,6 +12,13 @@ import quiosqueArena from "@/assets/quiosque-arena.png.asset.json";
 const MAPS_URL = MAPS;
 
 const LojaFisica = () => {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash === "#mapa") {
+      setTimeout(() => document.getElementById("mapa")?.scrollIntoView({ behavior: "smooth" }), 300);
+    }
+  }, [location.hash, location.key]);
+
   useEffect(() => {
     trackEvent("store_page_view", { store: "palladium" });
     const c1 = injectJsonLd("breadcrumb-store", breadcrumbSchema([
@@ -48,9 +55,8 @@ const LojaFisica = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
             <a
-              href={MAPS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#mapa"
+              onClickCapture={(e) => { e.preventDefault(); document.getElementById("mapa")?.scrollIntoView({ behavior: "smooth" }); }}
               onClick={() => trackEvent("store_directions_click", { store: "palladium" })}
               className="inline-flex items-center justify-center gap-2 bg-gradient-electric text-ink font-display text-lg tracking-widest uppercase px-8 py-4 rounded-xl"
             >
@@ -95,7 +101,7 @@ const LojaFisica = () => {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 pb-20">
+      <section id="mapa" className="container mx-auto px-4 pb-20 scroll-mt-28 space-y-4">
         <div className="rounded-3xl overflow-hidden border border-border">
           <iframe
             title="Mapa do Shopping Palladium Curitiba"
@@ -103,6 +109,17 @@ const LojaFisica = () => {
             className="w-full h-80"
             loading="lazy"
           />
+        </div>
+        <div className="text-center">
+          <a
+            href={MAPS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-gradient-yellow text-primary-foreground font-display text-lg tracking-widest uppercase px-8 py-3 rounded-xl shadow-yellow"
+          >
+            <Navigation size={18} /> Abrir rota no Google Maps
+          </a>
+          <p className="font-body text-sm text-muted-foreground mt-3">{STORE_ADDRESS}</p>
         </div>
       </section>
 
