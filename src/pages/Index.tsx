@@ -8,7 +8,6 @@ import { HomeProducts } from "@/components/HomeProducts";
 import { Truck, Shield, MapPin, ArrowRight, Clock, Navigation } from "lucide-react";
 import { homePageJsonLd, injectJsonLd } from "@/lib/jsonld";
 import { trackEvent } from "@/lib/analytics";
-import { MAPS_URL } from "@/lib/drop";
 import logo from "@/assets/logo-bella.png";
 import quiosqueArena from "@/assets/quiosque-arena.png.asset.json";
 
@@ -82,15 +81,13 @@ const Index = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href={MAPS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/loja-fisica"
                 onClick={() => trackEvent("store_directions_click", { placement: "hero" })}
                 className="inline-flex items-center justify-center gap-2 bg-gradient-electric text-ink font-display text-xl tracking-wider uppercase px-10 py-4 rounded-xl shadow-electric hover:opacity-90 transition-opacity"
               >
                 <Navigation size={20} /> Como chegar
-              </a>
+              </Link>
               <Link
                 to="/pokemon"
                 className="inline-flex items-center justify-center border border-white/30 text-white font-display text-xl tracking-wider uppercase px-10 py-4 rounded-xl hover:bg-white/10 transition-colors"
@@ -194,15 +191,13 @@ const Index = () => {
             as coleções de perto — ou compre online e receba em casa.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href={MAPS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/loja-fisica"
               onClick={() => trackEvent("store_directions_click", { placement: "home_footer_cta" })}
               className="inline-flex items-center justify-center gap-2 bg-gradient-electric text-ink font-display text-xl tracking-widest uppercase px-10 py-4 rounded-xl shadow-electric"
             >
               <Navigation size={20} /> Como chegar
-            </a>
+            </Link>
             <Link
               to="/pokemon"
               className="inline-flex items-center justify-center border border-white/30 text-white font-display text-xl tracking-widest uppercase px-10 py-4 rounded-xl"

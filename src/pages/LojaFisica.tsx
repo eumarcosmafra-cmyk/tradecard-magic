@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import { SEOHead } from "@/components/SEOHead";
 import { breadcrumbSchema, organizationSchema, injectJsonLd } from "@/lib/jsonld";
 import { trackEvent } from "@/lib/analytics";
-import { MAPS_URL as MAPS } from "@/lib/drop";
+import { MAPS_URL as MAPS, STORE_ADDRESS } from "@/lib/drop";
 import quiosqueArena from "@/assets/quiosque-arena.png.asset.json";
 
 const MAPS_URL = MAPS;
@@ -43,6 +43,9 @@ const LojaFisica = () => {
             Nosso quiosque está aberto e funcionando no Shopping Palladium, em Curitiba, comemorando os 30 anos da
             coleção de cards mais amada do mundo. Venha conhecer as coleções de perto.
           </p>
+          <p className="inline-flex items-center gap-2 font-body text-base text-white/90">
+            <MapPin size={18} className="text-electric" /> Shopping Palladium · {STORE_ADDRESS}
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
             <a
               href={MAPS_URL}
@@ -78,7 +81,7 @@ const LojaFisica = () => {
         <div className="rounded-2xl border border-border bg-card p-6">
           <MapPin className="text-secondary" size={26} />
           <h2 className="font-display text-2xl tracking-wider uppercase mt-3">Onde</h2>
-          <p className="font-body text-muted-foreground mt-2">Shopping Palladium<br />Curitiba – PR</p>
+          <p className="font-body text-muted-foreground mt-2">Shopping Palladium<br />{STORE_ADDRESS}</p>
         </div>
         <div className="rounded-2xl border border-border bg-card p-6">
           <Zap className="text-secondary" size={26} />
@@ -96,7 +99,7 @@ const LojaFisica = () => {
         <div className="rounded-3xl overflow-hidden border border-border">
           <iframe
             title="Mapa do Shopping Palladium Curitiba"
-            src="https://www.google.com/maps?q=Shopping+Palladium+Curitiba&output=embed"
+            src="https://www.google.com/maps?q=Shopping+Palladium+Av.+Pres.+Kennedy+4121+Curitiba&output=embed"
             className="w-full h-80"
             loading="lazy"
           />
