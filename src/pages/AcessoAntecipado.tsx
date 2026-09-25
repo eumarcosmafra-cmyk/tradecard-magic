@@ -317,30 +317,6 @@ const AcessoAntecipado = () => {
         </div>
       </section>
 
-      {/* Seção 3 — como funciona */}
-      <section className="container mx-auto px-4 pb-20">
-        <h2 className="font-display text-4xl md:text-5xl tracking-wider uppercase text-center mb-10">Como funciona</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          {steps.map((s) => (
-            <div key={s.n} className="rounded-2xl bg-ink-soft/70 p-6 holo-border">
-              <span className="font-display text-5xl text-electric/70">{s.n}</span>
-              <h3 className="font-display text-2xl tracking-wider uppercase mt-3">{s.title}</h3>
-              <p className="font-body text-white/70 mt-2 text-sm leading-relaxed">{s.text}</p>
-            </div>
-          ))}
-        </div>
-        <div className="text-center mt-10">
-          <a
-            href="#cadastro"
-            onClick={() => trackEvent("early_access_cta_click", { placement: "como_funciona" })}
-            className="inline-block bg-gradient-electric text-ink font-display text-xl tracking-widest uppercase px-10 py-4 rounded-xl"
-          >
-            Entrar na lista
-          </a>
-          <p className="font-body text-white/70 text-sm mt-3 max-w-2xl mx-auto">{OFFER_NO_RESERVE}</p>
-        </div>
-      </section>
-
       <div className="container mx-auto px-4 pb-12 text-center">
         <Link
           to="/lista-cadastros"
