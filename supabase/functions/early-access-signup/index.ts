@@ -33,6 +33,11 @@ Deno.serve(async (req) => {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
 
+  // Pré-lista encerrada em 25/09/2026 10:00 (Brasília).
+  if (Date.now() >= new Date('2026-09-25T10:00:00-03:00').getTime()) {
+    return json({ error: 'closed', message: 'Cadastros encerrados. O prazo da pré-lista terminou em 25/09.' }, 410);
+  }
+
   try {
     const payload = await req.json().catch(() => null);
     if (!payload || typeof payload !== 'object') {
