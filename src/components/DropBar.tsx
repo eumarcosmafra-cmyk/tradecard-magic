@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MapPin } from "lucide-react";
-import { MAPS_URL, STORE_OPEN_LINE } from "@/lib/drop";
+import { STORE_OPEN_LINE } from "@/lib/drop";
 import { trackEvent } from "@/lib/analytics";
 
 export const DropBar = () => {
@@ -34,15 +34,13 @@ export const DropBar = () => {
           <MapPin size={15} className="text-electric shrink-0" />
           {STORE_OPEN_LINE}
         </span>
-        <a
-          href={MAPS_URL}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to="/loja-fisica"
           onClick={() => trackEvent("store_directions_click", { placement: "drop_bar" })}
           className="font-display text-xs sm:text-sm tracking-widest uppercase bg-gradient-electric text-ink px-3 py-1 rounded-full hover:opacity-90 transition-opacity"
         >
           Como chegar
-        </a>
+        </Link>
       </div>
     </div>
   );
