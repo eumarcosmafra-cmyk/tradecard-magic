@@ -50,6 +50,7 @@ Deno.serve(async (req) => {
         const whatsapp = digits(p.whatsapp).slice(0, 11) || null;
         if (!validCpf(cpf)) return json({ error: 'CPF inválido.' }, 400);
         if (nome.length < 2) return json({ error: 'Informe o nome.' }, 400);
+        if (!whatsapp || whatsapp.length < 10) return json({ error: 'Informe o WhatsApp com DDD.' }, 400);
         const existing = await buscar(cpf);
         if (existing) return json({ cliente: existing });
         const { error } = await sb.from('early_access_leads').insert({

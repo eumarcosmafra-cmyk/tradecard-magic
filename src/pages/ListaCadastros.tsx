@@ -121,6 +121,7 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
   const cadastrar = async (e: React.FormEvent) => {
     e.preventDefault(); setErro("");
     if (nome.trim().length < 2) return setErro("Informe o nome.");
+    if (onlyDigits(whats).length < 10) return setErro("Informe o WhatsApp com DDD.");
     setBusy(true);
     const r = await call({ action: "cadastrar", cpf: onlyDigits(cpf), nome, whatsapp: whats });
     setBusy(false);
@@ -158,9 +159,9 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
         <form onSubmit={cadastrar} className="rounded-2xl bg-ink-soft/80 p-6 holo-border space-y-3">
           <p className="font-display text-2xl uppercase">CPF não encontrado na base</p>
           <p className="font-body text-white/70">Este cliente não fazia parte da lista de pré-cadastro e não possui o desconto de 20%. Pode comprar normalmente até 3 produtos.</p>
-          <input value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Nome" autoFocus
+          <input value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Nome (obrigatório)" autoFocus
             className="w-full rounded-xl bg-ink border border-white/15 px-4 py-3 font-body outline-none" />
-          <input value={whats} onChange={(e) => setWhats(maskPhone(e.target.value))} placeholder="WhatsApp (opcional)" inputMode="numeric"
+          <input value={whats} onChange={(e) => setWhats(maskPhone(e.target.value))} placeholder="WhatsApp (obrigatório)" inputMode="numeric"
             className="w-full rounded-xl bg-ink border border-white/15 px-4 py-3 font-body outline-none" />
           <button disabled={busy} className="w-full inline-flex justify-center items-center gap-2 bg-gradient-electric text-ink font-display text-xl tracking-widest uppercase py-3 rounded-xl">
             <UserPlus size={20} /> Cadastrar cliente
