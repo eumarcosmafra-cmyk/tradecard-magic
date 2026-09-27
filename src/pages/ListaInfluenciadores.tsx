@@ -2,6 +2,7 @@ import { useCallback, useMemo, useState } from "react";
 import { CheckCircle2, Download, Loader2, Lock, Search } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { SEOHead } from "@/components/SEOHead";
+import { SortableTh, SortState, nextSort, sortRows } from "@/components/SortableTh";
 import { maskPhone, onlyDigits } from "@/lib/cpf";
 
 type Rsvp = {
@@ -56,6 +57,14 @@ const ListaInfluenciadores = () => {
         (digits.length > 0 && r.whatsapp.includes(digits)),
     );
   }, [rsvps, query]);
+
+  type K = "nome" | "instagram" | "whatsapp" | "email" | "created_at" | "attended";
+  const [sort, setSort] = useState<SortState<K>>(null);
+  const onSort = (k: K) => setSort((s) => nextSort(s, k));
+  const sorted = useMemo(
+    () => sortRows(filtered, sort, (r, k) => (k === "attended" ? (r.attended ? 1 : 0) : String(r[k] ?? "").toLowerCase())),
+    [filtered, sort],
+  );
 
   const toggleAttended = async (rsvp: Rsvp) => {
     const next = !rsvp.attended;
@@ -169,21 +178,21 @@ const ListaInfluenciadores = () => {
           <table className="w-full text-sm font-body">
             <thead className="bg-ink-soft/80 text-white/60 text-left">
               <tr>
-                <th className="px-4 py-3">Nome</th>
-                <th className="px-4 py-3">Instagram</th>
-                <th className="px-4 py-3">WhatsApp</th>
-                <th className="px-4 py-3">E-mail</th>
-                <th className="px-4 py-3">Confirmou em</th>
-                <th className="px-4 py-3">Check-in</th>
+                <SortableTh label="Nome" k="nome" sort={sort} onSort={onSort} />
+                <SortableTh label="Instagram" k="instagram" sort={sort} onSort={onSort} />
+                <SortableTh label="WhatsApp" k="whatsapp" sort={sort} onSort={onSort} />
+                <SortableTh label="E-mail" k="email" sort={sort} onSort={onSort} />
+                <SortableTh label="Confirmou em" k="created_at" sort={sort} onSort={onSort} />
+                <SortableTh label="Check-in" k="attended" sort={sort} onSort={onSort} />
               </tr>
             </thead>
             <tbody>
-              {filtered.length === 0 && (
+              {sorted.length === 0 && (
                 <tr>
                   <td colSpan={6} className="px-4 py-10 text-center text-white/50">Nenhuma confirmação ainda.</td>
                 </tr>
               )}
-              {filtered.map((r) => (
+              {sorted.map((r) => (
                 <tr key={r.id} className="border-t border-white/5">
                   <td className="px-4 py-3">{r.nome}</td>
                   <td className="px-4 py-3">
