@@ -20,11 +20,12 @@ export type Database = {
           consent_at: string
           cpf: string
           created_at: string
-          email: string
+          email: string | null
           id: string
           landing_path: string | null
           nome: string
           origem: string | null
+          pre_cadastro: boolean
           promo_redeemed: boolean
           redeem_code: string | null
           redeemed_at: string | null
@@ -36,18 +37,19 @@ export type Database = {
           utm_medium: string | null
           utm_source: string | null
           utm_term: string | null
-          whatsapp: string
+          whatsapp: string | null
         }
         Insert: {
           consent_accepted?: boolean
           consent_at?: string
           cpf: string
           created_at?: string
-          email: string
+          email?: string | null
           id?: string
           landing_path?: string | null
           nome: string
           origem?: string | null
+          pre_cadastro?: boolean
           promo_redeemed?: boolean
           redeem_code?: string | null
           redeemed_at?: string | null
@@ -59,18 +61,19 @@ export type Database = {
           utm_medium?: string | null
           utm_source?: string | null
           utm_term?: string | null
-          whatsapp: string
+          whatsapp?: string | null
         }
         Update: {
           consent_accepted?: boolean
           consent_at?: string
           cpf?: string
           created_at?: string
-          email?: string
+          email?: string | null
           id?: string
           landing_path?: string | null
           nome?: string
           origem?: string | null
+          pre_cadastro?: boolean
           promo_redeemed?: boolean
           redeem_code?: string | null
           redeemed_at?: string | null
@@ -82,7 +85,7 @@ export type Database = {
           utm_medium?: string | null
           utm_source?: string | null
           utm_term?: string | null
-          whatsapp?: string
+          whatsapp?: string | null
         }
         Relationships: []
       }
@@ -191,6 +194,50 @@ export type Database = {
         }
         Relationships: []
       }
+      retiradas: {
+        Row: {
+          atendente: string | null
+          created_at: string
+          estornado_em: string | null
+          estornado_por: string | null
+          estorno_motivo: string | null
+          id: string
+          lead_id: string
+          quantidade: number
+          status: string
+        }
+        Insert: {
+          atendente?: string | null
+          created_at?: string
+          estornado_em?: string | null
+          estornado_por?: string | null
+          estorno_motivo?: string | null
+          id?: string
+          lead_id: string
+          quantidade: number
+          status?: string
+        }
+        Update: {
+          atendente?: string | null
+          created_at?: string
+          estornado_em?: string | null
+          estornado_por?: string | null
+          estorno_motivo?: string | null
+          id?: string
+          lead_id?: string
+          quantidade?: number
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "retiradas_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "early_access_leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -217,7 +264,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      estornar_retirada: {
+        Args: { _id: string; _motivo: string; _por: string }
+        Returns: undefined
+      }
+      registrar_retirada: {
+        Args: { _atendente: string; _lead_id: string; _qtd: number }
+        Returns: number
+      }
     }
     Enums: {
       app_role: "admin" | "staff" | "user"
