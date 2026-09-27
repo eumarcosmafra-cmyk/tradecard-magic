@@ -1,9 +1,14 @@
 import { MessageCircle } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 const WHATSAPP_NUMBER = "554163475741";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=Ol%C3%A1%21%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es.`;
+const HIDDEN = ["/lista-cadastros", "/lista-influenciadores"];
 
-export const WhatsAppButton = () => (
+export const WhatsAppButton = () => {
+  const { pathname } = useLocation();
+  if (HIDDEN.includes(pathname)) return null;
+  return (
   <a
     href={WHATSAPP_URL}
     target="_blank"
@@ -13,4 +18,5 @@ export const WhatsAppButton = () => (
   >
     <MessageCircle size={28} fill="white" stroke="none" />
   </a>
-);
+  );
+};

@@ -73,18 +73,18 @@ const ListaCadastros = () => {
   return (
     <div className="min-h-screen bg-arena text-white">
       <SEOHead title="Controle de retirada | Bella Figurinha" description="Acesso restrito." noindex />
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
         <div className="flex flex-wrap items-center gap-3 justify-between">
-          <div className="flex gap-2">
+          <div className="grid grid-cols-2 gap-2 w-full sm:w-auto sm:flex">
             {(["controle", "lista"] as const).map((t) => (
               <button key={t} onClick={() => setTab(t)}
-                className={`font-display tracking-widest uppercase px-5 py-2 rounded-xl ${tab === t ? "bg-gradient-electric text-ink" : "border border-white/20 text-white/70"}`}>
-                {t === "controle" ? "Controle de retirada" : "Lista geral"}
+                className={`font-display tracking-wider uppercase text-sm sm:text-base px-3 sm:px-5 py-3 sm:py-2 rounded-xl ${tab === t ? "bg-gradient-electric text-ink" : "border border-white/20 text-white/70"}`}>
+                {t === "controle" ? "Retirada" : "Lista geral"}
               </button>
             ))}
           </div>
           <input value={atendente} onChange={(e) => setAtendente(e.target.value)} placeholder="Seu nome (atendente)"
-            className="rounded-xl bg-ink border border-white/15 px-4 py-2 font-body text-sm outline-none w-56" />
+            className="rounded-xl bg-ink border border-white/15 px-4 py-2 font-body text-base outline-none w-full sm:w-56" />
         </div>
         {tab === "controle" ? <Controle call={call} atendente={atendente} /> : <Lista call={call} />}
       </div>
@@ -143,12 +143,12 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
   const cor = saldo <= 0 ? "bg-red-600" : saldo === 1 ? "bg-yellow-400 text-ink" : "bg-green-600";
 
   return (
-    <div className="max-w-2xl mx-auto mt-8 space-y-6">
-      <form onSubmit={buscar} className="flex gap-3">
+    <div className="max-w-2xl mx-auto mt-4 sm:mt-8 space-y-4 sm:space-y-6">
+      <form onSubmit={buscar} className="flex flex-col sm:flex-row gap-3">
         <input value={cpf} onChange={(e) => { setCpf(maskCpf(e.target.value)); reset(); }} inputMode="numeric" autoFocus
           placeholder="Digite o CPF do cliente"
-          className="flex-1 rounded-2xl bg-ink border-2 border-white/20 px-5 py-5 font-display text-3xl tracking-wider outline-none focus:border-electric" />
-        <button disabled={busy} className="bg-gradient-electric text-ink font-display text-xl tracking-widest uppercase px-6 rounded-2xl disabled:opacity-50">
+          className="w-full sm:flex-1 min-w-0 rounded-2xl bg-ink border-2 border-white/20 px-4 py-4 sm:py-5 font-display text-2xl sm:text-3xl tracking-wider text-center sm:text-left outline-none focus:border-electric" />
+        <button disabled={busy} className="bg-gradient-electric text-ink font-display text-xl tracking-widest uppercase px-6 py-4 rounded-2xl disabled:opacity-50 flex justify-center">
           {busy ? <Loader2 className="animate-spin" /> : <span className="flex items-center gap-2"><Search size={20} />Buscar CPF</span>}
         </button>
       </form>
@@ -169,28 +169,28 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
       )}
 
       {cliente && (
-        <div className="rounded-2xl bg-ink-soft/80 p-6 holo-border space-y-5">
+        <div className="rounded-2xl bg-ink-soft/80 p-4 sm:p-6 holo-border space-y-4 sm:space-y-5">
           <div>
-            <p className="font-display text-3xl uppercase">{cliente.lead.nome}</p>
+            <p className="font-display text-2xl sm:text-3xl uppercase break-words">{cliente.lead.nome}</p>
             <p className="font-body text-white/60">CPF {maskCpf(cliente.lead.cpf)}</p>
           </div>
-          <div className={`rounded-xl px-4 py-2 inline-block font-display tracking-widest uppercase border-2 ${cliente.lead.pre_cadastro ? "border-electric text-electric" : "border-white/30 text-white/60"}`}>
+          <div className={`rounded-xl px-3 py-2 block sm:inline-block text-center text-sm sm:text-base font-display tracking-wider uppercase border-2 ${cliente.lead.pre_cadastro ? "border-electric text-electric" : "border-white/30 text-white/60"}`}>
             {cliente.lead.pre_cadastro ? "✓ 20% pré-cadastro — tem direito ao desconto" : "Sem pré-cadastro — não possui o desconto de 20%"}
           </div>
-          <div className={`rounded-2xl p-6 text-center ${cor}`}>
-            <p className="font-display text-4xl md:text-5xl uppercase leading-tight">
+          <div className={`rounded-2xl p-4 sm:p-6 text-center ${cor}`}>
+            <p className="font-display text-3xl sm:text-5xl uppercase leading-tight">
               {saldo <= 0 ? "Limite esgotado — não realizar nova venda" : `Este CPF ainda pode levar ${saldo} produto${saldo > 1 ? "s" : ""}`}
             </p>
             <p className="font-body mt-2 opacity-90">{usados} de {LIMITE} utilizados</p>
           </div>
-          {sucesso && <p className="flex items-center gap-2 font-display text-2xl text-green-400"><CheckCircle2 /> {sucesso}</p>}
+          {sucesso && <p className="flex items-center gap-2 font-display text-xl sm:text-2xl text-green-400"><CheckCircle2 /> {sucesso}</p>}
           {saldo > 0 && (
             <div>
               <p className="font-body text-white/70 mb-2">Quantos produtos o cliente está levando agora?</p>
               <div className="grid grid-cols-3 gap-3">
                 {[1, 2, 3].map((n) => (
                   <button key={n} disabled={n > saldo || busy} onClick={() => { setSucesso(""); setConfirmar(n); }}
-                    className="font-display text-2xl uppercase py-5 rounded-xl bg-gradient-electric text-ink disabled:opacity-20 disabled:cursor-not-allowed">
+                    className="font-display text-lg sm:text-2xl uppercase py-6 sm:py-5 rounded-xl leading-tight bg-gradient-electric text-ink disabled:opacity-20 disabled:cursor-not-allowed">
                     {n} produto{n > 1 ? "s" : ""}
                   </button>
                 ))}
@@ -206,7 +206,7 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
                     <span>{fmt(r.created_at)} — {r.quantidade} produto{r.quantidade > 1 ? "s" : ""}{r.atendente ? ` · ${r.atendente}` : ""}
                       {r.status === "estornada" && <span className="no-underline"> (estornada: {r.estorno_motivo})</span>}</span>
                     {r.status === "confirmada" && (
-                      <button onClick={() => setEstorno(r)} className="text-xs text-white/50 hover:text-red-400 inline-flex items-center gap-1"><Undo2 size={12} />Estornar</button>
+                      <button onClick={() => setEstorno(r)} className="shrink-0 text-xs text-white/50 hover:text-red-400 inline-flex items-center gap-1 px-2 py-2"><Undo2 size={12} />Estornar</button>
                     )}
                   </li>
                 ))}
@@ -228,8 +228,8 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
             <div>Saldo após esta operação: <b>{LIMITE - usados - confirmar}</b></div>
           </dl>
           <div className="grid grid-cols-2 gap-3">
-            <button onClick={() => setConfirmar(null)} className="border border-white/30 rounded-xl py-3 font-display tracking-widest uppercase">Cancelar</button>
-            <button onClick={retirar} disabled={busy} className="bg-green-600 rounded-xl py-3 font-display tracking-widest uppercase">
+            <button onClick={() => setConfirmar(null)} className="border border-white/30 rounded-xl py-4 font-display tracking-widest uppercase">Cancelar</button>
+            <button onClick={retirar} disabled={busy} className="bg-green-600 rounded-xl py-4 font-display tracking-widest uppercase">
               {busy ? <Loader2 className="animate-spin mx-auto" /> : "Confirmar retirada"}</button>
           </div>
         </Modal>
@@ -271,8 +271,8 @@ function EstornoModal({ r, call, onClose, onDone }: { r: Retirada; call: Call; a
 
 function Modal({ children, onClose }: { children: React.ReactNode; onClose: () => void }) {
   return (
-    <div className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center px-4" onClick={onClose}>
-      <div className="relative w-full max-w-md rounded-2xl bg-ink p-6 holo-border text-white" onClick={(e) => e.stopPropagation()}>
+    <div className="fixed inset-0 z-50 bg-black/70 flex items-end sm:items-center justify-center sm:px-4" onClick={onClose}>
+      <div className="relative w-full max-w-md rounded-t-2xl sm:rounded-2xl bg-ink p-5 sm:p-6 pb-8 max-h-[90vh] overflow-y-auto holo-border text-white" onClick={(e) => e.stopPropagation()}>
         <button onClick={onClose} className="absolute top-3 right-3 text-white/50"><X size={18} /></button>
         {children}
       </div>
@@ -321,24 +321,38 @@ function Lista({ call }: { call: Call }) {
 
   return (
     <div className="mt-8">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-4">
         {cards.map(([l, v]) => (
-          <div key={l} className="rounded-2xl bg-ink-soft/70 p-5 holo-border">
+          <div key={l} className="rounded-2xl bg-ink-soft/70 p-3 sm:p-5 holo-border">
             <p className="font-body text-xs uppercase tracking-widest text-white/50">{l}</p>
-            <p className="font-display text-4xl text-electric">{loading ? "…" : v}</p>
+            <p className="font-display text-3xl sm:text-4xl text-electric">{loading ? "…" : v}</p>
           </div>
         ))}
       </div>
-      <div className="flex flex-wrap gap-3 mt-6">
-        <div className="flex items-center gap-2 flex-1 min-w-[240px] rounded-xl bg-ink border border-white/15 px-4">
+      <div className="flex flex-col sm:flex-row gap-3 mt-4 sm:mt-6">
+        <div className="flex items-center gap-2 flex-1 rounded-xl bg-ink border border-white/15 px-4">
           <Search size={18} className="text-white/40" />
           <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar por CPF, nome ou telefone"
-            className="flex-1 bg-transparent py-3 text-white outline-none font-body text-sm" />
+            className="flex-1 bg-transparent py-3 text-white outline-none font-body text-base" />
         </div>
-        <button onClick={exportCsv} className="inline-flex items-center gap-2 bg-gradient-electric text-ink font-display tracking-widest uppercase px-5 rounded-xl">
+        <button onClick={exportCsv} className="inline-flex items-center gap-2 bg-gradient-electric text-ink font-display tracking-widest uppercase px-5 py-3 rounded-xl w-full sm:w-auto justify-center">
           <Download size={18} /> Exportar CSV</button>
       </div>
-      <div className="mt-6 overflow-x-auto rounded-2xl border border-white/10">
+      <div className="md:hidden mt-4 space-y-2">
+        {loading && <Loader2 className="animate-spin mx-auto" />}
+        {!loading && rows.length === 0 && <p className="text-center text-white/50 py-8">Nenhum cliente encontrado.</p>}
+        {rows.slice(0, 300).map((l) => { const disp = LIMITE - l.usados; return (
+          <div key={l.id} className="rounded-xl bg-ink-soft/70 border border-white/10 p-3 flex items-center gap-3">
+            <div className="flex-1 min-w-0 font-body text-sm">
+              <p className="font-semibold truncate">{l.nome}</p>
+              <p className="text-white/60">{maskCpf(l.cpf)}{l.whatsapp ? ` · ${maskPhone(l.whatsapp)}` : ""}</p>
+              <p className="text-xs mt-1">{l.pre_cadastro ? <span className="text-electric">✓ 20%</span> : <span className="text-white/50">Sem desconto</span>}<span className="text-white/50"> · {l.usados}/{LIMITE}{l.ultima_retirada ? ` · ${fmt(l.ultima_retirada)}` : ""}</span></p>
+            </div>
+            <span className={`shrink-0 w-10 h-10 grid place-items-center rounded-full font-display text-xl ${disp <= 0 ? "bg-red-600" : disp === 1 ? "bg-yellow-400 text-ink" : "bg-green-600"}`}>{disp}</span>
+          </div>); })}
+        {rows.length > 300 && <p className="text-center text-xs text-white/50">Mostrando 300 de {rows.length}. Use a busca.</p>}
+      </div>
+      <div className="hidden md:block mt-6 overflow-x-auto rounded-2xl border border-white/10">
         <table className="w-full text-sm font-body">
           <thead className="bg-ink-soft/80 text-white/60 text-left">
             <tr>
