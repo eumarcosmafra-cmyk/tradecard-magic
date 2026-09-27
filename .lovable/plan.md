@@ -27,6 +27,11 @@ Nova tela principal em `/lista-cadastros` (mesma senha Bella2026): **CONTROLE DE
 - Indicadores: CPFs cadastrados, Clientes do pré-cadastro, Produtos retirados, CPFs que atingiram 3/3.
 - Colunas: Nome | CPF | WhatsApp | Pré-cadastro | Utilizados | Disponíveis | Última retirada | Ver.
 - Busca por CPF (prioridade), nome, telefone. Exportação CSV mantida.
+- Ordenação ao clicar no título de qualquer coluna: primeiro clique do maior para o menor, segundo clique inverte (seta indicando a direção). Vale também para a lista de influenciadores.
+
+## Nome automático pelo CPF (Receita Federal)
+- Não existe consulta gratuita e aberta da Receita que devolva o nome pelo CPF. É possível por serviços pagos autorizados (ex.: Serpro Consulta CPF, a partir de ~R$ 0,50 por consulta com contrato, ou APIs de parceiros como CPF.CNPJ / Infosimples).
+- Fica fora desta etapa. Se quiserem contratar, basta enviar a chave do serviço e eu ligo no cadastro rápido: digitou CPF novo, o nome aparece preenchido.
 
 ## Estorno (somente administrador)
 - Botão "ESTORNAR RETIRADA" no histórico exige uma **senha de administrador separada** (nova, diferente da Bella2026) e um motivo.
