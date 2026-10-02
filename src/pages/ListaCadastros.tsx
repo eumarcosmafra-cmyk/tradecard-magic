@@ -173,9 +173,14 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
 
       {cliente && (
         <div className="rounded-2xl bg-ink-soft/80 p-4 sm:p-6 holo-border space-y-4 sm:space-y-5">
-          <div>
-            <p className="font-display text-2xl sm:text-3xl uppercase break-words">{cliente.lead.nome}</p>
-            <p className="font-body text-white/60">CPF {maskCpf(cliente.lead.cpf)}{cliente.lead.instagram ? ` · @${cliente.lead.instagram}` : ""}</p>
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <p className="font-display text-2xl sm:text-3xl uppercase break-words">{cliente.lead.nome}</p>
+              <p className="font-body text-white/60">CPF {maskCpf(cliente.lead.cpf)}{cliente.lead.instagram ? ` · @${cliente.lead.instagram}` : ""}</p>
+            </div>
+            <button onClick={() => setEditando(true)} className="shrink-0 inline-flex items-center gap-1 border border-white/20 rounded-xl px-3 py-2 text-sm font-body text-white/70 hover:text-electric hover:border-electric">
+              <Pencil size={14} />Editar
+            </button>
           </div>
           <div className={`rounded-xl px-3 py-2 block sm:inline-block text-center text-sm sm:text-base font-display tracking-wider uppercase border-2 ${cliente.lead.pre_cadastro ? "border-electric text-electric" : "border-white/30 text-white/60"}`}>
             {cliente.lead.pre_cadastro ? "✓ 20% pré-cadastro — tem direito ao desconto" : "Sem pré-cadastro — não possui o desconto de 20%"}
