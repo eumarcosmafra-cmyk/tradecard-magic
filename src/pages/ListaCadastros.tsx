@@ -341,6 +341,7 @@ function Lista({ call }: { call: Call }) {
   const [loading, setLoading] = useState(true);
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<SortState<SortKey>>(null);
+  const [editando, setEditando] = useState<Lead | null>(null);
 
   useEffect(() => {
     call({}).then((r) => { setLeads(((r as { leads?: Lead[] }).leads) ?? []); setLoading(false); });
@@ -404,6 +405,7 @@ function Lista({ call }: { call: Call }) {
               <p className="text-white/60">{maskCpf(l.cpf)}{l.whatsapp ? ` · ${maskPhone(l.whatsapp)}` : ""}</p>
               <p className="text-xs mt-1">{l.pre_cadastro ? <span className="text-electric">✓ 20%</span> : <span className="text-white/50">Sem desconto</span>}<span className="text-white/50"> · {l.usados}/{LIMITE}{l.ultima_retirada ? ` · ${fmt(l.ultima_retirada)}` : ""}</span></p>
             </div>
+            <button onClick={() => setEditando(l)} aria-label="Editar cliente" className="shrink-0 w-10 h-10 grid place-items-center rounded-xl border border-white/20 text-white/70 hover:text-electric"><Pencil size={16} /></button>
             <span className={`shrink-0 w-10 h-10 grid place-items-center rounded-full font-display text-xl ${disp <= 0 ? "bg-red-600" : disp === 1 ? "bg-yellow-400 text-ink" : "bg-green-600"}`}>{disp}</span>
           </div>); })}
         {rows.length > 300 && <p className="text-center text-xs text-white/50">Mostrando 300 de {rows.length}. Use a busca.</p>}
@@ -419,6 +421,7 @@ function Lista({ call }: { call: Call }) {
               <SortableTh label="Utilizados" k="usados" sort={sort} onSort={onSort} />
               <SortableTh label="Disponíveis" k="disp" sort={sort} onSort={onSort} />
               <SortableTh label="Última retirada" k="ultima" sort={sort} onSort={onSort} />
+              <th className="px-4 py-3"></th>
             </tr>
           </thead>
           <tbody>
@@ -435,12 +438,17 @@ function Lista({ call }: { call: Call }) {
                   <td className="px-4 py-3">{l.usados}/{LIMITE}</td>
                   <td className="px-4 py-3"><span className={`inline-block min-w-8 text-center rounded-full px-2 font-display ${disp <= 0 ? "bg-red-600" : disp === 1 ? "bg-yellow-400 text-ink" : "bg-green-600"}`}>{disp}</span></td>
                   <td className="px-4 py-3 text-white/60">{l.ultima_retirada ? fmt(l.ultima_retirada) : "—"}</td>
+                  <td className="px-4 py-3"><button onClick={() => setEditando(l)} className="inline-flex items-center gap-1 border border-white/20 rounded-lg px-2 py-1 text-xs text-white/70 hover:text-electric hover:border-electric"><Pencil size={12} />Editar</button></td>
                 </tr>
               );
             })}
           </tbody>
         </table>
       </div>
+      {editando && (
+        <EditModal lead={editando} call={call} onClose={() => setEditando(null)}
+          onDone={(c) => { setEditando(null); setLeads((prev) => prev.map((x) => x.id === c.lead.id ? { ...x, ...c.lead, usados: x.usados, ultima_retirada: x.ultima_retirada } : x)); }} />
+      )}
     </div>
   );
 }
