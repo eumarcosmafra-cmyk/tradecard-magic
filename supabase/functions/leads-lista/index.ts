@@ -76,6 +76,16 @@ Deno.serve(async (req) => {
         if (error) return json({ error: error.message }, 400);
         return json({ ok: true });
       }
+      case 'editar': {
+        if (typeof p.lead_id !== 'string') return json({ error: 'Dados inválidos.' }, 400);
+        const nome = String(p.nome ?? '').trim().slice(0, 120) || 'Cliente sem nome';
+        const whatsapp = digits(p.whatsapp).slice(0, 11) || null;
+        const instagram = String(p.instagram ?? '').trim().replace(/^@+/, '').replace(/\s/g, '').slice(0, 60) || null;
+        const email = String(p.email ?? '').trim().slice(0, 200) || null;
+        const { error } = await sb.from('early_access_leads').update({ nome, whatsapp, instagram, email, updated_at: new Date().toISOString() }).eq('id', p.lead_id);
+        if (error) return json({ error: error.message }, 400);
+        return json({ ok: true });
+      }
       default: {
         const [{ data: leads, error }, { data: rets }] = await Promise.all([
           sb.from('early_access_leads').select('id,nome,cpf,whatsapp,email,created_at,origem,utm_campaign,pre_cadastro,promo_redeemed,redeemed_at,redeem_code').order('created_at', { ascending: false }).limit(5000),

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Download, Loader2, Lock, Search, CheckCircle2, UserPlus, Undo2, X } from "lucide-react";
+import { Download, Loader2, Lock, Search, CheckCircle2, UserPlus, Undo2, X, Pencil } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { SEOHead } from "@/components/SEOHead";
 import { SortableTh, SortState, nextSort, sortRows } from "@/components/SortableTh";
@@ -106,6 +106,7 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
   const [confirmar, setConfirmar] = useState<number | null>(null);
   const [sucesso, setSucesso] = useState("");
   const [estorno, setEstorno] = useState<Retirada | null>(null);
+  const [editando, setEditando] = useState(false);
 
   const reset = () => { setCliente(null); setNaoEncontrado(false); setErro(""); setSucesso(""); setConfirmar(null); };
 
@@ -172,9 +173,14 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
 
       {cliente && (
         <div className="rounded-2xl bg-ink-soft/80 p-4 sm:p-6 holo-border space-y-4 sm:space-y-5">
-          <div>
-            <p className="font-display text-2xl sm:text-3xl uppercase break-words">{cliente.lead.nome}</p>
-            <p className="font-body text-white/60">CPF {maskCpf(cliente.lead.cpf)}{cliente.lead.instagram ? ` · @${cliente.lead.instagram}` : ""}</p>
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <p className="font-display text-2xl sm:text-3xl uppercase break-words">{cliente.lead.nome}</p>
+              <p className="font-body text-white/60">CPF {maskCpf(cliente.lead.cpf)}{cliente.lead.instagram ? ` · @${cliente.lead.instagram}` : ""}</p>
+            </div>
+            <button onClick={() => setEditando(true)} className="shrink-0 inline-flex items-center gap-1 border border-white/20 rounded-xl px-3 py-2 text-sm font-body text-white/70 hover:text-electric hover:border-electric">
+              <Pencil size={14} />Editar
+            </button>
           </div>
           <div className={`rounded-xl px-3 py-2 block sm:inline-block text-center text-sm sm:text-base font-display tracking-wider uppercase border-2 ${cliente.lead.pre_cadastro ? "border-electric text-electric" : "border-white/30 text-white/60"}`}>
             {cliente.lead.pre_cadastro ? "✓ 20% pré-cadastro — tem direito ao desconto" : "Sem pré-cadastro — não possui o desconto de 20%"}
@@ -241,7 +247,55 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
         <EstornoModal r={estorno} call={call} atendente={atendente} onClose={() => setEstorno(null)}
           onDone={() => { setEstorno(null); buscar(); }} />
       )}
+
+      {editando && cliente && (
+        <EditModal lead={cliente.lead} call={call} onClose={() => setEditando(false)}
+          onDone={(c) => { setEditando(false); setCliente(c); setSucesso("Dados atualizados."); }} />
+      )}
     </div>
+  );
+}
+
+function EditModal({ lead, call, onClose, onDone }: { lead: Lead; call: Call; onClose: () => void; onDone: (c: Cliente) => void }) {
+  const [nome, setNome] = useState(lead.nome === "Cliente sem nome" ? "" : lead.nome);
+  const [whats, setWhats] = useState(lead.whatsapp ? maskPhone(lead.whatsapp) : "");
+  const [email, setEmail] = useState(lead.email ?? "");
+  const [insta, setInsta] = useState(lead.instagram ?? "");
+  const [erro, setErro] = useState("");
+  const [busy, setBusy] = useState(false);
+  const salvar = async (e: React.FormEvent) => {
+    e.preventDefault(); setErro("");
+    setBusy(true);
+    const res = await call({ action: "editar", lead_id: lead.id, nome, whatsapp: whats, email, instagram: insta });
+    setBusy(false);
+    if ("error" in res) return setErro(String(res.error));
+    const r = await call({ action: "buscar", cpf: lead.cpf });
+    if ("error" in r || !r.cliente) return onClose();
+    onDone(r.cliente as Cliente);
+  };
+  return (
+    <Modal onClose={onClose}>
+      <form onSubmit={salvar}>
+        <p className="font-display text-2xl uppercase mb-1">Editar cliente</p>
+        <p className="font-body text-white/60 text-sm mb-4">CPF {maskCpf(lead.cpf)} — o CPF não pode ser alterado.</p>
+        <div className="space-y-3">
+          <input value={nome} onChange={(e) => setNome(e.target.value)} placeholder="Nome (obrigatório)"
+            className="w-full rounded-xl bg-ink border border-white/15 px-4 py-3 font-body outline-none" />
+          <input value={whats} onChange={(e) => setWhats(maskPhone(e.target.value))} placeholder="WhatsApp com DDD" inputMode="numeric"
+            className="w-full rounded-xl bg-ink border border-white/15 px-4 py-3 font-body outline-none" />
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="E-mail (opcional)" autoCapitalize="none"
+            className="w-full rounded-xl bg-ink border border-white/15 px-4 py-3 font-body outline-none" />
+          <input value={insta} onChange={(e) => setInsta(e.target.value)} placeholder="Instagram (opcional) — @usuario" autoCapitalize="none"
+            className="w-full rounded-xl bg-ink border border-white/15 px-4 py-3 font-body outline-none" />
+        </div>
+        {erro && <p className="text-red-400 font-body text-sm mt-3">{erro}</p>}
+        <div className="grid grid-cols-2 gap-3 mt-4">
+          <button type="button" onClick={onClose} className="border border-white/30 rounded-xl py-3 font-display tracking-widest uppercase">Cancelar</button>
+          <button type="submit" disabled={busy || !nome.trim()} className="bg-gradient-electric text-ink rounded-xl py-3 font-display tracking-widest uppercase disabled:opacity-50">
+            {busy ? <Loader2 className="animate-spin mx-auto" /> : "Salvar"}</button>
+        </div>
+      </form>
+    </Modal>
   );
 }
 
