@@ -46,15 +46,14 @@ Deno.serve(async (req) => {
       }
       case 'cadastrar': {
         const cpf = digits(p.cpf);
-        const nome = String(p.nome ?? '').trim().slice(0, 120);
+        const nome = String(p.nome ?? '').trim().slice(0, 120) || 'Cliente sem nome';
         const whatsapp = digits(p.whatsapp).slice(0, 11) || null;
+        const instagram = String(p.instagram ?? '').trim().replace(/^@+/, '').replace(/\s/g, '').slice(0, 60) || null;
         if (!validCpf(cpf)) return json({ error: 'CPF inválido.' }, 400);
-        if (nome.length < 2) return json({ error: 'Informe o nome.' }, 400);
-        if (!whatsapp || whatsapp.length < 10) return json({ error: 'Informe o WhatsApp com DDD.' }, 400);
         const existing = await buscar(cpf);
         if (existing) return json({ cliente: existing });
         const { error } = await sb.from('early_access_leads').insert({
-          cpf, nome, whatsapp, email: null, pre_cadastro: false, origem: 'quiosque',
+          cpf, nome, whatsapp, instagram, email: null, pre_cadastro: false, origem: 'quiosque',
           consent_accepted: true, terms_version: 'quiosque',
         });
         if (error && !error.message.includes('duplicate')) return json({ error: error.message }, 400);
