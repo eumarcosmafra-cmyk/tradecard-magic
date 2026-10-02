@@ -22,6 +22,7 @@ export type Database = {
           created_at: string
           email: string | null
           id: string
+          instagram: string | null
           landing_path: string | null
           nome: string
           origem: string | null
@@ -46,6 +47,7 @@ export type Database = {
           created_at?: string
           email?: string | null
           id?: string
+          instagram?: string | null
           landing_path?: string | null
           nome: string
           origem?: string | null
@@ -70,6 +72,7 @@ export type Database = {
           created_at?: string
           email?: string | null
           id?: string
+          instagram?: string | null
           landing_path?: string | null
           nome?: string
           origem?: string | null
