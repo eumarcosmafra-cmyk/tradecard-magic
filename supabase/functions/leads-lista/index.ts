@@ -88,7 +88,7 @@ Deno.serve(async (req) => {
       }
       default: {
         const [{ data: leads, error }, { data: rets }] = await Promise.all([
-          sb.from('early_access_leads').select('id,nome,cpf,whatsapp,email,created_at,origem,utm_campaign,pre_cadastro,promo_redeemed,redeemed_at,redeem_code').order('created_at', { ascending: false }).limit(5000),
+          sb.from('early_access_leads').select('id,nome,cpf,whatsapp,email,instagram,created_at,origem,utm_campaign,pre_cadastro,promo_redeemed,redeemed_at,redeem_code').order('created_at', { ascending: false }).limit(5000),
           sb.from('retiradas').select('lead_id,quantidade,created_at').eq('status', 'confirmada').limit(20000),
         ]);
         if (error) return json({ error: error.message }, 400);
