@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Download, Loader2, Lock, Search, CheckCircle2, UserPlus, Undo2, X } from "lucide-react";
+import { Download, Loader2, Lock, Search, CheckCircle2, UserPlus, Undo2, X, Pencil } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { SEOHead } from "@/components/SEOHead";
 import { SortableTh, SortState, nextSort, sortRows } from "@/components/SortableTh";
@@ -106,6 +106,7 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
   const [confirmar, setConfirmar] = useState<number | null>(null);
   const [sucesso, setSucesso] = useState("");
   const [estorno, setEstorno] = useState<Retirada | null>(null);
+  const [editando, setEditando] = useState(false);
 
   const reset = () => { setCliente(null); setNaoEncontrado(false); setErro(""); setSucesso(""); setConfirmar(null); };
 
