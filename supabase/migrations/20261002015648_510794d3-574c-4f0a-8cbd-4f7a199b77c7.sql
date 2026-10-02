@@ -1,0 +1,1 @@
+ALTER TABLE public.early_access_leads ADD COLUMN IF NOT EXISTS instagram text;
