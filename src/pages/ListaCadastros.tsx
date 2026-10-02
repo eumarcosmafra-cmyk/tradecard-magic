@@ -8,7 +8,7 @@ import { isValidCpf, maskCpf, maskPhone, onlyDigits } from "@/lib/cpf";
 const LIMITE = 3;
 
 type Lead = {
-  id: string; nome: string; cpf: string; whatsapp: string | null; email: string | null;
+  id: string; nome: string; cpf: string; whatsapp: string | null; email: string | null; instagram?: string | null;
   created_at: string; origem: string | null; utm_campaign: string | null;
   pre_cadastro: boolean; promo_redeemed: boolean; redeemed_at: string | null; redeem_code: string | null;
   usados: number; ultima_retirada: string | null;
@@ -174,7 +174,7 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
         <div className="rounded-2xl bg-ink-soft/80 p-4 sm:p-6 holo-border space-y-4 sm:space-y-5">
           <div>
             <p className="font-display text-2xl sm:text-3xl uppercase break-words">{cliente.lead.nome}</p>
-            <p className="font-body text-white/60">CPF {maskCpf(cliente.lead.cpf)}</p>
+            <p className="font-body text-white/60">CPF {maskCpf(cliente.lead.cpf)}{cliente.lead.instagram ? ` · @${cliente.lead.instagram}` : ""}</p>
           </div>
           <div className={`rounded-xl px-3 py-2 block sm:inline-block text-center text-sm sm:text-base font-display tracking-wider uppercase border-2 ${cliente.lead.pre_cadastro ? "border-electric text-electric" : "border-white/30 text-white/60"}`}>
             {cliente.lead.pre_cadastro ? "✓ 20% pré-cadastro — tem direito ao desconto" : "Sem pré-cadastro — não possui o desconto de 20%"}
