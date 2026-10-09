@@ -206,6 +206,7 @@ export type Database = {
           estorno_motivo: string | null
           id: string
           lead_id: string
+          produto: string
           quantidade: number
           status: string
         }
@@ -217,6 +218,7 @@ export type Database = {
           estorno_motivo?: string | null
           id?: string
           lead_id: string
+          produto?: string
           quantidade: number
           status?: string
         }
@@ -228,6 +230,7 @@ export type Database = {
           estorno_motivo?: string | null
           id?: string
           lead_id?: string
+          produto?: string
           quantidade?: number
           status?: string
         }
@@ -273,6 +276,10 @@ export type Database = {
       }
       registrar_retirada: {
         Args: { _atendente: string; _lead_id: string; _qtd: number }
+        Returns: number
+      }
+      registrar_retirada_booster: {
+        Args: { _atendente: string; _lead_id: string }
         Returns: number
       }
     }
