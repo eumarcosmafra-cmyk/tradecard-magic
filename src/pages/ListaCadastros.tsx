@@ -198,9 +198,9 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
           </div>
           <div className={`rounded-2xl p-4 sm:p-6 text-center ${cor}`}>
             <p className="font-display text-3xl sm:text-5xl uppercase leading-tight">
-              {saldo <= 0 ? "Limite esgotado — não realizar nova venda" : usados === 0 && booster < 1 ? `Este CPF pode levar ${LIMITE} produtos + 1 Combo Booster` : `Este CPF ainda pode levar ${saldo} produto${saldo > 1 ? "s" : ""}`}
+              {saldo <= 0 ? "Limite esgotado — não realizar nova venda" : `${usados === 0 ? "Este CPF pode levar" : "Este CPF ainda pode levar"} ${saldo} produto${saldo > 1 ? "s" : ""}${booster < 1 ? " + 1 Combo Booster" : ""}`}
             </p>
-            <p className="font-body mt-2 opacity-90">Já retirou {usados} de {LIMITE} produtos</p>
+            <p className="font-body mt-2 opacity-90">Já retirou {usados} de {LIMITE} produtos{booster >= 1 ? " · Combo Booster já retirado" : " · Combo Booster ainda disponível"}</p>
           </div>
           <div className={`rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 border-2 ${booster >= 1 ? "border-red-500 bg-red-600/20" : "border-green-500 bg-green-600/15"}`}>
             <div className="text-center sm:text-left">
