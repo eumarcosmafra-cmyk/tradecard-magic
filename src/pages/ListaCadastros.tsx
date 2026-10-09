@@ -390,7 +390,7 @@ function Lista({ call }: { call: Call }) {
     const f = !q ? leads : leads.filter((l) => l.nome.toLowerCase().includes(q) || (d && (l.cpf.includes(d) || (l.whatsapp ?? "").includes(d))));
     return sortRows(f, sort, (l, k) => ({
       nome: l.nome.toLowerCase(), cpf: l.cpf, whatsapp: l.whatsapp ?? "", pre: l.pre_cadastro ? 1 : 0,
-      usados: l.usados, disp: LIMITE - l.usados, ultima: l.ultima_retirada ?? "",
+      usados: l.usados, disp: LIMITE - l.usados, booster: l.booster ?? 0, ultima: l.ultima_retirada ?? "",
     })[k]);
   }, [leads, query, sort]);
 
