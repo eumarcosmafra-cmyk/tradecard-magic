@@ -11,14 +11,15 @@ type Lead = {
   id: string; nome: string; cpf: string; whatsapp: string | null; email: string | null; instagram?: string | null;
   created_at: string; origem: string | null; utm_campaign: string | null;
   pre_cadastro: boolean; promo_redeemed: boolean; redeemed_at: string | null; redeem_code: string | null;
-  usados: number; ultima_retirada: string | null;
+  usados: number; booster?: number; ultima_retirada: string | null;
 };
-type Retirada = { id: string; quantidade: number; status: string; atendente: string | null; created_at: string; estorno_motivo: string | null; estornado_em: string | null };
+type Retirada = { id: string; quantidade: number; status: string; atendente: string | null; created_at: string; estorno_motivo: string | null; estornado_em: string | null; produto?: string };
 type Cliente = { lead: Lead; retiradas: Retirada[] };
-type SortKey = "nome" | "cpf" | "whatsapp" | "pre" | "usados" | "disp" | "ultima";
+type SortKey = "nome" | "cpf" | "whatsapp" | "pre" | "usados" | "disp" | "booster" | "ultima";
 
 const fmt = (d: string) => new Date(d).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
-const usadosDe = (c: Cliente) => c.retiradas.filter((r) => r.status === "confirmada").reduce((s, r) => s + r.quantidade, 0);
+const usadosDe = (c: Cliente) => c.retiradas.filter((r) => r.status === "confirmada" && r.produto !== "booster").reduce((s, r) => s + r.quantidade, 0);
+const boosterDe = (c: Cliente) => c.retiradas.filter((r) => r.status === "confirmada" && r.produto === "booster").reduce((s, r) => s + r.quantidade, 0);
 
 const ListaCadastros = () => {
   const [senha, setSenha] = useState("");
@@ -129,6 +130,7 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
     setNaoEncontrado(false); setCliente(r.cliente as Cliente); setNome(""); setWhats(""); setInsta("");
   };
 
+  const [confBooster, setConfBooster] = useState(false);
   const retirar = async () => {
     if (!cliente || !confirmar) return;
     setBusy(true); setErro("");
@@ -138,8 +140,17 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
     const c = r.cliente as Cliente;
     setCliente(c); setSucesso(`RETIRADA REGISTRADA — ${usadosDe(c)} DE ${LIMITE} UTILIZADOS`);
   };
+  const retirarBooster = async () => {
+    if (!cliente) return;
+    setBusy(true); setErro("");
+    const r = await call({ action: "retirar", lead_id: cliente.lead.id, produto: "booster", quantidade: 1 });
+    setBusy(false); setConfBooster(false);
+    if ("error" in r) return setErro(String(r.error));
+    setCliente(r.cliente as Cliente); setSucesso("COMBO BOOSTER REGISTRADO — 1 DE 1");
+  };
 
   const usados = cliente ? usadosDe(cliente) : 0;
+  const booster = cliente ? boosterDe(cliente) : 0;
   const saldo = LIMITE - usados;
   const cor = saldo <= 0 ? "bg-red-600" : saldo === 1 ? "bg-yellow-400 text-ink" : "bg-green-600";
 
@@ -189,7 +200,17 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
             <p className="font-display text-3xl sm:text-5xl uppercase leading-tight">
               {saldo <= 0 ? "Limite esgotado — não realizar nova venda" : `Este CPF ainda pode levar ${saldo} produto${saldo > 1 ? "s" : ""}`}
             </p>
-            <p className="font-body mt-2 opacity-90">{usados} de {LIMITE} utilizados</p>
+            <p className="font-body mt-2 opacity-90">Já retirou {usados} de {LIMITE} produtos</p>
+          </div>
+          <div className={`rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 border-2 ${booster >= 1 ? "border-red-500 bg-red-600/20" : "border-green-500 bg-green-600/15"}`}>
+            <div className="text-center sm:text-left">
+              <p className="font-display text-2xl uppercase">Combo Booster — {booster}/1</p>
+              <p className="font-body text-sm opacity-80">{booster >= 1 ? "Já retirado. Limite de 1 por CPF." : "Disponível: 1 por CPF"}</p>
+            </div>
+            {booster < 1 && (
+              <button disabled={busy} onClick={() => { setSucesso(""); setConfBooster(true); }}
+                className="w-full sm:w-auto font-display text-xl uppercase tracking-wider px-6 py-4 rounded-xl bg-gradient-electric text-ink">Retirar Combo Booster</button>
+            )}
           </div>
           {sucesso && <p className="flex items-center gap-2 font-display text-xl sm:text-2xl text-green-400"><CheckCircle2 /> {sucesso}</p>}
           {saldo > 0 && (
@@ -211,7 +232,7 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
               <ul className="space-y-1 font-body text-sm">
                 {cliente.retiradas.map((r) => (
                   <li key={r.id} className={`flex items-center justify-between gap-2 ${r.status === "estornada" ? "text-white/40 line-through" : ""}`}>
-                    <span>{fmt(r.created_at)} — {r.quantidade} produto{r.quantidade > 1 ? "s" : ""}{r.atendente ? ` · ${r.atendente}` : ""}
+                    <span>{fmt(r.created_at)} — {r.produto === "booster" ? "Combo Booster" : `${r.quantidade} produto${r.quantidade > 1 ? "s" : ""}`}{r.atendente ? ` · ${r.atendente}` : ""}
                       {r.status === "estornada" && <span className="no-underline"> (estornada: {r.estorno_motivo})</span>}</span>
                     {r.status === "confirmada" && (
                       <button onClick={() => setEstorno(r)} className="shrink-0 text-xs text-white/50 hover:text-red-400 inline-flex items-center gap-1 px-2 py-2"><Undo2 size={12} />Estornar</button>
@@ -239,6 +260,22 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
             <button onClick={() => setConfirmar(null)} className="border border-white/30 rounded-xl py-4 font-display tracking-widest uppercase">Cancelar</button>
             <button onClick={retirar} disabled={busy} className="bg-green-600 rounded-xl py-4 font-display tracking-widest uppercase">
               {busy ? <Loader2 className="animate-spin mx-auto" /> : "Confirmar retirada"}</button>
+          </div>
+        </Modal>
+      )}
+
+      {confBooster && cliente && (
+        <Modal onClose={() => setConfBooster(false)}>
+          <p className="font-display text-3xl uppercase mb-4">Confirmar Combo Booster?</p>
+          <dl className="font-body space-y-1 mb-6">
+            <div>CPF: <b>{maskCpf(cliente.lead.cpf)}</b></div>
+            <div>Cliente: <b>{cliente.lead.nome}</b></div>
+            <div>Limite: <b>1 por CPF</b></div>
+          </dl>
+          <div className="grid grid-cols-2 gap-3">
+            <button onClick={() => setConfBooster(false)} className="border border-white/30 rounded-xl py-4 font-display tracking-widest uppercase">Cancelar</button>
+            <button onClick={retirarBooster} disabled={busy} className="bg-green-600 rounded-xl py-4 font-display tracking-widest uppercase">
+              {busy ? <Loader2 className="animate-spin mx-auto" /> : "Confirmar"}</button>
           </div>
         </Modal>
       )}
@@ -403,7 +440,7 @@ function Lista({ call }: { call: Call }) {
             <div className="flex-1 min-w-0 font-body text-sm">
               <p className="font-semibold truncate">{l.nome}</p>
               <p className="text-white/60">{maskCpf(l.cpf)}{l.whatsapp ? ` · ${maskPhone(l.whatsapp)}` : ""}</p>
-              <p className="text-xs mt-1">{l.pre_cadastro ? <span className="text-electric">✓ 20%</span> : <span className="text-white/50">Sem desconto</span>}<span className="text-white/50"> · {l.usados}/{LIMITE}{l.ultima_retirada ? ` · ${fmt(l.ultima_retirada)}` : ""}</span></p>
+              <p className="text-xs mt-1">{l.pre_cadastro ? <span className="text-electric">✓ 20%</span> : <span className="text-white/50">Sem desconto</span>}<span className="text-white/50"> · Retirou {l.usados}/{LIMITE} · Booster {l.booster ?? 0}/1{l.ultima_retirada ? ` · ${fmt(l.ultima_retirada)}` : ""}</span></p>
             </div>
             <button onClick={() => setEditando(l)} aria-label="Editar cliente" className="shrink-0 w-10 h-10 grid place-items-center rounded-xl border border-white/20 text-white/70 hover:text-electric"><Pencil size={16} /></button>
             <span className={`shrink-0 w-10 h-10 grid place-items-center rounded-full font-display text-xl ${disp <= 0 ? "bg-red-600" : disp === 1 ? "bg-yellow-400 text-ink" : "bg-green-600"}`}>{disp}</span>
@@ -420,6 +457,7 @@ function Lista({ call }: { call: Call }) {
               <SortableTh label="Pré-cadastro" k="pre" sort={sort} onSort={onSort} />
               <SortableTh label="Utilizados" k="usados" sort={sort} onSort={onSort} />
               <SortableTh label="Disponíveis" k="disp" sort={sort} onSort={onSort} />
+              <SortableTh label="Booster" k="booster" sort={sort} onSort={onSort} />
               <SortableTh label="Última retirada" k="ultima" sort={sort} onSort={onSort} />
               <th className="px-4 py-3"></th>
             </tr>
@@ -437,6 +475,7 @@ function Lista({ call }: { call: Call }) {
                   <td className="px-4 py-3">{l.pre_cadastro ? <span className="text-electric font-display tracking-wider">✓ 20%</span> : <span className="text-white/50">Não</span>}</td>
                   <td className="px-4 py-3">{l.usados}/{LIMITE}</td>
                   <td className="px-4 py-3"><span className={`inline-block min-w-8 text-center rounded-full px-2 font-display ${disp <= 0 ? "bg-red-600" : disp === 1 ? "bg-yellow-400 text-ink" : "bg-green-600"}`}>{disp}</span></td>
+                  <td className="px-4 py-3">{l.booster ?? 0}/1</td>
                   <td className="px-4 py-3 text-white/60">{l.ultima_retirada ? fmt(l.ultima_retirada) : "—"}</td>
                   <td className="px-4 py-3"><button onClick={() => setEditando(l)} className="inline-flex items-center gap-1 border border-white/20 rounded-lg px-2 py-1 text-xs text-white/70 hover:text-electric hover:border-electric"><Pencil size={12} />Editar</button></td>
                 </tr>
