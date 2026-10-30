@@ -412,8 +412,8 @@ function Lista({ call }: { call: Call }) {
   ] as const;
 
   const exportCsv = () => {
-    const header = ["nome", "cpf", "whatsapp", "email", "pre_cadastro", "utilizados", "disponiveis", "ultima_retirada", "cadastro", "origem", "promo_utilizada_antiga", "codigo"];
-    const data = rows.map((l) => [l.nome, l.cpf, l.whatsapp ?? "", l.email ?? "", l.pre_cadastro ? "sim" : "não", l.usados, LIMITE - l.usados,
+    const header = ["nome", "cpf", "whatsapp", "email", "pre_cadastro", "utilizados", "disponiveis", "combo_booster", "etb", "fichario", "ultima_retirada", "cadastro", "origem", "promo_utilizada_antiga", "codigo"];
+    const data = rows.map((l) => [l.nome, l.cpf, l.whatsapp ?? "", l.email ?? "", l.pre_cadastro ? "sim" : "não", l.usados, LIMITE - l.usados, l.booster ?? 0, l.etb ?? 0, l.fichario ?? 0,
       l.ultima_retirada ? new Date(l.ultima_retirada).toLocaleString("pt-BR") : "", new Date(l.created_at).toLocaleString("pt-BR"),
       l.utm_campaign || l.origem || "", l.promo_redeemed ? "sim" : "não", l.redeem_code ?? ""]);
     const csv = [header, ...data].map((r) => r.map((v) => `"${String(v).replace(/"/g, '""')}"`).join(";")).join("\n");
