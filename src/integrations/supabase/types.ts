@@ -282,6 +282,10 @@ export type Database = {
         Args: { _atendente: string; _lead_id: string }
         Returns: number
       }
+      registrar_retirada_item: {
+        Args: { _atendente: string; _lead_id: string; _produto: string }
+        Returns: number
+      }
     }
     Enums: {
       app_role: "admin" | "staff" | "user"

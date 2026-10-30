@@ -8,6 +8,13 @@
       "when": 1791572345152,
       "tag": "0000_retiradas_produto_booster",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793375132123,
+      "tag": "0001_retirada_item_unico",
+      "breakpoints": true
     }
   ]
 }
