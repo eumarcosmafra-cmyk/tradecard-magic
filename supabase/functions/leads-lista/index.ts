@@ -62,10 +62,10 @@ Deno.serve(async (req) => {
       case 'retirar': {
         const qtd = Number(p.quantidade);
         if (typeof p.lead_id !== 'string') return json({ error: 'Dados inválidos.' }, 400);
-        const booster = p.produto === 'booster';
-        if (!booster && ![1, 2, 3].includes(qtd)) return json({ error: 'Dados inválidos.' }, 400);
-        const { error } = booster
-          ? await sb.rpc('registrar_retirada_booster', { _lead_id: p.lead_id, _atendente: atendente })
+        const item = ['booster', 'etb', 'fichario'].includes(p.produto) ? String(p.produto) : null;
+        if (!item && ![1, 2, 3].includes(qtd)) return json({ error: 'Dados inválidos.' }, 400);
+        const { error } = item
+          ? await sb.rpc('registrar_retirada_item', { _lead_id: p.lead_id, _produto: item, _atendente: atendente })
           : await sb.rpc('registrar_retirada', { _lead_id: p.lead_id, _qtd: qtd, _atendente: atendente });
         if (error) return json({ error: error.message }, 409);
         const { data: lead } = await sb.from('early_access_leads').select('cpf').eq('id', p.lead_id).single();
@@ -96,15 +96,15 @@ Deno.serve(async (req) => {
           sb.from('retiradas').select('lead_id,quantidade,created_at,produto').eq('status', 'confirmada').limit(20000),
         ]);
         if (error) return json({ error: error.message }, 400);
-        const agg = new Map<string, { usados: number; booster: number; ultima: string | null }>();
+        const agg = new Map<string, { usados: number; booster: number; etb: number; fichario: number; ultima: string | null }>();
         for (const r of rets ?? []) {
-          const a = agg.get(r.lead_id) ?? { usados: 0, booster: 0, ultima: null };
-          if (r.produto === 'booster') a.booster += r.quantidade; else a.usados += r.quantidade;
+          const a = agg.get(r.lead_id) ?? { usados: 0, booster: 0, etb: 0, fichario: 0, ultima: null };
+          if (r.produto === 'booster') a.booster += r.quantidade; else if (r.produto === 'etb') a.etb += r.quantidade; else if (r.produto === 'fichario') a.fichario += r.quantidade; else a.usados += r.quantidade;
           if (!a.ultima || r.created_at > a.ultima) a.ultima = r.created_at;
           agg.set(r.lead_id, a);
         }
         return json({
-          leads: (leads ?? []).map((l) => ({ ...l, usados: agg.get(l.id)?.usados ?? 0, booster: agg.get(l.id)?.booster ?? 0, ultima_retirada: agg.get(l.id)?.ultima ?? null })),
+          leads: (leads ?? []).map((l) => ({ ...l, usados: agg.get(l.id)?.usados ?? 0, booster: agg.get(l.id)?.booster ?? 0, etb: agg.get(l.id)?.etb ?? 0, fichario: agg.get(l.id)?.fichario ?? 0, ultima_retirada: agg.get(l.id)?.ultima ?? null })),
         });
       }
     }
