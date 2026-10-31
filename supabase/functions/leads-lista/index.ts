@@ -62,7 +62,7 @@ Deno.serve(async (req) => {
       case 'retirar': {
         const qtd = Number(p.quantidade);
         if (typeof p.lead_id !== 'string') return json({ error: 'Dados inválidos.' }, 400);
-        const item = ['booster', 'etb', 'fichario'].includes(p.produto) ? String(p.produto) : null;
+        const item = ['booster', 'etb', 'fichario', 'triplo'].includes(p.produto) ? String(p.produto) : null;
         if (!item && ![1, 2, 3].includes(qtd)) return json({ error: 'Dados inválidos.' }, 400);
         const { error } = item
           ? await sb.rpc('registrar_retirada_item', { _lead_id: p.lead_id, _produto: item, _atendente: atendente })
@@ -96,15 +96,15 @@ Deno.serve(async (req) => {
           sb.from('retiradas').select('lead_id,quantidade,created_at,produto').eq('status', 'confirmada').limit(20000),
         ]);
         if (error) return json({ error: error.message }, 400);
-        const agg = new Map<string, { usados: number; booster: number; etb: number; fichario: number; ultima: string | null }>();
+        const agg = new Map<string, { usados: number; booster: number; etb: number; fichario: number; triplo: number; ultima: string | null }>();
         for (const r of rets ?? []) {
-          const a = agg.get(r.lead_id) ?? { usados: 0, booster: 0, etb: 0, fichario: 0, ultima: null };
-          if (r.produto === 'booster') a.booster += r.quantidade; else if (r.produto === 'etb') a.etb += r.quantidade; else if (r.produto === 'fichario') a.fichario += r.quantidade; else a.usados += r.quantidade;
+          const a = agg.get(r.lead_id) ?? { usados: 0, booster: 0, etb: 0, fichario: 0, triplo: 0, ultima: null };
+          if (r.produto === 'booster') a.booster += r.quantidade; else if (r.produto === 'etb') a.etb += r.quantidade; else if (r.produto === 'fichario') a.fichario += r.quantidade; else if (r.produto === 'triplo') a.triplo += r.quantidade; else a.usados += r.quantidade;
           if (!a.ultima || r.created_at > a.ultima) a.ultima = r.created_at;
           agg.set(r.lead_id, a);
         }
         return json({
-          leads: (leads ?? []).map((l) => ({ ...l, usados: agg.get(l.id)?.usados ?? 0, booster: agg.get(l.id)?.booster ?? 0, etb: agg.get(l.id)?.etb ?? 0, fichario: agg.get(l.id)?.fichario ?? 0, ultima_retirada: agg.get(l.id)?.ultima ?? null })),
+          leads: (leads ?? []).map((l) => ({ ...l, usados: agg.get(l.id)?.usados ?? 0, booster: agg.get(l.id)?.booster ?? 0, etb: agg.get(l.id)?.etb ?? 0, fichario: agg.get(l.id)?.fichario ?? 0, triplo: agg.get(l.id)?.triplo ?? 0, ultima_retirada: agg.get(l.id)?.ultima ?? null })),
         });
       }
     }
