@@ -15,6 +15,13 @@
       "when": 1793375132123,
       "tag": "0001_retirada_item_unico",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793482688246,
+      "tag": "0002_retirada_triplo",
+      "breakpoints": true
     }
   ]
 }
