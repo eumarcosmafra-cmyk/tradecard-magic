@@ -11,17 +11,18 @@ type Lead = {
   id: string; nome: string; cpf: string; whatsapp: string | null; email: string | null; instagram?: string | null;
   created_at: string; origem: string | null; utm_campaign: string | null;
   pre_cadastro: boolean; promo_redeemed: boolean; redeemed_at: string | null; redeem_code: string | null;
-  usados: number; booster?: number; etb?: number; fichario?: number; ultima_retirada: string | null;
+  usados: number; booster?: number; etb?: number; fichario?: number; triplo?: number; ultima_retirada: string | null;
 };
 type Retirada = { id: string; quantidade: number; status: string; atendente: string | null; created_at: string; estorno_motivo: string | null; estornado_em: string | null; produto?: string };
 type Cliente = { lead: Lead; retiradas: Retirada[] };
-type SortKey = "nome" | "cpf" | "whatsapp" | "pre" | "usados" | "disp" | "booster" | "etb" | "fichario" | "ultima";
+type SortKey = "nome" | "cpf" | "whatsapp" | "pre" | "usados" | "disp" | "booster" | "etb" | "fichario" | "triplo" | "ultima";
 
 const fmt = (d: string) => new Date(d).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
 const ITENS = [
-  { key: "booster", nome: "Combo Booster" },
-  { key: "etb", nome: "ETB" },
-  { key: "fichario", nome: "Fichário" },
+  { key: "booster", nome: "Combo Booster", max: 1 },
+  { key: "etb", nome: "ETB", max: 1 },
+  { key: "fichario", nome: "Fichário", max: 1 },
+  { key: "triplo", nome: "Triplo", max: 2 },
 ] as const;
 type ItemKey = typeof ITENS[number]["key"];
 const ITEM_KEYS: string[] = ITENS.map((i) => i.key);
@@ -159,8 +160,8 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
   };
 
   const usados = cliente ? usadosDe(cliente) : 0;
-  const pendentes = cliente ? ITENS.filter((i) => itemDe(cliente, i.key) < 1) : [];
-  const extras = pendentes.map((i) => ` + 1 ${i.nome}`).join("");
+  const pendentes = cliente ? ITENS.filter((i) => itemDe(cliente, i.key) < i.max) : [];
+  const extras = pendentes.map((i) => { const r = i.max - itemDe(cliente!, i.key); return ` + ${r} ${i.nome}${r > 1 ? "s" : ""}`; }).join("");
   const saldo = LIMITE - usados;
   const cor = saldo <= 0 ? "bg-red-600" : saldo === 1 ? "bg-yellow-400 text-ink" : "bg-green-600";
 
@@ -210,15 +211,15 @@ function Controle({ call, atendente }: { call: Call; atendente: string }) {
             <p className="font-display text-3xl sm:text-5xl uppercase leading-tight">
               {saldo <= 0 ? "Limite esgotado — não realizar nova venda" : `${usados === 0 ? "Este CPF pode levar" : "Este CPF ainda pode levar"} ${saldo} produto${saldo > 1 ? "s" : ""}${extras}`}
             </p>
-            <p className="font-body mt-2 opacity-90">Já retirou {usados} de {LIMITE} produtos{cliente && ITENS.map((i) => ` · ${i.nome} ${itemDe(cliente, i.key) >= 1 ? "já retirado" : "disponível"}`).join("")}</p>
+            <p className="font-body mt-2 opacity-90">Já retirou {usados} de {LIMITE} produtos{cliente && ITENS.map((i) => ` · ${i.nome} ${itemDe(cliente, i.key) >= i.max ? "já retirado" : i.max > 1 ? `${itemDe(cliente, i.key)}/${i.max}` : "disponível"}`).join("")}</p>
           </div>
           {ITENS.map((i) => { const q = itemDe(cliente, i.key); return (
-          <div key={i.key} className={`rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 border-2 ${q >= 1 ? "border-red-500 bg-red-600/20" : "border-green-500 bg-green-600/15"}`}>
+          <div key={i.key} className={`rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 border-2 ${q >= i.max ? "border-red-500 bg-red-600/20" : "border-green-500 bg-green-600/15"}`}>
             <div className="text-center sm:text-left">
-              <p className="font-display text-2xl uppercase">{i.nome} — {q}/1</p>
-              <p className="font-body text-sm opacity-80">{q >= 1 ? "Já retirado. Limite de 1 por CPF." : "Disponível: 1 por CPF"}</p>
+              <p className="font-display text-2xl uppercase">{i.nome} — {q}/{i.max}</p>
+              <p className="font-body text-sm opacity-80">{q >= i.max ? `Já retirado. Limite de ${i.max} por CPF.` : `Disponível: ${i.max - q} de ${i.max} por CPF`}</p>
             </div>
-            {q < 1 && (
+            {q < i.max && (
               <button disabled={busy} onClick={() => { setSucesso(""); setConfItem(i.key); }}
                 className="w-full sm:w-auto font-display text-xl uppercase tracking-wider px-6 py-4 rounded-xl bg-gradient-electric text-ink">Retirar {i.nome}</button>
             )}
@@ -401,7 +402,7 @@ function Lista({ call }: { call: Call }) {
     const f = !q ? leads : leads.filter((l) => l.nome.toLowerCase().includes(q) || (d && (l.cpf.includes(d) || (l.whatsapp ?? "").includes(d))));
     return sortRows(f, sort, (l, k) => ({
       nome: l.nome.toLowerCase(), cpf: l.cpf, whatsapp: l.whatsapp ?? "", pre: l.pre_cadastro ? 1 : 0,
-      usados: l.usados, disp: LIMITE - l.usados, booster: l.booster ?? 0, etb: l.etb ?? 0, fichario: l.fichario ?? 0, ultima: l.ultima_retirada ?? "",
+      usados: l.usados, disp: LIMITE - l.usados, booster: l.booster ?? 0, etb: l.etb ?? 0, fichario: l.fichario ?? 0, triplo: l.triplo ?? 0, ultima: l.ultima_retirada ?? "",
     })[k]);
   }, [leads, query, sort]);
 
@@ -412,8 +413,8 @@ function Lista({ call }: { call: Call }) {
   ] as const;
 
   const exportCsv = () => {
-    const header = ["nome", "cpf", "whatsapp", "email", "pre_cadastro", "utilizados", "disponiveis", "combo_booster", "etb", "fichario", "ultima_retirada", "cadastro", "origem", "promo_utilizada_antiga", "codigo"];
-    const data = rows.map((l) => [l.nome, l.cpf, l.whatsapp ?? "", l.email ?? "", l.pre_cadastro ? "sim" : "não", l.usados, LIMITE - l.usados, l.booster ?? 0, l.etb ?? 0, l.fichario ?? 0,
+    const header = ["nome", "cpf", "whatsapp", "email", "pre_cadastro", "utilizados", "disponiveis", "combo_booster", "etb", "fichario", "triplo", "ultima_retirada", "cadastro", "origem", "promo_utilizada_antiga", "codigo"];
+    const data = rows.map((l) => [l.nome, l.cpf, l.whatsapp ?? "", l.email ?? "", l.pre_cadastro ? "sim" : "não", l.usados, LIMITE - l.usados, l.booster ?? 0, l.etb ?? 0, l.fichario ?? 0, l.triplo ?? 0,
       l.ultima_retirada ? new Date(l.ultima_retirada).toLocaleString("pt-BR") : "", new Date(l.created_at).toLocaleString("pt-BR"),
       l.utm_campaign || l.origem || "", l.promo_redeemed ? "sim" : "não", l.redeem_code ?? ""]);
     const csv = [header, ...data].map((r) => r.map((v) => `"${String(v).replace(/"/g, '""')}"`).join(";")).join("\n");
@@ -451,7 +452,7 @@ function Lista({ call }: { call: Call }) {
             <div className="flex-1 min-w-0 font-body text-sm">
               <p className="font-semibold truncate">{l.nome}</p>
               <p className="text-white/60">{maskCpf(l.cpf)}{l.whatsapp ? ` · ${maskPhone(l.whatsapp)}` : ""}</p>
-              <p className="text-xs mt-1">{l.pre_cadastro ? <span className="text-electric">✓ 20%</span> : <span className="text-white/50">Sem desconto</span>}<span className="text-white/50"> · Retirou {l.usados}/{LIMITE} · Booster {l.booster ?? 0}/1 · ETB {l.etb ?? 0}/1 · Fichário {l.fichario ?? 0}/1{l.ultima_retirada ? ` · ${fmt(l.ultima_retirada)}` : ""}</span></p>
+              <p className="text-xs mt-1">{l.pre_cadastro ? <span className="text-electric">✓ 20%</span> : <span className="text-white/50">Sem desconto</span>}<span className="text-white/50"> · Retirou {l.usados}/{LIMITE} · Booster {l.booster ?? 0}/1 · ETB {l.etb ?? 0}/1 · Fichário {l.fichario ?? 0}/1 · Triplo {l.triplo ?? 0}/2{l.ultima_retirada ? ` · ${fmt(l.ultima_retirada)}` : ""}</span></p>
             </div>
             <button onClick={() => setEditando(l)} aria-label="Editar cliente" className="shrink-0 w-10 h-10 grid place-items-center rounded-xl border border-white/20 text-white/70 hover:text-electric"><Pencil size={16} /></button>
             <span className={`shrink-0 w-10 h-10 grid place-items-center rounded-full font-display text-xl ${disp <= 0 ? "bg-red-600" : disp === 1 ? "bg-yellow-400 text-ink" : "bg-green-600"}`}>{disp}</span>
@@ -471,6 +472,7 @@ function Lista({ call }: { call: Call }) {
               <SortableTh label="Booster" k="booster" sort={sort} onSort={onSort} />
               <SortableTh label="ETB" k="etb" sort={sort} onSort={onSort} />
               <SortableTh label="Fichário" k="fichario" sort={sort} onSort={onSort} />
+              <SortableTh label="Triplo" k="triplo" sort={sort} onSort={onSort} />
               <SortableTh label="Última retirada" k="ultima" sort={sort} onSort={onSort} />
               <th className="px-4 py-3"></th>
             </tr>
@@ -491,6 +493,7 @@ function Lista({ call }: { call: Call }) {
                   <td className="px-4 py-3">{l.booster ?? 0}/1</td>
                   <td className="px-4 py-3">{l.etb ?? 0}/1</td>
                   <td className="px-4 py-3">{l.fichario ?? 0}/1</td>
+                  <td className="px-4 py-3">{l.triplo ?? 0}/2</td>
                   <td className="px-4 py-3 text-white/60">{l.ultima_retirada ? fmt(l.ultima_retirada) : "—"}</td>
                   <td className="px-4 py-3"><button onClick={() => setEditando(l)} className="inline-flex items-center gap-1 border border-white/20 rounded-lg px-2 py-1 text-xs text-white/70 hover:text-electric hover:border-electric"><Pencil size={12} />Editar</button></td>
                 </tr>
